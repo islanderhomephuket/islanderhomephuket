@@ -1833,6 +1833,62 @@ Prime location in Cherng Talay with easy access to Laguna Phuket, Boat Avenue, P
     images: imgs("bt-taraburi-villa-bt12", "bt-taraburi-villa-bt12", 65, 1),
   },
   {
+    id: "bt-walai-layan-bt13",
+    slug: "walai-layan-sea-view-villas-bangtao-bt13",
+    title: "Walai Layan Sea View — Luxury Sea-View Pool Villas, Layan",
+    description: `Walai Layan Sea View — a refined collection of luxury private villas, thoughtfully positioned in Layan, one of Phuket's most desirable residential enclaves. Designed for discerning homeowners and long-term investors seeking privacy, design integrity and lasting value.
+
+Villa overview:
+• 4+1 Bedrooms | 6 Bathrooms
+• Built-up area: 439.91 m²
+• Land plots from 495.67 sq.wah (≈1,983 m²)
+• Integrated smart home system
+• Seamless indoor-outdoor living concept
+
+Distinctive features:
+• Limited sea-view residences
+• Elevated setting with mountain & sea outlooks
+• Low-density, gated community with 24/7 security
+• Approx. 1 km to Layan Beach
+
+Lifestyle & facilities (2026):
+• Elegant on-site lobby
+• Fully equipped fitness studio
+
+Payment structure: a structured 6-installment plan throughout construction, offering flexibility for clients.
+
+Walai Layan Sea View is crafted for true residential living — balancing architectural elegance with a calm, natural environment.`,
+    listing_type: "sale",
+    status: "available",
+    property_type: "Villa",
+    area_slug: "bang-tao",
+    price: 49500000,
+    rent_price: null,
+    rent_period: null,
+    bedrooms: 5,
+    bathrooms: 6,
+    living_area: 440,
+    land_area: 1983,
+    address: "Walai Layan Sea View, Layan, Cherng Talay, Thalang, Phuket",
+    latitude: 8.0123,
+    longitude: 98.2945,
+    features: [
+      "Limited sea-view residences",
+      "4+1 bedrooms · 6 bathrooms",
+      "Integrated smart home system",
+      "Elevated mountain & sea outlooks",
+      "Low-density gated community · 24/7 security",
+      "Approx. 1 km to Layan Beach",
+      "On-site lobby & fitness studio",
+      "Flexible 6-installment payment plan",
+    ],
+    is_featured: true,
+    reference: "BT13",
+    created_at: NOW,
+    updated_at: NOW,
+    images: imgs("bt-walai-layan-bt13", "bt-walai-layan-bt13", 162),
+  },
+  {
     id: "th-super-villas-thalang-th01",
     slug: "luxury-4-bed-pool-villa-thalang-th01",
     title: "Luxury 4-Bedroom Pool Villa — Thalang",
