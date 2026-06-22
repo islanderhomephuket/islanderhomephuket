@@ -619,6 +619,44 @@ export const MOCK_PROPERTIES: Property[] = [
 
 export const MOCK_BLOG_POSTS: BlogPost[] = [
   {
+    id: "b-2026-06-22-renting-villa-rawai",
+    slug: "renting-luxury-pool-villa-rawai-2026",
+    title: "Renting a Luxury Pool Villa in Rawai: What to Expect in 2026",
+    excerpt:
+      "Rawai is South Phuket's relaxed beach haven for expats and long-stay visitors. Here's what renting a private pool villa here really looks like in 2026.",
+    content: `<p>On the southern tip of Phuket, Rawai has become one of the island's most loved areas for long-stay living — a laid-back blend of beachfront cafés, seafood markets, wellness studios and easy access to the island's most beautiful southern beaches. If you're thinking about renting a luxury pool villa here in 2026, here's what to expect.</p>
+<h2>Why renters choose Rawai &amp; Nai Harn</h2>
+<ul>
+<li>Minutes from Nai Harn and Rawai beaches</li>
+<li>A established, friendly expat and digital-nomad community</li>
+<li>Fresh seafood markets, beach bars and yoga studios</li>
+<li>Great value compared with the west-coast luxury belt</li>
+</ul>
+<h2>What your budget gets you</h2>
+<p>Long-term monthly rentals for private pool villas in Rawai typically range widely depending on size, location and finish. At the premium end, larger family villas with resort-style outdoor space command higher rents but offer genuine space, privacy and quality.</p>
+<figure>
+<img src="/listings/rw-sasinee-villa-rw07/2.jpg" alt="Private pool at a luxury villa in Rawai, Phuket" />
+<figcaption>A private pool villa in Rawai — resort-style outdoor living for long-term tenants.</figcaption>
+</figure>
+<p>A great current example is <a href="/properties/villa-sasinee-pool-villa-rawai-rw07">Villa Sasinee</a> — a 5-bedroom tropical pool villa with a 12m pool, jacuzzi, pool bar and large garden, just 7 minutes from Nai Harn Beach.</p>
+<h2>Typical rental terms</h2>
+<ul>
+<li>Long-term contracts (usually 6–12 months) offer the best monthly rates</li>
+<li>Standard terms are 2 months security deposit + 1 month advance rent</li>
+<li>Utilities (electricity, water) are usually billed on top of the rent</li>
+</ul>
+<h2>Ready to find your villa?</h2>
+<p>Browse our <a href="/rent">villas for rent</a>, or follow us for new arrivals on <a href="https://www.instagram.com/islanderhomephuket" target="_blank" rel="noopener">Instagram</a> and <a href="https://www.facebook.com/share/17zfFD16u2/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>.</p>
+<blockquote>Tell Islander Home Phuket what you're looking for and we'll match you with the right villa — usually within a few hours.</blockquote>`,
+    cover_image: "/listings/rw-sasinee-villa-rw07/1.jpg",
+    author: "Islander Home Team",
+    tags: ["Rental", "Rawai", "Lifestyle"],
+    published: true,
+    published_at: "2026-06-22T12:00:00.000Z",
+    created_at: now,
+    updated_at: now,
+  },
+  {
     id: "b-2026-06-22-villa-investment-guide",
     slug: "phuket-villa-investment-guide-2026",
     title: "Phuket Villa Investment Guide 2026",
