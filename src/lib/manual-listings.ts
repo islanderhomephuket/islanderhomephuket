@@ -1833,59 +1833,64 @@ Prime location in Cherng Talay with easy access to Laguna Phuket, Boat Avenue, P
     images: imgs("bt-taraburi-villa-bt12", "bt-taraburi-villa-bt12", 65, 1),
   },
   {
-    id: "th-thalang-pool-villa-th01",
-    slug: "sasinee-villa-thalang-th01",
-    title: "Sasinee Villa — Luxury 4-Bedroom Pool Villa, Thalang",
-    description: `Sasinee Villa — a stunning modern pool villa for sale in Thalang, Phuket — recently reduced from THB 22.9 Million to THB 20.9 Million. Designed for comfortable family living with generous indoor and outdoor space in one of Phuket's most convenient and fast-growing areas.
+    id: "rw-sasinee-villa-rw01",
+    slug: "villa-sasinee-pool-villa-rawai-rw01",
+    title: "Villa Sasinee — Modern Tropical Pool Villa in Rawai",
+    description: `Villa Sasinee — a stunning 5-bedroom pool villa surrounded by lush tropical gardens, offering privacy, space and resort-style living just minutes from Nai Harn and Rawai Beach.
 
 Property details:
-• 4 Bedrooms (all en-suite, including 2 master bedrooms)
-• 5 Bathrooms
-• Interior area: 230 m²
-• Total built-up area: 444 m²
-• Land size: 616 m²
-• Private swimming pool (4 × 10 m)
-• European and Thai kitchens
-• 2 outdoor pavilions with waterfall and pond
-• Large balcony
-• Covered parking for 2 cars
-• Automatic gate and digital door lock
+• 5 Bedrooms | 5 Ensuite Bathrooms
+• Two separate buildings for extra privacy
+• Fully furnished & move-in ready
+• Spacious living area
+• Large Western kitchen
+• Laundry room
 • Air conditioning throughout
-• Partially furnished
+• Covered parking
+• Land size: 600 m²
+• Built-up area: 450 m²
 
-Prime location — Thalang:
-• 5 minutes to Robinson Lifestyle Thalang & Makro
-• 15 minutes to UWC International School
-• 16 minutes to Bang Tao & Layan beaches
-• ~20 minutes to Phuket International Airport`,
-    listing_type: "sale",
+Outdoor features:
+• 12m private swimming pool
+• Jacuzzi & kids pool area
+• Pool bar
+• Sala & BBQ area
+• Large tropical garden
+• Relaxing outdoor living spaces
+
+Prime location — Rawai:
+• 7 minutes to Nai Harn Beach
+• 9 minutes to Rawai Beach
+
+Rental terms: 2 months security deposit + 1 month advance rent.`,
+    listing_type: "rent",
     status: "available",
     property_type: "Villa",
-    area_slug: "thalang",
-    price: 20900000,
+    area_slug: "rawai",
+    price: 150000, // monthly rent
     rent_price: null,
-    rent_period: null,
-    bedrooms: 4,
+    rent_period: "month",
+    bedrooms: 5,
     bathrooms: 5,
-    living_area: 230,
-    land_area: 616,
-    address: "Thalang, Phuket",
-    latitude: 8.0353,
-    longitude: 98.339,
+    living_area: 450,
+    land_area: 600,
+    address: "Rawai, Phuket (near Nai Harn & Rawai Beach)",
+    latitude: 7.7741,
+    longitude: 98.3245,
     features: [
-      "Price reduced — THB 22.9M to 20.9M",
-      "Private swimming pool (4 × 10 m)",
-      "4 en-suite bedrooms (2 masters)",
-      "European & Thai kitchens",
-      "2 outdoor pavilions with waterfall & pond",
-      "Automatic gate & digital door lock",
-      "Covered parking for 2 cars",
-      "5 mins to Robinson Lifestyle Thalang",
+      "5 ensuite bedrooms · two separate buildings",
+      "12m private swimming pool",
+      "Jacuzzi, kids pool & pool bar",
+      "Sala & BBQ area",
+      "Large tropical garden",
+      "Fully furnished & move-in ready",
+      "Large Western kitchen · laundry room",
+      "7 mins to Nai Harn · 9 mins to Rawai Beach",
     ],
     is_featured: true,
-    reference: "TH01",
+    reference: "RW01",
     created_at: NOW,
     updated_at: NOW,
-    images: imgs("th-thalang-pool-villa-th01", "th-thalang-pool-villa-th01", 73),
+    images: imgs("rw-sasinee-villa-rw01", "rw-sasinee-villa-rw01", 73),
   },
 ];
