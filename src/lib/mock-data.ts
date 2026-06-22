@@ -619,6 +619,36 @@ export const MOCK_PROPERTIES: Property[] = [
 
 export const MOCK_BLOG_POSTS: BlogPost[] = [
   {
+    id: "b-2026-06-22-villa-investment-guide",
+    slug: "phuket-villa-investment-guide-2026",
+    title: "Phuket Villa Investment Guide 2026",
+    excerpt:
+      "Thinking of buying a pool villa in Phuket this year? Here's a clear, up-to-date guide to yields, ownership, costs and the areas worth watching in 2026.",
+    content: `<p>Phuket remains one of Asia's most resilient lifestyle-and-investment property markets. If you're considering a villa in 2026, here's what actually matters — explained simply.</p>
+<h2>Why Phuket in 2026?</h2>
+<p>Strong international tourism, a growing community of long-stay residents and remote workers, and continued infrastructure investment all support both rental demand and long-term capital growth. Well-located pool villas remain the most sought-after asset class on the island.</p>
+<h2>What returns can you expect?</h2>
+<p>Gross rental yields on well-positioned pool villas typically range from <strong>6–9%</strong>, depending on location, management and occupancy. Net yields depend on running costs and how professionally the villa is marketed and maintained.</p>
+<h2>How foreigners own a villa</h2>
+<ul>
+<li><strong>Leasehold</strong> — a registered long-term lease over the land with freehold ownership of the building.</li>
+<li><strong>Thai company ownership</strong> — a properly structured company, always set up with professional legal guidance.</li>
+</ul>
+<p>We only work with vetted developments, clean Chanote titles and trusted local lawyers, so your due diligence is handled properly.</p>
+<h2>Where the smart money is looking</h2>
+<p>Bang Tao and Layan lead the luxury segment, Koh Kaew suits families near international schools, while Chalong, Rawai and Thalang offer strong value and lifestyle appeal. A great current example of a premium sea-view opportunity is <a href="/properties/walai-layan-sea-view-villas-bangtao-bt13">Walai Layan Sea View in Layan</a> — limited sea-view residences in a low-density gated community just minutes from the beach.</p>
+<h2>Ready to explore?</h2>
+<p>Browse our <a href="/buy">villas for sale</a> or follow us for new listings and market updates on <a href="https://www.instagram.com/islanderhomephuket" target="_blank" rel="noopener">Instagram</a> and <a href="https://www.facebook.com/share/17zfFD16u2/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>.</p>
+<blockquote>Speak to Islander Home Phuket for a no-obligation, area-by-area investment briefing tailored to your goals.</blockquote>`,
+    cover_image: "/listings/bt-walai-layan-bt13/1.jpg",
+    author: "Islander Home Team",
+    tags: ["Investment", "Buying Guide", "Villas"],
+    published: true,
+    published_at: "2026-06-22T09:00:00.000Z",
+    created_at: now,
+    updated_at: now,
+  },
+  {
     id: "b-001",
     slug: "buying-property-in-phuket-foreigner-guide",
     title: "Buying Property in Phuket: A Foreigner's Guide",
