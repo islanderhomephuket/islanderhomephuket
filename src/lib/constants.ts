@@ -47,6 +47,8 @@ export interface AreaInfo {
   mapQuery: string;
   coords: { lat: number; lng: number };
   image: string;
+  /** Optional full-bleed marketing poster shown on the area card instead of the photo. */
+  poster?: string;
 }
 
 export const AREAS: AreaInfo[] = [
@@ -129,6 +131,7 @@ export const AREAS: AreaInfo[] = [
     mapQuery: "Rawai Beach, Phuket, Thailand",
     coords: { lat: 7.7741, lng: 98.3245 },
     image: "/properties/villa-7.png",
+    poster: "/areas/rawai.jpg",
   },
   {
     slug: "thalang",

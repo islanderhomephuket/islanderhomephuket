@@ -10,6 +10,27 @@ export function AreaCard({
   area: AreaInfo;
   count?: number;
 }) {
+  // Areas with a marketing poster show the full artwork (it already carries its
+  // own title & info), centered on the brand-dark background so the 9:16 poster
+  // sits cleanly inside the 3/4 card frame without cropping.
+  if (area.poster) {
+    return (
+      <Link
+        href={`/areas/${area.slug}`}
+        className="group relative block aspect-[3/4] overflow-hidden border border-sand/40 bg-ink transition-colors hover:border-gold/60"
+        aria-label={`${area.name} — ${area.tagline}`}
+      >
+        <Image
+          src={area.poster}
+          alt={`${area.name}, Phuket — ${area.tagline}`}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-contain transition-transform duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
+        />
+      </Link>
+    );
+  }
+
   return (
     <Link
       href={`/areas/${area.slug}`}
