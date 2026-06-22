@@ -41,5 +41,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-public/listings/
-public/properties/
+# Full-resolution photo backup — keep OUT of git (huge). Web-optimized
+# copies live in public/listings/ and are committed.
+public/_listings_ORIGINAL_BACKUP/
