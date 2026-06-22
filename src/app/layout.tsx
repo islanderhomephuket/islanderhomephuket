@@ -29,7 +29,7 @@ const orgJsonLd = {
   },
   areaServed: { "@type": "Place", name: "Phuket, Thailand" },
   openingHours: "Mo-Sa 09:00-18:00",
-  sameAs: [CONTACT.facebook],
+  sameAs: [CONTACT.facebook, CONTACT.instagram],
 };
 
 const display = Cormorant_Garamond({

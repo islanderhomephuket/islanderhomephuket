@@ -4,6 +4,7 @@ import { Logo } from "@/components/brand/logo";
 import { AREAS, CONTACT, NAV_LINKS, SITE } from "@/lib/constants";
 import {
   FacebookIcon,
+  InstagramIcon,
   LineIcon,
   WhatsAppIcon,
 } from "@/components/brand/contact-icons";
@@ -29,6 +30,9 @@ export function Footer() {
               </SocialLink>
               <SocialLink href={CONTACT.facebook} label="Facebook">
                 <FacebookIcon className="h-5 w-5" />
+              </SocialLink>
+              <SocialLink href={CONTACT.instagram} label="Instagram">
+                <InstagramIcon className="h-5 w-5" />
               </SocialLink>
             </div>
           </div>

@@ -18,6 +18,7 @@ export const CONTACT = {
   line: "https://line.me/ti/p/7Cr_f-bvBX",
   lineId: "@islanderhome",
   facebook: "https://www.facebook.com/share/17zfFD16u2/?mibextid=wwXIfr",
+  instagram: "https://www.instagram.com/islanderhomephuket",
   email: "islanderhomephuket@gmail.com",
 } as const;
 

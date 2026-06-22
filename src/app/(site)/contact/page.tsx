@@ -6,6 +6,7 @@ import { ContactForm } from "@/components/forms/contact-form";
 import { MapEmbed } from "@/components/property/map-embed";
 import {
   FacebookIcon,
+  InstagramIcon,
   LineIcon,
   WhatsAppIcon,
 } from "@/components/brand/contact-icons";
@@ -39,6 +40,13 @@ const channels = [
     href: CONTACT.facebook,
     Icon: FacebookIcon,
     bg: "bg-[#1877F2]",
+  },
+  {
+    label: "Instagram",
+    value: "Follow on Instagram",
+    href: CONTACT.instagram,
+    Icon: InstagramIcon,
+    bg: "bg-gradient-to-tr from-[#feda75] via-[#d62976] to-[#4f5bd5]",
   },
 ];
 
