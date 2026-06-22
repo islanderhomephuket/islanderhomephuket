@@ -1,21 +1,8 @@
-import Image from "next/image";
 import { HeroSearch } from "./hero-search";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-[100svh] items-center">
-      <Image
-        src="/properties/villa-1.png"
-        alt="Luxury sea-view pool villa in Phuket"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
-      />
-      {/* Dark cinematic wash */}
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/85 via-ink/55 to-ink/95" />
-      <div className="absolute inset-0 bg-ink/30" />
-
+    <section className="relative flex min-h-[100svh] items-center bg-ink">
       <div className="relative mx-auto w-full max-w-7xl px-5 pt-28 sm:px-8 lg:px-12">
         <div className="max-w-3xl animate-fade-up">
           <p className="kicker text-paper/70">
