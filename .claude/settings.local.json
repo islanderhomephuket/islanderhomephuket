@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"C:\\\\Users\\\\Thana\\\\Desktop\\\\islander-home-phuket-backup\\\\.claude\")",
+      "PowerShell(\\(Get-Command npm\\).Source)",
+      "PowerShell(Get-ChildItem \"C:\\\\Program Files\\\\nodejs\\\\npm.cmd\" -ErrorAction SilentlyContinue; Get-ChildItem \"$env:APPDATA\\\\npm\\\\npm.cmd\" -ErrorAction SilentlyContinue; Get-ChildItem \"$env:ProgramFiles\\\\nodejs\" -ErrorAction SilentlyContinue | Select-Object -First 5)",
+      "Bash(echo '{\"version\":\"0.0.1\",\"configurations\":[{\"name\":\"islander-home\",\"runtimeExecutable\":\"C:\\\\\\\\Program Files\\\\\\\\nodejs\\\\\\\\npm.cmd\",\"runtimeArgs\":[\"run\",\"dev\"],\"port\":3000}]}')",
+      "mcp__Claude_Preview__preview_start",
+      "PowerShell($short = \\(New-Object -ComObject Scripting.FileSystemObject\\).GetFile\\(\"C:\\\\Program Files\\\\nodejs\\\\npm.cmd\"\\).ShortPath; $short)",
+      "PowerShell($env:PATH = \"C:\\\\Program Files\\\\nodejs;\" + $env:PATH; Set-Location \"C:\\\\Users\\\\Thana\\\\Desktop\\\\islander-home-phuket-backup\"; & \"C:\\\\Program Files\\\\nodejs\\\\npm.cmd\" install 2>&1 | Select-Object -Last 20)",
+      "Skill(update-config)",
+      "Skill(update-config:*)"
+    ]
+  }
+}

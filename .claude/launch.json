@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "islander-home",
+      "runtimeExecutable": "C:\\Windows\\System32\\cmd.exe",
+      "runtimeArgs": ["/c", "C:\\Users\\Thana\\Desktop\\islander-home-phuket-backup\\run-next.cmd", "dev"],
+      "port": 3000
+    }
+  ]
+}
