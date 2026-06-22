@@ -1832,4 +1832,60 @@ Prime location in Cherng Talay with easy access to Laguna Phuket, Boat Avenue, P
     updated_at: NOW,
     images: imgs("bt-taraburi-villa-bt12", "bt-taraburi-villa-bt12", 65, 1),
   },
+  {
+    id: "th-thalang-pool-villa-th01",
+    slug: "sasinee-villa-thalang-th01",
+    title: "Sasinee Villa — Luxury 4-Bedroom Pool Villa, Thalang",
+    description: `Sasinee Villa — a stunning modern pool villa for sale in Thalang, Phuket — recently reduced from THB 22.9 Million to THB 20.9 Million. Designed for comfortable family living with generous indoor and outdoor space in one of Phuket's most convenient and fast-growing areas.
+
+Property details:
+• 4 Bedrooms (all en-suite, including 2 master bedrooms)
+• 5 Bathrooms
+• Interior area: 230 m²
+• Total built-up area: 444 m²
+• Land size: 616 m²
+• Private swimming pool (4 × 10 m)
+• European and Thai kitchens
+• 2 outdoor pavilions with waterfall and pond
+• Large balcony
+• Covered parking for 2 cars
+• Automatic gate and digital door lock
+• Air conditioning throughout
+• Partially furnished
+
+Prime location — Thalang:
+• 5 minutes to Robinson Lifestyle Thalang & Makro
+• 15 minutes to UWC International School
+• 16 minutes to Bang Tao & Layan beaches
+• ~20 minutes to Phuket International Airport`,
+    listing_type: "sale",
+    status: "available",
+    property_type: "Villa",
+    area_slug: "thalang",
+    price: 20900000,
+    rent_price: null,
+    rent_period: null,
+    bedrooms: 4,
+    bathrooms: 5,
+    living_area: 230,
+    land_area: 616,
+    address: "Thalang, Phuket",
+    latitude: 8.0353,
+    longitude: 98.339,
+    features: [
+      "Price reduced — THB 22.9M to 20.9M",
+      "Private swimming pool (4 × 10 m)",
+      "4 en-suite bedrooms (2 masters)",
+      "European & Thai kitchens",
+      "2 outdoor pavilions with waterfall & pond",
+      "Automatic gate & digital door lock",
+      "Covered parking for 2 cars",
+      "5 mins to Robinson Lifestyle Thalang",
+    ],
+    is_featured: true,
+    reference: "TH01",
+    created_at: NOW,
+    updated_at: NOW,
+    images: imgs("th-thalang-pool-villa-th01", "th-thalang-pool-villa-th01", 73),
+  },
 ];
