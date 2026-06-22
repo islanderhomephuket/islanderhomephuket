@@ -1833,6 +1833,59 @@ Prime location in Cherng Talay with easy access to Laguna Phuket, Boat Avenue, P
     images: imgs("bt-taraburi-villa-bt12", "bt-taraburi-villa-bt12", 65, 1),
   },
   {
+    id: "ch-mgc-chalong-bay-ch10",
+    slug: "luxury-pool-villas-chalong-bay-ch10",
+    title: "Luxury Pool Villas — Chalong Bay",
+    description: `A rare opportunity to own a spacious modern tropical villa in Chalong Bay — one of Phuket's most desirable residential locations.
+
+Villa highlights:
+• 5 Bedrooms + 1 Maid's Room
+• Dual master bedrooms
+• 6–7 Bathrooms
+• Separate Western & Thai kitchens
+• Private saltwater swimming pool
+• 24/7 security
+
+Property size:
+• Land size: 465–833 m²
+• Built-up area: 503–588 m²
+
+Availability:
+• Show villa ready for viewing
+• Other units currently under construction
+
+Prime location — Chalong Bay, Phuket.`,
+    listing_type: "sale",
+    status: "available",
+    property_type: "Villa",
+    area_slug: "chalong",
+    price: 32900000,
+    rent_price: null,
+    rent_period: null,
+    bedrooms: 5,
+    bathrooms: 6,
+    living_area: 503,
+    land_area: 465,
+    address: "Chalong Bay, Chalong, Phuket",
+    latitude: 7.8462,
+    longitude: 98.3381,
+    features: [
+      "5 bedrooms + maid's room · dual masters",
+      "Separate Western & Thai kitchens",
+      "Private saltwater swimming pool",
+      "24/7 security",
+      "Land 465–833 m² · built-up 503–588 m²",
+      "Show villa ready for viewing",
+      "Starting from THB 32.9M",
+      "Chalong Bay — prime residential location",
+    ],
+    is_featured: true,
+    reference: "CH10",
+    created_at: NOW,
+    updated_at: NOW,
+    images: imgs("ch-mgc-chalong-bay-ch10", "ch-mgc-chalong-bay-ch10", 74),
+  },
+  {
     id: "bt-walai-layan-bt13",
     slug: "walai-layan-sea-view-villas-bangtao-bt13",
     title: "Walai Layan Sea View — Luxury Sea-View Pool Villas, Layan",
