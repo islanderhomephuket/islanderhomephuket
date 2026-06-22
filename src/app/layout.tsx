@@ -1,7 +1,36 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Jost } from "next/font/google";
 import "./globals.css";
-import { SITE } from "@/lib/constants";
+import { SITE, CONTACT } from "@/lib/constants";
+
+/** Structured data so Google understands the business (local SEO / rich results). */
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  name: SITE.name,
+  description: SITE.description,
+  url: SITE.url,
+  telephone: SITE.phoneDisplay,
+  email: CONTACT.email,
+  image: `${SITE.url}/og.png`,
+  logo: `${SITE.url}/logo.png`,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "35/294 Wichit",
+    addressLocality: "Mueang Phuket",
+    addressRegion: "Phuket",
+    postalCode: "83000",
+    addressCountry: "TH",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 7.8804,
+    longitude: 98.3923,
+  },
+  areaServed: { "@type": "Place", name: "Phuket, Thailand" },
+  openingHours: "Mo-Sa 09:00-18:00",
+  sameAs: [CONTACT.facebook],
+};
 
 const display = Cormorant_Garamond({
   variable: "--font-display",
@@ -63,7 +92,13 @@ export default function RootLayout({
       lang="en"
       className={`${display.variable} ${body.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-paper text-foreground">{children}</body>
+      <body className="min-h-full bg-paper text-foreground">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
