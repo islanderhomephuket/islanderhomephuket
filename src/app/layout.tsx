@@ -82,6 +82,9 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
   alternates: { canonical: "/" },
+  verification: {
+    google: "EJSksVCGuWfC2vW9XTLwONpiNt0Wv2Gx2b2HjygHIxo",
+  },
 };
 
 export default function RootLayout({
