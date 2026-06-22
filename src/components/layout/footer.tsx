@@ -70,7 +70,7 @@ export function Footer() {
             <ul className="mt-5 space-y-4 text-sm text-paper/70">
               <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-                <span>Phuket, Thailand</span>
+                <span>35/294 Wichit, Mueang Phuket, Phuket 83000</span>
               </li>
               <li className="flex items-start gap-3">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
