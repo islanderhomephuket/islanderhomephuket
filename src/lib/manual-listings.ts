@@ -1833,8 +1833,8 @@ Prime location in Cherng Talay with easy access to Laguna Phuket, Boat Avenue, P
     images: imgs("bt-taraburi-villa-bt12", "bt-taraburi-villa-bt12", 65, 1),
   },
   {
-    id: "rw-sasinee-villa-rw01",
-    slug: "villa-sasinee-pool-villa-rawai-rw01",
+    id: "rw-sasinee-villa-rw07",
+    slug: "villa-sasinee-pool-villa-rawai-rw07",
     title: "Villa Sasinee — Modern Tropical Pool Villa in Rawai",
     description: `Villa Sasinee — a stunning 5-bedroom pool villa surrounded by lush tropical gardens, offering privacy, space and resort-style living just minutes from Nai Harn and Rawai Beach.
 
@@ -1888,9 +1888,9 @@ Rental terms: 2 months security deposit + 1 month advance rent.`,
       "7 mins to Nai Harn · 9 mins to Rawai Beach",
     ],
     is_featured: true,
-    reference: "RW01",
+    reference: "RW07",
     created_at: NOW,
     updated_at: NOW,
-    images: imgs("rw-sasinee-villa-rw01", "rw-sasinee-villa-rw01", 73),
+    images: imgs("rw-sasinee-villa-rw07", "rw-sasinee-villa-rw07", 73),
   },
 ];
