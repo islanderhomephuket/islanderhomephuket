@@ -7,7 +7,7 @@ export const SITE = {
   description:
     "Islander Home Phuket — curated luxury villas, condos and land for sale and rent across Phuket's most desirable areas. Sea-view estates, private-pool villas and trusted local expertise.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://islanderhomephuket.com",
-  email: "info@islanderhomephuket.com",
+  email: "islanderhomephuket@gmail.com",
   phoneDisplay: "+66 65 959 4299",
   locale: "en_US",
 } as const;
@@ -18,7 +18,7 @@ export const CONTACT = {
   line: "https://line.me/ti/p/7Cr_f-bvBX",
   lineId: "@islanderhome",
   facebook: "https://www.facebook.com/share/17zfFD16u2/?mibextid=wwXIfr",
-  email: "info@islanderhomephuket.com",
+  email: "islanderhomephuket@gmail.com",
 } as const;
 
 /** Pre-filled WhatsApp deep link with an optional message. */
