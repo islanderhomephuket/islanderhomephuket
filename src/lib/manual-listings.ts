@@ -1471,7 +1471,7 @@ Prime Bang Tao location:
   },
   {
     id: "rw-orbita-villa-rw01",
-    slug: "orbita-villa-town-rawai-rw01",
+    slug: "orbita-villa-town-rawai-rw-13",
     title: "Orbita Villa Town — Premium Pool Villa, Rawai",
     description: `A gated community of 16 premium pool villas in prime Rawai, just minutes from Nai Harn & Yanui Beach — designed for both luxury living and strong investment returns.
 
@@ -1527,7 +1527,7 @@ Ownership & benefits:
       "5-year structural warranty",
     ],
     is_featured: true,
-    reference: "RW01",
+    reference: "RW-13",
     created_at: NOW,
     updated_at: NOW,
     images: imgs("rw-orbita-villa-rw01", "rw-orbita-villa-rw01", 16, 1),
