@@ -29,6 +29,7 @@ const AREA_MAP = {
   phukettown: "phuket-town",
   chalong: "chalong",
   rawai: "rawai",
+  kathu: "kathu",
 };
 
 const VILLA_IMAGES = Array.from({ length: 8 }, (_, i) => `/properties/villa-${i + 1}.png`);
@@ -255,11 +256,12 @@ function rowToProperty(row, area, idx, counters, photoSets, usedSlugs) {
     }
   }
   if (!picks) {
-    const pool = isVilla ? VILLA_IMAGES : INTERIOR_IMAGES;
-    const start = counters[isVilla ? "villa" : "house"];
-    picks = [0, 1, 2, 3].map((k) => pool[(start + k) % pool.length]);
-    counters[isVilla ? "villa" : "house"] = (start + 3) % pool.length;
+    // No real photos yet → neutral "Photos coming soon" placeholder (not a
+    // misleading stock villa). Replaced per-listing once real photos arrive.
+    picks = ["/coming-soon.jpg"];
   }
+  void VILLA_IMAGES;
+  void INTERIOR_IMAGES;
 
   const n = ++counters.total;
   const ref = `IHP-${area.slice(0, 2).toUpperCase()}-${String(n).padStart(3, "0")}`;

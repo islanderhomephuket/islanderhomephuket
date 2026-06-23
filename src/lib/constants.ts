@@ -154,6 +154,23 @@ export const AREAS: AreaInfo[] = [
     image: "/properties/villa-8.png",
     poster: "/areas/thalang.jpg",
   },
+  {
+    slug: "kathu",
+    name: "Kathu",
+    tagline: "Central, convenient & connected",
+    blurb:
+      "A vibrant district in the heart of Phuket, Kathu offers easy access to beaches, shopping centres and international schools — a central, well-connected base that's equally ideal for living and investment.",
+    highlights: [
+      "Central Phuket & Jungceylon shopping",
+      "British International School (BISP)",
+      "Red Mountain & Phuket Country Club golf",
+      "15 minutes to Patong Beach",
+    ],
+    mapQuery: "Kathu, Phuket, Thailand",
+    coords: { lat: 7.9075, lng: 98.336 },
+    image: "/properties/villa-4.png",
+    poster: "/areas/kathu.jpg",
+  },
 ];
 
 export function getArea(slug: string): AreaInfo | undefined {

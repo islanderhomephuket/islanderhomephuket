@@ -2,4 +2,2575 @@
 // Source: Notion CSV exports in data/notion/. Landlord-contact columns are excluded.
 import type { Property } from "./types";
 
-export const NOTION_PROPERTIES: Property[] = [];
+export const NOTION_PROPERTIES: Property[] = [
+  {
+    "id": "n-kathu-001",
+    "slug": "the-plant-kathu-kathu-1",
+    "title": "The Plant Kathu — House in Kathu",
+    "description": "🏡 Newly Renovated 2-Storey House for Rent – The Plant Kathu-Patong\n💸 Rental Price: 50,000 THB/Month\n\n📆 1 Year Contract | 🔐 2 Months Deposit + 1 Month Advance\n✨ Property Details\n• 3 Bedrooms (Fully Furnished)\n• 2 Bathrooms\n• Living Room with Sofa & Dining Area\n• 4 Air Conditioners\n• Large Kitchen with Electric Stove\n• Appliances: Microwave | Front-Load Washing Machine | Rice Cooker | 2-Door Refrigerator | Electric Kettle | 55” Smart TV | 2 Water Heaters\n• 1 Covered Parking Space\n• Land Size: 35.8 sq.wah (~143 sqm)\n🌿 Includes\n• Common Swimming Pool & Gym\n• Village Playground\n• Daily Trash Collection\n💡 Excludes\n• Electricity & Water (Government Rate)\n\n🚫 Pets Not Allowed\n🏘️ Facilities\n• Gated Community\n• 24-Hour Security\n• Common Playground\n📍 Nearby\n• 1.2 km → Lotus’s Go Fresh\n• 5.4 km → HeadStart International School\n• 5.5 km → Central Festival Phuket\n• 7.4 km → Bangkok Hospital Phuket\n• 13 km → IKEA",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "kathu",
+    "price": 50000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "living_area": 143,
+    "land_area": null,
+    "address": "Kathu, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "Fully furnished",
+      "No pets",
+      "Parking",
+      "Fitness center",
+      "24h security",
+      "Air conditioning",
+      "Smart home / Smart TV",
+      "Near international schools"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KA-001",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-kathu-001-img-0",
+        "property_id": "n-kathu-001",
+        "url": "/coming-soon.jpg",
+        "alt": "The Plant Kathu — House in Kathu",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-kathu-002",
+    "slug": "kathu-passorn-kathu-2",
+    "title": "Kathu Passorn — House in Kathu",
+    "description": "🏡 3-Bedroom Detached House for Rent – Passorn Kathu, Phuket (Direct owner)\n\n📍 Prime Location\n\n5 min → Tesco Lotus Kathu\n\n10 min → Central Festival\n\n15 min → HeadStart International School\n\n15 min → Patong Beach\n\n✨ Property Highlights\n\n3 Bedrooms (2 fully furnished, 1 empty room)\n\n2 Bathrooms\n\nSpacious living area, ideal for families\n\nFeatures:\n🔹 49\" Smart TV with True Visions\n🔹 High-speed Wi-Fi 500/500 Mbps (included)\n🔹 3 Air Conditioners (2 in bedrooms, 1 in living room)\n🔹 Water Heater\n🔹 Refrigerator\n🔹 Induction Stove & Microwave\n🔹 Washing Machine\n🔹 Shared Swimming Pool & Gym\n🔹 24/7 Security with CCTV at car park\n\n📌 Notes\n\nElectricity & water charged at Provincial Authority rates\n\nNo pets allowed\n\n💰 Rent: 35,000 THB/month (1-year contract)\n🔒 Security Deposit: 2 months",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "kathu",
+    "price": 35000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "living_area": null,
+    "land_area": null,
+    "address": "Kathu, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "Fully furnished",
+      "WiFi included",
+      "Pet friendly",
+      "No pets",
+      "Parking",
+      "Fitness center",
+      "24h security",
+      "Air conditioning",
+      "Smart home / Smart TV"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KA-002",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-kathu-002-img-0",
+        "property_id": "n-kathu-002",
+        "url": "/coming-soon.jpg",
+        "alt": "Kathu Passorn — House in Kathu",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-kathu-003",
+    "slug": "lock-palm-kathu-3",
+    "title": "Lock Palm — House in Kathu",
+    "description": "🏡 3-Bedroom House for Rent – Baan Suan Loch Palm, Kathu\n\n📍 Private pool & garden | Peaceful, secure location\n\n✨ Spacious 300 sqm living space on 464 sqm land\n🛌 House Details\n• 3 Bedrooms | 4 Bathrooms\n• 1 Kitchen | 1 Laundry Room\n• Big Desjoyaux swimming pool & terrace\n• Covered parking\n• Fully furnished with TV, Wi-Fi, washing machine & dryer\n💸 Price\n• Rent: 100,000 THB / month\n• Sale: 19,000,000 THB\n🏢 Project Features\n• 24H Security & CCTV\n• Communal garden area",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "kathu",
+    "price": 100000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 4,
+    "living_area": 300,
+    "land_area": null,
+    "address": "Kathu, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "Fully furnished",
+      "WiFi included",
+      "Parking",
+      "24h security",
+      "Garden"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KA-003",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-kathu-003-img-0",
+        "property_id": "n-kathu-003",
+        "url": "/coming-soon.jpg",
+        "alt": "Lock Palm — House in Kathu",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-kathu-004",
+    "slug": "kathu-4",
+    "title": "สนามกอล์ฟ กะทู้ — Villa in Kathu",
+    "description": "🌊 Corner Unit Seaview Private Pool Villa – Kathu\n\n📍 Located inside a Golf Course | Leasehold\n🏡 Property Details\n• 3 Bedrooms | 4 Bathrooms\n• Private swimming pool\n• Stunning sea & golf course view\n• Corner unit for extra privacy\n💎 Perfect for peaceful living or investment in one of Phuket’s prime golf communities.",
+    "listing_type": "sale",
+    "status": "available",
+    "property_type": "Villa",
+    "area_slug": "kathu",
+    "price": 25000000,
+    "rent_period": null,
+    "bedrooms": 3,
+    "bathrooms": 4,
+    "living_area": null,
+    "land_area": null,
+    "address": "Kathu, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "Sea view"
+    ],
+    "is_featured": true,
+    "reference": "IHP-KA-004",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-kathu-004-img-0",
+        "property_id": "n-kathu-004",
+        "url": "/coming-soon.jpg",
+        "alt": "สนามกอล์ฟ กะทู้ — Villa in Kathu",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-kathu-005",
+    "slug": "kathu-5",
+    "title": "หมู่บ้าน สบายวิล — Villa in Kathu",
+    "description": "🏡 Pool Villa for SALE – Kathu\n\n💵 Price: 25,000,000 THB (Negotiable)\n📑 Title Deed: Chanote (Thai Freehold – Thai Owner)\n✨ Property Details\n• Land size: 130 sq.wah\n• 4 Bedrooms | 5 Bathrooms\n• Private swimming pool\n• 1 Storage room\n• Parking for 4 cars\n• Utility: Government water & electricity\n• CAM fee: 16,000 THB/year\n• Transfer fee: 50/50 (Buyer & Seller)\n📍 Location: Kathu, Phuket\n🏡 พูลวิลล่า สำหรับขาย – กะทู้\n\n💵 ราคา: 25,000,000 บาท (ต่อรองได้)\n📑 โฉนด: โฉนดที่ดิน (เจ้าของคนไทย)\n✨ รายละเอียดทรัพย์\n• พื้นที่ดิน 130 ตร.ว.\n• 4 ห้องนอน | 5 ห้องน้ำ\n• 1 ห้องเก็บของ\n• จอดรถได้ 4 คัน\n• 1 สระว่ายน้ำส่วนตัว\n• น้ำไฟฟ้าหลวง\n• ค่าส่วนกลางปีละ 16,000 บาท\n• ค่าโอน 50/50 (ผู้ซื้อ/ผู้ขาย)",
+    "listing_type": "sale",
+    "status": "available",
+    "property_type": "Villa",
+    "area_slug": "kathu",
+    "price": 25000000,
+    "rent_period": null,
+    "bedrooms": 4,
+    "bathrooms": 5,
+    "living_area": 520,
+    "land_area": 520,
+    "address": "Kathu, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "Parking"
+    ],
+    "is_featured": true,
+    "reference": "IHP-KA-005",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-kathu-005-img-0",
+        "property_id": "n-kathu-005",
+        "url": "/coming-soon.jpg",
+        "alt": "หมู่บ้าน สบายวิล — Villa in Kathu",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-kathu-006",
+    "slug": "lock-plam-kathu-6",
+    "title": "Lock Plam — Villa in Kathu",
+    "description": "💥 FOR SALE: 19 MB\n\n💎 FOR RENT: 120,000 THB/month\n📍 Location: Loch Palm, Kathu\n\n📑 Ownership: Chanote (Thai Freehold)\n✨ Property Details\n• Land plot: 464 sqm\n• Build area: 300 sqm\n• 3 Bedrooms | 3 Bathrooms | 1 Guest Toilet\n• 1 Maid’s room\n• 1 Storage & Laundry room\n• Fully furnished – 100% brand new\n• European kitchen\n• Private swimming pool\n• Large balcony\n• Covered parking for 2 cars + extra space\n• Spacious garden with lush tropical greenery 🌿\n🚩 Nearby & Directions\n• 5 mins → BISP\n• 10–15 mins → HeadStart, KIS, Boat Lagoon, Marina, Hospitals, Shopping malls\n• 30–45 mins → Phuket International Airport",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "Villa",
+    "area_slug": "kathu",
+    "price": 120000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "living_area": 464,
+    "land_area": 464,
+    "address": "Kathu, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Also for sale: ฿19.0M",
+      "Private/communal pool",
+      "Fully furnished",
+      "Parking",
+      "Garden",
+      "Cleaning service"
+    ],
+    "is_featured": true,
+    "reference": "IHP-KA-006",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-kathu-006-img-0",
+        "property_id": "n-kathu-006",
+        "url": "/coming-soon.jpg",
+        "alt": "Lock Plam — Villa in Kathu",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-kathu-007",
+    "slug": "kathu-kathu-7",
+    "title": "Kathu — Villa in Kathu",
+    "description": "House for Rent in Kathu – With Private Pool Rental Rates:• Yearly Contract: 60,000 THB/month• Special September Price!!– 6-month contract: 70,000 THB/month– 3-month contract: 75,000 THB/month Property Highlights: 2 Bedrooms | 3 Bathrooms Master Bedroom with Walk-in Closet Fully Furnished with German Kitchen – Move-in Ready Land Size: 254 sqm Private Pool & Garden Corner Pet Friendly Free Wi-Fi & Netflix Dining Area Washing Machine | Dishwasher | Microwave | Oven Storage Room & Parking Area Security Alarm, CCTV & Remote Gate Included Services:• Pool Cleaning: 1x/week• Garden Maintenance: 1x/month Nearby Locations: Central Phuket Festival – 10 mins British International School (BISP) – 10 mins HeadStart International School – 8 mins Loch Palm Golf Club – 7 mins Bangkok Hospital – 15 mins Patong Beach – 20 mins Phuket International Airport – 45 mins",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "Villa",
+    "area_slug": "kathu",
+    "price": 60000,
+    "rent_period": "month",
+    "bedrooms": 2,
+    "bathrooms": 3,
+    "living_area": 254,
+    "land_area": 254,
+    "address": "Kathu, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "Fully furnished",
+      "WiFi included",
+      "Pet friendly",
+      "Parking",
+      "24h security",
+      "Garden",
+      "Near international schools",
+      "Near the beach"
+    ],
+    "is_featured": true,
+    "reference": "IHP-KA-007",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-kathu-007-img-0",
+        "property_id": "n-kathu-007",
+        "url": "/coming-soon.jpg",
+        "alt": "Kathu — Villa in Kathu",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-kathu-008",
+    "slug": "phuket-villa-3-kathu-8",
+    "title": "Phuket Villa 3 — House in Kathu",
+    "description": "🏡 House for Rent in Kathu, Phuket\n\n📍 Phuket Villa Kathu 3\n✨ Property Details:\n\n• 2 Bedrooms\n\n• 2 Bathrooms\n\n• 1 Living Room\n\n• 1 Empty Room\n\n• 1 Kitchen\n\n• Storage Room\n\n• 2 Parking Spaces\n\n• Fully Furnished with Electric Appliances\n\n• Wi-Fi Included\n💰 Rental Price: 40,000 THB/month (Yearly Contract)\n\n📌 2 Months Security Deposit + 1 Month Advance\n📍 Location Highlights:\n\n• 10 mins to Central Phuket\n\n• 15 mins to Patong Beach",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "kathu",
+    "price": 40000,
+    "rent_period": "month",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "living_area": null,
+    "land_area": null,
+    "address": "Kathu, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Fully furnished",
+      "WiFi included",
+      "Parking",
+      "24h security",
+      "Near the beach"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KA-008",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-kathu-008-img-0",
+        "property_id": "n-kathu-008",
+        "url": "/coming-soon.jpg",
+        "alt": "Phuket Villa 3 — House in Kathu",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-kathu-009",
+    "slug": "sino-kokaew-kathu-9",
+    "title": "Sino Kokaew — House in Kathu",
+    "description": "📍 House for rent in Khaokaew (Near BISP)\n\n🎗️ 1-Year Contract\n💰 55,000 THB / month\n🔐 2 months deposit + 1 month advance\n\nProperty Features\n🏞️ Land size: 51 sq.w.\n🌀 4 Bedrooms\n🌀 3 Bathrooms (master en-suite)\n🌀 Living room\n🌀 Built-in kitchen\n🌀 Common salt-system swimming pool (plus kids pool) & gym\n🌀 Washing & drying zone\n🌀 Parking for 2 cars\n🌀 Garden with water feature\n🌀 Balcony with coffee table\n\nFully Furnished\n💠 50” Smart TV\n💠 Large refrigerator\n💠 Microwave\n💠 2 Freezers\n💠 Oven\n💠 5 Air-conditioners\n💠 Sofa\n💠 Washing machine\n💠 2 Water heaters (showers)\n💦 Water filter\n\n🟢 Price Includes\n✅ 24-hour security & 4 private CCTVs\n🔥 Free WiFi\n🧹 House cleaning 2× per month\n🌿 Garden care 1× per month\n🐕 Small pets allowed\n\n🔽 Excluded\n➡️ Electricity (government rate)\n➡️ Water (government rate)\n\n📌 Nearby\n✔️ 2 mins to BISP & Finway School\n✔️ 5 mins to Villa Market & Boat Lagoon Marina\n✔️ 15 mins to Central Festival\n✔️ 20 mins to Bangkok Hospital Siriroj\n✔️ 30 mins to Patong Beach\n✔️ 40 mins to Phuket Airport",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "kathu",
+    "price": 55000,
+    "rent_period": "month",
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "living_area": null,
+    "land_area": null,
+    "address": "Kathu, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "Fully furnished",
+      "WiFi included",
+      "Pet friendly",
+      "Parking",
+      "Fitness center",
+      "24h security",
+      "Garden",
+      "Air conditioning",
+      "Smart home / Smart TV"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KA-009",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-kathu-009-img-0",
+        "property_id": "n-kathu-009",
+        "url": "/coming-soon.jpg",
+        "alt": "Sino Kokaew — House in Kathu",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-kathu-010",
+    "slug": "lock-palm-kathu-10",
+    "title": "Lock Palm — Villa in Kathu",
+    "description": "Luxury Private Pool Villa for Rent 🌴✨\n\n📍 Baan Suan Loch Palm, Kathu – Phuket\nExperience refined living in this elegant private pool villa, located within the prestigious Baan Suan Loch Palm community. Tucked away in a quiet cul-de-sac with only 48 exclusive residences, this villa offers exceptional privacy, tranquility, and premium comfort—perfect for families or executives seeking a luxury lifestyle in Phuket.\n🏡 Property Details\n• Fully furnished with high-quality furniture\n• 4 spacious bedrooms\n• 6 modern bathrooms\n• Fully equipped kitchen\n• Maid’s room\n• 2 private parking spaces\n• Private swimming pool\n• Peaceful surroundings with no front-facing neighbors\n📍 Prime Location\n• Directly opposite Loch Palm Golf Club\n• Only 5 minutes to British International School Phuket (BISP)\n• Close to Tops Supermarket, Big C, Lotus’s, 7-Eleven, and other conveniences\n💰 Rental Price\n• 360,000 THB per month\n🎁 Exclusive Complimentary Services\n• Free common area fee (value 100,000 THB/year)\n• Professional swimming pool maintenance\n• Garden maintenance\n• Free high-speed internet\n• Air-conditioner cleaning every 6 months\nThis villa is ideal for tenants seeking luxury, privacy, and a prestigious residential location in the heart of Phuket.",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "Villa",
+    "area_slug": "kathu",
+    "price": 360000,
+    "rent_period": "month",
+    "bedrooms": 0,
+    "bathrooms": 0,
+    "living_area": null,
+    "land_area": null,
+    "address": "Kathu, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "Fully furnished",
+      "WiFi included",
+      "Parking",
+      "Garden",
+      "Air conditioning",
+      "Cleaning service",
+      "Near international schools"
+    ],
+    "is_featured": true,
+    "reference": "IHP-KA-010",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-kathu-010-img-0",
+        "property_id": "n-kathu-010",
+        "url": "/coming-soon.jpg",
+        "alt": "Lock Palm — Villa in Kathu",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-kathu-011",
+    "slug": "mono-kokaew-kathu-11",
+    "title": "Mono Kokaew — Townhouse in Kathu",
+    "description": "🏡 Japanese-Style House for Rent | Mono Koh Kaew (Available Feb 2026)\nExperience peaceful living in a modern Japanese-style home located in a well-managed, multi-national residential estate surrounded by green mountains and scenic lakes.\nProperty Details\n\n🛏️ Living Area + 3 Bedrooms\n\n🛁 2.5 Bathrooms\n\n🍳 Fully Equipped Kitchen\n\n🌳 Land Size: 164 sqm\n\n🏠 Usable Area: 161 sqm\n💰 Rental Price\n\n• 1-year contract: 63,000 THB/month\n\n• 6-month contract: 68,000 THB/month\n\n• 2-month deposit + 1-month advance rent\nHighlights\n\n✨ Everything is brand new\n\n✨ Fully furnished with air-conditioners\n\n✨ Complete electrical appliances: fridge, microwave, stove, smart TV, washing machine, etc.\n\n✨ Free life essentials: kitchenware, utensils & bedding — just move in with your clothes!\nFacilities\n\n🏊 Large communal swimming pool\n\n💦 Jacuzzi pool\n\n🌿 Garden\n\n🏋️ Gym\nPrime Location\n\n📍 Mono Koh Kaew (near BISP)\n\n• 3 mins to BISP\n\n• 10 mins to Boat Lagoon\n\n• 15 mins to Cherng Talay\n\n• 20 mins to Phuket Town\n\n• Easy shortcut to Kathu\n\n• 7-Eleven & Tops Daily at the village entrance\n\n• Nearby restaurants, gym & fresh market\nAdditional Information\n\n🐕 Small pets allowed (one-time additional fee)\n\n⚡ Government utilities paid directly (no extra charge)\n\n🛜 Free internet for 1-year contract",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "Townhouse",
+    "area_slug": "kathu",
+    "price": 63000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 5,
+    "living_area": 164,
+    "land_area": null,
+    "address": "Kathu, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "Jacuzzi",
+      "Fully furnished",
+      "WiFi included",
+      "Pet friendly",
+      "Fitness center",
+      "Garden",
+      "Air conditioning",
+      "Smart home / Smart TV"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KA-011",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-kathu-011-img-0",
+        "property_id": "n-kathu-011",
+        "url": "/coming-soon.jpg",
+        "alt": "Mono Kokaew — Townhouse in Kathu",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-kathu-012",
+    "slug": "kathu-kathu-12",
+    "title": "Kathu — House in Kathu",
+    "description": "🏡⛰️✨ 4 Bedroom Mountain View Villa in Kathu, Phuket\n📍 Location: Kathu** – peaceful area surrounded by nature**\nWake up to beautiful mountain views while still staying close to all main attractions in central Phuket 🌿\n📐 Property Details\n\n▪️ 🛏️ 4 Bedrooms\n\n▪️ 🚿 4 Bathrooms\n\n▪️ ⛰️ Mountain View\n\n▪️ Spacious living area\n\n▪️ Modern kitchen\n\n▪️ Private parking\n\n▪️ Quiet and private atmosphere\nConvenient location near shopping malls, international schools, golf courses, and just a short drive to Patong Beach.",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "kathu",
+    "price": 60000,
+    "rent_period": "month",
+    "bedrooms": 4,
+    "bathrooms": 4,
+    "living_area": null,
+    "land_area": null,
+    "address": "Kathu, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Mountain view",
+      "Parking",
+      "Near international schools",
+      "Near the beach"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KA-012",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-kathu-012-img-0",
+        "property_id": "n-kathu-012",
+        "url": "/coming-soon.jpg",
+        "alt": "Kathu — House in Kathu",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-kathu-013",
+    "slug": "lock-palm-kathu-13",
+    "title": "Lock Palm — Villa in Kathu",
+    "description": "🏡 Private Pool Villa for Rent | Baan Suan Loch Palm, Kathu – Phuket\nPeaceful garden home in a secure community near Loch Palm Golf Course.\n✨ Property Details\n\n• Land size: 200 sq.wah\n\n• Usable area: 324 sqm\n\n• 3 Bedrooms | 4 Bathrooms\n\n• 1 Living room\n\n• 1 Dining room\n\n• Maid’s room + maid’s bathroom\n\n• Private swimming pool\n\n• Garden\n\n• Parking space\n✨ Project Facilities\n\n• CCTV\n\n• 24-hour security\n📍 Location: https://goo.gl/maps/EDrBbXN4fgdLmAF56\n💰 Rental Price: 120,000 THB / month\n\n• 1 month advance: 120,000 THB\n\n• 2 months security deposit: 240,000 THB\n\n➡️ Total move-in: 360,000 THB\n❤️ Garden & pool maintenance included (once per week)",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "Villa",
+    "area_slug": "kathu",
+    "price": 120000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 4,
+    "living_area": 324,
+    "land_area": 324,
+    "address": "Kathu, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "Parking",
+      "24h security",
+      "Garden",
+      "Cleaning service"
+    ],
+    "is_featured": true,
+    "reference": "IHP-KA-013",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-kathu-013-img-0",
+        "property_id": "n-kathu-013",
+        "url": "/coming-soon.jpg",
+        "alt": "Lock Palm — Villa in Kathu",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-014",
+    "slug": "lake-ville-koh-kaew-14",
+    "title": "Lake Ville — Villa in Koh Kaew",
+    "description": "🏡 House for Rent – Supalai Lake Ville 🏡\n📍 Koh Kaew, Phuket\n\n✨ Property Details\n\n4 Bedrooms | 3 Bathrooms\n\nSpacious living area\n\nUsable area: 167 sqm\n\nLand size: 265.6 sqm\n\n🌿 Corner unit with garden view & excellent atmosphere\n\n🚫 No pets allowed\n\n💰 Rental Rates\n\n90,000 THB/month (1-year contract)\n\n100,000 THB/month (6-month contract)\n\n💳 Deposit: 2 months + 1 month advance payment\n📶 Rent includes WiFi & monthly garden maintenance\n\n📍 Nearby: BIS, Finnway, Boat Lagoon, Robinson Thalang\n\n✅ Perfect for families seeking a peaceful and comfortable home!",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "Villa",
+    "area_slug": "koh-kaew",
+    "price": 90000,
+    "rent_period": "month",
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "living_area": 167,
+    "land_area": 167,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "WiFi included",
+      "Pet friendly",
+      "No pets",
+      "Garden",
+      "Near international schools"
+    ],
+    "is_featured": true,
+    "reference": "IHP-KO-014",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-014-img-0",
+        "property_id": "n-koh-kaew-014",
+        "url": "/coming-soon.jpg",
+        "alt": "Lake Ville — Villa in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-015",
+    "slug": "habitia-koh-kaew-15",
+    "title": "Habitia — House in Koh Kaew",
+    "description": "📍 House for Rent – Habitia Koh Kaew, Phuket 🏡\n💸 Rental Price: 40,000 THB/Month\n\n📆 Contract: 1 Year | Deposit: 2 Months | Advance: 1 Month\n\n💡 Utilities & WiFi paid by tenant\n✨ Property Details\n• Land Area: 41.5 sq.wah | House Area: 166 sqm\n• 3 Bedrooms | 2 Bathrooms\n• 2 Parking Spaces\n• 3 Air Conditioners\n• Full Curtains\n• 1,000L Water Tank\n🛋️ Furniture & Appliances\n\nRefrigerator | TV | Washing Machine | Stove & Hood | Sofa & Coffee Table\n🌿 Facilities\n• Communal Swimming Pool & Fitness\n• 24-Hour Security\n📍 Nearby Locations\n• 2 mins → British International School\n• 5 mins → Fresh Market\n• 15–20 mins → HeadStart Cherngtalay, HEI International School, Kajonkiet Cherngtalay\n• 15–20 mins → Bangkok Hospital, Siriroj Hospital, Central Festival Phuket\n• 25–30 mins → Phuket International Airport",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 40000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "living_area": 166,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "WiFi included",
+      "Parking",
+      "Fitness center",
+      "24h security",
+      "Air conditioning",
+      "Near international schools"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-015",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-015-img-0",
+        "property_id": "n-koh-kaew-015",
+        "url": "/coming-soon.jpg",
+        "alt": "Habitia — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-016",
+    "slug": "kokaew-koh-kaew-16",
+    "title": "Kokaew — House in Koh Kaew",
+    "description": "🏡 House for Rent – Saransiri Koh Kaew, Phuket\n\n(บ้านเดี่ยวให้เช่า ในโครงการสราญสิริ เกาะแก้ว ตรงข้ามโรงเรียนนานาชาติ BISP)\n📍 Location: Koh Kaew, Phuket\n✨ Property Details | รายละเอียดบ้าน\n\n• 4 ห้องนอน | 3 ห้องน้ำ\n\n• ห้องนั่งเล่น | ห้องครัว | สวน\n\n• ที่จอดรถ 2 คัน\n\n• เฟอร์นิเจอร์และเครื่องใช้ไฟฟ้าครบ\n🛠 Renovation in Progress (บ้านกำลังปรับปรุงเล็กน้อย)\n\n• เปลี่ยนวอลเปเปอร์ใหม่\n\n• เพิ่มเฟอร์นิเจอร์ใหม่บางส่วน\n\n• ล้างถังเก็บน้ำและแอร์เรียบร้อย\n\n• บ้านจะทำความสะอาดใหญ่ก่อนเข้าอยู่\n\n• เจ้าของยังพักอยู่ แต่พร้อมย้ายออกทันทีเมื่อทำสัญญา\n🚪 พร้อมเข้าอยู่ได้เลย – Just bring your suitcase!\n💰 Rental Price | ค่าเช่า\n\n65,000 บาท/เดือน (สัญญารายปี)\n\n📦 มัดจำ 2 เดือน + ล่วงหน้า 1 เดือน\n📍 Nearby Locations | สถานที่ใกล้เคียง\n\n• British International School (BISP)\n\n• Finnway International School\n\n• Boat Lagoon / Royal Phuket Marina\n\n• Robinson Lifestyle\n\n• ร้านอาหารและคาเฟ่มากมาย\n🏡 Facilities in the Village | สิ่งอำนวยความสะดวกในโครงการ\n\n✔ รปภ. 24 ชม. + CCTV\n\n✔ สระว่ายน้ำ + สระเด็ก\n\n✔ คลับเฮาส์ + ฟิตเนส\n\n✔ สวนส่วนกลางขนาดใหญ่",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 65000,
+    "rent_period": "month",
+    "bedrooms": 0,
+    "bathrooms": 0,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "24h security",
+      "Near international schools"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-016",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-016-img-0",
+        "property_id": "n-koh-kaew-016",
+        "url": "/coming-soon.jpg",
+        "alt": "Kokaew — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-017",
+    "slug": "kokaew-koh-kaew-17",
+    "title": "Kokaew — House in Koh Kaew",
+    "description": "Kokaew available in Koh Kaew, Phuket. Contact Islander Home for full details and a private viewing.",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 37000,
+    "rent_period": "month",
+    "bedrooms": 0,
+    "bathrooms": 0,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [],
+    "is_featured": false,
+    "reference": "IHP-KO-017",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-017-img-0",
+        "property_id": "n-koh-kaew-017",
+        "url": "/coming-soon.jpg",
+        "alt": "Kokaew — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-018",
+    "slug": "habitiown-koh-kaew-koh-kaew-18",
+    "title": "Habitiown Koh Kaew — Townhouse in Koh Kaew",
+    "description": "🏡 House for Rent – Habitown Koh Kaew, Phuket (Direct to owner)\n\n💰 32,000 THB/month\n📅 1-Year Contract\n✨ New condition, ready to move in!\n\n📍 Property Details:\n\n2 Bedrooms 🛏️\n\n2 Bathrooms 🚿\n\n1 Walk-in Closet 👗\n\n🚗 Prime Location:\n\n2 mins → Local Flea Market 🛍️\n\n3 mins → British International School 👨‍🏫\n\n10 mins → Robinson Department Store 🏬\n\n📦 Perfect for small families, couples, or professionals working around Koh Kaew.",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "Townhouse",
+    "area_slug": "koh-kaew",
+    "price": 32000,
+    "rent_period": "month",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Near international schools"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-018",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-018-img-0",
+        "property_id": "n-koh-kaew-018",
+        "url": "/coming-soon.jpg",
+        "alt": "Habitiown Koh Kaew — Townhouse in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-019",
+    "slug": "by-pass-koh-kaew-19",
+    "title": "By Pass — Villa in Koh Kaew",
+    "description": "Luxury 6-Bedroom Pool Villa for Rent – Srisuchart Village 1 (Bypass Road, Rassada, Phuket) Property Details6 Bedrooms | 6 BathroomsLand Area: Approximately 1 RaiSpacious Parking AreaClose proximity to Lotus's and Central Phuket Rental Price: 200,000 THB/month (1-year contract)",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "Villa",
+    "area_slug": "koh-kaew",
+    "price": 200000,
+    "rent_period": "month",
+    "bedrooms": 6,
+    "bathrooms": 6,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "Parking"
+    ],
+    "is_featured": true,
+    "reference": "IHP-KO-019",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-019-img-0",
+        "property_id": "n-koh-kaew-019",
+        "url": "/coming-soon.jpg",
+        "alt": "By Pass — Villa in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-020",
+    "slug": "bella-kokaew-koh-kaew-20",
+    "title": "Bella Kokaew — House in Koh Kaew",
+    "description": "🏡✨ New Modern House for Rent – Supalai Bella, Koh-Kaew ✨🏡\n\n📍 Prime Location – Easy access to all parts of Phuket\n🏠 Property Features:\n• Single house\n• 3 Bedrooms | 2 Bathrooms\n• Fully furnished in modern style\n• 4 Air-conditioners\n• Electrical appliances included\n• Parking for 2 cars\n• Large lawn around the house\n• Quiet and peaceful area\n• 24/7 security service next door\n• Located on the main village road\n• Public park just opposite the house\n💰 Rental Price: 45,000 THB/month (yearly contract)\n\n📦 2 months deposit + 1 month advance payment\n\n⚡ Utilities (electricity & water) based on government bills\n✨ Ready to move in",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 45000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Fully furnished",
+      "Parking",
+      "24h security",
+      "Garden",
+      "Air conditioning"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-020",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-020-img-0",
+        "property_id": "n-koh-kaew-020",
+        "url": "/coming-soon.jpg",
+        "alt": "Bella Kokaew — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-021",
+    "slug": "passorn-kokaew-koh-kaew-21",
+    "title": "Passorn Kokaew — House in Koh Kaew",
+    "description": "🏡 Corner House for Rent in Koh Kaew – 3 Bedrooms | 3 Bathrooms\n💰 Rental Price\n• 50,000 THB / month (1-year contract)\n• 55,000 THB / month (6-month contract)\n📌 Terms\n• 2 months deposit + 1 month advance\n✨ Special Privileges for Tenants\n• Free housekeeping service (1x per month)\n• Free garden maintenance (1x per month)\n• Free access to swimming pool & fitness\n• Free common area fee\n💡 Utilities: Water, electricity, and internet paid by tenant per bill",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 50000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "WiFi included",
+      "Fitness center",
+      "Garden",
+      "Cleaning service"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-021",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-021-img-0",
+        "property_id": "n-koh-kaew-021",
+        "url": "/coming-soon.jpg",
+        "alt": "Passorn Kokaew — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-022",
+    "slug": "habitown-koh-kaew-22",
+    "title": "Habitown — House in Koh Kaew",
+    "description": "Habitown available in Koh Kaew, Phuket. Contact Islander Home for full details and a private viewing.",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 30000,
+    "rent_period": "month",
+    "bedrooms": 0,
+    "bathrooms": 0,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [],
+    "is_featured": false,
+    "reference": "IHP-KO-022",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-022-img-0",
+        "property_id": "n-koh-kaew-022",
+        "url": "/coming-soon.jpg",
+        "alt": "Habitown — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-023",
+    "slug": "habitia-koh-kaew-23",
+    "title": "Habitia — House in Koh Kaew",
+    "description": "🏡 Habitia Koh Kaew – 2-Storey Corner House for Rent\n✨ Just 2 mins walk to British International School\n\n🛏 3 Bedrooms | 🚿 2 Bathrooms | 🚗 2 Parking spaces\n🏠 Detached corner house with extra space in front & side\n💰 45,000 THB / month\n🔑 Ready to move in now!\n\n✅ Will be fully equipped with:\n\nKitchen with gas stove & hood\n\nAir conditioners\n\nCurtains throughout the house\n\n🏢 Facilities\nSwimming pool | Fitness | 24-hr security\n\n📍 Key Distances\n\n2 min walk → British International School Phuket\n\n7 km → Thao Thep Monument\n\n7.5 km → Robinson\n\n7.9 km → Premium Outlet\n\n12 km → Patong Beach\n\n13 km → Tesco Lotus / Bangkok Hospital Siriroj",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 45000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "Parking",
+      "Fitness center",
+      "24h security",
+      "Air conditioning",
+      "Near international schools",
+      "Near the beach"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-023",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-023-img-0",
+        "property_id": "n-koh-kaew-023",
+        "url": "/coming-soon.jpg",
+        "alt": "Habitia — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-024",
+    "slug": "supalai-lagoon-koh-kaew-24",
+    "title": "Supalai Lagoon — House in Koh Kaew",
+    "description": "2-Storey Detached Home | Pet friendly  Supalai Lagoon Village – peaceful neighborhood, convenient location, close to British International School Property Details3 Bedrooms, 2 BathroomsPet friendly Tenants must have a valid visaWiFi included Rental Price: 50,000 THB/month 1-year contract",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 50000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "WiFi included",
+      "Pet friendly",
+      "Near international schools"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-024",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-024-img-0",
+        "property_id": "n-koh-kaew-024",
+        "url": "/coming-soon.jpg",
+        "alt": "Supalai Lagoon — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-025",
+    "slug": "land-and-house-88-koh-kaew-25",
+    "title": "Land And House 88 — House in Koh Kaew",
+    "description": "🏡 Land & House – Koh Kaew\n\n✨ Available October\nProperty Details:\n\n• 4 Bedrooms | 3 Bathrooms\n\n• Fully furnished\n\n• Free Wi-Fi included\n💰 Rental Price: 65,000 THB / Month\n\n📌 Terms: 2 months deposit + 1 month advance",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 65000,
+    "rent_period": "month",
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Fully furnished",
+      "WiFi included"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-025",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-025-img-0",
+        "property_id": "n-koh-kaew-025",
+        "url": "/coming-soon.jpg",
+        "alt": "Land And House 88 — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-026",
+    "slug": "lake-ville-kokaew-koh-kaew-26",
+    "title": "Lake Ville Kokaew — House in Koh Kaew",
+    "description": "🏡 Modern House for Rent – Koh Kaew, Phuket\n\n🛏 4 Bedrooms | 🚿 3 Bathrooms\n🛋 2 Living Rooms (upstairs & downstairs)\n🚗 2 Parking Spaces (inside the gate)\n\n💰 Rental Price:\n• 80,000 THB/month (1-year contract)\n• 85,000 THB/month (6-month contract)\n\n📌 Security Deposit: 2 months\n📌 Advance Payment: 1 month\n🐾 Pets: Allowed case by case (please inquire)\n\n🎉 Special Privileges:\n✅ Free maid service – 1 time/month\n✅ Free garden care – 1 time/month\n✅ Free common area fee\n✅ Free use of swimming pool & fitness\n\n📌 Utilities (water, electricity, internet) paid by tenant",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 80000,
+    "rent_period": "month",
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "WiFi included",
+      "Parking",
+      "Fitness center",
+      "24h security",
+      "Garden",
+      "Cleaning service"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-026",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-026-img-0",
+        "property_id": "n-koh-kaew-026",
+        "url": "/coming-soon.jpg",
+        "alt": "Lake Ville Kokaew — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-027",
+    "slug": "lake-ville-kokaew-koh-kaew-27",
+    "title": "Lake Ville Kokaew — House in Koh Kaew",
+    "description": "🏡 Supalai Lake Ville – Twin House for Rent\n✨ Beautiful Move-in Ready Home\n📍 Property Details:\n\n• 2-storey twin house, 39.40 sq.wah\n\n• 3 bedrooms (2 bedrooms + 1 office convertible to bedroom)\n\n• 2 bathrooms\n\n• Bright family living & dining area with natural light\n\n• Fully equipped kitchen\n\n• High-speed internet ready\n\n• 2 covered parking spaces\n\n• Pet-friendly 🐕🐱\n🏊‍♀️ Project Facilities:\n\n• Community gym\n\n• Swimming pool\n\n• Garden & park area\n\n• 24-hour security system\n💰 Rental Price: 55,000 THB/month\n\n💳 Deposit: 2 months (annual lease)",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 55000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "living_area": 158,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "WiFi included",
+      "Pet friendly",
+      "Parking",
+      "Fitness center",
+      "24h security",
+      "Garden"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-027",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-027-img-0",
+        "property_id": "n-koh-kaew-027",
+        "url": "/coming-soon.jpg",
+        "alt": "Lake Ville Kokaew — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-028",
+    "slug": "supalai-lake-ville-koh-kaew-28",
+    "title": "Supalai Lake Ville — House in Koh Kaew",
+    "description": "Supalai Lake Ville available in Koh Kaew, Phuket. Contact Islander Home for full details and a private viewing.",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 80000,
+    "rent_period": "month",
+    "bedrooms": 0,
+    "bathrooms": 0,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [],
+    "is_featured": false,
+    "reference": "IHP-KO-028",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-028-img-0",
+        "property_id": "n-koh-kaew-028",
+        "url": "/coming-soon.jpg",
+        "alt": "Supalai Lake Ville — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-029",
+    "slug": "lagoon-koh-kaew-29",
+    "title": "Lagoon — House in Koh Kaew",
+    "description": "✅ Available for RENT & SALE – Supalai Lagoon, Koh Kaew\n🏡 4 Bedrooms | 3 Bathrooms\n\n📐 Land size: 488 sqm with a spacious garden\n\n✨ Fully furnished & ready to move in\n\n🔒 24-hour security for peace of mind\n💰 For Rent: 70,000 THB/month (reduced from 75,000 THB)\n\n📌 Terms: 2-month deposit + 1-month advance\n💰 For Sale: 11.9 MB (Transfer fee 50:50)\n📍 Prime Location:\n• Finnway International School – 10 mins\n• British International School Phuket (BISP) – 10 mins\n• Royal Phuket Marina – 10 mins\n• Lotus’s Grocery – 10 mins\n• Bangkok Hospital – 10 mins\n• Central Phuket Festival – 15 mins\nThis home is perfect for families looking for space, comfort, and convenience in a secure community.",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 70000,
+    "rent_period": "month",
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "living_area": 488,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Fully furnished",
+      "24h security",
+      "Garden",
+      "Near international schools"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-029",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-029-img-0",
+        "property_id": "n-koh-kaew-029",
+        "url": "/coming-soon.jpg",
+        "alt": "Lagoon — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-030",
+    "slug": "boat-avenue-koh-kaew-30",
+    "title": "Boat Avenue — Villa in Koh Kaew",
+    "description": "✨ Brand New Luxury Pool Villa with Garden – For Rent & Resale 🌴\n\nMove-in ready | Premium finishes | Bali-inspired design\n📍 Location\n• 10 mins to Bang Tao Beach\n• 7 mins to Boat Avenue & Porto de Phuket\n🏡 Villa Features\n• 3 Bedrooms | 3 Bathrooms\n• Solid wood custom furniture from Bali\n• Spacious living room with high ceilings\n• Fully equipped kitchen with island & oven\n• Dining table for 8\n• Large private pool\n• Outdoor sofa with mountain view\n• Private fenced area with 24/7 security\n• Premium mattresses & bedding\n💰 Rental Price\n• 220,000 THB/month (annual contract)\n\n✅ Includes weekly cleaning, garden care & pool service\n💰 Resale Price\n• 29,000,000 THB",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "Villa",
+    "area_slug": "koh-kaew",
+    "price": 220000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "Mountain view",
+      "24h security",
+      "Garden",
+      "Near the beach"
+    ],
+    "is_featured": true,
+    "reference": "IHP-KO-030",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-030-img-0",
+        "property_id": "n-koh-kaew-030",
+        "url": "/coming-soon.jpg",
+        "alt": "Boat Avenue — Villa in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-031",
+    "slug": "lake-ville-kokaew-koh-kaew-31",
+    "title": "Lake Ville Kokaew — House in Koh Kaew",
+    "description": "✨ Brand-New Modern Home for Rent – Supalai Lake View, Koh Kaew ✨\n🌿 Bright, safe, and family-friendly community with pool, gym, green park, and a peaceful lake view.\n🏡 Community Facilities:\n\n• Swimming pool & fitness center\n\n• Large green park & lakeside walk\n\n• 24-hour security\n📍 Location Highlights:\n\n• Food delivery service available 🚚\n\n• 1.5 km – Finway International School\n\n• 3.5 km – Robinson Lifestyle Thalang\n\n• 9 km – Bangkok Hospital Phuket\n\n• 10 km – Central Festival Phuket\n💵 Rent: 70,000 THB / month\n\n✅ Includes:\n\n• Common area fee\n\n• Cleaning service twice/month\n\n• Gardening service twice/month\n❌ Excludes:\n\n• Water, electricity & internet (paid to providers directly)",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 70000,
+    "rent_period": "month",
+    "bedrooms": 0,
+    "bathrooms": 0,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "WiFi included",
+      "Fitness center",
+      "24h security",
+      "Garden",
+      "Cleaning service",
+      "Near international schools"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-031",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-031-img-0",
+        "property_id": "n-koh-kaew-031",
+        "url": "/coming-soon.jpg",
+        "alt": "Lake Ville Kokaew — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-032",
+    "slug": "habitia-koh-kaew-32",
+    "title": "Habitia — House in Koh Kaew",
+    "description": "🏡 Corner House for Rent – HABITIA Koh Kaew, Phuket\n💰 Price: 40,000 THB/month (minimum 6-month contract)\n\n🐶 Small pets friendly\n\n💵 Deposit: 2 months + 1 month advance payment\n📏 Land Area: 40 sq.wah\n\n🏠 Living Area: 160 sq.m\n\n🛏️ 3 Bedrooms | 🛁 2 Bathrooms\nProperty Features:\n• Fully furnished and ready to move in\n• Built-in kitchen\n• Washing machine\n• Living room with TV\n• Internet WiFi (550 THB/month)\n• 4 air conditioners\n• Spacious outdoor area\n• Parking space for 2 cars\nVillage Facilities:\n\n✅ 24-hour security gate\n\n✅ Fitness, swimming pool & playground\nNearby Locations:\n\n🚗 4 mins to British International School (1.6 km)\n\n🚗 9 mins to Finnway International School\n\n🚗 10 mins to Boat Lagoon\n\n🚗 10 mins to Robinson Lifestyle Thalang",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 40000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "living_area": 160,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "Fully furnished",
+      "WiFi included",
+      "Pet friendly",
+      "Parking",
+      "Fitness center",
+      "24h security",
+      "Air conditioning",
+      "Near international schools"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-032",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-032-img-0",
+        "property_id": "n-koh-kaew-032",
+        "url": "/coming-soon.jpg",
+        "alt": "Habitia — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-033",
+    "slug": "sansiri-kokaew-koh-kaew-33",
+    "title": "Sansiri Kokaew — House in Koh Kaew",
+    "description": "🏡 Brand New House for Rent – Saransiri Koh Kaew Retreat\n\n💥 Available Now\n\n📍 Prime Location:\nNear British International School (BISP), Finnway, Boat Lagoon & Royal Phuket Marina\n\n💰 Rental Price: 100,000 THB/month\n📅 1-year contract | 2 months deposit + 1 month advance\n\n✨ Property Details:\n\nLand area: 55 sq.w.\n\nLiving area: 165 sq.m.\n\n🛏️ 3 Bedrooms\n\n🛁 3 Bathrooms\n\n💻 1 Working Room\n\n🍽️ 1 Kitchen\n\n📺 1 Living Room\n\n🚗 Parking\n\n❄️ Air conditioning in all rooms\n\n🛋️ Fully furnished with electrical appliances\n\n🌳 Quiet & secure neighborhood\n\n🏡 Facilities:\n✅ 24-hour security & CCTV\n✅ Fitness center\n✅ Swimming pool & Gym\n✅ Kids’ playroom\n\n🐶🐱 Pets allowed case by case",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 100000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "living_area": 165,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "Fully furnished",
+      "Pet friendly",
+      "Parking",
+      "Fitness center",
+      "24h security",
+      "Air conditioning",
+      "Near international schools"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-033",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-033-img-0",
+        "property_id": "n-koh-kaew-033",
+        "url": "/coming-soon.jpg",
+        "alt": "Sansiri Kokaew — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-034",
+    "slug": "habitia-koh-kaew-34",
+    "title": "Habitia — House in Koh Kaew",
+    "description": "🏡 House for Rent – Habitia Koh Kaew, Phuket\n✨ 3 Bedrooms | 2 Bathrooms\n💰 45,000 THB/month (Yearly contract)\n🛋️ Fully furnished and ready to move in\n\n📍 Key Distances\n2 min walk → British International School Phuket\n7 km → Thao Thep Monument\n7.5 km → Robinson\n7.9 km → Premium Outlet\n12 km → Patong Beach\n13 km → Tesco Lotus / Bangkok Hospital Siriroj",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 45000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Fully furnished",
+      "Near international schools",
+      "Near the beach"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-034",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-034-img-0",
+        "property_id": "n-koh-kaew-034",
+        "url": "/coming-soon.jpg",
+        "alt": "Habitia — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-035",
+    "slug": "crown-estate-dulwich-road-koh-kaew-35",
+    "title": "Crown Estate, Dulwich Road — House in Koh Kaew",
+    "description": "🏡 Brand New Tropical Villa for Rent 🌴✨\n\n📍 Crown Estate, Dulwich Road – Koh Kaew\n\n(Next to British International School Phuket)\n💫 Property Details:\n\n🛏️ 4 Bedrooms\n\n🛁 3 Bathrooms\n\n🌿 Beautiful Tropical Garden with Fully Automatic System\n\n🛋️ Fully Furnished & Move-in Ready\n\n🏘️ 24-hour Security in a Gated Community\n\n🏊‍♀️ Clubhouse with Swimming Pool, Gym, Playground & Recreation Area\n💡 Included Services:\n\n👩‍🍳 Housekeeper\n\n🌱 Gardener\n\n🌐 High-speed Internet\n💰 Rental Rates:\n\n📆 3 Months – 130,000 THB/month\n\n📆 6 Months – 120,000 THB/month\n\n📆 1 Year – 99,000 THB/month\n🔑 Terms:\n\n1 Month Advance Rent + 2 Months Security Deposit\n✨ Perfect for families seeking comfort, privacy & resort-style living in Phuket!",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 99000,
+    "rent_period": "month",
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "Fully furnished",
+      "WiFi included",
+      "Fitness center",
+      "24h security",
+      "Garden",
+      "Cleaning service",
+      "Near international schools"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-035",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-035-img-0",
+        "property_id": "n-koh-kaew-035",
+        "url": "/coming-soon.jpg",
+        "alt": "Crown Estate, Dulwich Road — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-036",
+    "slug": "habitia-koh-kaew-36",
+    "title": "Habitia — Townhouse in Koh Kaew",
+    "description": "🏡 House for Rent – Habitia Koh Kaew, Phuket\n\n📍 Excellent location near IKEA & British International School\n💸 Rental Price: 40,000 THB/month (1-year contract)\n🛏 Property Details:\n\n• 3 Bedrooms\n\n• 2 Bathrooms\n\n• Fully furnished and ready to move in\n\n• Modern design with bright living area\n\n• Private garden and covered parking\n🏘️ Facilities:\n\n• Swimming pool\n\n• Fitness center\n\n• 24-hour security\n\n• Peaceful and family-friendly neighborhood\n📍 Nearby Places:\n\n• 2 mins – IKEA & Bypass Road\n\n• 5 mins – British International School\n\n• 10 mins – Central Festival & Central Floresta\n\n• 15 mins – Phuket Town\n\n• 25 mins – Patong Beach",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "Townhouse",
+    "area_slug": "koh-kaew",
+    "price": 40000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "Fully furnished",
+      "Parking",
+      "Fitness center",
+      "24h security",
+      "Garden",
+      "Near international schools",
+      "Near the beach"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-036",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-036-img-0",
+        "property_id": "n-koh-kaew-036",
+        "url": "/coming-soon.jpg",
+        "alt": "Habitia — Townhouse in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-037",
+    "slug": "burasiri-koh-kaew-37",
+    "title": "Burasiri — House in Koh Kaew",
+    "description": "🏡 For Rent: Burasiri Koh Kaew – THB 51,500/month\n(2+1 months deposit | Available now)\n✨ Fully Furnished\n• 65\" Smart TV (new)\n• Double-door refrigerator (new)\n• Washing machine\n• Stove & hood (new)\n📍 Great Location\n• Near British International School Phuket (BISP)\n• Close to IKEA and Central Festival Phuket\n• Only 20–30 mins to the Airport",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 51500,
+    "rent_period": "month",
+    "bedrooms": 0,
+    "bathrooms": 0,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Fully furnished",
+      "Smart home / Smart TV",
+      "Near international schools"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-037",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-037-img-0",
+        "property_id": "n-koh-kaew-037",
+        "url": "/coming-soon.jpg",
+        "alt": "Burasiri — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-038",
+    "slug": "saransiri-koh-kaew-38",
+    "title": "Saransiri — House in Koh Kaew",
+    "description": "🏡 House for Rent in Saransiri Village, Koh Kaew\n📍 Opposite British International School (BIS), Phuket\n\n✨ Key Features:\n• Monthly Rent: 65,000 THB\n• Bedrooms: 4\n• Bathrooms: 3\n• Living Room: Spacious and cozy with comfortable movie-watching chairs\n• Parking: Space for 2 cars\n• Security: Private and quiet zone with 24-hour security and CCTV\n• Outdoor Space: Large garden and spacious outdoor area — perfect for families or relaxation",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 65000,
+    "rent_period": "month",
+    "bedrooms": 0,
+    "bathrooms": 0,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Parking",
+      "24h security",
+      "Garden",
+      "Near international schools"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-038",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-038-img-0",
+        "property_id": "n-koh-kaew-038",
+        "url": "/coming-soon.jpg",
+        "alt": "Saransiri — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-039",
+    "slug": "lock-palm-koh-kaew-39",
+    "title": "Lock Palm — Villa in Koh Kaew",
+    "description": "Lock Palm house for rent – Price Reduced!\n🏡 Available Now\n✨ 80,000 THB / Month reduce from 100,000  THB / Month\n\n🌴 3 Bedrooms | 3 Bathrooms | Private Pool\n🛋 Fully Furnished\n🏠 Sala\n🚗 2 Covered Parking Spaces\n🌳 Garden & Pool Maintenance Included\n🔒 24-Hour Security in a Gated Community\n\n📍 Peaceful location near:\n• Loch Palm Golf Course\n• British International School (BIS)\n• Central Phuket",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "Villa",
+    "area_slug": "koh-kaew",
+    "price": 80000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "Fully furnished",
+      "Parking",
+      "24h security",
+      "Garden",
+      "Near international schools"
+    ],
+    "is_featured": true,
+    "reference": "IHP-KO-039",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-039-img-0",
+        "property_id": "n-koh-kaew-039",
+        "url": "/coming-soon.jpg",
+        "alt": "Lock Palm — Villa in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-040",
+    "slug": "bella-kokaew-koh-kaew-40",
+    "title": "Bella Kokaew — House in Koh Kaew",
+    "description": "🏡 Supalai Bella Koh Kaew — House for Rent\n✨ Rent: 42,000 THB / month (1-year lease)\n\n🛏 3 Bedrooms\n\n🛁 2 Bathrooms\n📍 Location: Supalai Bella, Koh Kaew — a quiet, family-friendly community with 24/7 security, easy access to BIS, Boat Lagoon, cafés, and shops.\n✨ Highlights:\n\n– Spacious 2-storey home\n\n– Fully furnished (optional)\n\n– Bright and airy living room\n\n– Modern kitchen\n\n– Parking for 2 cars\n\n– Safe gated community\n\n– Convenient location near schools and supermarkets",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 42000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Fully furnished",
+      "Parking",
+      "24h security",
+      "Near international schools"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-040",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-040-img-0",
+        "property_id": "n-koh-kaew-040",
+        "url": "/coming-soon.jpg",
+        "alt": "Bella Kokaew — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-041",
+    "slug": "lake-view-kokaew-koh-kaew-41",
+    "title": "Lake View Kokaew — House in Koh Kaew",
+    "description": "Lake View Kokaew available in Koh Kaew, Phuket. Contact Islander Home for full details and a private viewing.",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 75000,
+    "rent_period": "month",
+    "bedrooms": 0,
+    "bathrooms": 0,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [],
+    "is_featured": false,
+    "reference": "IHP-KO-041",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-041-img-0",
+        "property_id": "n-koh-kaew-041",
+        "url": "/coming-soon.jpg",
+        "alt": "Lake View Kokaew — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-042",
+    "slug": "boat-lagoon-koh-kaew-42",
+    "title": "Boat Lagoon — House in Koh Kaew",
+    "description": "Available from 20 January 2026!\n\n🌴 House for Rent – 2 Bedrooms | 3 Bathrooms | Lagoon View\n\n🛋 Fully Furnished | 🚗 Covered Parking\n\n🔒 24-Hour Security in a Gated Community\n\n💰 65,000 THB / Month\n📍 Located in the peaceful Boat Lagoon area — just minutes from British International School and Central Phuket. Perfect for families or anyone seeking comfort, privacy, and convenience.",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 65000,
+    "rent_period": "month",
+    "bedrooms": 2,
+    "bathrooms": 3,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Fully furnished",
+      "Parking",
+      "24h security",
+      "Near international schools"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-042",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-042-img-0",
+        "property_id": "n-koh-kaew-042",
+        "url": "/coming-soon.jpg",
+        "alt": "Boat Lagoon — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-043",
+    "slug": "supalai-lagoon-koh-kaew-43",
+    "title": "Supalai Lagoon — House in Koh Kaew",
+    "description": "บ้านเดี่ยวสวย ทำเลดี – พื้นที่กว้าง 256 ตร.ม. ใกล้ BISP / รพ.กรุงเทพ / เซ็นทรัล\n📌 ราคาขาย 7,590,000 บาท\n~ ขนาดที่ดิน 64 ตารางวา\n\n~ พื้นที่ใช้สอย 256 ตารางเมตร\n\n~ 4 ห้องนอน + ห้องเอนกประสงค์ 1, 3 ห้องน้ำ\n\n~ จอดรถได้ 2 คัน\n\n~ เครื่องปรับอากาศ 6 เครื่อง\n\n~ ห้องครัว 2 ห้อง (ครัวไทย + ครัวฝรั่ง)\n👉 สิ่งอำนวยความสะดวกในโครงการ\n\n• คลับเฮ้าส์\n\n• สระว่ายน้ำ\n\n• ฟิตเนส\n\n• สนามสาธารณะริมทะเล\n\n• เลนปั่นจักรยาน\n📍 สถานที่ใกล้เคียง\n\n• Central / Lotus / Big C / Index – 15 นาที\n\n• โรงพยาบาลกรุงเทพ – 15 นาที\n\n• British International School Phuket (BISP) – 5 นาที\n\n• ม. สงขลานครินทร์ – 20 นาที\n\n• หาดป่าตอง – 25 นาที\n\n• หาดสุรินทร์ – 25 นาที\n\n• หาดบางเทา – 30 นาที\n\n• Royal Phuket Marina\n\n• Boat Lagoon\n\n• Outlet Bypass",
+    "listing_type": "sale",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 7590000,
+    "rent_period": null,
+    "bedrooms": 0,
+    "bathrooms": 0,
+    "living_area": 256,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "Near international schools"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-043",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-043-img-0",
+        "property_id": "n-koh-kaew-043",
+        "url": "/coming-soon.jpg",
+        "alt": "Supalai Lagoon — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-044",
+    "slug": "phuket-villa-koh-kaew-44",
+    "title": "Phuket Villa — House in Koh Kaew",
+    "description": "Phuket Villa available in Koh Kaew, Phuket. Contact Islander Home for full details and a private viewing.",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 39000,
+    "rent_period": "month",
+    "bedrooms": 0,
+    "bathrooms": 0,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Also for sale: ฿5.7M"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-044",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-044-img-0",
+        "property_id": "n-koh-kaew-044",
+        "url": "/coming-soon.jpg",
+        "alt": "Phuket Villa — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-045",
+    "slug": "habitia-koh-kaew-45",
+    "title": "Habitia — House in Koh Kaew",
+    "description": "🏡 House for Rent – Fully Furnished & Ready to Move In\nHabitia Koh Kaew\n💰 Rental Price: 37,000 THB / month\n\n📄 Contract: 1-year lease\n\n🔒 Security Deposit: 2 months\n\n💵 Advance Rent: 1 month\nProperty Details\n• 🛏️ 3 Bedrooms\n• 🛁 2 Bathrooms\n• 🛋️ Fully furnished with complete electrical appliances\n• 🚪 Ready to sign contract & move in\n• ❌ No pets allowed\nPrime Location\n• Close to British International School Phuket (BISP)\n• Near New Robinson Thalang\n• Only 15 minutes to Central Phuket\n• Near fresh markets, community areas & convenience stores\n• Easy access with multiple routes\nFacilities & Services\n• 🛡️ 24-hour security\n• 🧹 Free housekeeping once a month\n• 📶 Free Wi-Fi internet\n• 💳 Keycard access\n• 🏊 Swimming pool & fitness center\n• 🌳 Public park & lake for walking and relaxation\n• 🛝 Children’s playground\n📐 Land Size: 35.1 sq.wah\n\n📍 Location: Koh Kaew, Phuket",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 37000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "living_area": 140,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "Fully furnished",
+      "WiFi included",
+      "Pet friendly",
+      "No pets",
+      "Fitness center",
+      "24h security",
+      "Cleaning service",
+      "Near international schools"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-045",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-045-img-0",
+        "property_id": "n-koh-kaew-045",
+        "url": "/coming-soon.jpg",
+        "alt": "Habitia — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-046",
+    "slug": "sino-koh-kaew-46",
+    "title": "Sino — House in Koh Kaew",
+    "description": "🏡 House for Rent – Supicha Sino Khaokaew (Near BISP)\n📍 Supicha Sino Khaokaew\n💰 Rental Price: 55,000 THB / month\n\n📄 Contract: 1-year agreement\n\n🔒 Deposit: 2 months\n\n💵 Advance: 1 month\nProperty Features\n• 📐 Land Size: 51 sq.wah\n• 🛏️ 4 Bedrooms\n• 🛁 3 Bathrooms (Master en-suite)\n• 🛋️ Living room\n• 🍽️ Built-in kitchen\n• 🧺 Washing & drying zone\n• 🚗 2 car parking spaces\n• 🌿 Garden with water feature\n• ☕ Balcony with coffee table\nFacilities\n• 🏊‍♂️ Common swimming pool (salt system) + kids’ pool\n• 🏋️ Gym\n• 🛡️ 24-hour security\n• 📹 4 private CCTV cameras inside the house\nFully Furnished – Ready to Move In\n• 📺 50” Smart TV\n• ❄️ Large refrigerator\n• 🍳 Microwave\n• 🧊 2 Freezers\n• 🔥 Oven\n• ❄️ 5 Air-conditioners\n• 🛋️ Sofa\n• 🧼 Washing machine\n• 🚿 2 Water heaters (showers)\n• 💦 Water filter\nPrice Includes\n• 🔥 Free Wi-Fi\n• 🧹 House cleaning 2 times/month\n• 🌱 Garden care once/month\nExcluded\n• ⚡ Electricity (government rate)\n• 💧 Water usage\n🐕 Small pets allowed\nNearby\n• ⏱️ 2 mins to British International School Phuket & Finway School\n• ⏱️ 5 mins to Villa Market & Boat Marina\n• ⏱️ 15 mins to Central Festival Phuket\n• ⏱️ 20 mins to Siriroj Bangkok Hospital\n• ⏱️ 30 mins to Patong Beach\n• ⏱️ 40 mins to Phuket International Airport",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 55000,
+    "rent_period": "month",
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "living_area": 204,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "Fully furnished",
+      "WiFi included",
+      "Pet friendly",
+      "Parking",
+      "Fitness center",
+      "24h security",
+      "Garden",
+      "Air conditioning",
+      "Smart home / Smart TV"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-046",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-046-img-0",
+        "property_id": "n-koh-kaew-046",
+        "url": "/coming-soon.jpg",
+        "alt": "Sino — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-047",
+    "slug": "super-cheap-koh-kaew-47",
+    "title": "Super Cheap — Townhouse in Koh Kaew",
+    "description": "VILLA FOR RENT near BISP | Kohkaew, Phuket\n\n💰 70,000 THB / month\n\n💼 Selling Price: 14.7 Million THB (Freehold)\n🏡 Property Highlights\n• Ready to move in\n• 4 Bedrooms | 4 Bathrooms\n• Land area: 400 sqm\n• Tropical modern garden-style villa\n• Peaceful and private environment\n• Ideal for families and long-term living\n📍 Prime Location – Excellent Accessibility\n• British International School Phuket (BISP): 6 km (10-minute drive)\n• HeadStart International School: 7 km\n• KFC / Pizza Company: 800 m\n• Hypermarket: 1 km\n• IKEA: 3 km\n• Central Festival & Phuket Old Town: 5 km\n🌿 Your Private Oasis in the Heart of the City\nStep away from the chaos and into serenity. This tropical modern garden home offers a true resort-style living experience—spacious, tranquil, and thoughtfully designed for family life.\n\nLocated in the city center, the villa blends oriental elegance with contemporary comfort, creating a peaceful retreat while remaining close to every convenience Phuket has to offer.",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "Townhouse",
+    "area_slug": "koh-kaew",
+    "price": 70000,
+    "rent_period": "month",
+    "bedrooms": 4,
+    "bathrooms": 4,
+    "living_area": 400,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Also for sale: ฿14.9M",
+      "Garden",
+      "Near international schools"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-047",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-047-img-0",
+        "property_id": "n-koh-kaew-047",
+        "url": "/coming-soon.jpg",
+        "alt": "Super Cheap — Townhouse in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-048",
+    "slug": "kokaew-koh-kaew-48",
+    "title": "Kokaew — House in Koh Kaew",
+    "description": "🏡 POOL VILLA FOR SALE near BIS British International School, Phuket\n\n📍 Tharua – Koh Kaew Area (Opposite Kruwitt 2 Pier)\n🚨 HOT SALE – Construction 90% Completed 🚨\nModern pool villa in a prime location, ideal for family living or investment near BIS British International School.\nProperty Details:\n\n✅ Land size: 90 sq.wah\n\n✅ 3 Bedrooms | 3 Bathrooms\n\n✅ Private swimming pool 5 x 10 meters\n\n✅ Built-in kitchen\n\n✅ Groundwater well system\n\n✅ Electric gate\n\n✅ Quiet and convenient residential area\n💰 Selling Price: 11.9 Million THB\n\n❗ Furniture not included",
+    "listing_type": "sale",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 11900000,
+    "rent_period": null,
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "living_area": 360,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "Near international schools"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-048",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-048-img-0",
+        "property_id": "n-koh-kaew-048",
+        "url": "/coming-soon.jpg",
+        "alt": "Kokaew — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-049",
+    "slug": "kokaew-koh-kaew-49",
+    "title": "Kokaew — Villa in Koh Kaew",
+    "description": "🏠 The Empire Koh Kaew (Premier Village)\n\n📍 Only 1.9 km to British International School (BIS)\nProperty Details\n\n✔️ Usable area: 381.87 sq.m.\n\n✔️ Land size: 302 sq.m. (75.50 sq.wah)\n\n✔️ 3 Bedrooms | 3 Bathrooms\n\n✔️ Bright and spacious living area\n\n✔️ Fully built-in kitchen with complete appliances\n\n✔️ Private swimming pool 7 × 3.2 m\n\n✔️ Parking for 2 cars\n\n✔️ Beautifully landscaped garden\n🔥 Huge price reduction – 2,000,000 THB (Rare deal in Phuket’s villa market)\n\n💰 Special Price: 14,900,000 THB",
+    "listing_type": "sale",
+    "status": "available",
+    "property_type": "Villa",
+    "area_slug": "koh-kaew",
+    "price": 14900000,
+    "rent_period": null,
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "living_area": 382,
+    "land_area": 382,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "Parking",
+      "Garden",
+      "Near international schools"
+    ],
+    "is_featured": true,
+    "reference": "IHP-KO-049",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-049-img-0",
+        "property_id": "n-koh-kaew-049",
+        "url": "/coming-soon.jpg",
+        "alt": "Kokaew — Villa in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-050",
+    "slug": "lagoon-koh-kaew-50",
+    "title": "Lagoon — Townhouse in Koh Kaew",
+    "description": "🏡 Supalai Lagoon Koh Kaew – House for Rent\n\n💰 50,000 THB / month (1-year lease)\n\nSpacious family home in a prime Koh Kaew location, ideal for comfortable long-term living.\n\nProperty Details\n• 🛏 3 Bedrooms\n• 🛁 3 Bathrooms\n• 🌿 Spacious living area with garden\n• 📶 WiFi included\n• 🚗 Parking available\n\nLocation Highlights\n• ☕ 3 minutes to Starbucks & Chic Republic\n• 🎓 9 minutes to British International School (BIS)\n• ⛵ 2 minutes to Boat Lagoon\n• Easy access to Phuket Town & main roads",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "Townhouse",
+    "area_slug": "koh-kaew",
+    "price": 50000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "WiFi included",
+      "Parking",
+      "Garden",
+      "Near international schools"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-050",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-050-img-0",
+        "property_id": "n-koh-kaew-050",
+        "url": "/coming-soon.jpg",
+        "alt": "Lagoon — Townhouse in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-051",
+    "slug": "sansiri-kokaew-koh-kaew-51",
+    "title": "Sansiri Kokaew — House in Koh Kaew",
+    "description": "🏡 Brand New House – Saransiri Kohkeaw Retreat\n\n💥 Available Now – Move in Today\n🗺️ Prime Location\n\nNear British International School (BISP), Finnway, Boat Lagoon & Royal Phuket Marina\n💵 Rental Price: 100,000 THB / Month\n• 1 Year Contract\n• 2 Months Deposit\n• 1 Month in Advance\n🎯 Property Details\n• Land Size: 55 sq.w.\n• Total Area: 165 sq.m.\n• 🛏️ 3 Bedrooms\n• 🛁 3 Bathrooms\n• 💻 1 Working Room\n• 🍽️ 1 Kitchen\n• 📺 1 Living Room\n• 🚗 Private Parking\n• ❄ Air conditioning in all rooms\n• ✨ Fully furnished with electrical appliances\n• 🌳 Quiet & secure neighborhood\n✨ Facilities\n• 👮‍♂️ 24-hour security\n• 📹 CCTV\n• 🏋️ Fitness center\n• 🏊 Swimming pool\n• 👶 Kids room\n🐶🐱 Pet allowed (case by case)",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 100000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "living_area": 165,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "Fully furnished",
+      "Pet friendly",
+      "Parking",
+      "Fitness center",
+      "24h security",
+      "Air conditioning",
+      "Near international schools"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-051",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-051-img-0",
+        "property_id": "n-koh-kaew-051",
+        "url": "/coming-soon.jpg",
+        "alt": "Sansiri Kokaew — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-052",
+    "slug": "burasiri-koh-kaew-52",
+    "title": "Burasiri — House in Koh Kaew",
+    "description": "🏡 Detached House Opposite British International School (BIS)\n\n📍 Location: Soi 1, House No. 159/7\n\n📐 Land Size: 65.5 sq.wah\n\n🛏️ 3 Bedrooms | 🛁 3 Bathrooms\n✨ Key Highlights\n• Parking for up to 4 cars 🚗\n\n👉 The only house in the entire project with 4-car parking\n• Prime location directly opposite BIS\n• Perfect for family living or high-demand rental to international tenants\n💰 Rental Price: 62,000 THB / month\n• 2 months advance payment\n• 1 month security deposit\n• 1 month commission\n💰 Selling Price: 9.89 Million THB",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 62000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "living_area": 262,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Also for sale: ฿9.9M",
+      "Parking",
+      "24h security",
+      "Near international schools"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-052",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-052-img-0",
+        "property_id": "n-koh-kaew-052",
+        "url": "/coming-soon.jpg",
+        "alt": "Burasiri — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-053",
+    "slug": "lake-view-koh-kaew-53",
+    "title": "Lake View — Townhouse in Koh Kaew",
+    "description": "🏡 House for Rent – Supalai Lake Ville, Koh Kaew, Phuket\n\nLocated in a peaceful residential community with full facilities, close to international schools and Phuket Town.\n\n✨ Property Details\n\n• 4 Bedrooms\n\n• 3 Bathrooms\n\n• 2 Parking Spaces\n\n• Close to clubhouse & common area\n💰 Rental Price\n\n• 75,000 THB / month (1-year contract)\n\n• 80,000 THB / month (6-month contract)\n🔒 Terms\n\n• 2 months security deposit + 1 month advance rent\n\n• Pets: Upon consideration\n🎁 Special for Tenants\n\n• Free garden maintenance (1 time/month)\n\n• Free common area fee\n\n• Free access to swimming pool & fitness center\n\n• Water, electricity, and internet paid according to government bills\n📍 Prime location in Koh Kaew – easy access to international schools, marinas, and Central Festival Phuket.",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "Townhouse",
+    "area_slug": "koh-kaew",
+    "price": 75000,
+    "rent_period": "month",
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "WiFi included",
+      "Parking",
+      "Fitness center",
+      "24h security",
+      "Garden",
+      "Near international schools"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-053",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-053-img-0",
+        "property_id": "n-koh-kaew-053",
+        "url": "/coming-soon.jpg",
+        "alt": "Lake View — Townhouse in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-054",
+    "slug": "mono-kokaew-koh-kaew-54",
+    "title": "Mono Kokaew — Townhouse in Koh Kaew",
+    "description": "🏡 Minimal Style Home for Rent – British International School Zone\n\n✨ Pet-friendly home in a prime Koh Kaew location — perfect for families working or studying near international schools.\n📍 Prime Location\n• Near British International School Phuket zone\n\n• 30 minutes to Phuket International Airport\n\n• 15 minutes to Central Phuket\n\n• 15 minutes to Phuket Old Town\n\n• 5 minutes to Robinson Lifestyle Thalang\n\n• 10 minutes to leading private hospitals\n\n• 5 minutes to Boat Lagoon Marina\n🏠 Property Details\n• Land Size: 38.40 sq.wah\n\n• 3 Bedrooms\n\n• 3 Bathrooms\n\n• 1 Kitchen (Built-in electric system)\n\n• 1 Laundry area\n\n• 2 Bedrooms fully furnished — move-in ready\n⚡ Appliances & Features\n• 4 Air-conditioners (free maintenance throughout tenancy)\n\n• Water heaters\n\n• Washing machine\n\n• Microwave\n\n• Refrigerator\n\n• TV\n\n• Digital door lock\n\n• Water tank with pump system\n\n• 2-Car parking with private gate\n🏘 Community Facilities\n• Keycard access system\n\n• 24-hour security\n\n• Free annual common area fee\n\n• Gym\n\n• Swimming pool\n📄 Rental Terms\n• Long-term contract (12–24 months)\n\n• Water & electricity charged by government meter\n\n• Pet-friendly (dogs & cats allowed – enclosed system)\n✨ Ideal for families looking for comfort, security, and convenience in Koh Kaew.",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "Townhouse",
+    "area_slug": "koh-kaew",
+    "price": 55000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "living_area": 154,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Private/communal pool",
+      "Fully furnished",
+      "Pet friendly",
+      "Parking",
+      "Fitness center",
+      "24h security",
+      "Air conditioning",
+      "Near international schools"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-054",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-054-img-0",
+        "property_id": "n-koh-kaew-054",
+        "url": "/coming-soon.jpg",
+        "alt": "Mono Kokaew — Townhouse in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-055",
+    "slug": "kokaew-koh-kaew-55",
+    "title": "Kokaew — Villa in Koh Kaew",
+    "description": "Pool Villa – Koh Kaew 31/3, Phuket\n\n💰 Rent: 160,000 THB/month (Yearly tenant until end of this month)\n\n💰 Sale: 26.9 MB\n\nDeposit: 2 months\n📍 Prime Location\n\n• 5 mins to British International School\n\n• On main road before 88 Land & Houses Koh Kaew\n\n• Opposite Supalai Lake Ville Koh Kaew\n🏡 Property Details\n\n• 2-Storey Pool Villa\n\n• 4 Bedrooms | 3 Bathrooms\n\n• Land: 124 sq.w.\n\n• House usable area: 411.35 sq.m.\n\n• Pool area: 47.05 sq.m. (Salt system, circulation system)\n\n• Outdoor usable area: 180 sq.m.\n✨ Features\n\n• Teak wood throughout the house\n\n• Marble flooring + marble swimming pool\n\n• Anti-theft system + CCTV\n\n• Private well + plumbing system\n\n• Water storage tank\n\n• Full-option imported furniture",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "Villa",
+    "area_slug": "koh-kaew",
+    "price": 160000,
+    "rent_period": "month",
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "living_area": 411,
+    "land_area": 411,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Also for sale: ฿26.9M",
+      "Private/communal pool",
+      "24h security",
+      "Near international schools"
+    ],
+    "is_featured": true,
+    "reference": "IHP-KO-055",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-055-img-0",
+        "property_id": "n-koh-kaew-055",
+        "url": "/coming-soon.jpg",
+        "alt": "Kokaew — Villa in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-056",
+    "slug": "burasiri-koh-kaew-56",
+    "title": "Burasiri — Townhouse in Koh Kaew",
+    "description": "Burasiri Koh Kaew – House for Rent / Sale\n\nPrime location directly opposite the fence of British International School, Phuket\nProperty Details\n\n• 3 Bedrooms\n\n• 3 Bathrooms\n\n• Land Size: 65.5 sq.wah\n\n• Parking for 4 cars – the only house in the project with space for 4 cars\nPerfect for families looking to live close to international schools, marinas, and Phuket Town.\nPrice\n\n💰 Sale Price: 9.89 MB\n\n🏡 Rental Price: 58,000 THB / month\n\n• 2 months advance payment\n\n• 1 month agent commission",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "Townhouse",
+    "area_slug": "koh-kaew",
+    "price": 58000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "living_area": 262,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Also for sale: ฿9.9M",
+      "Parking",
+      "Near international schools"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-056",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-056-img-0",
+        "property_id": "n-koh-kaew-056",
+        "url": "/coming-soon.jpg",
+        "alt": "Burasiri — Townhouse in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-057",
+    "slug": "saransiri-koh-kaew-57",
+    "title": "Saransiri — House in Koh Kaew",
+    "description": "Saransiri Koh Kaew – Corner House Opposite British International School Phuket\n\n🏡 House for Rent / Sale – Prime Location\nLocated directly opposite British International School Phuket, this corner single house offers extra privacy and space, perfect for families.\nProperty Details\n\n• Land Size: 65.5 sq.wah\n\n• 4 Bedrooms\n\n• 2 Bathrooms\n\n• 1 Home Office (can be converted into a 5th bedroom)\n\n• Upstairs exercise area / multipurpose space\n\n• 2 Storage rooms downstairs\n\n• Fully Furnished – Ready to Move In\nIncluded Appliances\n\n• 6 Air Conditioners\n\n• TV\n\n• Refrigerator\n\n• Washing Machine\n\n• Internet\nPrice\n\n🏡 Rental Price: 68,000 THB / month\n\n• 2 months advance payment\n\n• Currently rented on a yearly contract\n\n• Available to move in: 10 April\n💰 Sale Price: 12.9 MB",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 68000,
+    "rent_period": "month",
+    "bedrooms": 4,
+    "bathrooms": 2,
+    "living_area": 262,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Also for sale: ฿12.9M",
+      "Fully furnished",
+      "WiFi included",
+      "Air conditioning",
+      "Near international schools"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-057",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-057-img-0",
+        "property_id": "n-koh-kaew-057",
+        "url": "/coming-soon.jpg",
+        "alt": "Saransiri — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-058",
+    "slug": "supalai-bella-kokaew-koh-kaew-58",
+    "title": "Supalai Bella Kokaew — Townhouse in Koh Kaew",
+    "description": "House for Rent – Supalai Bella Koh Kaew, Phuket\nComfortable family home located in a peaceful residential area in Koh Kaew, with convenient access to British International School, marinas, and Phuket Town.\n• 3 Bedrooms\n\n• 2 Bathrooms\n\n• Spacious living area\n\n• Quiet neighborhood\n\n• Cat friendly 🐱\n💰 Rent: 45,000 THB / month\n\n📄 1-year contract",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "Townhouse",
+    "area_slug": "koh-kaew",
+    "price": 45000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Near international schools"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-058",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-058-img-0",
+        "property_id": "n-koh-kaew-058",
+        "url": "/coming-soon.jpg",
+        "alt": "Supalai Bella Kokaew — Townhouse in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-059",
+    "slug": "koh-kaew-59",
+    "title": "เจ้าฟ้าการ์เด้น — Villa in Koh Kaew",
+    "description": "เจ้าฟ้าการ์เด้น available in Koh Kaew, Phuket. Contact Islander Home for full details and a private viewing.",
+    "listing_type": "sale",
+    "status": "available",
+    "property_type": "Villa",
+    "area_slug": "koh-kaew",
+    "price": 10900000,
+    "rent_period": null,
+    "bedrooms": 0,
+    "bathrooms": 0,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [],
+    "is_featured": true,
+    "reference": "IHP-KO-059",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-059-img-0",
+        "property_id": "n-koh-kaew-059",
+        "url": "/coming-soon.jpg",
+        "alt": "เจ้าฟ้าการ์เด้น — Villa in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-060",
+    "slug": "passorn-kokaew-koh-kaew-60",
+    "title": "Passorn Kokaew — House in Koh Kaew",
+    "description": "House for Rent – Passorn Koh Kaew, Phuket\n\nProperty Details\n\n• 3 Bedrooms\n\n• 1 Home Office / Study Room\n\n• 2 Bathrooms\nRental Price\n\n• 45,000 THB / month – 1 year contract\n\n• 50,000 THB / month – 6 months contract\nTerms\n\n• 2 months security deposit + 1 month advance rent\n\n• Pets: Please inquire first",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 45000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "24h security"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-060",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-060-img-0",
+        "property_id": "n-koh-kaew-060",
+        "url": "/coming-soon.jpg",
+        "alt": "Passorn Kokaew — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-061",
+    "slug": "koh-kaew-61",
+    "title": "เจ้าฟ้าการ์เดนเกาะแก้ว — House in Koh Kaew",
+    "description": "🏡 House for Sale / Rent – Premier Park Soi 11 | Koh Kaew, Phuket\n\n4 Bedrooms | 3 Bathrooms\nParking for 2 cars\nLand size: 156 sqm\nFully furnished | Move-in ready\nDigital door lock | Separate kitchen & laundry\n2 TVs • Electric oven • Gas stove • Washing machine\n24-hour security\n\n📍 Near BIS • Boat Lagoon • Royal Phuket Marina\n\n💰 Rent\n38,000 THB/month (1 year)\n40,000 THB/month (6 months)\n\n💰 Sale\n5.9M THB",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 38000,
+    "rent_period": "month",
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "living_area": 156,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Fully furnished",
+      "Parking",
+      "24h security",
+      "Near international schools"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-061",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-061-img-0",
+        "property_id": "n-koh-kaew-061",
+        "url": "/coming-soon.jpg",
+        "alt": "เจ้าฟ้าการ์เดนเกาะแก้ว — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-062",
+    "slug": "kokaew-23-koh-kaew-62",
+    "title": "Kokaew 23 — Villa in Koh Kaew",
+    "description": "🌴 Resort-Style Tropical Pool Villa in Phuket 🏡✨\nA peaceful tropical retreat with lush gardens, a spacious pool, and relaxing outdoor living — perfect for private living or investment.\n📍 Prime Location in Koh Kaew, Phuket\n▪️ Land Size: 644 sqm\n▪️ Built-up Area: 244 sqm\n▪️ 3 Bedrooms | 3 Bathrooms\n▪️ Private Swimming Pool (4 × 10 m) 💦\n▪️ Spacious Tropical Garden\n▪️ Relaxing Poolside Sala\n▪️ Large Outdoor Living Area\n📍 Convenient Location\n🚗 5 mins to BISP International School\n🚗 8 mins to Robinson Lifestyle Thalang\n🚗 20 mins to Bangtao Beach\n🚗 30 mins to Laguna Phuket\n✨ Ideal for families, long-term living, or investors seeking strong rental potential in Phuket.\n💰 Rental Price: 80,000 THB / Month\n💰 Selling Price: 15.9 Million THB",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "Villa",
+    "area_slug": "koh-kaew",
+    "price": 80000,
+    "rent_period": "month",
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "living_area": 644,
+    "land_area": 644,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Also for sale: ฿15.9M",
+      "Private/communal pool",
+      "Garden",
+      "Near international schools",
+      "Near the beach"
+    ],
+    "is_featured": true,
+    "reference": "IHP-KO-062",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-062-img-0",
+        "property_id": "n-koh-kaew-062",
+        "url": "/coming-soon.jpg",
+        "alt": "Kokaew 23 — Villa in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-063",
+    "slug": "koh-kaew-63",
+    "title": "เจ้าฟ้าการ์เด้น — Villa in Koh Kaew",
+    "description": "เจ้าฟ้าการ์เด้น available in Koh Kaew, Phuket. Contact Islander Home for full details and a private viewing.",
+    "listing_type": "rent",
+    "status": "available",
+    "property_type": "Villa",
+    "area_slug": "koh-kaew",
+    "price": 85000,
+    "rent_period": "month",
+    "bedrooms": 0,
+    "bathrooms": 0,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Also for sale: ฿10.9M"
+    ],
+    "is_featured": true,
+    "reference": "IHP-KO-063",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-063-img-0",
+        "property_id": "n-koh-kaew-063",
+        "url": "/coming-soon.jpg",
+        "alt": "เจ้าฟ้าการ์เด้น — Villa in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-064",
+    "slug": "2-koh-kaew-64",
+    "title": "บางชีเล้า 2 — House in Koh Kaew",
+    "description": "บ้านเดี่ยวทำเลเมือง พร้อมพื้นที่สีเขียวหลังบ้าน 🌿🏡\nซอยบางชีเหล้า 2 — บรรยากาศสงบ แต่เดินทางสะดวก ใกล้ทุกความต้องการ\n✨ 3 ห้องนอน 2 ห้องน้ำ\n🚗 ที่จอดรถ 2 คัน\n📐 ขนาดที่ดิน 52 ตร.ว.\n💰 ราคาเพียง 4.59 ล้านบาท\n🎁 ฟรีของแถม\n✅ เตาแก๊ส\n✅ เครื่องดูดควัน (Hood)\n✅ ถังเก็บน้ำ\n✅ ปั๊มน้ำ\n📍 ทำเลดี ใกล้ขนส่งใหม่ และ Super Cheap ใหญ่\nเดินทางเข้าเมืองสะดวก เหมาะทั้งอยู่อาศัยและลงทุน\n📌 ค่าใช้จ่ายวันโอน\n▪️ ค่าโอน + ค่าอากร คนละครึ่ง\n▪️ ภาษีธุรกิจ ลูกค้าออกส่วนต่างกรณีกู้เกิน",
+    "listing_type": "sale",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 4590000,
+    "rent_period": null,
+    "bedrooms": 0,
+    "bathrooms": 0,
+    "living_area": null,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [],
+    "is_featured": false,
+    "reference": "IHP-KO-064",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-064-img-0",
+        "property_id": "n-koh-kaew-064",
+        "url": "/coming-soon.jpg",
+        "alt": "บางชีเล้า 2 — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  },
+  {
+    "id": "n-koh-kaew-065",
+    "slug": "koh-kaew-65",
+    "title": "เจ้าฟ้าการ์เด้น — House in Koh Kaew",
+    "description": "Semi-Detached Home with Single-House FunctionalitySpacious layout, modern design, and perfect privacy for family living  Chaofa Garden Home 3, Koh Kaew 3 Bedrooms | 3 Bathrooms 2 Parking Spaces 2 Master Bedrooms with Ensuite Bathrooms & Private Balconies Every bedroom features large windows for natural light and ventilation Cozy living room with built-in shelving Separate kitchen area with wall-mounted cabinets Land Size: 51 Sq.wah Price Only 5,990,000 THB Free Extras Included Water tank + water pump Gas stove + cooker hood Garden landscaping with trees Transfer fee shared equally Seller pays tax, buyer pays any excess loan difference*House sold unfurnished. Images are for decoration purposes only. บ้านแฝดฟังก์ชันบ้านเดี่ยวพื้นที่กว้าง ฟังก์ชันครบ พร้อมความเป็นส่วนตัว เหมาะสำหรับครอบครัวยุคใหม่  เจ้าฟ้าการ์เดนโฮม 3 เกาะแก้ว 3 ห้องนอน 3 ห้องน้ำ ที่จอดรถ 2 คัน 2 ห้องนอนใหญ่ พร้อมห้องน้ำและระเบียงส่วนตัว ทุกห้องนอนมีหน้าต่าง โปร่ง โล่ง รับแสงธรรมชาติ ห้องนั่งเล่นพร้อมบิ้วอินชั้นวาง ห้องครัวแยกเป็นสัดส่วน พร้อมตู้แขวนติดผนัง ขนาดที่ดิน 51 ตร.ว. ราคาเพียง 5,990,000 บาท ฟรีของแถม ถังน้ำ + ปั๊มน้ำ เตาแก๊ส + เครื่องดูดควัน จัดสวนพร้อมต้นไม้ ค่าธรรมเนียมโอนคนละครึ่ง ภาษีผู้ขายชำระ ส่วนต่างกรณีกู้เกินผู้ซื้อชำระ*ขายบ้านเปล่า รูปภาพใช้เพื่อการตกแต่งตัวอย่างเท่านั้น Private viewing by appointment only —",
+    "listing_type": "sale",
+    "status": "available",
+    "property_type": "House",
+    "area_slug": "koh-kaew",
+    "price": 5900000,
+    "rent_period": null,
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "living_area": 204,
+    "land_area": null,
+    "address": "Koh Kaew, Phuket",
+    "latitude": null,
+    "longitude": null,
+    "features": [
+      "Fully furnished",
+      "Parking",
+      "Fitness center",
+      "Garden"
+    ],
+    "is_featured": false,
+    "reference": "IHP-KO-065",
+    "created_at": "2026-06-01T09:00:00.000Z",
+    "updated_at": "2026-06-01T09:00:00.000Z",
+    "images": [
+      {
+        "id": "n-koh-kaew-065-img-0",
+        "property_id": "n-koh-kaew-065",
+        "url": "/coming-soon.jpg",
+        "alt": "เจ้าฟ้าการ์เด้น — House in Koh Kaew",
+        "sort_order": 0,
+        "is_cover": true
+      }
+    ]
+  }
+];
