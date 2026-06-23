@@ -67,6 +67,7 @@ export const AREAS: AreaInfo[] = [
     mapQuery: "Koh Kaew, Phuket, Thailand",
     coords: { lat: 7.9335, lng: 98.3786 },
     image: "/listings/kk-lakeville-villa-08/7.jpg",
+    poster: "/areas/koh-kaew.jpg",
   },
   {
     slug: "bang-tao",
@@ -83,6 +84,7 @@ export const AREAS: AreaInfo[] = [
     mapQuery: "Bang Tao Beach, Phuket, Thailand",
     coords: { lat: 7.9989, lng: 98.2945 },
     image: "/properties/villa-1.png",
+    poster: "/areas/bang-tao.jpg",
   },
   {
     slug: "phuket-town",
@@ -99,6 +101,7 @@ export const AREAS: AreaInfo[] = [
     mapQuery: "Phuket Town, Thailand",
     coords: { lat: 7.8804, lng: 98.3923 },
     image: "/properties/villa-3.png",
+    poster: "/areas/phuket-town.jpg",
   },
   {
     slug: "chalong",
@@ -115,6 +118,7 @@ export const AREAS: AreaInfo[] = [
     mapQuery: "Chalong, Phuket, Thailand",
     coords: { lat: 7.8462, lng: 98.3381 },
     image: "/listings/ch-songkhun-villa-07/6.jpg",
+    poster: "/areas/chalong.jpg",
   },
   {
     slug: "rawai",
@@ -148,6 +152,7 @@ export const AREAS: AreaInfo[] = [
     mapQuery: "Thalang District, Phuket, Thailand",
     coords: { lat: 8.0353, lng: 98.339 },
     image: "/properties/villa-8.png",
+    poster: "/areas/thalang.jpg",
   },
 ];
 
