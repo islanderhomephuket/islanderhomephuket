@@ -1534,7 +1534,7 @@ Ownership & benefits:
   },
   {
     id: "rw-warudom-villa-rw02",
-    slug: "private-pool-villa-rawai-rw02",
+    slug: "private-pool-villa-rawai-rw-19",
     title: "Hot Deal — Private Pool Villa, Rawai",
     description: `Price reduced by 1.4M — now only 14.5M THB. A fully furnished 3-bedroom pool villa in Rawai, just 5 minutes to the beach and ready to move in.
 
@@ -1569,14 +1569,14 @@ Property features:
       "Water well & landscaping included",
     ],
     is_featured: false,
-    reference: "RW02",
+    reference: "RW-19",
     created_at: NOW,
     updated_at: NOW,
     images: imgs("rw-warudom-villa-rw02", "rw-warudom-villa-rw02", 25, 1),
   },
   {
     id: "rw-vimannaya-villa-rw03",
-    slug: "vimannaya-residence-nai-harn-rw03",
+    slug: "vimannaya-residence-nai-harn-rw-21",
     title: "Vimannaya Residence — Luxury Pool Villa, Nai Harn",
     description: `Modern tropical living just 5 minutes from Nai Harn Beach in an exclusive high-end villa community. Villa 1 is ready to move in now — this is not an off-plan project, construction is actively progressing.
 
@@ -1620,7 +1620,7 @@ Prices start from 40.8M THB.`,
       "600 sq.m. land plot",
     ],
     is_featured: true,
-    reference: "RW03",
+    reference: "RW-21",
     created_at: NOW,
     updated_at: NOW,
     images: imgs("rw-vimannaya-villa-rw03", "rw-vimannaya-villa-rw03", 43, 1),
