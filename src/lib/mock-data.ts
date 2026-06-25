@@ -619,6 +619,41 @@ export const MOCK_PROPERTIES: Property[] = [
 
 export const MOCK_BLOG_POSTS: BlogPost[] = [
   {
+    id: "b-2026-06-25-living-in-chalong",
+    slug: "living-in-chalong-phuket-guide",
+    title: "Living in Chalong, Phuket: The Expat Guide to South Phuket's Lifestyle Hub",
+    excerpt:
+      "Chalong blends sailing culture, Wat Chalong, sea-view villas and a thriving expat community into one of South Phuket's most liveable and investable areas.",
+    content: `<p>Tucked into the southern crook of Phuket Island, Chalong is one of the island's most character-rich areas — a sun-soaked blend of seafront activity, Buddhist heritage, expat community life and some of the best-value sea-view villas on the island. If you're weighing up where to live or invest in South Phuket, Chalong deserves serious consideration.</p>
+<h2>What makes Chalong different</h2>
+<p>Chalong is not a beach town — it's a lifestyle hub. The area fans out from Chalong Bay, home to Phuket's largest sailing marina and a flourishing yachting scene that draws long-stay residents from Europe, Australia and beyond. Wat Chalong, Phuket's most revered Buddhist temple, sits at the heart of the area and gives it a cultural depth you won't find in the resort strips to the north. The combination of active waterfront life, authentic Thai neighbourhood character and a well-established expat community makes Chalong genuinely liveable year-round.</p>
+<h2>Lifestyle: food, wellness and the outdoors</h2>
+<p>Chalong's café and restaurant scene has grown into one of the island's best outside Bang Tao. You'll find everything from authentic Thai street food to international brunch spots, Italian, French and Scandinavian-run kitchens. Yoga studios, CrossFit gyms, Muay Thai camps and dive shops are all within easy reach, making this a favourite base for the active expatriate.</p>
+<p>The area also has excellent access to Phuket's southern beaches — Rawai, Nai Harn and Ao Sane are just 10–15 minutes away, and Chalong Pier offers daily boat trips to Coral Island and beyond.</p>
+<h2>The property market: sea views at value prices</h2>
+<p>Compared with the west-coast luxury belt in Bang Tao and Layan, Chalong offers compelling value for buyers seeking pool villas with genuine sea views. Hillside pockets above Chalong Bay command elevated positions with panoramic outlooks over the bay and outer islands, at prices that still undercut comparable west-coast stock.</p>
+<p>A strong example currently available is the <a href="/properties/chalong-seaview-pool-villas-ch01">Chalong Seaview Pool Villas</a> — a rare pair of private 4-bedroom villas with smart-home systems, private swimming pools and sweeping sea views, priced from ฿24.9 million. With strong rental yield potential, they represent the kind of lifestyle-plus-investment case that defines Chalong's appeal.</p>
+<h2>Getting around Chalong</h2>
+<p>Chalong sits at a natural crossroads: around 15 minutes to Phuket Town, 20 minutes to the international airport expressway, and a straight run north to Bang Tao or south to Rawai. Most residents drive or use a scooter, and the road network here is straightforward compared with some of the hillier areas of the island.</p>
+<h2>Is Chalong right for you?</h2>
+<ul>
+<li>You want a sea-view villa without Bang Tao prices</li>
+<li>You value an active lifestyle: sailing, diving, cycling, Muay Thai</li>
+<li>You want a genuine mixed community — expat and Thai — rather than a resort enclave</li>
+<li>You're investing and want strong rental appeal to lifestyle-oriented long-stay tenants</li>
+</ul>
+<h2>Explore Chalong properties</h2>
+<p>Browse our <a href="/buy">villas for sale</a> and <a href="/rent">rentals in Chalong</a>, or follow Islander Home for new listings on <a href="https://www.instagram.com/islanderhomephuket" target="_blank" rel="noopener">Instagram</a> and <a href="https://www.facebook.com/share/17zfFD16u2/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>.</p>
+<blockquote>Ready to find the right home in Chalong? Talk to Islander Home Phuket — we know the area well and can match you to the right property quickly.</blockquote>`,
+    cover_image: "/listings/ch-seaview-villas-01/1.jpg",
+    author: "Islander Home Team",
+    tags: ["Chalong", "Areas", "Lifestyle"],
+    published: true,
+    published_at: "2026-06-25T09:00:00.000Z",
+    created_at: now,
+    updated_at: now,
+  },
+  {
     id: "b-2026-06-22-renting-villa-rawai",
     slug: "renting-luxury-pool-villa-rawai-2026",
     title: "Renting a Luxury Pool Villa in Rawai: What to Expect in 2026",
