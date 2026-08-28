@@ -23,26 +23,30 @@ export function SectionHeading({
         className,
       )}
     >
-      {kicker && <p className="kicker">{kicker}</p>}
+      {kicker && (
+        <div
+          className={cn(
+            "flex items-center gap-3",
+            align === "center" && "justify-center",
+          )}
+        >
+          <span className="h-px w-8 bg-paper/25" />
+          <p className="kicker">{kicker}</p>
+        </div>
+      )}
       <h2
         className={cn(
-          "mt-3 font-display text-3xl font-semibold leading-tight sm:text-4xl md:text-[2.6rem]",
+          "display-caps mt-5 text-[2rem] sm:text-[2.6rem] md:text-[3rem]",
           tone === "light" ? "text-paper" : "text-ink",
         )}
       >
         {title}
       </h2>
-      <div
-        className={cn(
-          "gold-rule mt-5",
-          align === "center" && "mx-auto",
-        )}
-      />
       {description && (
         <p
           className={cn(
             "mt-5 text-base leading-relaxed",
-            tone === "light" ? "text-paper/70" : "text-ink/65",
+            tone === "light" ? "text-paper/60" : "text-ink/65",
           )}
         >
           {description}

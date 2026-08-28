@@ -51,7 +51,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/30" />
         <Container className="relative">
           <p className="kicker text-gold-light">Our story</p>
-          <h1 className="mt-3 font-display text-5xl font-semibold text-paper sm:text-6xl">
+          <h1 className="display-caps mt-3 text-5xl text-paper sm:text-6xl">
             About {SITE.shortName}
           </h1>
         </Container>
@@ -108,7 +108,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
             {STATS.map((s) => (
               <div key={s.label} className="text-center">
-                <p className="font-display text-4xl font-semibold text-gold sm:text-5xl">
+                <p className="font-display text-4xl font-semibold text-paper sm:text-5xl">
                   {s.value}
                 </p>
                 <p className="mt-2 text-xs uppercase tracking-[0.16em] text-paper/60">

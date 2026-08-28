@@ -38,8 +38,8 @@ export function Header() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-500",
         solid
-          ? "border-b border-sand/70 bg-ink/95 backdrop-blur-md"
-          : "bg-gradient-to-b from-black/50 to-transparent",
+          ? "border-b border-paper/10 bg-ink/85 backdrop-blur-xl"
+          : "bg-gradient-to-b from-black/45 to-transparent",
       )}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-12">
@@ -47,7 +47,7 @@ export function Header() {
           <Logo markClassName="h-14 w-14" />
         </Link>
 
-        <nav className="hidden items-center gap-9 lg:flex">
+        <nav className="hidden items-center gap-8 lg:flex">
           {NAV_LINKS.map((link) => {
             const href = link.href as string;
             const active =
@@ -57,15 +57,14 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "relative text-[0.78rem] font-medium uppercase tracking-[0.18em] transition-colors",
-                  solid ? "text-paper/80" : "text-paper/90",
-                  "hover:text-gold",
-                  active && "text-gold",
+                  "relative text-[0.74rem] font-medium uppercase tracking-[0.2em] transition-colors",
+                  "text-paper/70 hover:text-paper",
+                  active && "text-paper",
                 )}
               >
                 {link.label}
                 {active && (
-                  <span className="absolute -bottom-2 left-0 h-px w-full bg-gold" />
+                  <span className="absolute -bottom-2 left-0 h-px w-full bg-paper" />
                 )}
               </Link>
             );
@@ -78,8 +77,8 @@ export function Header() {
             target="_blank"
             rel="noopener noreferrer"
             className={cn(
-              "hidden items-center gap-2 rounded-full px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.16em] transition-all sm:inline-flex",
-              "bg-white text-ink hover:bg-white/80 border border-white/20",
+              "hidden items-center gap-2 rounded-full px-6 py-2.5 text-[0.7rem] font-semibold uppercase tracking-[0.18em] transition-transform duration-300 sm:inline-flex",
+              "bg-paper text-ink hover:-translate-y-0.5",
             )}
           >
             <WhatsAppIcon className="h-4 w-4" />
@@ -102,7 +101,7 @@ export function Header() {
       {/* Mobile menu */}
       <div
         className={cn(
-          "overflow-hidden border-t border-sand/60 bg-ink transition-[max-height] duration-500 lg:hidden",
+          "overflow-hidden border-t border-paper/10 bg-ink transition-[max-height] duration-500 lg:hidden",
           open ? "max-h-[28rem]" : "max-h-0",
         )}
       >
@@ -112,7 +111,7 @@ export function Header() {
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="border-b border-sand/60 py-4 text-sm font-medium uppercase tracking-[0.18em] text-paper/80 hover:text-gold"
+              className="border-b border-paper/10 py-4 text-sm font-medium uppercase tracking-[0.2em] text-paper/75 hover:text-paper"
             >
               {link.label}
             </Link>
@@ -121,7 +120,7 @@ export function Header() {
             href={CONTACT.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-5 inline-flex items-center justify-center gap-2 bg-white px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] text-ink"
+            className="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-paper px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] text-ink"
           >
             <WhatsAppIcon className="h-4 w-4" /> WhatsApp Enquiry
           </a>

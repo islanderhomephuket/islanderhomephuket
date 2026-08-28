@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Jost } from "next/font/google";
+import { Archivo, Inter } from "next/font/google";
 import "./globals.css";
 import { SITE, CONTACT } from "@/lib/constants";
 
@@ -32,14 +32,14 @@ const orgJsonLd = {
   sameAs: [CONTACT.facebook, CONTACT.instagram],
 };
 
-const display = Cormorant_Garamond({
+const display = Archivo({
   variable: "--font-display",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-const body = Jost({
+const body = Inter({
   variable: "--font-body",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
@@ -95,7 +95,7 @@ export default function RootLayout({
       lang="en"
       className={`${display.variable} ${body.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-paper text-foreground">
+      <body className="min-h-full bg-ink text-foreground">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}

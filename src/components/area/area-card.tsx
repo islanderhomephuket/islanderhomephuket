@@ -3,61 +3,50 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import type { AreaInfo } from "@/lib/constants";
 
+/**
+ * A plain photo card: one image, the area name, the listing count.
+ *
+ * `image` lets the caller hand in a real photo from a listing in that area —
+ * preferred over the static fallback, since it keeps the grid showing current
+ * inventory. The old marketing posters are no longer used here.
+ */
 export function AreaCard({
   area,
   count,
+  image,
 }: {
   area: AreaInfo;
   count?: number;
+  image?: string;
 }) {
-  // Areas with a marketing poster show the full artwork (it already carries its
-  // own title & info), centered on the brand-dark background so the 9:16 poster
-  // sits cleanly inside the 3/4 card frame without cropping.
-  if (area.poster) {
-    return (
-      <Link
-        href={`/areas/${area.slug}`}
-        className="group relative block aspect-[3/4] overflow-hidden border border-sand/40 bg-ink transition-colors hover:border-gold/60"
-        aria-label={`${area.name} — ${area.tagline}`}
-      >
-        <Image
-          src={area.poster}
-          alt={`${area.name}, Phuket — ${area.tagline}`}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-contain transition-transform duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
-        />
-      </Link>
-    );
-  }
-
   return (
     <Link
       href={`/areas/${area.slug}`}
-      className="group relative block aspect-[3/4] overflow-hidden"
+      className="group relative block aspect-[4/5] overflow-hidden rounded-[1.5rem] border border-paper/10 transition-colors duration-500 hover:border-paper/30"
+      aria-label={`${area.name} — ${area.tagline}`}
     >
       <Image
-        src={area.image}
-        alt={area.name}
+        src={image ?? area.image}
+        alt={`${area.name}, Phuket`}
         fill
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
+        className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.07]"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/20 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20" />
+
       <div className="absolute inset-x-0 bottom-0 p-6">
-        <div className="flex items-end justify-between">
+        <div className="flex items-end justify-between gap-4">
           <div>
             {count != null && count > 0 && (
-              <p className="kicker text-gold-light">
+              <p className="text-[0.62rem] uppercase tracking-[0.22em] text-paper/60">
                 {count} {count === 1 ? "Listing" : "Listings"}
               </p>
             )}
-            <h3 className="mt-2 font-display text-2xl font-semibold text-paper">
+            <h3 className="display-caps mt-2 text-2xl text-paper">
               {area.name}
             </h3>
-            <p className="mt-1 text-sm text-paper/70">{area.tagline}</p>
           </div>
-          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-paper/40 text-paper transition-all group-hover:border-gold group-hover:bg-gold group-hover:text-ink">
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-paper/35 text-paper transition-all duration-300 group-hover:border-paper group-hover:bg-paper group-hover:text-ink">
             <ArrowUpRight className="h-5 w-5" />
           </span>
         </div>

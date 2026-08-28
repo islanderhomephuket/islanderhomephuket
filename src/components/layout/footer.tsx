@@ -39,7 +39,7 @@ export function Footer() {
 
           {/* Explore */}
           <div>
-            <h3 className="kicker text-gold">Explore</h3>
+            <h3 className="kicker text-paper/80">Explore</h3>
             <ul className="mt-5 space-y-3 text-sm text-paper/70">
               {NAV_LINKS.map((l) => (
                 <li key={l.href}>
@@ -53,7 +53,7 @@ export function Footer() {
 
           {/* Areas */}
           <div>
-            <h3 className="kicker text-gold">Areas</h3>
+            <h3 className="kicker text-paper/80">Areas</h3>
             <ul className="mt-5 space-y-3 text-sm text-paper/70">
               {AREAS.map((a) => (
                 <li key={a.slug}>
@@ -70,7 +70,7 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="kicker text-gold">Get in touch</h3>
+            <h3 className="kicker text-paper/80">Get in touch</h3>
             <ul className="mt-5 space-y-4 text-sm text-paper/70">
               <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
@@ -134,7 +134,7 @@ function SocialLink({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-paper/20 text-paper/80 transition-all hover:border-gold hover:bg-gold hover:text-ink"
+      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-paper/20 text-paper/80 transition-all hover:border-paper hover:bg-paper hover:text-ink"
     >
       {children}
     </a>

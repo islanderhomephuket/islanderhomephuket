@@ -60,7 +60,7 @@ export default async function AreaPage({
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/30" />
         <Container className="relative">
           <p className="kicker text-gold-light">Phuket Area Guide</p>
-          <h1 className="mt-3 font-display text-5xl font-semibold text-paper sm:text-6xl">
+          <h1 className="display-caps mt-3 text-5xl text-paper sm:text-6xl">
             {area.name}
           </h1>
           <p className="mt-3 text-lg text-paper/80">{area.tagline}</p>

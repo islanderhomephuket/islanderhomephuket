@@ -4,6 +4,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { AreaCard } from "@/components/area/area-card";
 import { AREAS } from "@/lib/constants";
 import { getProperties } from "@/lib/data";
+import { areaCoverImage } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Phuket Areas & Neighbourhoods",
@@ -18,8 +19,8 @@ export default async function AreasPage() {
     <>
       <section className="bg-ink pb-12 pt-32">
         <Container>
-          <p className="kicker text-gold-light">Explore Phuket</p>
-          <h1 className="mt-3 font-display text-4xl font-semibold text-paper sm:text-5xl">
+          <p className="kicker text-paper/70">Explore Phuket</p>
+          <h1 className="display-caps mt-3 text-4xl text-paper sm:text-5xl">
             Areas &amp; Neighbourhoods
           </h1>
           <p className="mt-4 max-w-2xl text-paper/70">
@@ -41,6 +42,7 @@ export default async function AreasPage() {
                 key={area.slug}
                 area={area}
                 count={all.filter((p) => p.area_slug === area.slug).length}
+                image={areaCoverImage(all, area.slug)}
               />
             ))}
           </div>

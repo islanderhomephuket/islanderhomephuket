@@ -12,7 +12,15 @@ import {
  */
 export async function createClient() {
   if (!SUPABASE_URL || !SUPABASE_ANON_KEY) return null;
-  const cookieStore = await cookies();
+  let cookieStore: Awaited<ReturnType<typeof cookies>>;
+  try {
+    cookieStore = await cookies();
+  } catch {
+    // No request scope (build time, e.g. generateStaticParams) — cookie-less anon client.
+    return createServerClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+      cookies: { getAll: () => [], setAll: () => {} },
+    });
+  }
 
   return createServerClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
     cookies: {

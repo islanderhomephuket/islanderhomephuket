@@ -10,10 +10,10 @@ export function Badge({
   className?: string;
 }) {
   const tones = {
-    gold: "bg-gold text-ink",
-    dark: "bg-ink text-paper",
+    gold: "bg-paper text-ink",
+    dark: "bg-black/55 text-paper backdrop-blur-md border border-paper/20",
     light: "bg-paper/90 text-ink",
-    muted: "bg-sand text-ink/70",
+    muted: "bg-paper/10 text-paper/70 border border-paper/15",
   };
   return (
     <span

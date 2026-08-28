@@ -56,7 +56,7 @@ export function Gallery({
   return (
     <div>
       {/* Main image */}
-      <div className="relative aspect-[16/10] w-full overflow-hidden bg-charcoal">
+      <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[1.5rem] bg-charcoal">
         <Image
           src={pics[active].url}
           alt={pics[active].alt ?? title}
@@ -91,7 +91,7 @@ export function Gallery({
               key={p.id}
               onClick={() => setActive(i)}
               className={cn(
-                "relative aspect-[4/3] overflow-hidden border transition-all",
+                "relative aspect-[4/3] overflow-hidden rounded-xl border transition-all",
                 i === active
                   ? "border-gold opacity-100"
                   : "border-transparent opacity-60 hover:opacity-100",

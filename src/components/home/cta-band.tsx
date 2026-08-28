@@ -3,21 +3,23 @@ import { CONTACT } from "@/lib/constants";
 import { WhatsAppIcon, LineIcon } from "@/components/brand/contact-icons";
 import { ButtonLink } from "@/components/ui/button";
 
-export function CtaBand() {
+/** `image` lets a page hand in a real listing photo instead of the stock plate. */
+export function CtaBand({ image }: { image?: string } = {}) {
   return (
-    <section className="relative overflow-hidden bg-ink py-24">
+    <section className="bg-ink px-2 py-6 sm:px-3">
+      <div className="relative overflow-hidden rounded-[var(--radius-frame)] py-24 sm:py-32">
       <Image
-        src="/properties/villa-3.png"
+        src={image ?? "/properties/villa-3.png"}
         alt=""
         fill
         sizes="100vw"
-        className="object-cover opacity-25"
+        className="object-cover opacity-70"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/80 to-ink/40" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/88 via-black/60 to-black/20" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
         <div className="max-w-2xl">
-          <p className="kicker text-gold-light">Let&apos;s talk</p>
-          <h2 className="mt-4 font-display text-3xl font-semibold leading-tight text-paper sm:text-5xl">
+          <p className="kicker text-paper/70">Let&apos;s talk</p>
+          <h2 className="display-caps mt-5 text-[2rem] text-paper sm:text-[3.2rem]">
             Ready to find your Phuket home?
           </h2>
           <p className="mt-5 text-lg text-paper/75">
@@ -32,7 +34,7 @@ export function CtaBand() {
               href={CONTACT.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-14 items-center justify-center gap-2 bg-[#25D366] px-8 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-opacity hover:opacity-90"
+              className="inline-flex h-14 items-center justify-center gap-2 rounded-full border border-paper/30 px-8 text-sm font-semibold uppercase tracking-[0.18em] text-paper transition-colors hover:border-paper hover:bg-paper/10"
             >
               <WhatsAppIcon className="h-5 w-5" /> WhatsApp
             </a>
@@ -40,12 +42,13 @@ export function CtaBand() {
               href={CONTACT.line}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-14 items-center justify-center gap-2 bg-[#06C755] px-8 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-opacity hover:opacity-90"
+              className="inline-flex h-14 items-center justify-center gap-2 rounded-full border border-paper/30 px-8 text-sm font-semibold uppercase tracking-[0.18em] text-paper transition-colors hover:border-paper hover:bg-paper/10"
             >
               <LineIcon className="h-5 w-5" /> LINE
             </a>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );

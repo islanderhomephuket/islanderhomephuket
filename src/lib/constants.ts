@@ -37,6 +37,38 @@ export const NAV_LINKS = [
   { label: "Contact", href: "/contact" },
 ] as const;
 
+
+/**
+ * Hand-picked hero photography.
+ *
+ * Leave this array EMPTY and the hero falls back to the featured listings'
+ * cover photos (self-updating as inventory changes). Put entries here to pin
+ * specific images instead — drop the files in `public/hero/` and reference them
+ * as `/hero/<file>.jpg`. `location`, `price` and `href` are optional; omit them
+ * and the hero shows the photo with no caption.
+ */
+export const HERO_SLIDES: {
+  image: string;
+  title: string;
+  location?: string;
+  price?: string;
+  href?: string;
+}[] = [
+  // Serrena — the lakefront show villa at Manik (BTA-059). Professional shoot,
+  // stored at 2560px under property-media/hero/ so the repo stays light.
+  "serrena-1",
+  "serrena-2",
+  "serrena-3",
+  "serrena-4",
+  "serrena-5",
+].map((f) => ({
+  image: `https://qqxfozlkizcgpwpgukcx.supabase.co/storage/v1/object/public/property-media/hero/${f}.jpg`,
+  title: "Lakefront Pool Villa — Manik, Cherng Talay",
+  location: "Cherng Talay · Lakefront Villa",
+  price: "From THB 48,500,000",
+  href: "/properties/cherngtalay-lakefront-pool-villa-485m",
+}));
+
 export interface AreaInfo {
   slug: string;
   name: string;

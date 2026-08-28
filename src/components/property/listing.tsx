@@ -48,7 +48,7 @@ export async function PropertyListing({
           <p className="kicker text-gold-light">
             {listingType === "rent" ? "Rentals" : "For Sale"}
           </p>
-          <h1 className="mt-3 font-display text-4xl font-semibold text-paper sm:text-5xl">
+          <h1 className="display-caps mt-3 text-4xl text-paper sm:text-5xl">
             {title}
           </h1>
           <p className="mt-4 max-w-2xl text-paper/70">{subtitle}</p>

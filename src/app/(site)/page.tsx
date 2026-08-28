@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { Hero } from "@/components/home/hero";
+import { Hero, type HeroSlide } from "@/components/home/hero";
 import { WhyChooseUs } from "@/components/home/why-choose-us";
+import { PhuketGuide } from "@/components/home/phuket-guide";
 import { CtaBand } from "@/components/home/cta-band";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -9,12 +10,34 @@ import { PropertyGrid } from "@/components/property/property-grid";
 import { AreaCard } from "@/components/area/area-card";
 import { BlogCard } from "@/components/blog/blog-card";
 import { ButtonLink } from "@/components/ui/button";
-import { AREAS } from "@/lib/constants";
+import { AREAS, HERO_SLIDES } from "@/lib/constants";
+import { areaCoverImage, formatRent, formatTHB } from "@/lib/utils";
+import type { Property } from "@/lib/types";
 import {
   getFeaturedProperties,
   getBlogPosts,
   getProperties,
 } from "@/lib/data";
+
+/** Featured listings become the hero's rotating photography + thumbnail rail. */
+function toSlides(properties: Property[]): HeroSlide[] {
+  return properties
+    .filter((p) => Boolean(p.cover_image))
+    .slice(0, 5)
+    .map((p) => {
+      const area = AREAS.find((a) => a.slug === p.area_slug);
+      const isRent = p.listing_type === "rent";
+      return {
+        image: p.cover_image as string,
+        title: p.title,
+        location: `${area?.name ?? "Phuket"} · ${p.property_type}`,
+        price: isRent
+          ? formatRent(p.price, p.rent_period)
+          : formatTHB(p.price),
+        href: `/properties/${p.slug}`,
+      };
+    });
+}
 
 export default async function HomePage() {
   const [featured, posts, all] = await Promise.all([
@@ -26,15 +49,18 @@ export default async function HomePage() {
   const areaCounts = AREAS.map((a) => ({
     area: a,
     count: all.filter((p) => p.area_slug === a.slug).length,
+    image: areaCoverImage(all, a.slug),
   }));
 
   return (
     <>
-      <Hero />
+      <Hero
+        slides={HERO_SLIDES.length > 0 ? HERO_SLIDES : toSlides(featured)}
+      />
 
       {/* Featured properties */}
       {featured.length > 0 && (
-        <section className="bg-charcoal py-24">
+        <section className="bg-ink py-24 sm:py-32">
           <Container>
             <div className="flex flex-wrap items-end justify-between gap-6">
               <SectionHeading
@@ -54,7 +80,7 @@ export default async function HomePage() {
       )}
 
       {/* Areas */}
-      <section className="bg-ink py-24">
+      <section className="bg-charcoal py-24 sm:py-32">
         <Container>
           <SectionHeading
             align="center"
@@ -63,20 +89,27 @@ export default async function HomePage() {
             description="From beachfront Bang Tao to the heritage streets of Old Town, discover the neighbourhood that suits your life."
           />
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {areaCounts.map(({ area, count }) => (
-              <AreaCard key={area.slug} area={area} count={count} />
+            {areaCounts.map(({ area, count, image }) => (
+              <AreaCard
+                key={area.slug}
+                area={area}
+                count={count}
+                image={image}
+              />
             ))}
           </div>
         </Container>
       </section>
 
+      <PhuketGuide />
+
       <WhyChooseUs />
 
-      <CtaBand />
+      <CtaBand image={featured[0]?.cover_image} />
 
       {/* Journal */}
       {posts.length > 0 && (
-        <section className="bg-charcoal py-24">
+        <section className="bg-charcoal py-24 sm:py-32">
           <Container>
             <div className="flex flex-wrap items-end justify-between gap-6">
               <SectionHeading
@@ -86,7 +119,7 @@ export default async function HomePage() {
               />
               <Link
                 href="/blog"
-                className="shrink-0 text-sm font-semibold uppercase tracking-[0.18em] text-gold-dark hover:text-paper"
+                className="shrink-0 text-sm font-semibold uppercase tracking-[0.18em] text-paper/60 transition-colors hover:text-paper"
               >
                 All articles →
               </Link>

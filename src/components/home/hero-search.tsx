@@ -20,18 +20,21 @@ export function HeroSearch() {
     router.push(qs ? `${base}?${qs}` : base);
   }
 
+  const selectClass =
+    "h-11 flex-1 rounded-full border border-paper/15 bg-transparent px-5 text-sm text-paper outline-none transition-colors focus:border-paper/60 [&>option]:bg-charcoal [&>option]:text-paper";
+
   return (
-    <div className="w-full max-w-3xl">
+    <div className="glass w-full max-w-2xl rounded-[1.4rem] p-2.5">
       {/* Buy / Rent toggle */}
-      <div className="mb-[-1px] flex w-fit">
+      <div className="flex w-fit rounded-full bg-paper/10 p-1">
         {(["sale", "rent"] as const).map((opt) => (
           <button
             key={opt}
             onClick={() => setListing(opt)}
-            className={`px-7 py-3 text-xs font-semibold uppercase tracking-[0.18em] transition-colors ${
+            className={`rounded-full px-6 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.18em] transition-colors ${
               listing === opt
                 ? "bg-paper text-ink"
-                : "bg-ink/40 text-paper/80 backdrop-blur hover:bg-ink/60"
+                : "text-paper/70 hover:text-paper"
             }`}
           >
             {opt === "sale" ? "Buy" : "Rent"}
@@ -39,12 +42,12 @@ export function HeroSearch() {
         ))}
       </div>
 
-      <div className="flex flex-col gap-3 bg-paper p-4 shadow-luxe sm:flex-row sm:items-center">
+      <div className="mt-2.5 flex flex-col gap-2 sm:flex-row sm:items-center">
         <select
           aria-label="Area"
           value={area}
           onChange={(e) => setArea(e.target.value)}
-          className="h-12 flex-1 border border-sand bg-paper px-4 text-sm text-ink outline-none focus:border-ink"
+          className={selectClass}
         >
           <option value="">All areas</option>
           {AREAS.map((a) => (
@@ -57,7 +60,7 @@ export function HeroSearch() {
           aria-label="Property type"
           value={type}
           onChange={(e) => setType(e.target.value)}
-          className="h-12 flex-1 border border-sand bg-paper px-4 text-sm text-ink outline-none focus:border-ink"
+          className={selectClass}
         >
           <option value="">All types</option>
           {PROPERTY_TYPES.map((t) => (
@@ -68,7 +71,7 @@ export function HeroSearch() {
         </select>
         <button
           onClick={search}
-          className="inline-flex h-12 items-center justify-center gap-2 bg-ink px-8 text-xs font-semibold uppercase tracking-[0.18em] text-paper transition-colors hover:bg-ink/80"
+          className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-full bg-paper px-7 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-ink transition-transform duration-300 hover:-translate-y-0.5"
         >
           <Search className="h-4 w-4" />
           Search

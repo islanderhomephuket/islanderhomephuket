@@ -5,16 +5,16 @@ type Variant = "primary" | "outline" | "ghost" | "gold" | "dark";
 type Size = "sm" | "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 font-medium tracking-wide transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 focus-visible:ring-offset-2";
+  "inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-wide transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus-visible:ring-2 focus-visible:ring-paper/60 focus-visible:ring-offset-2 focus-visible:ring-offset-ink";
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-gold text-ink hover:bg-gold-light border border-gold glow-gold",
-  gold: "bg-gold text-ink hover:bg-gold-light border border-gold",
+    "bg-paper text-ink border border-paper hover:-translate-y-0.5 glow-gold",
+  gold: "bg-paper text-ink border border-paper hover:-translate-y-0.5",
   outline:
-    "border border-paper/30 text-paper hover:border-gold hover:text-gold bg-transparent",
-  dark: "border border-paper/30 text-paper hover:border-gold hover:text-gold bg-transparent",
-  ghost: "text-paper hover:text-gold",
+    "border border-paper/30 text-paper hover:border-paper hover:bg-paper/10 bg-transparent",
+  dark: "border border-paper/30 text-paper hover:border-paper hover:bg-paper/10 bg-transparent",
+  ghost: "text-paper/70 hover:text-paper",
 };
 
 const sizes: Record<Size, string> = {

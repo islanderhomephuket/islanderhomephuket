@@ -12,6 +12,12 @@ const supabaseHost = (() => {
 
 const nextConfig: NextConfig = {
   images: {
+    // Vercel's image optimizer hit its account quota and started returning 402
+    // for EVERY image (including local ones), which blanked the whole site.
+    // Photos are already resized on upload (1600px q80 mozjpeg), so serving them
+    // straight from Supabase costs little and cannot be rate-limited.
+    // Flip back to false if the Vercel plan is upgraded.
+    unoptimized: true,
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
       ...(supabaseHost

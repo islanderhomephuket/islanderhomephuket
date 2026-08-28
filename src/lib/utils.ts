@@ -57,3 +57,15 @@ export function excerpt(text: string, maxLength = 160): string {
   if (text.length <= maxLength) return text;
   return text.slice(0, text.lastIndexOf(" ", maxLength)).trimEnd() + "…";
 }
+
+/**
+ * Pick a representative photo for an area from current inventory.
+ * Prefers a featured listing so the area grid leads with the best photography.
+ */
+export function areaCoverImage(
+  properties: { area_slug: string; cover_image?: string; is_featured: boolean }[],
+  areaSlug: string,
+): string | undefined {
+  const inArea = properties.filter((p) => p.area_slug === areaSlug && p.cover_image);
+  return (inArea.find((p) => p.is_featured) ?? inArea[0])?.cover_image;
+}

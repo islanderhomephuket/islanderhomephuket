@@ -32,7 +32,7 @@ const REASONS = [
 
 export function WhyChooseUs() {
   return (
-    <section className="bg-cream py-24">
+    <section className="bg-ink py-24 sm:py-32">
       <Container>
         <SectionHeading
           align="center"
@@ -40,21 +40,21 @@ export function WhyChooseUs() {
           title="A trusted partner on the island"
           description="Buying or renting overseas should feel effortless. We combine luxury service with the local knowledge that protects your investment."
         />
-        <div className="mt-16 grid gap-px overflow-hidden border border-charcoal-light bg-charcoal-light sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid gap-px overflow-hidden rounded-[1.5rem] border border-paper/10 bg-paper/10 sm:grid-cols-2 lg:grid-cols-4">
           {REASONS.map((r) => {
             const Icon = r.icon;
             return (
               <div
                 key={r.title}
-                className="group bg-charcoal p-8 transition-colors hover:bg-ink"
+                className="group bg-charcoal p-8 transition-colors hover:bg-charcoal-light"
               >
-                <span className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-gold/40 text-gold transition-colors group-hover:border-gold group-hover:bg-gold group-hover:text-ink">
+                <span className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-paper/25 text-paper transition-colors group-hover:border-paper group-hover:bg-paper group-hover:text-ink">
                   <Icon className="h-7 w-7" />
                 </span>
-                <h3 className="mt-6 font-display text-xl font-semibold text-paper transition-colors group-hover:text-gold">
+                <h3 className="mt-6 font-display text-lg font-medium text-paper">
                   {r.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-paper/60">
+                <p className="mt-3 text-sm leading-relaxed text-paper/55">
                   {r.body}
                 </p>
               </div>

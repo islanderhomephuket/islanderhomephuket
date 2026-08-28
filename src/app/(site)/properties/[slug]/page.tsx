@@ -167,7 +167,7 @@ export default async function PropertyDetailPage({
               <p className="text-xs uppercase tracking-[0.18em] text-paper/50">
                 {priceLabel}
               </p>
-              <p className="font-display text-3xl font-semibold text-gold sm:text-4xl">
+              <p className="font-display text-3xl font-semibold text-paper sm:text-4xl">
                 {price}
               </p>
               {isBoth && (
