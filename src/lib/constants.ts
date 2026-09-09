@@ -6,7 +6,9 @@ export const SITE = {
   tagline: "Luxury Real Estate in Phuket",
   description:
     "Islander Home Phuket — curated luxury villas, condos and land for sale and rent across Phuket's most desirable areas. Sea-view estates, private-pool villas and trusted local expertise.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://islanderhomephuket.com",
+  // Must be the host Vercel actually serves. The apex 308-redirects to www, so
+  // pointing canonicals/sitemap at the apex made every URL Google fetched a redirect.
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.islanderhomephuket.com",
   email: "islanderhomephuket@gmail.com",
   phoneDisplay: "+66 65 959 4299",
   locale: "en_US",
@@ -185,6 +187,86 @@ export const AREAS: AreaInfo[] = [
     coords: { lat: 8.0353, lng: 98.339 },
     image: "/properties/villa-8.png",
     poster: "/areas/thalang.jpg",
+  },
+  {
+    slug: "kathu",
+    name: "Kathu",
+    tagline: "Central, convenient & well connected",
+    blurb:
+      "Wedged between Phuket Town and Patong, Kathu is the island's practical centre — Central Floresta and Central Festival, international schools and the Loch Palm golf courses are all minutes away, and the beach is a ten-minute drive over the hill.",
+    highlights: [
+      "Minutes to Central Floresta & Central Festival",
+      "Quick hill road to Patong Beach",
+      "Loch Palm & Red Mountain golf",
+      "Modern condominiums & family houses",
+    ],
+    mapQuery: "Kathu, Phuket, Thailand",
+    coords: { lat: 7.911, lng: 98.332 },
+    image: "/properties/villa-2.png",
+  },
+  {
+    slug: "patong",
+    name: "Patong",
+    tagline: "The island's beachfront city",
+    blurb:
+      "Phuket's most energetic beach town — a three-kilometre bay backed by hotels, restaurants and nightlife, with hillside condominiums above it taking in the whole sweep of the sea.",
+    highlights: [
+      "Patong Beach & Bangla Road",
+      "Strong short-term rental demand",
+      "Hillside sea-view apartments",
+      "Everything within walking distance",
+    ],
+    mapQuery: "Patong Beach, Phuket, Thailand",
+    coords: { lat: 7.8965, lng: 98.296 },
+    image: "/properties/villa-4.png",
+  },
+  {
+    slug: "kata",
+    name: "Kata",
+    tagline: "Surf beach & laid-back living",
+    blurb:
+      "Two sheltered bays on the west coast with a long-standing surf and yoga community, good restaurants and a quieter, greener pace than the resort towns to the north.",
+    highlights: [
+      "Kata & Kata Noi beaches",
+      "Surf season from May to October",
+      "Hillside villas with sea views",
+      "Close to Karon, Chalong & Rawai",
+    ],
+    mapQuery: "Kata Beach, Phuket, Thailand",
+    coords: { lat: 7.818, lng: 98.298 },
+    image: "/properties/villa-5.png",
+  },
+  {
+    slug: "karon",
+    name: "Karon",
+    tagline: "Wide sands & sea-view condos",
+    blurb:
+      "The island's longest west-coast beach, backed by a low-rise resort strip and a hillside of condominiums — a steady rental market with easy access to Kata and Patong.",
+    highlights: [
+      "Three kilometres of Karon Beach",
+      "Sea-view condominium stock",
+      "Reliable holiday rental demand",
+      "Ten minutes to Patong & Kata",
+    ],
+    mapQuery: "Karon Beach, Phuket, Thailand",
+    coords: { lat: 7.846, lng: 98.294 },
+    image: "/properties/villa-6.png",
+  },
+  {
+    slug: "kamala",
+    name: "Kamala",
+    tagline: "Millionaire's Mile & quiet bays",
+    blurb:
+      "A calm family beach north of Patong, with the clifftop estates of Millionaire's Mile above it — one of Phuket's most exclusive addresses, yet still a working Thai village at heart.",
+    highlights: [
+      "Kamala Beach & Millionaire's Mile",
+      "Quiet, family-friendly village",
+      "Luxury sea-view villas & residences",
+      "Fifteen minutes to Bang Tao & Patong",
+    ],
+    mapQuery: "Kamala Beach, Phuket, Thailand",
+    coords: { lat: 7.954, lng: 98.283 },
+    image: "/properties/villa-1.png",
   },
 ];
 

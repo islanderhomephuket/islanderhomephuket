@@ -1,5 +1,5 @@
 import { cache } from "react";
-import { createClient } from "./supabase/server";
+import { createClient, createPublicClient } from "./supabase/server";
 import { isSupabaseConfigured } from "./supabase/config";
 import {
   MOCK_PROPERTIES,
@@ -90,7 +90,7 @@ function applyFilters(list: Property[], f: PropertyFilters = {}): Property[] {
 
 export const getProperties = cache(
   async (filters: PropertyFilters = {}): Promise<Property[]> => {
-    const supabase = await createClient();
+    const supabase = createPublicClient();
     if (!supabase) return applyFilters(DEMO_PROPERTIES, filters);
 
     let query = supabase
@@ -126,7 +126,7 @@ export const getFeaturedProperties = cache(
 
 export const getPropertyBySlug = cache(
   async (slug: string): Promise<Property | null> => {
-    const supabase = await createClient();
+    const supabase = createPublicClient();
     if (!supabase) {
       const found = DEMO_PROPERTIES.find((p) => p.slug === slug);
       return found ? withCover(found) : null;
@@ -194,7 +194,9 @@ export async function getAllPropertySlugs(): Promise<string[]> {
 
 export const getBlogPosts = cache(
   async (opts: { includeUnpublished?: boolean } = {}): Promise<BlogPost[]> => {
-    const supabase = await createClient();
+    const supabase = opts.includeUnpublished
+      ? await createClient()
+      : createPublicClient();
     if (!supabase) {
       return MOCK_BLOG_POSTS.filter(
         (p) => opts.includeUnpublished || p.published,
@@ -218,7 +220,7 @@ export const getBlogPosts = cache(
 
 export const getBlogPostBySlug = cache(
   async (slug: string): Promise<BlogPost | null> => {
-    const supabase = await createClient();
+    const supabase = createPublicClient();
     if (!supabase) {
       return MOCK_BLOG_POSTS.find((p) => p.slug === slug) ?? null;
     }

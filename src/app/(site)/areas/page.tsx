@@ -9,7 +9,7 @@ import { areaCoverImage } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Phuket Areas & Neighbourhoods",
   description:
-    "Explore Phuket's key areas — Koh Kaew, Bang Tao, Phuket Town, Chalong, Rawai and Thalang. Find the neighbourhood that fits your lifestyle and investment goals.",
+    "Explore Phuket's key areas — Koh Kaew, Bang Tao, Phuket Town, Chalong, Rawai, Thalang, Kathu, Patong, Kata, Karon and Kamala. Find the neighbourhood that fits your lifestyle and investment goals.",
   alternates: { canonical: "/areas" },
 };
 
@@ -33,7 +33,7 @@ export default async function AreasPage() {
       <section className="bg-charcoal py-20">
         <Container>
           <SectionHeading
-            kicker="Six destinations"
+            kicker="Eleven destinations"
             title="Find your neighbourhood"
           />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

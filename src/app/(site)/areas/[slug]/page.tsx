@@ -10,6 +10,9 @@ import { MapEmbed } from "@/components/property/map-embed";
 import { AREAS, getArea } from "@/lib/constants";
 import { getPropertiesByArea } from "@/lib/data";
 
+/** How many listings the guide shows before handing off to the intent hub. */
+const TEASER = 6;
+
 export function generateStaticParams() {
   return AREAS.map((a) => ({ slug: a.slug }));
 }
@@ -114,17 +117,39 @@ export default async function AreaPage({
             <>
               {forSale.length > 0 && (
                 <div>
-                  <SectionHeading kicker="For sale" title={`Buy in ${area.name}`} />
+                  <SectionHeading
+                    kicker="For sale"
+                    title={`Property for sale in ${area.name}`}
+                    description={`${forSale.length} ${forSale.length === 1 ? "home" : "homes"} for sale in ${area.name} right now.`}
+                  />
                   <div className="mt-10">
-                    <PropertyGrid properties={forSale} />
+                    <PropertyGrid properties={forSale.slice(0, TEASER)} />
+                  </div>
+                  <div className="mt-8">
+                    <ButtonLink href={`/buy/${area.slug}`} variant="outline">
+                      {forSale.length > TEASER
+                        ? `See all ${forSale.length} for sale in ${area.name}`
+                        : `${area.name} property for sale`}
+                    </ButtonLink>
                   </div>
                 </div>
               )}
               {forRent.length > 0 && (
                 <div className="mt-20">
-                  <SectionHeading kicker="For rent" title={`Rent in ${area.name}`} />
+                  <SectionHeading
+                    kicker="For rent"
+                    title={`Property for rent in ${area.name}`}
+                    description={`${forRent.length} long-term ${forRent.length === 1 ? "rental" : "rentals"} available in ${area.name}.`}
+                  />
                   <div className="mt-10">
-                    <PropertyGrid properties={forRent} />
+                    <PropertyGrid properties={forRent.slice(0, TEASER)} />
+                  </div>
+                  <div className="mt-8">
+                    <ButtonLink href={`/rent/${area.slug}`} variant="outline">
+                      {forRent.length > TEASER
+                        ? `See all ${forRent.length} rentals in ${area.name}`
+                        : `${area.name} rentals`}
+                    </ButtonLink>
                   </div>
                 </div>
               )}

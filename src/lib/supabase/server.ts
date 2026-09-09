@@ -41,6 +41,21 @@ export async function createClient() {
 }
 
 /**
+ * Cookie-free anon client for the public, read-only pages.
+ *
+ * `createClient()` calls `cookies()`, which opts every page that touches it out of
+ * static rendering — that was costing the public site ~3s TTFB per listing page.
+ * Nothing public depends on a session, so read through this instead and let the
+ * pages cache.
+ */
+export function createPublicClient() {
+  if (!SUPABASE_URL || !SUPABASE_ANON_KEY) return null;
+  return createServerClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    cookies: { getAll: () => [], setAll: () => {} },
+  });
+}
+
+/**
  * Privileged server client using the service-role key for admin writes.
  * Bypasses RLS — only use in trusted server contexts (admin actions).
  */

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { PropertyListing } from "@/components/property/listing";
+import { AreaLinkRail } from "@/components/property/area-link-rail";
 
 export const metadata: Metadata = {
   title: "Properties for Rent in Phuket",
@@ -20,9 +21,10 @@ export default async function RentPage({
       <PropertyListing
         listingType="rent"
         searchParams={params}
-        title="Properties for Rent"
+        title="Properties for Rent in Phuket"
         subtitle="Settle into island life — handpicked long-term rentals, from beachside apartments to private-pool family villas."
       />
+      <AreaLinkRail intent="rent" />
     </Suspense>
   );
 }

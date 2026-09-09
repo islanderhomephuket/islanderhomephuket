@@ -26,6 +26,15 @@ import {
   getAllPropertySlugs,
 } from "@/lib/data";
 import { formatArea, formatRent, formatTHB } from "@/lib/utils";
+import {
+  propertyTitle,
+  propertyPhrase,
+  propertyDescription,
+  propertyJsonLd,
+  propertyBreadcrumb,
+  bedroomLabel,
+  typeLabel,
+} from "@/lib/seo";
 
 export async function generateStaticParams() {
   const slugs = await getAllPropertySlugs();
@@ -41,15 +50,31 @@ export async function generateMetadata({
   const property = await getPropertyBySlug(slug);
   if (!property) return { title: "Property not found" };
   const area = getArea(property.area_slug);
+  // Absolute: the search phrase already fills the SERP line, so the site-wide
+  // " | Islander Home Phuket" suffix would only get truncated away.
+  const searchTitle = propertyTitle(property);
+  const description = propertyDescription(property);
   return {
-    title: property.title,
-    description: property.description.slice(0, 160),
+    title: { absolute: `${searchTitle} | ${SITE.shortName}` },
+    description,
     alternates: { canonical: `/properties/${property.slug}` },
     openGraph: {
-      title: `${property.title} | ${SITE.name}`,
-      description: property.description.slice(0, 160),
+      type: "article",
+      title: `${property.title} — ${propertyPhrase(property)}`,
+      description,
+      url: `/properties/${property.slug}`,
       images: property.cover_image ? [{ url: property.cover_image }] : undefined,
     },
+    twitter: {
+      card: "summary_large_image",
+      title: searchTitle,
+      description,
+      images: property.cover_image ? [property.cover_image] : undefined,
+    },
+    robots:
+      property.status === "sold" || property.status === "rented"
+        ? { index: false, follow: true }
+        : { index: true, follow: true },
     other: { "property:area": area?.name ?? "Phuket" },
   };
 }
@@ -100,26 +125,24 @@ export default async function PropertyDetailPage({
     },
   ].filter(Boolean) as { icon: typeof BedDouble; label: string; value: string | number }[];
 
-  // JSON-LD for SEO
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Residence",
-    name: property.title,
-    description: property.description,
-    image: property.images?.map((i) => i.url),
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: area?.name ?? "Phuket",
-      addressRegion: "Phuket",
-      addressCountry: "TH",
-    },
-  };
+  // JSON-LD for SEO: the listing itself, plus the trail Google draws under the result.
+  const jsonLd = propertyJsonLd(property);
+  const breadcrumbLd = propertyBreadcrumb(property);
+  const intentPath = isRent ? "rent" : "buy";
+  const areaHubHref = area ? `/${intentPath}/${area.slug}` : `/${intentPath}`;
+  const searchPhrase = propertyPhrase(property);
+  const bedsWord = bedroomLabel(property).toLowerCase();
+  const typeWord = typeLabel(property).toLowerCase();
 
   return (
     <article>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
 
       {/* Breadcrumb + title */}
@@ -130,12 +153,17 @@ export default async function PropertyDetailPage({
               Home
             </Link>
             <span>/</span>
-            <Link
-              href={property.listing_type === "rent" ? "/rent" : "/buy"}
-              className="hover:text-gold"
-            >
-              {property.listing_type === "rent" ? "Rent" : "Buy"}
+            <Link href={`/${intentPath}`} className="hover:text-gold">
+              {isRent ? "Rent" : "Buy"}
             </Link>
+            {area && (
+              <>
+                <span>/</span>
+                <Link href={areaHubHref} className="hover:text-gold">
+                  {area.name}
+                </Link>
+              </>
+            )}
             <span>/</span>
             <span className="text-paper/80">{property.title}</span>
           </nav>
@@ -158,6 +186,8 @@ export default async function PropertyDetailPage({
               <h1 className="mt-4 font-display text-4xl font-semibold text-paper sm:text-5xl">
                 {property.title}
               </h1>
+              {/* The searchable phrase, in prose — the H1 above is the human name. */}
+              <p className="mt-2 text-paper/70">{searchPhrase}</p>
               <p className="mt-3 inline-flex items-center gap-2 text-paper/70">
                 <MapPin className="h-4 w-4 text-gold" />
                 {property.address ?? area?.name ?? "Phuket, Thailand"}
@@ -211,7 +241,12 @@ export default async function PropertyDetailPage({
 
               {/* Description */}
               <div className="mt-12">
-                <SectionHeading kicker="Overview" title="About this property" />
+                <SectionHeading
+                  kicker="Overview"
+                  title={`About this ${[bedsWord, typeWord].filter(Boolean).join(" ")} ${
+                    isRent ? "for rent" : "for sale"
+                  } in ${area?.name ?? "Phuket"}`}
+                />
                 <p className="mt-6 whitespace-pre-line leading-relaxed text-paper/75">
                   {property.description}
                 </p>
@@ -246,6 +281,22 @@ export default async function PropertyDetailPage({
                     title={`${property.title} location`}
                   />
                 </div>
+                {area && (
+                  <p className="mt-6 text-sm text-paper/70">
+                    See every{" "}
+                    <Link href={areaHubHref} className="text-gold hover:underline">
+                      property {isRent ? "for rent" : "for sale"} in {area.name}
+                    </Link>
+                    , or read the{" "}
+                    <Link
+                      href={`/areas/${area.slug}`}
+                      className="text-gold hover:underline"
+                    >
+                      {area.name} area guide
+                    </Link>
+                    .
+                  </p>
+                )}
               </div>
             </div>
 
