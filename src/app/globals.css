@@ -205,6 +205,19 @@ h1, h2, h3, h4, .font-display {
   font-size: 0.7rem;
 }
 .prose-luxe td:not(:first-child) { white-space: nowrap; }
+/* In-article photography: full column width, and the caption sits under it. */
+.prose-luxe figure {
+  margin: 2rem 0;
+}
+.prose-luxe img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(246, 245, 242, 0.14);
+}
+.prose-luxe figure figcaption {
+  margin: 0.7rem 0 0;
+}
 .prose-luxe figcaption {
   font-size: 0.8rem;
   color: #7e7d79;
