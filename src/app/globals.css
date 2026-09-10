@@ -180,3 +180,33 @@ h1, h2, h3, h4, .font-display {
   margin: 1.4rem 0;
 }
 .prose-luxe strong { color: var(--color-paper); }
+.prose-luxe ol { margin: 0 0 1.1rem 1.4rem; list-style: decimal; }
+.prose-luxe li { margin: 0 0 0.35rem; }
+/* Price tables are the point of the data posts — they must survive a phone. */
+.prose-luxe .table-scroll { overflow-x: auto; margin: 0 0 1.4rem; }
+.prose-luxe table {
+  width: 100%;
+  min-width: 32rem;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+.prose-luxe th,
+.prose-luxe td {
+  border-bottom: 1px solid rgba(246, 245, 242, 0.14);
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  vertical-align: top;
+}
+.prose-luxe th {
+  color: var(--color-paper);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.7rem;
+}
+.prose-luxe td:not(:first-child) { white-space: nowrap; }
+.prose-luxe figcaption {
+  font-size: 0.8rem;
+  color: #7e7d79;
+  margin: -0.9rem 0 1.4rem;
+}

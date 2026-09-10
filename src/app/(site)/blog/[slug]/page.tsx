@@ -9,6 +9,13 @@ import { CtaBand } from "@/components/home/cta-band";
 import { getBlogPostBySlug, getBlogPosts, getAllBlogSlugs } from "@/lib/data";
 import { formatDate } from "@/lib/utils";
 import { SITE } from "@/lib/constants";
+import { blogPostJsonLd } from "@/lib/seo";
+
+/**
+ * Posts are written in Thai or English. Marking the language lets Google index
+ * each one under the right locale instead of reading Thai as broken English.
+ */
+const isThai = (text: string) => /[฀-๿]/.test(text);
 
 export async function generateStaticParams() {
   const slugs = await getAllBlogSlugs();
@@ -26,6 +33,7 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.excerpt,
+    ...(isThai(post.title + post.excerpt) ? { other: { "content-language": "th" } } : {}),
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
       type: "article",
@@ -51,6 +59,10 @@ export default async function BlogPostPage({
 
   return (
     <article>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostJsonLd(post)) }}
+      />
       {/* Hero */}
       <section className="relative flex min-h-[55vh] items-end overflow-hidden pb-14 pt-32">
         <Image
@@ -69,7 +81,10 @@ export default async function BlogPostPage({
             ))}
             <span className="text-paper/60">· {formatDate(post.published_at)}</span>
           </div>
-          <h1 className="mt-4 max-w-3xl font-display text-4xl font-semibold leading-tight text-paper sm:text-5xl">
+          <h1
+            className="mt-4 max-w-3xl font-display text-4xl font-semibold leading-tight text-paper sm:text-5xl"
+            lang={isThai(post.title) ? "th" : undefined}
+          >
             {post.title}
           </h1>
           <p className="mt-3 text-paper/70">By {post.author}</p>
@@ -87,6 +102,7 @@ export default async function BlogPostPage({
           </Link>
           <div
             className="prose-luxe mt-8"
+            lang={isThai(post.content) ? "th" : undefined}
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </Container>

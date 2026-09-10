@@ -350,3 +350,39 @@ export const INDEXABLE_MIN_LISTINGS = 3;
 
 export const areaIntentPaths = () =>
   AREAS.flatMap((a) => [`/rent/${a.slug}`, `/buy/${a.slug}`]);
+
+/* ───────────────────────── Blog ───────────────────────── */
+
+/** BlogPosting so articles are eligible for article treatment in Search. */
+export function blogPostJsonLd(post: {
+  slug: string;
+  title: string;
+  excerpt: string;
+  cover_image: string | null;
+  author: string;
+  published_at: string | null;
+  updated_at: string;
+  tags: string[];
+}) {
+  const url = abs(`/blog/${post.slug}`);
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": `${url}#post`,
+    url,
+    mainEntityOfPage: url,
+    headline: post.title,
+    description: post.excerpt,
+    ...(post.cover_image ? { image: [post.cover_image] } : {}),
+    ...(post.published_at ? { datePublished: post.published_at } : {}),
+    dateModified: post.updated_at,
+    inLanguage: /[฀-๿]/.test(post.title) ? "th" : "en",
+    keywords: post.tags.join(", "),
+    author: { "@type": "Organization", name: post.author || SITE.name },
+    publisher: {
+      "@type": "Organization",
+      name: SITE.name,
+      logo: { "@type": "ImageObject", url: abs("/logo.png") },
+    },
+  };
+}
