@@ -124,6 +124,9 @@ export function propertyDescription(property: Property): string {
   return out.length > 158 ? `${out.slice(0, 157).trimEnd()}…` : out;
 }
 
+/** Rental period → UN/CEFACT unit code, for the Offer's price specification. */
+const RENT_UNIT: Record<string, string> = { day: "DAY", week: "WEE", month: "MON", year: "ANN" };
+
 /** Schema.org type that best matches the listing. */
 function residenceType(property: Property): string {
   const t = lower(property.property_type || "");
@@ -204,7 +207,8 @@ export function propertyJsonLd(property: Property) {
                   "@type": "UnitPriceSpecification",
                   price: property.price,
                   priceCurrency: "THB",
-                  unitCode: property.rent_period === "year" ? "ANN" : "MON",
+                  // UN/CEFACT codes — a nightly holiday rate is not a monthly one.
+                  unitCode: RENT_UNIT[property.rent_period ?? "month"] ?? "MON",
                 },
               }
             : {}),
