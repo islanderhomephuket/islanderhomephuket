@@ -192,6 +192,15 @@ export async function getAllPropertySlugs(): Promise<string[]> {
 
 /* ─────────────────────────── Blog ─────────────────────────── */
 
+/**
+ * A post is live once it is published AND its publish time has arrived, so a
+ * post can be scheduled by publishing it with a future `published_at`.
+ */
+function isPostLive(post: BlogPost, now = Date.now()): boolean {
+  if (!post.published) return false;
+  return !post.published_at || new Date(post.published_at).getTime() <= now;
+}
+
 export const getBlogPosts = cache(
   async (opts: { includeUnpublished?: boolean } = {}): Promise<BlogPost[]> => {
     const supabase = opts.includeUnpublished
@@ -199,7 +208,7 @@ export const getBlogPosts = cache(
       : createPublicClient();
     if (!supabase) {
       return MOCK_BLOG_POSTS.filter(
-        (p) => opts.includeUnpublished || p.published,
+        (p) => opts.includeUnpublished || isPostLive(p),
       ).sort(
         (a, b) =>
           new Date(b.published_at ?? b.created_at).getTime() -
@@ -213,25 +222,29 @@ export const getBlogPosts = cache(
       nullsFirst: false,
     });
     if (error || !data)
-      return MOCK_BLOG_POSTS.filter((p) => p.published);
-    return data as BlogPost[];
+      return MOCK_BLOG_POSTS.filter((p) => isPostLive(p));
+    const posts = data as BlogPost[];
+    return opts.includeUnpublished ? posts : posts.filter((p) => isPostLive(p));
   },
 );
 
 export const getBlogPostBySlug = cache(
   async (slug: string): Promise<BlogPost | null> => {
     const supabase = createPublicClient();
-    if (!supabase) {
-      return MOCK_BLOG_POSTS.find((p) => p.slug === slug) ?? null;
-    }
+    const mock = () => {
+      const found = MOCK_BLOG_POSTS.find((p) => p.slug === slug);
+      return found && isPostLive(found) ? found : null;
+    };
+    if (!supabase) return mock();
     const { data, error } = await supabase
       .from("blog_posts")
       .select("*")
       .eq("slug", slug)
       .single();
-    if (error || !data)
-      return MOCK_BLOG_POSTS.find((p) => p.slug === slug) ?? null;
-    return data as BlogPost;
+    if (error || !data) return mock();
+    const post = data as BlogPost;
+    // Drafts and scheduled posts 404 rather than staying reachable by URL.
+    return isPostLive(post) ? post : null;
   },
 );
 

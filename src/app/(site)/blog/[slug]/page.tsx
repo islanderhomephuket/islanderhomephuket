@@ -17,6 +17,18 @@ import { blogPostJsonLd } from "@/lib/seo";
  */
 const isThai = (text: string) => /[฀-๿]/.test(text);
 
+/**
+ * Posts link to each other, and some of those targets are scheduled for later.
+ * A link to a post that is not live yet renders as plain text, and turns into a
+ * link on its own once that post publishes and this page revalidates.
+ */
+function unlinkUnpublishedPosts(html: string, liveSlugs: Set<string>): string {
+  return html.replace(
+    /<a\s+href="\/blog\/([^"#?]+)"[^>]*>([\s\S]*?)<\/a>/g,
+    (link, slug: string, text: string) => (liveSlugs.has(slug) ? link : text),
+  );
+}
+
 export async function generateStaticParams() {
   const slugs = await getAllBlogSlugs();
   return slugs.map((slug) => ({ slug }));
@@ -56,6 +68,10 @@ export default async function BlogPostPage({
 
   const all = await getBlogPosts();
   const related = all.filter((p) => p.slug !== post.slug).slice(0, 3);
+  const content = unlinkUnpublishedPosts(
+    post.content,
+    new Set(all.map((p) => p.slug)),
+  );
 
   return (
     <article>
@@ -63,31 +79,37 @@ export default async function BlogPostPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostJsonLd(post)) }}
       />
-      {/* Hero */}
-      <section className="relative flex min-h-[55vh] items-end overflow-hidden pb-14 pt-32">
-        <Image
-          src={post.cover_image ?? "/properties/villa-1.png"}
-          alt={post.title}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/30" />
-        <Container className="relative">
-          <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.16em] text-gold-light">
-            {post.tags.map((t) => (
-              <span key={t}>{t}</span>
-            ))}
-            <span className="text-paper/60">· {formatDate(post.published_at)}</span>
+      {/* Hero — covers are headline graphics, so the image is shown whole
+          instead of cropped behind the title. */}
+      <section className="bg-ink pb-12 pt-28 sm:pt-32">
+        <Container className="max-w-5xl">
+          {post.cover_image && (
+            <div className="relative aspect-[1200/630] overflow-hidden rounded-2xl">
+              <Image
+                src={post.cover_image}
+                alt={post.title}
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 1024px"
+                className="object-cover"
+              />
+            </div>
+          )}
+          <div className="mx-auto mt-10 max-w-3xl">
+            <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.16em] text-gold-light">
+              {post.tags.map((t) => (
+                <span key={t}>{t}</span>
+              ))}
+              <span className="text-paper/60">· {formatDate(post.published_at)}</span>
+            </div>
+            <h1
+              className="mt-4 font-display text-4xl font-semibold leading-tight text-paper sm:text-5xl"
+              lang={isThai(post.title) ? "th" : undefined}
+            >
+              {post.title}
+            </h1>
+            <p className="mt-3 text-paper/70">By {post.author}</p>
           </div>
-          <h1
-            className="mt-4 max-w-3xl font-display text-4xl font-semibold leading-tight text-paper sm:text-5xl"
-            lang={isThai(post.title) ? "th" : undefined}
-          >
-            {post.title}
-          </h1>
-          <p className="mt-3 text-paper/70">By {post.author}</p>
         </Container>
       </section>
 
@@ -103,7 +125,7 @@ export default async function BlogPostPage({
           <div
             className="prose-luxe mt-8"
             lang={isThai(post.content) ? "th" : undefined}
-            dangerouslySetInnerHTML={{ __html: post.content }}
+            dangerouslySetInnerHTML={{ __html: content }}
           />
         </Container>
       </section>

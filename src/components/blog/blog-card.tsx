@@ -9,7 +9,7 @@ export function BlogCard({ post }: { post: BlogPost }) {
       href={`/blog/${post.slug}`}
       className="hover-lift group flex flex-col overflow-hidden border border-charcoal-light bg-charcoal hover:border-gold/50"
     >
-      <div className="relative aspect-[16/10] overflow-hidden">
+      <div className="relative aspect-[1200/630] overflow-hidden">
         <Image
           src={post.cover_image ?? "/properties/villa-1.png"}
           alt={post.title}

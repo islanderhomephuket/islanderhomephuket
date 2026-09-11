@@ -38,4 +38,11 @@ scroll instead of breaking the layout on a phone.
 - **Numbers must come from the database**, not from memory — query `properties` and quote
   the real count, median and range, then say the month the figures are from. That is the
   part competitors cannot copy.
-- **Alternate Thai and English** roughly day about.
+- **English only** since 2026-09-11 — the owner found the Thai posts hard to read. Show the
+  owner a draft before anything goes live.
+- **Schedule a post** by publishing it with a future `"published_at"` (ISO time). Until then it
+  is hidden everywhere — the journal list, the sitemap and its own URL — and it appears within
+  the 5-minute ISR window after that time. Links to a scheduled post render as plain text until
+  it is live.
+- **Covers are headline graphics** (1200×630, the headline designed into the image), uploaded to
+  `property-media/blog-covers/<slug>.jpg`. The post page shows the cover whole, above the title.
