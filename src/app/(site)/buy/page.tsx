@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { PropertyListing } from "@/components/property/listing";
 import { AreaLinkRail } from "@/components/property/area-link-rail";
+import { TypeLinkRail } from "@/components/property/type-link-rail";
 
 export const metadata: Metadata = {
   title: "Properties for Sale in Phuket",
@@ -24,6 +25,7 @@ export default async function BuyPage({
         title="Properties for Sale in Phuket"
         subtitle="Own a piece of the island — from turn-key condominiums to landmark sea-view villas across Phuket's most desirable areas."
       />
+      <TypeLinkRail intent="buy" />
       <AreaLinkRail intent="buy" />
     </Suspense>
   );

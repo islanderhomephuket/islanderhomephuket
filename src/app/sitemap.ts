@@ -2,6 +2,10 @@ import type { MetadataRoute } from "next";
 import { SITE, AREAS } from "@/lib/constants";
 import { getProperties, getAllBlogSlugs } from "@/lib/data";
 import { INDEXABLE_MIN_LISTINGS, matchesIntent } from "@/lib/seo";
+import {
+  PROPERTY_TYPE_PAGES,
+  isPropertyTypeMatch,
+} from "@/lib/property-type-pages";
 
 /** Rebuilt hourly so newly published listings enter the sitemap on their own. */
 export const revalidate = 3600;
@@ -50,6 +54,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     }));
 
+  // Property-type hubs — /buy/villas, /rent/condos — on the same stock threshold.
+  const typeRoutes = PROPERTY_TYPE_PAGES.flatMap((t) =>
+    (["rent", "buy"] as const).map((intent) => ({
+      intent,
+      slug: t.slug,
+      count: properties.filter(
+        (p) => matchesIntent(p, intent) && isPropertyTypeMatch(p, t),
+      ).length,
+    })),
+  )
+    .filter((h) => h.count >= INDEXABLE_MIN_LISTINGS)
+    .map((h) => ({
+      url: `${base}/${h.intent}/${h.slug}`,
+      lastModified: now,
+      changeFrequency: "daily" as const,
+      priority: 0.9,
+    }));
+
   const propertyRoutes = properties
     .filter((p) => p.status !== "sold" && p.status !== "rented")
     .map((p) => ({
@@ -69,6 +91,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...staticRoutes,
     ...hubRoutes,
+    ...typeRoutes,
     ...areaRoutes,
     ...propertyRoutes,
     ...blogRoutes,
