@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Hero, type HeroSlide } from "@/components/home/hero";
 import { WhyChooseUs } from "@/components/home/why-choose-us";
+import { BrowseLinks } from "@/components/home/browse-links";
 import { PhuketGuide } from "@/components/home/phuket-guide";
 import { CtaBand } from "@/components/home/cta-band";
 import { Container } from "@/components/ui/container";
@@ -100,6 +101,7 @@ export default async function HomePage() {
           </div>
         </Container>
       </section>
+      <BrowseLinks />
 
       <PhuketGuide />
 
