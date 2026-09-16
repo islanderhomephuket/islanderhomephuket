@@ -139,10 +139,15 @@ export const getPropertyBySlug = cache(
       // from every hub but the page itself still answered at its old URL.
       .neq("status", "draft")
       .maybeSingle();
-    if (error || !data) {
+    // Fall back to the bundled demo data only when the database is unreachable.
+    // A slug that is simply absent (or drafted) must 404: the demo set carries the
+    // old July flagships (BT01…), and falling back on !data kept their pages alive
+    // after they were drafted as duplicates (2026-09-16).
+    if (error) {
       const found = DEMO_PROPERTIES.find((p) => p.slug === slug);
       return found ? withCover(found) : null;
     }
+    if (!data) return null;
     return withCover(data as Property);
   },
 );
