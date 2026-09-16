@@ -116,8 +116,9 @@ export async function TypeIntentPage({
                 {pools > 0 && (
                   <>
                     {" "}
-                    {pools === properties.length ? "Every one" : `${pools} of them`} has a
-                    private pool.
+                    {pools === properties.length
+                      ? "Every one has a private pool."
+                      : `${pools} of them have a private pool.`}
                   </>
                 )}
               </>
