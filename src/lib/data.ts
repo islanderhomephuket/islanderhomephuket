@@ -135,7 +135,10 @@ export const getPropertyBySlug = cache(
       .from("properties")
       .select("*, images:property_images(*)")
       .eq("slug", slug)
-      .single();
+      // Draft is how a listing is taken off the site. Without this the card vanished
+      // from every hub but the page itself still answered at its old URL.
+      .neq("status", "draft")
+      .maybeSingle();
     if (error || !data) {
       const found = DEMO_PROPERTIES.find((p) => p.slug === slug);
       return found ? withCover(found) : null;
