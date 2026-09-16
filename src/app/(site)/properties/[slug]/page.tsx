@@ -177,12 +177,23 @@ export default async function PropertyDetailPage({
                 {property.reference && (
                   <Badge tone="muted">Ref {property.reference}</Badge>
                 )}
-                {property.status !== "available" && (
-                  <Badge tone="dark" className="capitalize">
-                    {property.status}
-                  </Badge>
-                )}
               </div>
+              {property.status !== "available" && (
+                <div
+                  className={`mt-5 inline-flex items-center gap-4 rounded-xl px-6 py-3 text-white shadow-lg ${
+                    property.status === "reserved" ? "bg-amber-500" : "bg-red-600"
+                  }`}
+                >
+                  <span className="text-3xl font-extrabold uppercase tracking-[0.2em] sm:text-4xl">
+                    {property.status}
+                  </span>
+                  <span className="hidden text-sm font-medium text-white/90 sm:inline">
+                    {property.status === "reserved"
+                      ? "Under offer"
+                      : "No longer available — ask us for similar homes"}
+                  </span>
+                </div>
+              )}
               <h1 className="mt-4 font-display text-4xl font-semibold text-paper sm:text-5xl">
                 {property.title}
               </h1>
@@ -211,7 +222,20 @@ export default async function PropertyDetailPage({
       {/* Gallery */}
       <section className="bg-charcoal py-10">
         <Container>
-          <Gallery images={property.images ?? []} title={property.title} />
+          <div className="relative">
+            <Gallery images={property.images ?? []} title={property.title} />
+            {property.status !== "available" && (
+              <div className="pointer-events-none absolute left-0 top-0 z-10 h-40 w-40 overflow-hidden rounded-tl-[1.1rem]">
+                <span
+                  className={`absolute left-[-52px] top-[34px] w-[220px] -rotate-45 py-2 text-center text-lg font-extrabold uppercase tracking-[0.3em] text-white shadow-lg ${
+                    property.status === "reserved" ? "bg-amber-500" : "bg-red-600"
+                  }`}
+                >
+                  {property.status}
+                </span>
+              </div>
+            )}
+          </div>
         </Container>
       </section>
 

@@ -54,8 +54,14 @@ export function PropertyCard({ property }: { property: Property }) {
           </span>
         )}
         {statusLabel && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black/55">
-            <span className="rounded-full border border-paper/80 px-6 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-paper">
+          // The one place colour breaks the monochrome system: a sold listing
+          // has to read as sold at a glance, from a thumbnail, on a phone.
+          <div className="absolute inset-0 flex items-center justify-center bg-black/50">
+            <span
+              className={`-rotate-6 rounded-lg border-2 border-white/90 px-8 py-3 text-2xl font-extrabold uppercase tracking-[0.25em] text-white shadow-2xl ${
+                property.status === "reserved" ? "bg-amber-500" : "bg-red-600"
+              }`}
+            >
               {statusLabel}
             </span>
           </div>
