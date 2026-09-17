@@ -10,7 +10,33 @@ const supabaseHost = (() => {
   }
 })();
 
+/**
+ * Listings removed as duplicates of another listing of the same property.
+ * The hidden URL would otherwise 404 — and several were the oldest listings on the
+ * site, the ones most likely to be indexed and linked. Send them to the survivor.
+ * Add a line here whenever a duplicate is taken down; never for a listing that was
+ * simply wrong (BTA-062 has no honest target and is left to 404).
+ */
+const DUPLICATE_LISTINGS: [string, string][] = [
+  ["luxury-pool-villa-layan-bangtao-bt01", "bangtao-pool-villa-20m"],
+  ["luxury-pool-villa-marnik-cherng-talay-bt05", "cherng-talay-marnik-pool-villa-1499m"],
+  ["sierra-vista-luxury-pool-villas-bangtao-bt06", "sierra-vista-pool-villa-199m"],
+  ["investment-pool-villa-pasak-laguna-bt09", "pasak-pool-villa-79m"],
+  ["brand-new-smart-home-villa-rawai-rw06", "rawai-smart-home-villa-65k"],
+  ["pool-villa-naiharn-rawai-rw05", "naiharn-pool-villa-155m"],
+  ["modern-pool-villa-nai-harn-rawai-rw04", "rawai-modern-pool-villa-139m"],
+  ["chalong-house-109m-2", "chalong-house-109m"],
+  ["cherng-talay-pool-villa-220k", "pasak3-chernglay-pool-villa-220k"],
+];
+
 const nextConfig: NextConfig = {
+  async redirects() {
+    return DUPLICATE_LISTINGS.map(([from, to]) => ({
+      source: `/properties/${from}`,
+      destination: `/properties/${to}`,
+      permanent: true,
+    }));
+  },
   images: {
     // Vercel's image optimizer hit its account quota and started returning 402
     // for EVERY image (including local ones), which blanked the whole site.
