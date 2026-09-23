@@ -8,11 +8,13 @@ import { WhatsAppIcon } from "@/components/brand/contact-icons";
 export function ContactForm({
   propertyId,
   propertyTitle,
+  propertyReference,
   source = "contact-page",
   compact = false,
 }: {
   propertyId?: string;
   propertyTitle?: string;
+  propertyReference?: string;
   source?: string;
   compact?: boolean;
 }) {
@@ -22,7 +24,9 @@ export function ContactForm({
   const [error, setError] = useState("");
 
   const defaultMessage = propertyTitle
-    ? `Hi Islander Home, I'm interested in "${propertyTitle}". Please send me more details.`
+    ? `Hi Islander Home, I'm interested in "${propertyTitle}"${
+        propertyReference ? ` (Ref: ${propertyReference})` : ""
+      }. Please send me more details.`
     : "";
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {

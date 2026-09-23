@@ -375,6 +375,7 @@ export default async function PropertyDetailPage({
                   <ContactForm
                     propertyId={property.id}
                     propertyTitle={property.title}
+                    propertyReference={property.reference ?? property.slug}
                     source="property-detail"
                     compact
                   />
