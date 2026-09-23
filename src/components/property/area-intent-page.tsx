@@ -129,16 +129,11 @@ export async function AreaIntentPage({
   // Sibling areas that actually have stock for this intent, for the footer links.
   const siblings = AREAS.filter((a) => a.slug !== area.slug);
 
-  // Area × type pages, for the combinations that have real stock. Sale only for
-  // now — the `/rent/<area>/<type>` route does not exist yet, and a link to a
-  // page that 404s is worse than no link.
-  const typePages =
-    intent === "buy"
-      ? PROPERTY_TYPE_PAGES.map((type) => ({
-          type,
-          count: properties.filter((p) => isPropertyTypeMatch(p, type)).length,
-        })).filter((r) => r.count > 0)
-      : [];
+  // Area × type pages, for the combinations that have real stock on this side.
+  const typePages = PROPERTY_TYPE_PAGES.map((type) => ({
+    type,
+    count: properties.filter((p) => isPropertyTypeMatch(p, type)).length,
+  })).filter((r) => r.count > 0);
 
   return (
     <>

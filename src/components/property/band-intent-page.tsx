@@ -1,10 +1,10 @@
 /**
- * `/buy/villas-under-15m` and friends — the sale book filtered to a budget.
+ * `/buy/villas-under-15m`, `/rent/condos-under-20k` — the book filtered to a budget.
  *
- * Buyers arrive with a ceiling, not an area, and the phrase they search carries
- * the number: "pool villa Phuket under 10 million". This page is that phrase,
- * with the listings that actually clear the ceiling and links down to the next
- * band so nobody who can stretch further hits a dead end.
+ * People arrive with a ceiling, not an area, and the phrase they search carries
+ * the number: "pool villa Phuket under 10 million", "condo for rent Phuket 20k".
+ * This page is that phrase, with the listings that actually clear the ceiling
+ * and links across to the other bands so nobody hits a dead end.
  */
 
 import Link from "next/link";
@@ -14,7 +14,7 @@ import { PropertyGrid } from "@/components/property/property-grid";
 import { ButtonLink } from "@/components/ui/button";
 import { AREAS } from "@/lib/constants";
 import {
-  PRICE_BAND_PAGES,
+  bandsFor,
   bandHeading,
   bandType,
   type PriceBandPage,
@@ -30,10 +30,13 @@ export function BandIntentPage({
   band: PriceBandPage;
   properties: Property[];
 }) {
+  const intent = band.intent;
   const type = bandType(band);
   const heading = bandHeading(band);
-  const path = `/buy/${band.slug}`;
-  const range = priceRange(properties, "buy");
+  const path = `/${intent}/${band.slug}`;
+  const range = priceRange(properties, intent);
+  const verb = intent === "rent" ? "for rent" : "for sale";
+  const per = intent === "rent" ? " a month" : "";
 
   const byArea = AREAS.map((area) => ({
     area,
@@ -44,16 +47,18 @@ export function BandIntentPage({
 
   const breadcrumb = breadcrumbJsonLd([
     { name: "Home", path: "/" },
-    { name: "Buy", path: "/buy" },
-    { name: type.plural, path: `/buy/${type.slug}` },
+    { name: intent === "rent" ? "Rent" : "Buy", path: `/${intent}` },
+    { name: type.plural, path: `/${intent}/${type.slug}` },
     { name: `Under ${band.cap}`, path },
   ]);
   const itemList = listingItemListJsonLd(properties, heading, path);
 
   // The other bands, cheapest first — the same type's neighbours first.
-  const siblings = PRICE_BAND_PAGES.filter((b) => b.slug !== band.slug).sort((a, b) =>
-    a.type === band.type && b.type !== band.type ? -1 : a.max - b.max,
-  );
+  const siblings = bandsFor(intent)
+    .filter((b) => b.slug !== band.slug)
+    .sort((a, b) =>
+      a.type === band.type && b.type !== band.type ? -1 : a.max - b.max,
+    );
 
   return (
     <>
@@ -75,11 +80,11 @@ export function BandIntentPage({
               Home
             </Link>
             <span>/</span>
-            <Link href="/buy" className="hover:text-gold">
-              Buy
+            <Link href={`/${intent}`} className="hover:text-gold">
+              {intent === "rent" ? "Rent" : "Buy"}
             </Link>
             <span>/</span>
-            <Link href={`/buy/${type.slug}`} className="hover:text-gold">
+            <Link href={`/${intent}/${type.slug}`} className="hover:text-gold">
               {type.plural}
             </Link>
             <span>/</span>
@@ -91,15 +96,15 @@ export function BandIntentPage({
               <>
                 {properties.length}{" "}
                 {properties.length === 1 ? type.singular : `${type.singular}s`} on the
-                books at or under {band.cap}
+                books at or under {band.cap}{per}
                 {range ? `, ${range}` : ""}, across {byArea.length}{" "}
                 {byArea.length === 1 ? "area" : "areas"}.
               </>
             ) : (
               <>
-                Nothing is on the books under {band.cap} today. Tell us the budget and
+                Nothing is on the books under {band.cap}{per} today. Tell us the budget and
                 the area and we will watch for it — stock at this level moves fast and
-                often sells before it is advertised.
+                often {intent === "rent" ? "is taken" : "sells"} before it is advertised.
               </>
             )}
           </p>
@@ -111,24 +116,24 @@ export function BandIntentPage({
         <Container>
           <PropertyGrid
             properties={properties}
-            emptyMessage={`No ${type.singular}s under ${band.cap} at the moment.`}
+            emptyMessage={`No ${type.singular}s under ${band.cap}${per} at the moment.`}
           />
 
           {byArea.length > 1 && (
             <div className="mt-12">
               <SectionHeading
                 kicker="Where they are"
-                title={`Under ${band.cap} by area`}
+                title={`Under ${band.cap}${per} by area`}
               />
               <ul className="mt-6 grid gap-x-8 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
                 {byArea.map(({ area, items }) => (
                   <li key={area.slug}>
                     <Link
-                      href={comboPath("buy", { area, type })}
+                      href={comboPath(intent, { area, type })}
                       className="flex items-baseline justify-between gap-3 text-sm text-paper/75 underline-offset-4 hover:text-gold hover:underline"
                     >
                       <span>
-                        {type.plural} for sale in {area.name}
+                        {type.plural} {verb} in {area.name}
                       </span>
                       <span className="shrink-0 text-xs text-paper/40">
                         {items.length}
@@ -141,12 +146,17 @@ export function BandIntentPage({
           )}
 
           <div className="mt-12 flex flex-wrap gap-4">
-            <ButtonLink href={`/buy/${type.slug}`} variant="outline">
-              All {type.plural.toLowerCase()} for sale
+            <ButtonLink href={`/${intent}/${type.slug}`} variant="outline">
+              All {type.plural.toLowerCase()} {verb}
             </ButtonLink>
-            <ButtonLink href="/blog/buying-property-in-phuket-guide-for-foreigners" variant="outline">
-              Foreign buyer&rsquo;s guide
-            </ButtonLink>
+            {intent === "buy" && (
+              <ButtonLink
+                href="/blog/buying-property-in-phuket-guide-for-foreigners"
+                variant="outline"
+              >
+                Foreign buyer&rsquo;s guide
+              </ButtonLink>
+            )}
             <ButtonLink href="/contact">Send us your budget</ButtonLink>
           </div>
         </Container>
@@ -159,10 +169,11 @@ export function BandIntentPage({
             {siblings.map((b) => (
               <li key={b.slug}>
                 <Link
-                  href={`/buy/${b.slug}`}
+                  href={`/${intent}/${b.slug}`}
                   className="text-paper/75 underline-offset-4 hover:text-gold hover:underline"
                 >
-                  {bandType(b).plural} for sale under {b.cap}
+                  {bandType(b).plural} {verb} under {b.cap}
+                  {per}
                 </Link>
               </li>
             ))}

@@ -74,30 +74,34 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     }));
 
-  // Area × type combinations on the sale side — "villas for sale in Rawai" —
-  // listed only where the stock clears the same threshold the pages index on.
-  const comboRoutes = allCombos()
-    .map((combo) => ({
-      combo,
-      count: comboProperties(properties, combo, "buy").length,
-    }))
-    .filter((c) => c.count >= INDEXABLE_MIN_LISTINGS)
-    .map((c) => ({
-      url: `${base}${comboPath("buy", c.combo)}`,
-      lastModified: now,
-      changeFrequency: "daily" as const,
-      priority: 0.8,
-    }));
+  // Area × type combinations — "villas for sale in Rawai", "condos for rent in
+  // Kathu" — listed only where the stock clears the threshold the pages index on.
+  const comboRoutes = (["rent", "buy"] as const).flatMap((intent) =>
+    allCombos()
+      .map((combo) => ({
+        intent,
+        combo,
+        count: comboProperties(properties, combo, intent).length,
+      }))
+      .filter((c) => c.count >= INDEXABLE_MIN_LISTINGS)
+      .map((c) => ({
+        url: `${base}${comboPath(c.intent, c.combo)}`,
+        lastModified: now,
+        changeFrequency: "daily" as const,
+        priority: 0.8,
+      })),
+  );
 
-  // Budget pages — /buy/villas-under-15m and friends.
+  // Budget pages — /buy/villas-under-15m, /rent/condos-under-20k.
   const bandRoutes = PRICE_BAND_PAGES.map((band) => ({
     band,
-    count: properties.filter((p) => matchesIntent(p, "buy") && isInPriceBand(p, band))
-      .length,
+    count: properties.filter(
+      (p) => matchesIntent(p, band.intent) && isInPriceBand(p, band),
+    ).length,
   }))
     .filter((b) => b.count >= INDEXABLE_MIN_LISTINGS)
     .map((b) => ({
-      url: `${base}/buy/${b.band.slug}`,
+      url: `${base}/${b.band.intent}/${b.band.slug}`,
       lastModified: now,
       changeFrequency: "daily" as const,
       priority: 0.8,

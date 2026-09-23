@@ -29,7 +29,7 @@ export default async function BuyPage({
         subtitle="Own a piece of the island — from turn-key condominiums to landmark sea-view villas across Phuket's most desirable areas."
       />
       <TypeLinkRail intent="buy" />
-      <BudgetLinkRail />
+      <BudgetLinkRail intent="buy" />
       <AreaLinkRail intent="buy" />
       {/* The canonical home of this answer set — every other page links back here. */}
       <FaqSection faqs={BUY_FAQS} />

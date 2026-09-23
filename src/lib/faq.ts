@@ -52,6 +52,60 @@ export const BUY_BUDGET_FAQS: Faq[] = [
   BUY_FAQS[0],
 ];
 
+/**
+ * The rental side. Same rule as above — nothing here gets a figure we cannot
+ * stand behind, and the terms quoted are what our own landlords ask for, which
+ * is not the same thing as a law.
+ */
+export const RENT_FAQS: Faq[] = [
+  {
+    q: "What is the minimum rental period in Phuket?",
+    a: "Nearly every long-term listing on this site is a one-year contract, and that is what the rent quoted assumes. Shorter stays are possible on some properties at a higher monthly rate, and anything under 30 days is short-term accommodation, which falls under the Hotel Act and only licensed properties may offer.",
+  },
+  {
+    q: "How much deposit do I have to pay?",
+    a: "Two months' rent as a security deposit plus the first month in advance is the normal move-in payment on a yearly contract. The deposit is refundable at the end of the term, less anything owed for damage or unpaid bills — get the condition of the property recorded in writing and photographed on the day you move in.",
+  },
+  {
+    q: "Are utilities included in the rent?",
+    a: "No, water and electricity are billed on top and paid monthly on your meter reading. A house or villa is usually charged at the government rate; a condominium building often charges its own rate, which can be higher. Ask for the actual rate before you sign — on an air-conditioned villa this is a real number, not a rounding error.",
+  },
+  {
+    q: "Does the tenant pay an agency fee?",
+    a: "No. Our commission is paid by the landlord, so the rent you are quoted is the rent you pay. Anyone asking a tenant for a separate finder's fee on a long-term rental is not working the way this market normally works.",
+  },
+  {
+    q: "What is usually included on a pool villa rental?",
+    a: "On most yearly villa contracts the landlord keeps the pool serviced and the garden maintained, and the listing says so. Cleaning inside the house, internet and the bills are normally yours. It varies by property, so check what the listing states rather than assuming.",
+  },
+  {
+    q: "Can a foreigner rent a house in Phuket, and do I need a visa?",
+    a: "Yes, renting is open to foreigners with no ownership restrictions. You do not need a particular visa to sign a lease, but your landlord is required by law to report a foreign tenant's address to Immigration, so expect to hand over a passport copy at signing.",
+  },
+  {
+    q: "Should the lease be registered at the Land Office?",
+    a: "A lease longer than three years must be registered at the Land Office to be enforceable for its full term, with a registration fee of 1% of the total rent. A standard one-year contract does not need registering — the usual arrangement is a one-year term with an agreed renewal.",
+  },
+  {
+    q: "Are pets allowed?",
+    a: "It depends on the owner and, in a condominium, on the building's rules — many buildings do not allow pets at all. Tell us at the start if you have one; it narrows the list quickly and saves everybody a viewing that was never going to work.",
+  },
+];
+
+/** The money-first subset, for the rental budget pages. */
+export const RENT_BUDGET_FAQS: Faq[] = [
+  RENT_FAQS[1],
+  RENT_FAQS[2],
+  RENT_FAQS[3],
+  RENT_FAQS[0],
+];
+
+export const faqsFor = (intent: "buy" | "rent") =>
+  intent === "buy" ? BUY_FAQS : RENT_FAQS;
+
+export const budgetFaqsFor = (intent: "buy" | "rent") =>
+  intent === "buy" ? BUY_BUDGET_FAQS : RENT_BUDGET_FAQS;
+
 /** FAQPage structured data. Answers are plain text — no markup inside. */
 export function faqJsonLd(faqs: Faq[]) {
   return {

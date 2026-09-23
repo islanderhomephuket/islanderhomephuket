@@ -11,26 +11,55 @@ import {
   typeIntentHeading,
   poolCount,
 } from "@/components/property/type-intent-page";
+import { BandIntentPage } from "@/components/property/band-intent-page";
+import { FaqSection } from "@/components/property/faq-section";
+import { RENT_BUDGET_FAQS, RENT_FAQS } from "@/lib/faq";
 import { AREAS } from "@/lib/constants";
+import { getProperties } from "@/lib/data";
 import {
   PROPERTY_TYPE_PAGES,
   assertNoSlugCollision,
   resolveIntentSegment,
 } from "@/lib/property-type-pages";
 import {
+  bandsFor,
+  assertNoBandCollision,
+  bandHeading,
+  bandType,
+  getPriceBandPage,
+  isInPriceBand,
+} from "@/lib/price-band-pages";
+import {
   areaIntentDescription,
   areaIntentHeading,
+  matchesIntent,
   priceRange,
   INDEXABLE_MIN_LISTINGS,
 } from "@/lib/seo";
 
-/** This segment is an area slug OR a property-type slug — see property-type-pages.ts. */
+/**
+ * This segment is an area slug, a property-type slug, or a monthly budget band
+ * ("villas-under-100k"). Areas win any collision.
+ */
 export function generateStaticParams() {
   assertNoSlugCollision();
+  assertNoBandCollision();
   return [
     ...AREAS.map((a) => ({ area: a.slug })),
     ...PROPERTY_TYPE_PAGES.map((t) => ({ area: t.slug })),
+    ...bandsFor("rent").map((b) => ({ area: b.slug })),
   ];
+}
+
+/** Rentals inside a monthly band, cheapest first — the order a budget shops in. */
+async function bandProperties(slug: string) {
+  const band = getPriceBandPage(slug, "rent");
+  if (!band) return null;
+  const all = await getProperties();
+  const properties = all
+    .filter((p) => matchesIntent(p, "rent") && isInPriceBand(p, band))
+    .sort((a, b) => (a.price ?? 0) - (b.price ?? 0));
+  return { band, properties };
 }
 
 export async function generateMetadata({
@@ -39,8 +68,6 @@ export async function generateMetadata({
   params: Promise<{ area: string }>;
 }): Promise<Metadata> {
   const { area: slug } = await params;
-  const target = resolveIntentSegment(slug);
-  if (!target) return { title: "Page not found" };
 
   // A page with almost nothing on it is a thin page; keep it reachable but out
   // of the index until there is real stock behind it.
@@ -48,6 +75,26 @@ export async function generateMetadata({
     n >= INDEXABLE_MIN_LISTINGS
       ? { index: true, follow: true }
       : { index: false, follow: true };
+
+  const budget = await bandProperties(slug);
+  if (budget) {
+    const { band, properties } = budget;
+    const type = bandType(band);
+    const range = priceRange(properties, "rent");
+    const description =
+      properties.length > 0
+        ? `${properties.length} ${properties.length === 1 ? type.singular : `${type.singular}s`} for rent in Phuket at or under ${band.cap} a month${range ? ` — ${range}` : ""}. Long-term rentals from Islander Home Phuket.`
+        : `${type.plural} for rent in Phuket under ${band.cap} a month. ${band.blurb}`;
+    return {
+      title: bandHeading(band),
+      description: description.slice(0, 158),
+      alternates: { canonical: `/rent/${band.slug}` },
+      robots: indexable(properties.length),
+    };
+  }
+
+  const target = resolveIntentSegment(slug);
+  if (!target) return { title: "Page not found" };
 
   if (target.kind === "area") {
     const properties = await areaIntentProperties(target.area, "rent");
@@ -84,6 +131,22 @@ export default async function RentSegmentPage({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const { area: slug } = await params;
+
+  const budget = await bandProperties(slug);
+  if (budget) {
+    return (
+      <>
+        <BandIntentPage band={budget.band} properties={budget.properties} />
+        {/* The full answer set carries the structured data on /rent. */}
+        <FaqSection
+          faqs={RENT_BUDGET_FAQS}
+          title={`Renting under ${budget.band.cap} a month`}
+          structuredData={false}
+        />
+      </>
+    );
+  }
+
   const target = resolveIntentSegment(slug);
   if (!target) notFound();
 
@@ -91,15 +154,31 @@ export default async function RentSegmentPage({
     const properties = await areaIntentProperties(target.area, "rent");
     const filters = parseAreaFilters(await searchParams);
     return (
-      <AreaIntentPage
-        area={target.area}
-        intent="rent"
-        properties={properties}
-        filters={filters}
-      />
+      <>
+        <AreaIntentPage
+          area={target.area}
+          intent="rent"
+          properties={properties}
+          filters={filters}
+        />
+        <FaqSection
+          faqs={RENT_FAQS.slice(0, 4)}
+          title="Renting a home in Phuket"
+          structuredData={false}
+        />
+      </>
     );
   }
 
   const properties = await typeIntentProperties(target.type, "rent");
-  return <TypeIntentPage type={target.type} intent="rent" properties={properties} />;
+  return (
+    <>
+      <TypeIntentPage type={target.type} intent="rent" properties={properties} />
+      <FaqSection
+        faqs={RENT_FAQS.slice(0, 4)}
+        title="Renting a home in Phuket"
+        structuredData={false}
+      />
+    </>
+  );
 }

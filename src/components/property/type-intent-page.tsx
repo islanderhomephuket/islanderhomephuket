@@ -14,7 +14,7 @@ import { ButtonLink } from "@/components/ui/button";
 import { AREAS, type AreaInfo } from "@/lib/constants";
 import { getProperties } from "@/lib/data";
 import { comboPath } from "@/lib/area-type-pages";
-import { PRICE_BAND_PAGES } from "@/lib/price-band-pages";
+import { bandsFor } from "@/lib/price-band-pages";
 import {
   isPropertyTypeMatch,
   PROPERTY_TYPE_PAGES,
@@ -74,22 +74,17 @@ export async function TypeIntentPage({
     .sort((a, b) => b.items.length - a.items.length);
 
   /**
-   * On the sale side each area block hands over to the `/buy/<area>/<type>` page
-   * — the exact phrase a buyer searches. The rent side has no such page yet, so
-   * it keeps pointing at the area hub.
+   * Each area block hands over to the `/<intent>/<area>/<type>` page — the exact
+   * phrase people search, rather than the area hub that mixes every type.
    */
-  const areaHref = (area: AreaInfo) =>
-    intent === "buy" ? comboPath("buy", { area, type }) : `/${intent}/${area.slug}`;
+  const areaHref = (area: AreaInfo) => comboPath(intent, { area, type });
 
-  // Budget pages for this type, for the sale side only.
-  const bands =
-    intent === "buy"
-      ? PRICE_BAND_PAGES.filter(
-          (b) =>
-            b.type === type.slug &&
-            properties.some((p) => p.price != null && p.price <= b.max),
-        )
-      : [];
+  // Budget pages for this type on this side of the book.
+  const bands = bandsFor(intent).filter(
+    (b) =>
+      b.type === type.slug &&
+      properties.some((p) => p.price != null && p.price <= b.max),
+  );
 
   const breadcrumb = breadcrumbJsonLd([
     { name: "Home", path: "/" },
@@ -200,10 +195,11 @@ export async function TypeIntentPage({
                 {bands.map((b) => (
                   <li key={b.slug}>
                     <Link
-                      href={`/buy/${b.slug}`}
+                      href={`/${intent}/${b.slug}`}
                       className="text-paper/75 underline-offset-4 hover:text-gold hover:underline"
                     >
-                      {type.plural} for sale under {b.cap}
+                      {type.plural} {verb} under {b.cap}
+                      {intent === "rent" ? " a month" : ""}
                     </Link>
                   </li>
                 ))}

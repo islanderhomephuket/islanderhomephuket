@@ -22,7 +22,7 @@ import {
   resolveIntentSegment,
 } from "@/lib/property-type-pages";
 import {
-  PRICE_BAND_PAGES,
+  bandsFor,
   assertNoBandCollision,
   bandHeading,
   bandType,
@@ -48,13 +48,13 @@ export function generateStaticParams() {
   return [
     ...AREAS.map((a) => ({ area: a.slug })),
     ...PROPERTY_TYPE_PAGES.map((t) => ({ area: t.slug })),
-    ...PRICE_BAND_PAGES.map((b) => ({ area: b.slug })),
+    ...bandsFor("buy").map((b) => ({ area: b.slug })),
   ];
 }
 
 /** Sale listings inside a budget band, cheapest first — the order a budget shops in. */
 async function bandProperties(slug: string) {
-  const band = getPriceBandPage(slug);
+  const band = getPriceBandPage(slug, "buy");
   if (!band) return null;
   const all = await getProperties();
   const properties = all
