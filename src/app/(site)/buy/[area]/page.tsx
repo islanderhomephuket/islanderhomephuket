@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import {
   AreaIntentPage,
   areaIntentProperties,
+  parseAreaFilters,
 } from "@/components/property/area-intent-page";
 import {
   TypeIntentPage,
@@ -77,8 +78,10 @@ export async function generateMetadata({
 
 export default async function BuySegmentPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ area: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const { area: slug } = await params;
   const target = resolveIntentSegment(slug);
@@ -86,7 +89,15 @@ export default async function BuySegmentPage({
 
   if (target.kind === "area") {
     const properties = await areaIntentProperties(target.area, "buy");
-    return <AreaIntentPage area={target.area} intent="buy" properties={properties} />;
+    const filters = parseAreaFilters(await searchParams);
+    return (
+      <AreaIntentPage
+        area={target.area}
+        intent="buy"
+        properties={properties}
+        filters={filters}
+      />
+    );
   }
 
   const properties = await typeIntentProperties(target.type, "buy");

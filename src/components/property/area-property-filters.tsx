@@ -2,26 +2,17 @@
 
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { useCallback, useState, useTransition } from "react";
-import { Search, SlidersHorizontal, X } from "lucide-react";
-import { AREAS, PROPERTY_TYPES } from "@/lib/constants";
+import { SlidersHorizontal, X } from "lucide-react";
+import { PROPERTY_TYPES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import { PRICE_BANDS_SALE, PRICE_BANDS_RENT, Select } from "./property-filters";
 
-export const PRICE_BANDS_SALE = [
-  { label: "Any price", min: "", max: "" },
-  { label: "Up to ฿10M", min: "", max: "10000000" },
-  { label: "฿10M – ฿20M", min: "10000000", max: "20000000" },
-  { label: "฿20M – ฿40M", min: "20000000", max: "40000000" },
-  { label: "฿40M+", min: "40000000", max: "" },
-];
-export const PRICE_BANDS_RENT = [
-  { label: "Any price", min: "", max: "" },
-  { label: "Up to ฿40k/mo", min: "", max: "40000" },
-  { label: "฿40k – ฿80k/mo", min: "40000", max: "80000" },
-  { label: "฿80k – ฿150k/mo", min: "80000", max: "150000" },
-  { label: "฿150k+/mo", min: "150000", max: "" },
-];
-
-export function PropertyFilters({
+/**
+ * Price / bedrooms / type / sort for a single area's listing page
+ * (`/rent/<area>`, `/buy/<area>`). No area picker here — the area is fixed
+ * by the route, unlike the island-wide `PropertyFilters` this is styled after.
+ */
+export function AreaPropertyFilters({
   listingType,
 }: {
   listingType: "sale" | "rent";
@@ -49,39 +40,12 @@ export function PropertyFilters({
   );
 
   const currentBand = `${params.get("minPrice") ?? ""}|${params.get("maxPrice") ?? ""}`;
-  const hasFilters = ["area", "propertyType", "bedrooms", "minPrice", "maxPrice", "q"].some(
-    (k) => params.get(k),
+  const hasFilters = ["propertyType", "bedrooms", "minPrice", "maxPrice"].some((k) =>
+    params.get(k),
   );
 
   const fields = (
     <>
-      {/* Search */}
-      <div className="relative flex-1">
-        <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-paper/40" />
-        <input
-          type="search"
-          defaultValue={params.get("q") ?? ""}
-          placeholder="Search by name, reference…"
-          onChange={(e) => setParam({ q: e.target.value })}
-          className="h-12 w-full border border-sand bg-ink pl-10 pr-3 text-sm text-paper outline-none placeholder:text-paper/30 focus:border-gold"
-        />
-      </div>
-
-      {/* Area */}
-      <Select
-        value={params.get("area") ?? ""}
-        onChange={(v) => setParam({ area: v })}
-        ariaLabel="Area"
-      >
-        <option value="">All areas</option>
-        {AREAS.map((a) => (
-          <option key={a.slug} value={a.slug}>
-            {a.name}
-          </option>
-        ))}
-      </Select>
-
-      {/* Type */}
       <Select
         value={params.get("propertyType") ?? ""}
         onChange={(v) => setParam({ propertyType: v })}
@@ -95,7 +59,6 @@ export function PropertyFilters({
         ))}
       </Select>
 
-      {/* Bedrooms */}
       <Select
         value={params.get("bedrooms") ?? ""}
         onChange={(v) => setParam({ bedrooms: v })}
@@ -109,7 +72,6 @@ export function PropertyFilters({
         ))}
       </Select>
 
-      {/* Price */}
       <Select
         value={currentBand}
         onChange={(v) => {
@@ -125,7 +87,6 @@ export function PropertyFilters({
         ))}
       </Select>
 
-      {/* Sort */}
       <Select
         value={params.get("sort") ?? "newest"}
         onChange={(v) => setParam({ sort: v === "newest" ? "" : v })}
@@ -160,7 +121,7 @@ export function PropertyFilters({
           className="inline-flex h-12 w-full items-center justify-center gap-2 border border-ink bg-ink text-sm font-semibold uppercase tracking-[0.16em] text-paper"
         >
           <SlidersHorizontal className="h-4 w-4" />
-          Filters{hasFilters ? " · Active" : ""}
+          Filter &amp; Sort{hasFilters ? " · Active" : ""}
         </button>
         {openMobile && (
           <div className="mt-3 flex flex-col gap-3 border border-sand bg-charcoal p-4">
@@ -177,28 +138,5 @@ export function PropertyFilters({
         )}
       </div>
     </div>
-  );
-}
-
-export function Select({
-  value,
-  onChange,
-  children,
-  ariaLabel,
-}: {
-  value: string;
-  onChange: (v: string) => void;
-  children: React.ReactNode;
-  ariaLabel: string;
-}) {
-  return (
-    <select
-      aria-label={ariaLabel}
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      className="h-12 min-w-[8rem] border border-sand bg-ink px-3 text-sm text-paper outline-none focus:border-gold"
-    >
-      {children}
-    </select>
   );
 }

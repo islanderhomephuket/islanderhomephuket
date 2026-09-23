@@ -11,6 +11,7 @@ import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { PropertyGrid } from "@/components/property/property-grid";
+import { AreaPropertyFilters } from "@/components/property/area-property-filters";
 import { ButtonLink } from "@/components/ui/button";
 import { AREAS, type AreaInfo } from "@/lib/constants";
 import { getPropertiesByArea } from "@/lib/data";
@@ -44,20 +45,74 @@ function typeCounts(properties: Property[]) {
   return [...counts.entries()].sort((a, b) => b[1] - a[1]);
 }
 
+export type AreaFilters = {
+  propertyType?: string;
+  bedrooms?: number;
+  minPrice?: number;
+  maxPrice?: number;
+  sort?: "newest" | "price-asc" | "price-desc";
+};
+
+type RawParams = { [key: string]: string | string[] | undefined };
+
+function str(v: string | string[] | undefined): string | undefined {
+  return Array.isArray(v) ? v[0] : v;
+}
+function num(v: string | string[] | undefined): number | undefined {
+  const s = str(v);
+  if (!s) return undefined;
+  const n = Number(s);
+  return Number.isFinite(n) ? n : undefined;
+}
+
+/** The area page's own query params — no `area`, that's fixed by the route. */
+export function parseAreaFilters(searchParams: RawParams): AreaFilters {
+  return {
+    propertyType: str(searchParams.propertyType),
+    bedrooms: num(searchParams.bedrooms),
+    minPrice: num(searchParams.minPrice),
+    maxPrice: num(searchParams.maxPrice),
+    sort: (str(searchParams.sort) as AreaFilters["sort"]) || "newest",
+  };
+}
+
+function applyAreaFilters(properties: Property[], f: AreaFilters): Property[] {
+  let out = properties;
+  if (f.propertyType) out = out.filter((p) => p.property_type === f.propertyType);
+  if (f.bedrooms != null) out = out.filter((p) => p.bedrooms >= f.bedrooms!);
+  if (f.minPrice != null) out = out.filter((p) => (p.price ?? 0) >= f.minPrice!);
+  if (f.maxPrice != null) out = out.filter((p) => (p.price ?? 0) <= f.maxPrice!);
+
+  if (f.sort === "price-asc") out = [...out].sort((a, b) => (a.price ?? 0) - (b.price ?? 0));
+  else if (f.sort === "price-desc") out = [...out].sort((a, b) => (b.price ?? 0) - (a.price ?? 0));
+  return out;
+}
+
 export async function AreaIntentPage({
   area,
   intent,
   properties,
+  filters = {},
 }: {
   area: AreaInfo;
   intent: Intent;
   properties: Property[];
+  filters?: AreaFilters;
 }) {
   const other: Intent = intent === "rent" ? "buy" : "rent";
   const heading = areaIntentHeading(area, intent, properties);
   const range = priceRange(properties, intent);
   const types = typeCounts(properties);
   const verb = intent === "rent" ? "for rent" : "for sale";
+
+  const filtered = applyAreaFilters(properties, filters);
+  const isFiltering = Boolean(
+    filters.propertyType ||
+      filters.bedrooms ||
+      filters.minPrice != null ||
+      filters.maxPrice != null ||
+      (filters.sort && filters.sort !== "newest"),
+  );
 
   const breadcrumb = breadcrumbJsonLd([
     { name: "Home", path: "/" },
@@ -132,10 +187,26 @@ export async function AreaIntentPage({
             title={`${area.name} ${intent === "rent" ? "rentals" : "property for sale"}`}
             description={area.blurb}
           />
-          <div className="mt-10">
+
+          <div className="mt-8">
+            <AreaPropertyFilters listingType={intent === "rent" ? "rent" : "sale"} />
+          </div>
+          {properties.length > 0 && (
+            <p className="mt-6 text-sm text-paper/60">
+              <span className="font-semibold text-paper">{filtered.length}</span>{" "}
+              {filtered.length === 1 ? "property" : "properties"}{" "}
+              {isFiltering ? "found" : verb}
+            </p>
+          )}
+
+          <div className="mt-6">
             <PropertyGrid
-              properties={properties}
-              emptyMessage={`No ${area.name} listings ${verb} at the moment. Browse the other areas below, or send us your requirements.`}
+              properties={filtered}
+              emptyMessage={
+                isFiltering
+                  ? `No ${area.name} listings match those filters. Try widening your search, or clear the filters above.`
+                  : `No ${area.name} listings ${verb} at the moment. Browse the other areas below, or send us your requirements.`
+              }
             />
           </div>
 
