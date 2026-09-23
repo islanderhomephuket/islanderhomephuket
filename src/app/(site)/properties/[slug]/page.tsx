@@ -10,6 +10,7 @@ import {
   Check,
   Hash,
   Home,
+  CalendarClock,
 } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -25,7 +26,7 @@ import {
   getRelatedProperties,
   getAllPropertySlugs,
 } from "@/lib/data";
-import { formatArea, formatRent, formatTHB } from "@/lib/utils";
+import { formatArea, formatRent, formatTHB, oneYearLeaseOnly } from "@/lib/utils";
 import {
   propertyTitle,
   propertyPhrase,
@@ -122,6 +123,11 @@ export default async function PropertyDetailPage({
       icon: LandPlot,
       label: "Land area",
       value: formatArea(property.land_area),
+    },
+    oneYearLeaseOnly(property) && {
+      icon: CalendarClock,
+      label: "Lease Term",
+      value: "1 Year Only",
     },
   ].filter(Boolean) as { icon: typeof BedDouble; label: string; value: string | number }[];
 
