@@ -1,10 +1,9 @@
 import { Container } from "@/components/ui/container";
 import { PropertyFilters } from "./property-filters";
 import { PropertyGrid } from "./property-grid";
-import { AreaCard } from "@/components/area/area-card";
+import { ZoneCard } from "./zone-card";
 import { getProperties } from "@/lib/data";
 import { AREAS } from "@/lib/constants";
-import { areaCoverImage } from "@/lib/utils";
 import type { PropertyFilters as Filters, Property } from "@/lib/types";
 
 type RawParams = { [key: string]: string | string[] | undefined };
@@ -100,13 +99,12 @@ export async function PropertyListing({
               <PropertyGrid properties={properties} />
             </div>
           ) : (
-            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {zones.map((z) => (
-                <AreaCard
+                <ZoneCard
                   key={z.area.slug}
                   area={z.area}
                   count={z.items.length}
-                  image={areaCoverImage(properties, z.area.slug)}
                   href={`/${intent}/${z.area.slug}`}
                 />
               ))}

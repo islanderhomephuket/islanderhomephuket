@@ -14,16 +14,14 @@ export function AreaCard({
   area,
   count,
   image,
-  href,
 }: {
   area: AreaInfo;
   count?: number;
   image?: string;
-  href?: string;
 }) {
   return (
     <Link
-      href={href ?? `/areas/${area.slug}`}
+      href={`/areas/${area.slug}`}
       className="group relative block aspect-[4/5] overflow-hidden rounded-[1.5rem] border border-paper/10 transition-colors duration-500 hover:border-paper/30"
       aria-label={`${area.name} — ${area.tagline}`}
     >
