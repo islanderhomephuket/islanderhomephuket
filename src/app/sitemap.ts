@@ -6,6 +6,8 @@ import {
   PROPERTY_TYPE_PAGES,
   isPropertyTypeMatch,
 } from "@/lib/property-type-pages";
+import { allCombos, comboPath, comboProperties } from "@/lib/area-type-pages";
+import { PRICE_BAND_PAGES, isInPriceBand } from "@/lib/price-band-pages";
 
 /** Rebuilt hourly so newly published listings enter the sitemap on their own. */
 export const revalidate = 3600;
@@ -72,6 +74,35 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     }));
 
+  // Area × type combinations on the sale side — "villas for sale in Rawai" —
+  // listed only where the stock clears the same threshold the pages index on.
+  const comboRoutes = allCombos()
+    .map((combo) => ({
+      combo,
+      count: comboProperties(properties, combo, "buy").length,
+    }))
+    .filter((c) => c.count >= INDEXABLE_MIN_LISTINGS)
+    .map((c) => ({
+      url: `${base}${comboPath("buy", c.combo)}`,
+      lastModified: now,
+      changeFrequency: "daily" as const,
+      priority: 0.8,
+    }));
+
+  // Budget pages — /buy/villas-under-15m and friends.
+  const bandRoutes = PRICE_BAND_PAGES.map((band) => ({
+    band,
+    count: properties.filter((p) => matchesIntent(p, "buy") && isInPriceBand(p, band))
+      .length,
+  }))
+    .filter((b) => b.count >= INDEXABLE_MIN_LISTINGS)
+    .map((b) => ({
+      url: `${base}/buy/${b.band.slug}`,
+      lastModified: now,
+      changeFrequency: "daily" as const,
+      priority: 0.8,
+    }));
+
   const propertyRoutes = properties
     .filter((p) => p.status !== "sold" && p.status !== "rented")
     .map((p) => ({
@@ -92,6 +123,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...staticRoutes,
     ...hubRoutes,
     ...typeRoutes,
+    ...comboRoutes,
+    ...bandRoutes,
     ...areaRoutes,
     ...propertyRoutes,
     ...blogRoutes,

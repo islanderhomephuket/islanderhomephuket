@@ -15,6 +15,11 @@ import { AreaPropertyFilters } from "@/components/property/area-property-filters
 import { ButtonLink } from "@/components/ui/button";
 import { AREAS, type AreaInfo } from "@/lib/constants";
 import { getPropertiesByArea } from "@/lib/data";
+import { comboPath } from "@/lib/area-type-pages";
+import {
+  PROPERTY_TYPE_PAGES,
+  isPropertyTypeMatch,
+} from "@/lib/property-type-pages";
 import {
   areaIntentHeading,
   breadcrumbJsonLd,
@@ -124,6 +129,17 @@ export async function AreaIntentPage({
   // Sibling areas that actually have stock for this intent, for the footer links.
   const siblings = AREAS.filter((a) => a.slug !== area.slug);
 
+  // Area × type pages, for the combinations that have real stock. Sale only for
+  // now — the `/rent/<area>/<type>` route does not exist yet, and a link to a
+  // page that 404s is worse than no link.
+  const typePages =
+    intent === "buy"
+      ? PROPERTY_TYPE_PAGES.map((type) => ({
+          type,
+          count: properties.filter((p) => isPropertyTypeMatch(p, type)).length,
+        })).filter((r) => r.count > 0)
+      : [];
+
   return (
     <>
       <script
@@ -218,6 +234,24 @@ export async function AreaIntentPage({
                 .join(", ")}
               .
             </p>
+          )}
+
+          {/* The filter bar is for this visit; these are pages of their own, and
+              they carry the phrase people search: "villas for sale in Rawai". */}
+          {typePages.length > 0 && (
+            <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+              {typePages.map(({ type, count }) => (
+                <li key={type.slug}>
+                  <Link
+                    href={comboPath(intent, { area, type })}
+                    className="text-paper/75 underline-offset-4 hover:text-gold hover:underline"
+                  >
+                    {type.plural} {verb} in {area.name}{" "}
+                    <span className="text-paper/40">({count})</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           )}
 
           <div className="mt-8 flex flex-wrap gap-4">

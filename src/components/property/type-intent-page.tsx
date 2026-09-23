@@ -11,8 +11,10 @@ import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { PropertyGrid } from "@/components/property/property-grid";
 import { ButtonLink } from "@/components/ui/button";
-import { AREAS } from "@/lib/constants";
+import { AREAS, type AreaInfo } from "@/lib/constants";
 import { getProperties } from "@/lib/data";
+import { comboPath } from "@/lib/area-type-pages";
+import { PRICE_BAND_PAGES } from "@/lib/price-band-pages";
 import {
   isPropertyTypeMatch,
   PROPERTY_TYPE_PAGES,
@@ -70,6 +72,24 @@ export async function TypeIntentPage({
   }))
     .filter((g) => g.items.length > 0)
     .sort((a, b) => b.items.length - a.items.length);
+
+  /**
+   * On the sale side each area block hands over to the `/buy/<area>/<type>` page
+   * — the exact phrase a buyer searches. The rent side has no such page yet, so
+   * it keeps pointing at the area hub.
+   */
+  const areaHref = (area: AreaInfo) =>
+    intent === "buy" ? comboPath("buy", { area, type }) : `/${intent}/${area.slug}`;
+
+  // Budget pages for this type, for the sale side only.
+  const bands =
+    intent === "buy"
+      ? PRICE_BAND_PAGES.filter(
+          (b) =>
+            b.type === type.slug &&
+            properties.some((p) => p.price != null && p.price <= b.max),
+        )
+      : [];
 
   const breadcrumb = breadcrumbJsonLd([
     { name: "Home", path: "/" },
@@ -148,7 +168,7 @@ export async function TypeIntentPage({
                   <SectionHeading
                     kicker={`${items.length} ${items.length === 1 ? type.singular : `${type.singular}s`}`}
                     title={
-                      <Link href={`/${intent}/${area.slug}`} className="hover:text-gold">
+                      <Link href={areaHref(area)} className="hover:text-gold">
                         {area.name}
                       </Link>
                     }
@@ -159,17 +179,35 @@ export async function TypeIntentPage({
                   </div>
                   <p className="mt-6">
                     <Link
-                      href={`/${intent}/${area.slug}`}
+                      href={areaHref(area)}
                       className="text-sm font-semibold uppercase tracking-[0.14em] text-gold hover:underline"
                     >
                       {items.length > PER_AREA
-                        ? `See all ${items.length} in ${area.name}`
-                        : `Everything ${verb} in ${area.name}`}{" "}
+                        ? `See all ${items.length} ${type.singular}s in ${area.name}`
+                        : `${type.plural} ${verb} in ${area.name}`}{" "}
                       →
                     </Link>
                   </p>
                 </div>
               ))}
+            </div>
+          )}
+
+          {bands.length > 0 && (
+            <div className="mt-14">
+              <SectionHeading kicker="By budget" title={`${type.plural} by price`} />
+              <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+                {bands.map((b) => (
+                  <li key={b.slug}>
+                    <Link
+                      href={`/buy/${b.slug}`}
+                      className="text-paper/75 underline-offset-4 hover:text-gold hover:underline"
+                    >
+                      {type.plural} for sale under {b.cap}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
           )}
 
