@@ -6,21 +6,6 @@ import { Search, SlidersHorizontal, X } from "lucide-react";
 import { AREAS, PROPERTY_TYPES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
-export const PRICE_BANDS_SALE = [
-  { label: "Any price", min: "", max: "" },
-  { label: "Up to ฿10M", min: "", max: "10000000" },
-  { label: "฿10M – ฿20M", min: "10000000", max: "20000000" },
-  { label: "฿20M – ฿40M", min: "20000000", max: "40000000" },
-  { label: "฿40M+", min: "40000000", max: "" },
-];
-export const PRICE_BANDS_RENT = [
-  { label: "Any price", min: "", max: "" },
-  { label: "Up to ฿40k/mo", min: "", max: "40000" },
-  { label: "฿40k – ฿80k/mo", min: "40000", max: "80000" },
-  { label: "฿80k – ฿150k/mo", min: "80000", max: "150000" },
-  { label: "฿150k+/mo", min: "150000", max: "" },
-];
-
 export function PropertyFilters({
   listingType,
 }: {
@@ -31,8 +16,6 @@ export function PropertyFilters({
   const params = useSearchParams();
   const [isPending, startTransition] = useTransition();
   const [openMobile, setOpenMobile] = useState(false);
-
-  const bands = listingType === "rent" ? PRICE_BANDS_RENT : PRICE_BANDS_SALE;
 
   const setParam = useCallback(
     (updates: Record<string, string>) => {
@@ -48,7 +31,6 @@ export function PropertyFilters({
     [params, pathname, router],
   );
 
-  const currentBand = `${params.get("minPrice") ?? ""}|${params.get("maxPrice") ?? ""}`;
   const hasFilters = ["area", "propertyType", "bedrooms", "minPrice", "maxPrice", "q"].some(
     (k) => params.get(k),
   );
@@ -110,20 +92,12 @@ export function PropertyFilters({
       </Select>
 
       {/* Price */}
-      <Select
-        value={currentBand}
-        onChange={(v) => {
-          const [min, max] = v.split("|");
-          setParam({ minPrice: min, maxPrice: max });
-        }}
-        ariaLabel="Price"
-      >
-        {bands.map((b) => (
-          <option key={b.label} value={`${b.min}|${b.max}`}>
-            {b.label}
-          </option>
-        ))}
-      </Select>
+      <PriceRangeFields
+        listingType={listingType}
+        minPrice={params.get("minPrice") ?? ""}
+        maxPrice={params.get("maxPrice") ?? ""}
+        onChange={setParam}
+      />
 
       {/* Sort */}
       <Select
@@ -176,6 +150,69 @@ export function PropertyFilters({
           </div>
         )}
       </div>
+    </div>
+  );
+}
+
+/** Free-form min/max price, in baht (rent: per month, sale: total price). */
+export function PriceRangeFields({
+  listingType,
+  minPrice,
+  maxPrice,
+  onChange,
+}: {
+  listingType: "sale" | "rent";
+  minPrice: string;
+  maxPrice: string;
+  onChange: (updates: { minPrice?: string; maxPrice?: string }) => void;
+}) {
+  const suffix = listingType === "rent" ? "/mo" : "";
+  return (
+    <div className="flex items-center gap-2">
+      <PriceInput
+        placeholder={`Min${suffix}`}
+        defaultValue={minPrice}
+        ariaLabel="Minimum price"
+        onChange={(v) => onChange({ minPrice: v })}
+      />
+      <span className="text-paper/30">–</span>
+      <PriceInput
+        placeholder={`Max${suffix}`}
+        defaultValue={maxPrice}
+        ariaLabel="Maximum price"
+        onChange={(v) => onChange({ maxPrice: v })}
+      />
+    </div>
+  );
+}
+
+function PriceInput({
+  placeholder,
+  defaultValue,
+  ariaLabel,
+  onChange,
+}: {
+  placeholder: string;
+  defaultValue: string;
+  ariaLabel: string;
+  onChange: (v: string) => void;
+}) {
+  return (
+    <div className="relative">
+      <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-paper/40">
+        ฿
+      </span>
+      <input
+        type="number"
+        inputMode="numeric"
+        min={0}
+        step={1000}
+        aria-label={ariaLabel}
+        placeholder={placeholder}
+        defaultValue={defaultValue}
+        onChange={(e) => onChange(e.target.value)}
+        className="h-12 w-28 border border-sand bg-ink pl-6 pr-2 text-sm text-paper outline-none placeholder:text-paper/30 focus:border-gold sm:w-32"
+      />
     </div>
   );
 }

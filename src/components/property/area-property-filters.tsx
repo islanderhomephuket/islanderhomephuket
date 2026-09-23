@@ -5,7 +5,7 @@ import { useCallback, useState, useTransition } from "react";
 import { SlidersHorizontal, X } from "lucide-react";
 import { PROPERTY_TYPES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import { PRICE_BANDS_SALE, PRICE_BANDS_RENT, Select } from "./property-filters";
+import { PriceRangeFields, Select } from "./property-filters";
 
 /**
  * Price / bedrooms / type / sort for a single area's listing page
@@ -23,8 +23,6 @@ export function AreaPropertyFilters({
   const [isPending, startTransition] = useTransition();
   const [openMobile, setOpenMobile] = useState(false);
 
-  const bands = listingType === "rent" ? PRICE_BANDS_RENT : PRICE_BANDS_SALE;
-
   const setParam = useCallback(
     (updates: Record<string, string>) => {
       const next = new URLSearchParams(params.toString());
@@ -39,7 +37,6 @@ export function AreaPropertyFilters({
     [params, pathname, router],
   );
 
-  const currentBand = `${params.get("minPrice") ?? ""}|${params.get("maxPrice") ?? ""}`;
   const hasFilters = ["propertyType", "bedrooms", "minPrice", "maxPrice"].some((k) =>
     params.get(k),
   );
@@ -72,20 +69,12 @@ export function AreaPropertyFilters({
         ))}
       </Select>
 
-      <Select
-        value={currentBand}
-        onChange={(v) => {
-          const [min, max] = v.split("|");
-          setParam({ minPrice: min, maxPrice: max });
-        }}
-        ariaLabel="Price"
-      >
-        {bands.map((b) => (
-          <option key={b.label} value={`${b.min}|${b.max}`}>
-            {b.label}
-          </option>
-        ))}
-      </Select>
+      <PriceRangeFields
+        listingType={listingType}
+        minPrice={params.get("minPrice") ?? ""}
+        maxPrice={params.get("maxPrice") ?? ""}
+        onChange={setParam}
+      />
 
       <Select
         value={params.get("sort") ?? "newest"}
