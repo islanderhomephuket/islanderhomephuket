@@ -281,6 +281,9 @@ export const PROPERTY_TYPES = [
   "House",
   "Apartment",
   "Land",
+  // Commercial hotel leases (whole-building, sold by the room count rather than
+  // the bedroom count). Added 2026-09-20 with the two Phuket lease listings.
+  "Hotel",
 ] as const;
 
 export type PropertyType = (typeof PROPERTY_TYPES)[number];

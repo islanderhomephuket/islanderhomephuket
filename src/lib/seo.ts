@@ -27,11 +27,14 @@ export function typeLabel(property: Pick<Property, "property_type">): string {
   return t.charAt(0).toUpperCase() + t.slice(1);
 }
 
-/** "3-Bedroom", "Studio", or "" when the bedroom count tells us nothing. */
+/** "3-Bedroom", "78-Room", "Studio", or "" when the bedroom count tells us nothing. */
 export function bedroomLabel(property: Pick<Property, "bedrooms" | "property_type">): string {
+  const t = lower(property.property_type || "");
+  // A hotel is searched and valued by its room count; "78-Bedroom Hotel" reads as
+  // a mistake, and nobody types it.
+  if (t.includes("hotel")) return property.bedrooms > 0 ? `${property.bedrooms}-Room` : "";
   if (property.bedrooms > 0) return `${property.bedrooms}-Bedroom`;
   // 0 bedrooms on a condo/apartment is a studio; on land or a shophouse it is unknown.
-  const t = lower(property.property_type || "");
   if (t.includes("condo") || t.includes("apartment")) return "Studio";
   return "";
 }
@@ -130,6 +133,9 @@ const RENT_UNIT: Record<string, string> = { day: "DAY", week: "WEE", month: "MON
 /** Schema.org type that best matches the listing. */
 function residenceType(property: Property): string {
   const t = lower(property.property_type || "");
+  // Checked before "house" — "hotel" does not contain it, but the intent is that
+  // a commercial lease is a LodgingBusiness, never a dwelling.
+  if (t.includes("hotel")) return "Hotel";
   if (t.includes("condo")) return "Apartment";
   if (t.includes("apartment")) return "Apartment";
   if (t.includes("townhouse")) return "SingleFamilyResidence";

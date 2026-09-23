@@ -10,6 +10,20 @@ const supabaseHost = (() => {
   }
 })();
 
+// Photos moved off Supabase Storage to Cloudflare R2 (23/9/2026) after Supabase
+// restricted the project for exceed_storage_size_quota + exceed_egress_quota.
+// R2 charges nothing for egress, so serving 600+ listings of photos cannot run up
+// a bill again. Set NEXT_PUBLIC_R2_PUBLIC_BASE to the bucket's public origin.
+const r2Host = (() => {
+  try {
+    return process.env.NEXT_PUBLIC_R2_PUBLIC_BASE
+      ? new URL(process.env.NEXT_PUBLIC_R2_PUBLIC_BASE).hostname
+      : undefined;
+  } catch {
+    return undefined;
+  }
+})();
+
 /**
  * Listings removed as duplicates of another listing of the same property.
  * The hidden URL would otherwise 404 — and several were the oldest listings on the
@@ -60,6 +74,10 @@ const nextConfig: NextConfig = {
         hostname: "*.supabase.co",
         pathname: "/storage/v1/object/public/**",
       },
+      ...(r2Host ? [{ protocol: "https" as const, hostname: r2Host }] : []),
+      // R2's development origin, and a custom image subdomain if one is added later.
+      { protocol: "https" as const, hostname: "*.r2.dev" },
+      { protocol: "https" as const, hostname: "img.islanderhomephuket.com" },
       { protocol: "https" as const, hostname: "images.unsplash.com" },
     ],
   },
