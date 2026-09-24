@@ -100,6 +100,33 @@ export const RENT_BUDGET_FAQS: Faq[] = [
   RENT_FAQS[0],
 ];
 
+/**
+ * Hotels are a business, not a home, and the questions are not the ones on
+ * either list above. Kept deliberately short: what stops a deal, not a primer.
+ */
+export const HOTEL_FAQS: Faq[] = [
+  {
+    q: "Do I need a hotel licence to operate in Phuket?",
+    a: "To run a hotel in Thailand you need a licence under the Hotel Act, granted for the building and held by its operator. A ministerial regulation exempts only very small properties — broadly up to four rooms and twenty guests, run as supplementary income — and that is no help at the size of a real hotel. Letting rooms for stays under 30 days without a licence is an offence, so the licence is the first thing to verify, not the last.",
+  },
+  {
+    q: "Does the licence transfer with the hotel?",
+    a: "Not automatically. A hotel licence is tied to the building and the person operating it, so a new operator normally has to have it transferred or reissued in their name, and that depends on the building still meeting the requirements it was licensed under. Make the deal conditional on it. A building that cannot be licensed as it stands is a different asset at a different price.",
+  },
+  {
+    q: "Can a foreigner own or run a hotel in Phuket?",
+    a: "A foreigner cannot own the land, which is why hotels are usually taken on a registered lease or held through a Thai company. Hotel and restaurant services are also restricted businesses for foreigners under the Foreign Business Act, so the operating company is normally majority Thai-owned or holds a foreign business licence. This is the part to take to a Thai lawyer before money moves, not after.",
+  },
+  {
+    q: "What is key money on a hotel lease?",
+    a: "An upfront payment to the landlord for the right to take over the lease, on top of the rent and the security deposit. Key money is normally non-refundable, so what it buys — the term, the renewals, the fixtures, the goodwill — belongs in the lease in writing. The security deposit is a different thing and is refundable at the end of the term.",
+  },
+  {
+    q: "What should be checked before taking on a hotel?",
+    a: "The last two or three years of accounts, occupancy and average room rate, the licence and building permit, the land title and the landlord's right to lease it, the staff contracts and any severance owed, the forward bookings and OTA contracts you are inheriting, and the condition of the plant — air conditioning, lifts, water and power. A lease over three years must be registered at the Land Office to be enforceable for its full term.",
+  },
+];
+
 export const faqsFor = (intent: "buy" | "rent") =>
   intent === "buy" ? BUY_FAQS : RENT_FAQS;
 

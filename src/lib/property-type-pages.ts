@@ -25,6 +25,18 @@ export interface PropertyTypePage {
   match: string[];
   /** One line of area-agnostic context, used on the page and in the meta. */
   blurb: string;
+  /**
+   * Paragraphs shown under the listings — what someone searching this type needs
+   * to know before they enquire. Set where the type needs explaining rather than
+   * listing; a villa page does not, a hotel page does.
+   */
+  notes?: string[];
+  /**
+   * Listings needed before the page may be indexed. Defaults to the site-wide
+   * `INDEXABLE_MIN_LISTINGS`; a type whose page carries real standalone content
+   * is not a thin page at one listing, and can say so here.
+   */
+  minToIndex?: number;
 }
 
 export const PROPERTY_TYPE_PAGES: PropertyTypePage[] = [
@@ -59,6 +71,24 @@ export const PROPERTY_TYPE_PAGES: PropertyTypePage[] = [
     match: ["Townhouse"],
     blurb:
       "Two- and three-storey terraced homes, the middle ground between a condo and a detached house.",
+  },
+  {
+    slug: "hotels",
+    singular: "hotel",
+    plural: "Hotels",
+    match: ["Hotel"],
+    blurb:
+      "Whole hotels and guesthouses, to lease or to buy — a business with rooms attached, not a home.",
+    // A hotel page is read by an operator, not a househunter, and the questions
+    // are different enough that the page has to answer them itself.
+    notes: [
+      "A hotel is taken over as a going concern. What matters first is not the finish but the numbers behind it: the room count and how many are actually sellable, occupancy and average rate over the last two or three years, the staff who come with it, the condition of the plant — air conditioning, lifts, water, generator — and what the existing bookings commit you to.",
+      "Operating a hotel in Thailand needs a hotel licence issued under the Hotel Act, and the licence follows the building and its operator, not the sale. Some buildings run on an exemption for small properties, and some run on nothing at all. Establish which of the three you are looking at before you agree a price, because a building that cannot be licensed as it stands is a different asset.",
+      "On a lease, the length of the term and the renewal are the whole deal — you are buying the years you are allowed to trade, and a lease over three years has to be registered at the Land Office to be good for its full term. Expect to see the landlord's title deed, the building permit, the licence if there is one, and the last three years of accounts before anything is signed.",
+    ],
+    // Two hotels on the island's whole market is not a thin page — it is the
+    // market. The notes above carry the page on their own.
+    minToIndex: 1,
   },
 ];
 

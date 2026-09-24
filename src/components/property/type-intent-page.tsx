@@ -188,6 +188,24 @@ export async function TypeIntentPage({
             </div>
           )}
 
+          {type.notes && type.notes.length > 0 && (
+            <div className="mt-14 max-w-3xl">
+              <SectionHeading
+                kicker="Before you enquire"
+                title={`What to check on a Phuket ${type.singular}`}
+              />
+              <div className="mt-6 space-y-4 text-sm leading-relaxed text-paper/70">
+                {type.notes.map((n) => (
+                  <p key={n.slice(0, 40)}>{n}</p>
+                ))}
+              </div>
+              <p className="mt-6 text-xs text-paper/45">
+                General information, not legal advice. We will introduce you to an
+                independent Thai lawyer before you commit to anything.
+              </p>
+            </div>
+          )}
+
           {bands.length > 0 && (
             <div className="mt-14">
               <SectionHeading kicker="By budget" title={`${type.plural} by price`} />

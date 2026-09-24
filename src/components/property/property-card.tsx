@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { BedDouble, Bath, Maximize, ArrowUpRight } from "lucide-react";
+import { isHotel } from "@/lib/seo";
 import type { Property } from "@/lib/types";
 import { AREAS } from "@/lib/constants";
 import { formatRent, formatTHB } from "@/lib/utils";
@@ -80,10 +81,10 @@ export function PropertyCard({ property }: { property: Property }) {
           {property.bedrooms > 0 && (
             <span className="inline-flex items-center gap-1.5">
               <BedDouble className="h-4 w-4 text-paper/40" />
-              {property.bedrooms} Bed
+              {property.bedrooms} {isHotel(property) ? "Rooms" : "Bed"}
             </span>
           )}
-          {property.bathrooms > 0 && (
+          {property.bathrooms > 0 && !isHotel(property) && (
             <span className="inline-flex items-center gap-1.5">
               <Bath className="h-4 w-4 text-paper/40" />
               {property.bathrooms} Bath

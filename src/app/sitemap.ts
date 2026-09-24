@@ -61,12 +61,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     (["rent", "buy"] as const).map((intent) => ({
       intent,
       slug: t.slug,
+      min: t.minToIndex ?? INDEXABLE_MIN_LISTINGS,
       count: properties.filter(
         (p) => matchesIntent(p, intent) && isPropertyTypeMatch(p, t),
       ).length,
     })),
   )
-    .filter((h) => h.count >= INDEXABLE_MIN_LISTINGS)
+    .filter((h) => h.count >= h.min)
     .map((h) => ({
       url: `${base}/${h.intent}/${h.slug}`,
       lastModified: now,
@@ -81,9 +82,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .map((combo) => ({
         intent,
         combo,
+        min: combo.type.minToIndex ?? INDEXABLE_MIN_LISTINGS,
         count: comboProperties(properties, combo, intent).length,
       }))
-      .filter((c) => c.count >= INDEXABLE_MIN_LISTINGS)
+      .filter((c) => c.count >= c.min)
       .map((c) => ({
         url: `${base}${comboPath(c.intent, c.combo)}`,
         lastModified: now,

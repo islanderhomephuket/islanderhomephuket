@@ -35,6 +35,7 @@ import {
   propertyBreadcrumb,
   bedroomLabel,
   typeLabel,
+  isHotel,
 } from "@/lib/seo";
 
 export async function generateStaticParams() {
@@ -106,14 +107,15 @@ export default async function PropertyDetailPage({
   const specs = [
     property.bedrooms > 0 && {
       icon: BedDouble,
-      label: "Bedrooms",
+      label: isHotel(property) ? "Rooms" : "Bedrooms",
       value: property.bedrooms,
     },
-    property.bathrooms > 0 && {
-      icon: Bath,
-      label: "Bathrooms",
-      value: property.bathrooms,
-    },
+    property.bathrooms > 0 &&
+      !isHotel(property) && {
+        icon: Bath,
+        label: "Bathrooms",
+        value: property.bathrooms,
+      },
     property.living_area && {
       icon: Maximize,
       label: "Living area",

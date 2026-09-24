@@ -41,6 +41,13 @@ export function bedroomLabel(property: Pick<Property, "bedrooms" | "property_typ
 
 export const isRental = (p: Pick<Property, "listing_type">) => p.listing_type === "rent";
 
+/**
+ * A hotel is counted in rooms, not bedrooms, everywhere it is shown — "79 Bed"
+ * on a hotel card reads as a data error, because that is what it looks like.
+ */
+export const isHotel = (p: Pick<Property, "property_type">) =>
+  /hotel/i.test(p.property_type || "");
+
 /** "for Rent" / "for Sale" — "both" listings are sold first, rented second. */
 export const intentLabel = (p: Pick<Property, "listing_type">) =>
   isRental(p) ? "for Rent" : "for Sale";
@@ -167,8 +174,13 @@ export function propertyJsonLd(property: Property) {
       addressCountry: "TH",
     },
   };
-  if (property.bedrooms > 0) residence.numberOfBedrooms = property.bedrooms;
-  if (property.bathrooms > 0) residence.numberOfBathroomsTotal = property.bathrooms;
+  // A Hotel is described by its room count; numberOfBedrooms belongs to a dwelling.
+  if (property.bedrooms > 0) {
+    if (isHotel(property)) residence.numberOfRooms = property.bedrooms;
+    else residence.numberOfBedrooms = property.bedrooms;
+  }
+  if (property.bathrooms > 0 && !isHotel(property))
+    residence.numberOfBathroomsTotal = property.bathrooms;
   if (property.living_area)
     residence.floorSize = {
       "@type": "QuantitativeValue",

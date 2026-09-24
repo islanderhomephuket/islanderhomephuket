@@ -34,7 +34,7 @@ export async function generateMetadata({
     description: comboDescription(combo, "rent", properties),
     alternates: { canonical: comboPath("rent", combo) },
     robots:
-      properties.length >= INDEXABLE_MIN_LISTINGS
+      properties.length >= (combo.type.minToIndex ?? INDEXABLE_MIN_LISTINGS)
         ? { index: true, follow: true }
         : { index: false, follow: true },
   };

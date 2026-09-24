@@ -13,7 +13,7 @@ import {
 } from "@/components/property/type-intent-page";
 import { BandIntentPage } from "@/components/property/band-intent-page";
 import { FaqSection } from "@/components/property/faq-section";
-import { BUY_BUDGET_FAQS, BUY_FAQS } from "@/lib/faq";
+import { BUY_BUDGET_FAQS, BUY_FAQS, HOTEL_FAQS } from "@/lib/faq";
 import { AREAS } from "@/lib/constants";
 import { getProperties } from "@/lib/data";
 import {
@@ -108,6 +108,8 @@ export async function generateMetadata({
   }
 
   const { type } = target;
+  // Some type pages carry enough standalone content to index on their own.
+  const typeMin = type.minToIndex ?? INDEXABLE_MIN_LISTINGS;
   const properties = await typeIntentProperties(type, "buy");
   const range = priceRange(properties, "buy");
   const pools = poolCount(properties);
@@ -120,7 +122,10 @@ export async function generateMetadata({
     title: typeIntentHeading(type, "buy"),
     description: description.slice(0, 158),
     alternates: { canonical: `/buy/${type.slug}` },
-    robots: indexable(properties.length),
+    robots:
+      properties.length >= typeMin
+        ? { index: true, follow: true }
+        : { index: false, follow: true },
   };
 }
 
@@ -169,10 +174,16 @@ export default async function BuySegmentPage({
   }
 
   const properties = await typeIntentProperties(target.type, "buy");
+  const isHotels = target.type.slug === "hotels";
   return (
     <>
       <TypeIntentPage type={target.type} intent="buy" properties={properties} />
-      <FaqSection faqs={BUY_FAQS.slice(0, 4)} structuredData={false} />
+      {/* A hotel buyer has different questions, and nobody else owns this set. */}
+      <FaqSection
+        faqs={isHotels ? HOTEL_FAQS : BUY_FAQS.slice(0, 4)}
+        title={isHotels ? "Buying or leasing a hotel in Phuket" : undefined}
+        structuredData={isHotels}
+      />
     </>
   );
 }
