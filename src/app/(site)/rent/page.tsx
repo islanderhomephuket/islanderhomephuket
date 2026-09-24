@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { PropertyListing } from "@/components/property/listing";
-import { AreaLinkRail } from "@/components/property/area-link-rail";
 import { TypeLinkRail } from "@/components/property/type-link-rail";
 import { BudgetLinkRail } from "@/components/property/budget-link-rail";
 import { FaqSection } from "@/components/property/faq-section";
@@ -30,7 +29,7 @@ export default async function RentPage({
       />
       <TypeLinkRail intent="rent" />
       <BudgetLinkRail intent="rent" />
-      <AreaLinkRail intent="rent" />
+      {/* No AreaLinkRail here: the zone cards above already link every area page. */}
       {/* The canonical home of this answer set — every other page links back here. */}
       <FaqSection faqs={RENT_FAQS} title="Renting a home in Phuket" />
     </Suspense>
