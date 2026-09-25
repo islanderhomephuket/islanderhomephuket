@@ -8,11 +8,11 @@ import { CtaBand } from "@/components/home/cta-band";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { PropertyGrid } from "@/components/property/property-grid";
-import { AreaCard } from "@/components/area/area-card";
+import { ZoneCard } from "@/components/property/zone-card";
 import { BlogCard } from "@/components/blog/blog-card";
 import { ButtonLink } from "@/components/ui/button";
 import { AREAS, HERO_SLIDES } from "@/lib/constants";
-import { areaCoverImage, formatRent, formatTHB } from "@/lib/utils";
+import { formatRent, formatTHB } from "@/lib/utils";
 import type { Property } from "@/lib/types";
 import {
   getFeaturedProperties,
@@ -50,7 +50,6 @@ export default async function HomePage() {
   const areaCounts = AREAS.map((a) => ({
     area: a,
     count: all.filter((p) => p.area_slug === a.slug).length,
-    image: areaCoverImage(all, a.slug),
   }));
 
   return (
@@ -89,13 +88,13 @@ export default async function HomePage() {
             title="Phuket's finest addresses"
             description="From beachfront Bang Tao to the heritage streets of Old Town, discover the neighbourhood that suits your life."
           />
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {areaCounts.map(({ area, count, image }) => (
-              <AreaCard
+          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {areaCounts.map(({ area, count }) => (
+              <ZoneCard
                 key={area.slug}
                 area={area}
                 count={count}
-                image={image}
+                href={`/areas/${area.slug}`}
               />
             ))}
           </div>

@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { AreaCard } from "@/components/area/area-card";
+import { ZoneCard } from "@/components/property/zone-card";
 import { AREAS } from "@/lib/constants";
 import { getProperties } from "@/lib/data";
-import { areaCoverImage } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Phuket Areas & Neighbourhoods",
@@ -36,13 +35,13 @@ export default async function AreasPage() {
             kicker="Eleven destinations"
             title="Find your neighbourhood"
           />
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {AREAS.map((area) => (
-              <AreaCard
+              <ZoneCard
                 key={area.slug}
                 area={area}
                 count={all.filter((p) => p.area_slug === area.slug).length}
-                image={areaCoverImage(all, area.slug)}
+                href={`/areas/${area.slug}`}
               />
             ))}
           </div>

@@ -3,7 +3,8 @@ import { ArrowUpRight } from "lucide-react";
 import type { AreaInfo } from "@/lib/constants";
 
 /**
- * A text-only zone link — no photo. Used on /rent and /buy, where a
+ * A text-only zone link — no photo. Used on /rent, /buy, /areas and the
+ * homepage (the user asked for text only everywhere, 2026-09-25). A
  * photo-per-zone grid (the AreaCard on /areas) read as too busy; this
  * keeps the same information (name, live count, link) without the image.
  */
