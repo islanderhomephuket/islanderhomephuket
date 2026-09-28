@@ -3,15 +3,18 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, X, Expand } from "lucide-react";
-import type { PropertyImage } from "@/lib/types";
+import type { Property, PropertyImage } from "@/lib/types";
+import { imageAlt } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 export function Gallery({
   images,
   title,
+  property,
 }: {
   images: PropertyImage[];
   title: string;
+  property: Property;
 }) {
   const pics = images.length
     ? images
@@ -25,6 +28,8 @@ export function Gallery({
           is_cover: true,
         },
       ];
+  // One real, non-repeating alt per photo — see imageAlt() for why.
+  const alts = pics.map((p, i) => imageAlt(property, p, i, pics.length));
 
   const [active, setActive] = useState(() =>
     Math.max(0, pics.findIndex((p) => p.is_cover)),
@@ -59,7 +64,7 @@ export function Gallery({
       <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[1.5rem] bg-charcoal">
         <Image
           src={pics[active].url}
-          alt={pics[active].alt ?? title}
+          alt={alts[active]}
           fill
           priority
           sizes="(max-width: 1024px) 100vw, 66vw"
@@ -99,7 +104,7 @@ export function Gallery({
             >
               <Image
                 src={p.url}
-                alt={p.alt ?? `${title} ${i + 1}`}
+                alt={alts[i]}
                 fill
                 sizes="120px"
                 className="object-cover"
@@ -122,7 +127,7 @@ export function Gallery({
           <div className="relative h-[78vh] w-[92vw] max-w-6xl">
             <Image
               src={pics[active].url}
-              alt={pics[active].alt ?? title}
+              alt={alts[active]}
               fill
               sizes="92vw"
               className="object-contain"

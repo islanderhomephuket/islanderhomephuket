@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { BedDouble, Bath, Maximize, ArrowUpRight } from "lucide-react";
-import { isHotel } from "@/lib/seo";
+import { isHotel, propertyPhrase } from "@/lib/seo";
 import type { Property } from "@/lib/types";
 import { AREAS } from "@/lib/constants";
 import { formatRent, formatTHB } from "@/lib/utils";
@@ -37,7 +37,7 @@ export function PropertyCard({ property }: { property: Property }) {
       <div className="relative m-2 aspect-[4/3] overflow-hidden rounded-[1.1rem]">
         <Image
           src={cover}
-          alt={property.title}
+          alt={propertyPhrase(property)}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover transition-transform duration-[1.1s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"

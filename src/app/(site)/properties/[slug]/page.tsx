@@ -231,7 +231,11 @@ export default async function PropertyDetailPage({
       <section className="bg-charcoal py-10">
         <Container>
           <div className="relative">
-            <Gallery images={property.images ?? []} title={property.title} />
+            <Gallery
+              images={property.images ?? []}
+              title={property.title}
+              property={property}
+            />
             {property.status !== "available" && (
               <div className="pointer-events-none absolute left-0 top-0 z-10 h-40 w-40 overflow-hidden rounded-tl-[1.1rem]">
                 <span

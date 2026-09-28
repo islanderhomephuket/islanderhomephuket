@@ -8,7 +8,7 @@
  */
 
 import { AREAS, SITE, getArea, type AreaInfo } from "@/lib/constants";
-import type { Property } from "@/lib/types";
+import type { Property, PropertyImage } from "@/lib/types";
 
 /** Canonical origin, without a trailing slash. Must match what Vercel serves. */
 export const BASE_URL = SITE.url.replace(/\/$/, "");
@@ -251,6 +251,29 @@ export function propertyJsonLd(property: Property) {
       telephone: SITE.phoneDisplay,
     },
   };
+}
+
+/**
+ * Per-image ALT text. Every photo on a listing must NOT share identical alt
+ * text — both for accessibility and for image search, where each photo is a
+ * separate indexable asset. Grounds each one in the property's real facts
+ * (never fabricated) plus a genuine view category when the upload pipeline
+ * recorded one (`fb-harvest`'s pool/exterior/interior classifier writes this
+ * to `property_images.alt` at upload time — see `photo-pick.mjs`). When no
+ * category was recorded (older uploads), falls back to the search phrase plus
+ * the image's real position, which is still unique per photo, still true, and
+ * never keyword-stuffed.
+ */
+export function imageAlt(
+  property: Property,
+  image: Pick<PropertyImage, "alt" | "is_cover">,
+  index: number,
+  total: number,
+): string {
+  const phrase = propertyPhrase(property);
+  if (image.alt) return `${phrase} — ${image.alt}`;
+  if (image.is_cover) return phrase;
+  return total > 1 ? `${phrase} — photo ${index + 1} of ${total}` : phrase;
 }
 
 /* ───────────────────────── Breadcrumbs ───────────────────────── */
