@@ -88,7 +88,7 @@ export default function ContactPage() {
                   </a>
                 </InfoRow>
                 <InfoRow Icon={MapPin} label="Office">
-                  35/294 Wichit, Mueang Phuket, Phuket 83000
+                  Phuket, Thailand 83000
                 </InfoRow>
                 <InfoRow Icon={Clock} label="Hours">
                   Mon–Sat · 9:00–18:00 (ICT)
@@ -119,7 +119,7 @@ export default function ContactPage() {
 
               <div className="mt-8 h-64 overflow-hidden border border-sand">
                 <MapEmbed
-                  query="35/294 Wichit, Mueang Phuket, Phuket 83000"
+                  query="Phuket, Thailand"
                   title="Islander Home Phuket"
                 />
               </div>
