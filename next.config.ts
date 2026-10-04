@@ -41,6 +41,7 @@ const DUPLICATE_LISTINGS: [string, string][] = [
   ["modern-pool-villa-nai-harn-rawai-rw04", "rawai-modern-pool-villa-139m"],
   ["chalong-house-109m-2", "chalong-house-109m"],
   ["cherng-talay-pool-villa-220k", "pasak3-chernglay-pool-villa-220k"],
+  ["luxury-4-bed-pool-villa-thalang-th01", "thalang-super-villas-pool-villa-189m"],
 ];
 
 const nextConfig: NextConfig = {
