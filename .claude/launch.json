@@ -4,7 +4,7 @@
     {
       "name": "islander-home",
       "runtimeExecutable": "C:\\Windows\\System32\\cmd.exe",
-      "runtimeArgs": ["/c", "C:\\Users\\Thana\\Desktop\\islander-home-phuket-backup\\run-next.cmd", "dev"],
+      "runtimeArgs": ["/c", "C:\\Users\\User\\islander-home-phuket\\run-next.cmd", "dev"],
       "port": 3000
     }
   ]
