@@ -43,6 +43,6 @@ next-env.d.ts
 
 # Full-resolution photo backup — keep OUT of git (huge). Web-optimized
 # copies were moved out of the repo on 2026-10-26 (Vercel storage limit) to
-# C:SERSSERISLANDER-BACKUPSPUBLIC-LISTINGS-2026-10-26 � LISTING PHOTOS
-# LIVE IN SUPABASE STORAGE. ONLY THE FEW FILES SRC/LIB USES STAY IN PUBLIC/LISTINGS/.
+# C:/Users/User/islander-backups/public-listings-2026-10-26 - listing photos
+# live in Supabase storage. Only the few files src/lib uses stay in public/listings/.
 public/_listings_ORIGINAL_BACKUP/
