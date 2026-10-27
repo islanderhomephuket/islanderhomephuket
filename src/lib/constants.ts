@@ -49,6 +49,34 @@ export const NAV_LINKS = [
  * as `/hero/<file>.jpg`. `location`, `price` and `href` are optional; omit them
  * and the hero shows the photo with no caption.
  */
+const MEDIA =
+  "https://qqxfozlkizcgpwpgukcx.supabase.co/storage/v1/object/public/property-media";
+
+/** Serrena — the lakefront show villa at Manik (BTA-059), from its own shoot. */
+const SERRENA = {
+  title: "Lakefront Pool Villa — Manik, Cherng Talay",
+  location: "Cherng Talay · Lakefront Villa",
+  price: "From THB 48,500,000",
+  href: "/properties/cherngtalay-lakefront-pool-villa-485m",
+};
+
+/**
+ * Annara (BT08). No hero shoot of its own, so these come from the listing's
+ * own gallery — only the frames that carry a full-bleed crop: the rest are
+ * portrait, or show a workman, a parked truck and unlandscaped ground.
+ */
+const ANNARA = {
+  title: "Annara — Tropical Modern Pool Villa, Cherng Talay",
+  location: "Cherng Talay · Annara",
+  price: "From THB 36,500,000",
+  href: "/properties/annara-luxury-pool-villa-cherng-talay-bt08",
+};
+
+/**
+ * The two villas alternate so both are seen inside the first rotation, and the
+ * count stays at five: each slide also draws a thumbnail, and a sixth pushes
+ * the rail into the search card beside it.
+ */
 export const HERO_SLIDES: {
   image: string;
   title: string;
@@ -56,20 +84,12 @@ export const HERO_SLIDES: {
   price?: string;
   href?: string;
 }[] = [
-  // Serrena — the lakefront show villa at Manik (BTA-059). Professional shoot,
-  // stored at 2560px under property-media/hero/ so the repo stays light.
-  "serrena-1",
-  "serrena-2",
-  "serrena-3",
-  "serrena-4",
-  "serrena-5",
-].map((f) => ({
-  image: `https://qqxfozlkizcgpwpgukcx.supabase.co/storage/v1/object/public/property-media/hero/${f}.jpg`,
-  title: "Lakefront Pool Villa — Manik, Cherng Talay",
-  location: "Cherng Talay · Lakefront Villa",
-  price: "From THB 48,500,000",
-  href: "/properties/cherngtalay-lakefront-pool-villa-485m",
-}));
+  { ...SERRENA, image: `${MEDIA}/hero/serrena-1.jpg` },
+  { ...ANNARA, image: `${MEDIA}/annara-luxury-pool-villa-cherng-talay-bt08/2.jpg` },
+  { ...SERRENA, image: `${MEDIA}/hero/serrena-2.jpg` },
+  { ...ANNARA, image: `${MEDIA}/annara-luxury-pool-villa-cherng-talay-bt08/6.jpg` },
+  { ...SERRENA, image: `${MEDIA}/hero/serrena-3.jpg` },
+];
 
 export interface AreaInfo {
   slug: string;
