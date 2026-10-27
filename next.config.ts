@@ -42,6 +42,9 @@ const DUPLICATE_LISTINGS: [string, string][] = [
   ["chalong-house-109m-2", "chalong-house-109m"],
   ["cherng-talay-pool-villa-220k", "pasak3-chernglay-pool-villa-220k"],
   ["luxury-4-bed-pool-villa-thalang-th01", "thalang-super-villas-pool-villa-189m"],
+  // CND-233 dropped its one-year contract and is short-stay only, so 23k in the
+  // slug became wrong; the old URL is already out with clients.
+  ["phuket-town-the-point-duplex-condo-23k", "phuket-town-the-point-duplex-condo-39k"],
 ];
 
 const nextConfig: NextConfig = {
