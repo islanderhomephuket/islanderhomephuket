@@ -45,6 +45,15 @@ const DUPLICATE_LISTINGS: [string, string][] = [
   // CND-233 dropped its one-year contract and is short-stay only, so 23k in the
   // slug became wrong; the old URL is already out with clients.
   ["phuket-town-the-point-duplex-condo-23k", "phuket-town-the-point-duplex-condo-39k"],
+  // The four Point penthouses went short-stay only at 45-55K, so the yearly
+  // rate in each slug stopped being true. CND-234 and CND-236 both read
+  // "...-3-bed-" + their old rate with no other difference, so they would
+  // collide at -45k; D050 takes its unit number, the one thing that tells
+  // these two 118 sqm units apart.
+  ["phuket-town-the-point-penthouse-3-bed-38k", "phuket-town-the-point-penthouse-3-bed-45k"],
+  ["phuket-town-the-point-penthouse-3-bed-35k-mountain-view", "phuket-town-the-point-penthouse-3-bed-45k-mountain-view"],
+  ["phuket-town-the-point-penthouse-3-bed-35k", "phuket-town-the-point-penthouse-3-bed-45k-unit-d050"],
+  ["phuket-town-the-point-penthouse-3-bed-35k-furnished", "phuket-town-the-point-penthouse-3-bed-45k-furnished"],
 ];
 
 const nextConfig: NextConfig = {
