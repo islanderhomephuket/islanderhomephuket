@@ -91,6 +91,19 @@ export const HERO_SLIDES: {
   { ...SERRENA, image: `${MEDIA}/hero/serrena-3.jpg` },
 ];
 
+/**
+ * Listings that lead "Signature properties", in this order.
+ *
+ * The grid is otherwise the featured listings newest first, which only ever
+ * surfaces recent stock — an older listing cannot be shown without unfeaturing
+ * everything added since. Pin its slug here instead. A slug that is not
+ * featured, or no longer exists, is ignored.
+ */
+export const FEATURED_PINNED: string[] = [
+  "kathu-dcondo-reef-short-term-condo-20k",
+  "annara-luxury-pool-villa-cherng-talay-bt08",
+];
+
 export interface AreaInfo {
   slug: string;
   name: string;

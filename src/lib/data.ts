@@ -6,6 +6,7 @@ import {
   MOCK_BLOG_POSTS,
   MOCK_LEADS,
 } from "./mock-data";
+import { FEATURED_PINNED } from "./constants";
 import { NOTION_PROPERTIES } from "./notion-data";
 import { MANUAL_LISTINGS } from "./manual-listings";
 import type { BlogPost, Lead, Property, PropertyFilters } from "./types";
@@ -120,7 +121,11 @@ export const getProperties = cache(
 export const getFeaturedProperties = cache(
   async (limit = 6): Promise<Property[]> => {
     const all = await getProperties({ featured: true });
-    return all.slice(0, limit);
+    const pinned = FEATURED_PINNED.map((slug) =>
+      all.find((p) => p.slug === slug),
+    ).filter((p): p is Property => p != null);
+    const rest = all.filter((p) => !pinned.includes(p));
+    return [...pinned, ...rest].slice(0, limit);
   },
 );
 
