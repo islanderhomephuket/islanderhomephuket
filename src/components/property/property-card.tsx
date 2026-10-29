@@ -7,6 +7,8 @@ import { AREAS } from "@/lib/constants";
 import { formatRent, formatTHB } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 
+const NEW_LISTING_MS = 7 * 24 * 60 * 60 * 1000;
+
 export function PropertyCard({ property }: { property: Property }) {
   const area = AREAS.find((a) => a.slug === property.area_slug);
   const isBoth = property.listing_type === "both";
@@ -20,6 +22,11 @@ export function PropertyCard({ property }: { property: Property }) {
   const priceLabel = isRent ? "Rent" : isBoth ? "Sale / Rent" : "Price";
   const badgeLabel = isRent ? "For Rent" : isBoth ? "Sale / Rent" : "For Sale";
   const cover = property.cover_image ?? "/properties/villa-1.png";
+  // "New" drops off by itself once the listing is a week old — nothing to
+  // clear by hand. Pages revalidate every 5 min, so it can linger that long.
+  const isNew =
+    !!property.created_at &&
+    Date.now() - new Date(property.created_at).getTime() < NEW_LISTING_MS;
   const statusLabel =
     property.status === "reserved"
       ? "Reserved"
@@ -45,7 +52,13 @@ export function PropertyCard({ property }: { property: Property }) {
         {/* Keeps the badges readable over bright photography */}
         <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/45 to-transparent" />
 
-        <div className="absolute left-3.5 top-3.5 flex gap-2">
+        <div className="absolute left-3.5 right-24 top-3.5 flex flex-wrap gap-2">
+          {isNew && !statusLabel && (
+            <Badge tone="gold" className="gap-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+              New
+            </Badge>
+          )}
           <Badge tone="dark">{badgeLabel}</Badge>
           {property.is_featured && <Badge tone="gold">Featured</Badge>}
         </div>
