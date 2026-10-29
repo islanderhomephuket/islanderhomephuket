@@ -16,6 +16,7 @@ import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Badge } from "@/components/ui/badge";
 import { Gallery } from "@/components/property/gallery";
+import { ListingProse } from "@/components/property/listing-prose";
 import { MapEmbed } from "@/components/property/map-embed";
 import { PropertyGrid } from "@/components/property/property-grid";
 import { ContactForm } from "@/components/forms/contact-form";
@@ -283,9 +284,7 @@ export default async function PropertyDetailPage({
                     isRent ? "for rent" : "for sale"
                   } in ${area?.name ?? "Phuket"}`}
                 />
-                <p className="mt-6 whitespace-pre-line leading-relaxed text-paper/75">
-                  {property.description}
-                </p>
+                <ListingProse text={property.description} />
               </div>
 
               {/* Features */}
