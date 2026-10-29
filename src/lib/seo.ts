@@ -60,6 +60,12 @@ export function compactPrice(property: Property): string {
     const period = property.rent_period === "year" ? "yr" : property.rent_period === "day" ? "day" : "mo";
     return `฿${amount.toLocaleString("en-US")}/${period}`;
   }
+  // Billions read as "฿1500M" through the millions branch, which looks like a
+  // typo in a search result — the one place a title has to be trusted at a glance.
+  if (amount >= 1_000_000_000) {
+    const b = amount / 1_000_000_000;
+    return `฿${b % 1 === 0 ? b.toFixed(0) : b.toFixed(2).replace(/0$/, "")}B`;
+  }
   if (amount >= 1_000_000) {
     const m = amount / 1_000_000;
     return `฿${m % 1 === 0 ? m.toFixed(0) : m.toFixed(2).replace(/0$/, "")}M`;
