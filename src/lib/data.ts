@@ -129,6 +129,20 @@ export const getFeaturedProperties = cache(
   },
 );
 
+/** How long a listing stays on the Newest list. Matches the 7-day "New" badge on cards. */
+export const NEWEST_DAYS = 7;
+export const NEWEST_COUNT = 30;
+/** Listings published in the last NEWEST_DAYS days, newest first, at most `limit`. They fall off by themselves. */
+export const getNewestProperties = cache(
+  async (limit = NEWEST_COUNT): Promise<Property[]> => {
+    const all = await getProperties();
+    const cutoff = Date.now() - NEWEST_DAYS * 24 * 60 * 60 * 1000;
+    return all
+      .filter((p) => p.created_at && new Date(p.created_at).getTime() >= cutoff)
+      .slice(0, limit);
+  },
+);
+
 export const getPropertyBySlug = cache(
   async (slug: string): Promise<Property | null> => {
     const supabase = createPublicClient();
