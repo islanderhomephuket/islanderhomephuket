@@ -18,8 +18,6 @@ import {
   getFeaturedProperties,
   getBlogPosts,
   getProperties,
-  getNewestProperties,
-  NEWEST_COUNT,
 } from "@/lib/data";
 
 /** Featured listings become the hero's rotating photography + thumbnail rail. */
@@ -43,11 +41,10 @@ function toSlides(properties: Property[]): HeroSlide[] {
 }
 
 export default async function HomePage() {
-  const [featured, posts, all, newest] = await Promise.all([
+  const [featured, posts, all] = await Promise.all([
     getFeaturedProperties(6),
     getBlogPosts(),
     getProperties(),
-    getNewestProperties(NEWEST_COUNT),
   ]);
 
   const areaCounts = AREAS.map((a) => ({
@@ -60,36 +57,6 @@ export default async function HomePage() {
       <Hero
         slides={HERO_SLIDES.length > 0 ? HERO_SLIDES : toSlides(featured)}
       />
-
-      {/* Newest listings — listings from the last 7 days (max 30); full list on /newest */}
-      {newest.length > 0 && (
-        <section className="border-b border-paper/10 bg-ink py-20 sm:py-24">
-          <Container>
-            <div className="flex flex-wrap items-end justify-between gap-6">
-              <SectionHeading
-                kicker="Just Listed"
-                title="Newest listings"
-                description={`Fresh to the market — the ${newest.length} properties added in the last 7 days.`}
-              />
-              <ButtonLink href="/newest" variant="outline" className="shrink-0">
-                See all {newest.length} new listings{" "}
-                <ArrowRight className="h-4 w-4" />
-              </ButtonLink>
-            </div>
-            <div className="mt-12">
-              <PropertyGrid properties={newest.slice(0, 6)} />
-            </div>
-            <div className="mt-10 text-center">
-              <Link
-                href="/newest"
-                className="text-sm font-semibold uppercase tracking-[0.18em] text-paper/60 transition-colors hover:text-paper"
-              >
-                View all {newest.length} newest listings →
-              </Link>
-            </div>
-          </Container>
-        </section>
-      )}
 
       {/* Featured properties */}
       {featured.length > 0 && (

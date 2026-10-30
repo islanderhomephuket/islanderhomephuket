@@ -33,7 +33,7 @@ export function whatsappLink(message?: string): string {
 export const NAV_LINKS = [
   { label: "Buy", href: "/buy" },
   { label: "Rent", href: "/rent" },
-  { label: "New", href: "/newest" },
+  { label: "New List", href: "/newest" },
   { label: "Areas", href: "/areas" },
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },

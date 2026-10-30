@@ -136,6 +136,42 @@ h1, h2, h3, h4, .font-display {
 /* Hero image settles slowly on load — the reference's cinematic feel. */
 .animate-slow-zoom { animation: slow-zoom 2.4s var(--ease-luxe) both; }
 
+/* Shimmering "New List" nav tab: a bright band sweeps across the text and the glow
+   twinkles. Monochrome to match the palette; off when the visitor prefers less motion. */
+@keyframes sparkle-sweep {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+@keyframes sparkle-twinkle {
+  0%, 100% { text-shadow: 0 0 0 rgba(255, 255, 255, 0); }
+  35% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.75), 0 0 2px rgba(255, 255, 255, 0.9); }
+  60% { text-shadow: 0 0 4px rgba(255, 255, 255, 0.25); }
+}
+.sparkle-text {
+  background-image: linear-gradient(
+    100deg,
+    rgba(246, 245, 242, 0.55) 0%,
+    rgba(246, 245, 242, 0.55) 35%,
+    #ffffff 50%,
+    rgba(246, 245, 242, 0.55) 65%,
+    rgba(246, 245, 242, 0.55) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: sparkle-sweep 2.4s linear infinite, sparkle-twinkle 1.8s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sparkle-text {
+    animation: none;
+    background-image: none;
+    -webkit-text-fill-color: currentColor;
+    color: var(--color-paper);
+  }
+}
+
 /* Hover lift for cards */
 .hover-lift {
   transition: transform 0.45s var(--ease-luxe), box-shadow 0.45s var(--ease-luxe), border-color 0.45s var(--ease-luxe);

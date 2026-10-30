@@ -60,6 +60,7 @@ export function Header() {
                   "relative text-[0.74rem] font-medium uppercase tracking-[0.2em] transition-colors",
                   "text-paper/70 hover:text-paper",
                   active && "text-paper",
+                  href === "/newest" && "sparkle-text font-semibold",
                 )}
               >
                 {link.label}
@@ -111,7 +112,10 @@ export function Header() {
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="border-b border-paper/10 py-4 text-sm font-medium uppercase tracking-[0.2em] text-paper/75 hover:text-paper"
+              className={cn(
+                "border-b border-paper/10 py-4 text-sm font-medium uppercase tracking-[0.2em] text-paper/75 hover:text-paper",
+                link.href === "/newest" && "sparkle-text font-semibold",
+              )}
             >
               {link.label}
             </Link>
