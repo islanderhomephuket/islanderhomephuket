@@ -24,12 +24,20 @@ export function isLive(): boolean {
 }
 
 function withCover(p: Property): Property {
+  // PostgREST returns an embedded resource in no particular order, so the
+  // gallery showed photos in whatever order the rows came back in — a listing
+  // whose cover row was inserted last opened on "2 / 2" with the thumbnails
+  // reversed. sort_order is the order the listing was built in; honour it
+  // once here, where every query path already passes.
+  const images = p.images
+    ? [...p.images].sort((a, b) => a.sort_order - b.sort_order)
+    : p.images;
   const cover =
     p.cover_image ??
-    p.images?.find((i) => i.is_cover)?.url ??
-    p.images?.[0]?.url ??
+    images?.find((i) => i.is_cover)?.url ??
+    images?.[0]?.url ??
     "/properties/villa-1.png";
-  return { ...p, cover_image: cover };
+  return { ...p, images, cover_image: cover };
 }
 
 /** Price relevant to the current filter context (sale vs rent) for dual listings. */
