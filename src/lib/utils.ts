@@ -90,6 +90,11 @@ export function oneYearLeaseOnly(property: Property): boolean {
   const isRental =
     property.listing_type === "rent" || property.listing_type === "both";
   if (!isRental) return false;
+  // A hotel is leased as a business on a multi-year commercial term — the Old
+  // Town and Koh Kaew hotels run 9 years as 3+3+3. The one-year default is a
+  // rule about residential tenancies, and on a hotel it printed "1 Year Only"
+  // directly against the listing's own "Lease term 9 years" feature.
+  if (/hotel/i.test(property.property_type || "")) return false;
   return !hasShortTermOption(property.description, property.rent_period);
 }
 
