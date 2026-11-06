@@ -139,12 +139,21 @@ export const getFeaturedProperties = cache(
 
 /** How long a listing stays on the Newest list. Matches the 7-day "New" badge on cards. */
 export const NEWEST_DAYS = 7;
-export const NEWEST_COUNT = 30;
-/** Listings published in the last NEWEST_DAYS days, newest first, at most `limit`. They fall off by themselves. */
+export const NEWEST_COUNT = 60;
+/**
+ * The second window on the same page: a rolling month. A week carries ~40
+ * listings and a month ~130, so the month is capped lower than its true count
+ * — a page of 120 cards is already long, and anything older is better found
+ * through the area and type hubs.
+ */
+export const NEWEST_MONTH_DAYS = 30;
+export const NEWEST_MONTH_COUNT = 120;
+
+/** Listings published in the last `days` days, newest first, at most `limit`. They fall off by themselves. */
 export const getNewestProperties = cache(
-  async (limit = NEWEST_COUNT): Promise<Property[]> => {
+  async (limit = NEWEST_COUNT, days = NEWEST_DAYS): Promise<Property[]> => {
     const all = await getProperties();
-    const cutoff = Date.now() - NEWEST_DAYS * 24 * 60 * 60 * 1000;
+    const cutoff = Date.now() - days * 24 * 60 * 60 * 1000;
     return all
       .filter((p) => p.created_at && new Date(p.created_at).getTime() >= cutoff)
       .slice(0, limit);
