@@ -9,6 +9,7 @@ import {
 import { FEATURED_PINNED } from "./constants";
 import { NOTION_PROPERTIES } from "./notion-data";
 import { MANUAL_LISTINGS } from "./manual-listings";
+import { normalizePropertyType } from "./property-type-pages";
 import type { BlogPost, Lead, Property, PropertyFilters } from "./types";
 
 /**
@@ -56,7 +57,11 @@ function applyFilters(list: Property[], f: PropertyFilters = {}): Property[] {
     );
   if (f.area) out = out.filter((p) => p.area_slug === f.area);
   if (f.propertyType)
-    out = out.filter((p) => p.property_type === f.propertyType);
+    out = out.filter(
+      (p) =>
+        normalizePropertyType(p.property_type) ===
+        normalizePropertyType(f.propertyType),
+    );
   if (f.minPrice != null)
     out = out.filter((p) => effectivePrice(p, f.listingType) >= f.minPrice!);
   if (f.maxPrice != null)
@@ -102,14 +107,29 @@ export const getProperties = cache(
     const supabase = createPublicClient();
     if (!supabase) return applyFilters(DEMO_PROPERTIES, filters);
 
+    // Only the cover image, not the whole gallery. The 823 listings carry 13,775
+    // image rows between them, and pulling all of them for a page that shows one
+    // photo per card made this query take ~15s; run a few of them at once — which
+    // is exactly what prerendering ~140 hub pages does — and Postgres cancelled it
+    // with `57014 statement timeout`. Every hub page then fell through to the
+    // bundled demo catalogue below, computed a listing count of nearly zero, and
+    // noindexed itself: 34 pages with real stock (59 houses in Koh Kaew, 52 condos
+    // in Kathu) were served to Google as empty and blocked from the index.
+    // Narrowed to the cover, the same 25 concurrent queries all return in ~3s.
+    // The gallery is loaded per listing by getPropertyBySlug, which still takes
+    // `images(*)` — one row, so it costs nothing.
     let query = supabase
       .from("properties")
-      .select("*, images:property_images(*)")
+      .select("*, images:property_images(url, alt, sort_order, is_cover)")
+      .eq("images.is_cover", true)
       .neq("status", "draft");
 
     if (filters.listingType) query = query.eq("listing_type", filters.listingType);
     if (filters.area) query = query.eq("area_slug", filters.area);
-    if (filters.propertyType) query = query.eq("property_type", filters.propertyType);
+    // `ilike` with no wildcards is an exact match that ignores case, so a listing
+    // entered as "villa" still answers the "Villa" filter.
+    if (filters.propertyType)
+      query = query.ilike("property_type", filters.propertyType);
     if (filters.minPrice != null) query = query.gte("price", filters.minPrice);
     if (filters.maxPrice != null) query = query.lte("price", filters.maxPrice);
     if (filters.bedrooms != null) query = query.gte("bedrooms", filters.bedrooms);
@@ -121,7 +141,17 @@ export const getProperties = cache(
     else query = query.order("created_at", { ascending: false });
 
     const { data, error } = await query;
-    if (error || !data) return applyFilters(DEMO_PROPERTIES, filters);
+    // Never answer a live query with the bundled demo catalogue. Doing so turned a
+    // database timeout into 80 fake listings that rendered, got counted, and drove
+    // the `noindex` decision on every hub page — a failure that looked like a
+    // working site. Throwing instead fails the build loudly, and at request time
+    // Next.js keeps serving the last good render and retries, which is what a
+    // transient database error should do.
+    if (error || !data) {
+      throw new Error(
+        `getProperties failed: ${error?.message ?? "no rows returned"}`,
+      );
+    }
     return (data as Property[]).map(withCover);
   },
 );

@@ -95,8 +95,34 @@ export const PROPERTY_TYPE_PAGES: PropertyTypePage[] = [
 export const getPropertyTypePage = (slug: string) =>
   PROPERTY_TYPE_PAGES.find((t) => t.slug === slug);
 
+/**
+ * `property_type` is typed by hand when a listing is collected, so it arrives as
+ * "condo" as often as "Condominium". An exact-string match stranded 31 listings:
+ * they existed, had photos and a price, and appeared on their area page, but were
+ * invisible on every type and area×type page because of their capitals.
+ * Compare on a normalised form, and treat the short names people actually write
+ * as the types they mean.
+ */
+const TYPE_SYNONYMS: Record<string, string> = {
+  condo: "condominium",
+  condos: "condominium",
+  apartments: "apartment",
+  villas: "villa",
+  houses: "house",
+  townhouses: "townhouse",
+  townhome: "townhouse",
+  hotels: "hotel",
+};
+
+export const normalizePropertyType = (raw: string | null | undefined): string => {
+  const key = (raw ?? "").trim().toLowerCase();
+  return TYPE_SYNONYMS[key] ?? key;
+};
+
 export const isPropertyTypeMatch = (property: Property, type: PropertyTypePage) =>
-  type.match.includes(property.property_type);
+  type.match
+    .map((m) => normalizePropertyType(m))
+    .includes(normalizePropertyType(property.property_type));
 
 /**
  * A `/buy/<slug>` or `/rent/<slug>` segment is either an area or a property
