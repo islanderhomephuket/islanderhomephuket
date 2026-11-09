@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
-import { PropertyGrid } from "@/components/property/property-grid";
+import { NewestListingsBrowser } from "@/components/property/newest-listings-browser";
 import { ButtonLink } from "@/components/ui/button";
 import {
   getNewestProperties,
@@ -8,6 +8,7 @@ import {
   NEWEST_DAYS,
   NEWEST_MONTH_COUNT,
   NEWEST_MONTH_DAYS,
+  stripToCardFields,
 } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
@@ -47,8 +48,9 @@ export async function NewestListingsPage({ period }: { period: NewestPeriod }) {
   const counts = { week: week.length, month: month.length };
 
   const cfg = PERIODS[period];
-  const properties = (period === "week" ? week : month).slice(0, cfg.cap);
-  const capped = counts[period] > properties.length;
+  // The whole window goes to the browser, which caps after filtering — see the
+  // note there on why the cap must not be applied first.
+  const properties = stripToCardFields(period === "week" ? week : month);
 
   return (
     <>
@@ -60,8 +62,9 @@ export async function NewestListingsPage({ period }: { period: NewestPeriod }) {
           </h1>
           <p className="mt-4 max-w-2xl text-paper/70">
             Everything added to Islander Home Phuket in the last {cfg.days} days,
-            newest first — for sale and for rent. Listings leave this page once
-            they are older than that.
+            newest first — for sale and for rent. Narrow it to one side of the
+            market and a price range below. Listings leave this page once they
+            are older than that.
           </p>
 
           <nav
@@ -103,15 +106,12 @@ export async function NewestListingsPage({ period }: { period: NewestPeriod }) {
 
       <section className="bg-charcoal py-12">
         <Container>
-          <p className="text-sm text-paper/60">
-            Showing{" "}
-            <span className="font-semibold text-paper">{properties.length}</span>{" "}
-            {properties.length === 1 ? "listing" : "listings"}
-            {capped ? ` of ${counts[period]}` : ""} from the last {cfg.days} days
-          </p>
-          <div className="mt-6">
-            <PropertyGrid properties={properties} emptyMessage={cfg.empty} />
-          </div>
+          <NewestListingsBrowser
+            properties={properties}
+            cap={cfg.cap}
+            days={cfg.days}
+            emptyMessage={cfg.empty}
+          />
           <div className="mt-14 flex flex-wrap items-center justify-center gap-4">
             <ButtonLink href="/buy" variant="outline">
               Browse all for sale

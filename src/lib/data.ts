@@ -41,6 +41,25 @@ function withCover(p: Property): Property {
   return { ...p, images, cover_image: cover };
 }
 
+/**
+ * Drop everything a property card never reads.
+ *
+ * Only needed when a list crosses into a client component: React has to
+ * serialise the props into the flight payload, so the page pays for each
+ * listing twice — once as rendered HTML and again as JSON. The month window is
+ * 151 listings, and their descriptions and feature arrays are ~100KB of that
+ * JSON that no card ever renders. The cover URL is kept; the gallery is not,
+ * since a card shows one photo and the detail page loads its own.
+ */
+export function stripToCardFields(list: Property[]): Property[] {
+  return list.map((p) => ({
+    ...p,
+    description: "",
+    features: [],
+    images: undefined,
+  }));
+}
+
 /** Price relevant to the current filter context (sale vs rent) for dual listings. */
 function effectivePrice(p: Property, ctx?: "sale" | "rent" | "both"): number {
   if (p.listing_type === "both" && ctx === "rent") return p.rent_price ?? 0;
