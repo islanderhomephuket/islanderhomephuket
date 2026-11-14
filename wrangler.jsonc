@@ -2,6 +2,11 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "islanderhomephuket",
   "main": ".open-next/worker.js",
+  "workers_dev": true,
+  "routes": [
+    { "pattern": "www.islanderhomephuket.com", "custom_domain": true },
+    { "pattern": "islanderhomephuket.com", "custom_domain": true }
+  ],
   "compatibility_date": "2026-11-01",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": {
