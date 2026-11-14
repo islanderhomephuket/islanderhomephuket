@@ -46,3 +46,8 @@ next-env.d.ts
 # C:/Users/User/islander-backups/public-listings-2026-10-26 - listing photos
 # live in Supabase storage. Only the few files src/lib uses stay in public/listings/.
 public/_listings_ORIGINAL_BACKUP/
+
+# Cloudflare / OpenNext
+.open-next
+.wrangler
+.dev.vars
