@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import {
   AreaIntentPage,
   areaIntentProperties,
-  parseAreaFilters,
 } from "@/components/property/area-intent-page";
 import {
   TypeIntentPage,
@@ -130,10 +129,8 @@ export async function generateMetadata({
 
 export default async function RentSegmentPage({
   params,
-  searchParams,
 }: {
   params: Promise<{ area: string }>;
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const { area: slug } = await params;
 
@@ -157,14 +154,12 @@ export default async function RentSegmentPage({
 
   if (target.kind === "area") {
     const properties = await areaIntentProperties(target.area, "rent");
-    const filters = parseAreaFilters(await searchParams);
     return (
       <>
         <AreaIntentPage
           area={target.area}
           intent="rent"
           properties={properties}
-          filters={filters}
         />
         <FaqSection
           faqs={RENT_FAQS.slice(0, 4)}

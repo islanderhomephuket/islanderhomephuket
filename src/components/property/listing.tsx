@@ -1,73 +1,43 @@
+import { Suspense } from "react";
 import { Container } from "@/components/ui/container";
 import { PropertyFilters } from "./property-filters";
-import { PropertyGrid } from "./property-grid";
-import { ZoneCard } from "./zone-card";
-import { getProperties } from "@/lib/data";
+import { IslandResults, ZoneGrid, type ZoneSummary } from "./listing-results";
+import { getProperties, stripToCardFields } from "@/lib/data";
 import { AREAS } from "@/lib/constants";
-import type { PropertyFilters as Filters, Property } from "@/lib/types";
+import type { Property } from "@/lib/types";
 
-type RawParams = { [key: string]: string | string[] | undefined };
-
-function str(v: string | string[] | undefined): string | undefined {
-  return Array.isArray(v) ? v[0] : v;
-}
-function num(v: string | string[] | undefined): number | undefined {
-  const s = str(v);
-  if (!s) return undefined;
-  const n = Number(s);
-  return Number.isFinite(n) ? n : undefined;
-}
-
+/**
+ * The island-wide /rent and /buy pages.
+ *
+ * Static: the listing set is fetched at render time (ISR) and the filter bar's
+ * query string is applied in the browser by `IslandResults` — reading
+ * `searchParams` here would make every visit a fresh server render (see
+ * `lib/listing-filters.ts` for why that got the site paused).
+ *
+ * Unfiltered, the page shows a grid of zone cards handing off to each zone's own
+ * page; the flat grid comes back the moment someone actually filters.
+ */
 export async function PropertyListing({
   listingType,
-  searchParams,
   title,
   subtitle,
 }: {
   listingType: "sale" | "rent";
-  searchParams: RawParams;
   title: string;
   subtitle: string;
 }) {
-  const filters: Filters = {
-    listingType,
-    area: str(searchParams.area),
-    propertyType: str(searchParams.propertyType),
-    bedrooms: num(searchParams.bedrooms),
-    minPrice: num(searchParams.minPrice),
-    maxPrice: num(searchParams.maxPrice),
-    query: str(searchParams.q),
-    sort: (str(searchParams.sort) as Filters["sort"]) || "newest",
-  };
-
-  const properties = await getProperties(filters);
-
-  /**
-   * Unfiltered, this page used to render every listing at once (an early version showed
-   * all cards flat; a later one showed a 6-card preview per zone), which read as one long
-   * scroll of mixed listings. Browsing starts by zone anyway, so the default view is a grid
-   * of zone cards handing off to each zone's own page; the flat grid comes back the moment
-   * someone actually filters.
-   */
-  const isSearching =
-    Boolean(
-      filters.area ||
-        filters.propertyType ||
-        filters.bedrooms ||
-        filters.minPrice != null ||
-        filters.maxPrice != null ||
-        filters.query,
-    ) || (str(searchParams.sort) ?? "newest") !== "newest";
+  const properties = await getProperties({ listingType, sort: "newest" });
 
   const intent = listingType === "rent" ? "rent" : "buy";
   const verb = listingType === "rent" ? "for rent" : "for sale";
 
-  const zones = AREAS.map((area) => ({
+  const zones: ZoneSummary[] = AREAS.map((area) => ({
     area,
-    items: properties.filter((p: Property) => p.area_slug === area.slug),
+    count: properties.filter((p: Property) => p.area_slug === area.slug).length,
+    href: `/${intent}/${area.slug}`,
   }))
-    .filter((z) => z.items.length > 0)
-    .sort((a, b) => b.items.length - a.items.length);
+    .filter((z) => z.count > 0)
+    .sort((a, b) => b.count - a.count);
 
   return (
     <>
@@ -87,29 +57,16 @@ export async function PropertyListing({
       {/* Filters + results */}
       <section className="bg-charcoal py-12">
         <Container>
-          <PropertyFilters listingType={listingType} />
-          <p className="mt-8 text-sm text-paper/60">
-            <span className="font-semibold text-paper">{properties.length}</span>{" "}
-            {properties.length === 1 ? "property" : "properties"}{" "}
-            {isSearching ? "found" : `${verb} across ${zones.length} areas`}
-          </p>
-
-          {isSearching ? (
-            <div className="mt-6">
-              <PropertyGrid properties={properties} />
-            </div>
-          ) : (
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {zones.map((z) => (
-                <ZoneCard
-                  key={z.area.slug}
-                  area={z.area}
-                  count={z.items.length}
-                  href={`/${intent}/${z.area.slug}`}
-                />
-              ))}
-            </div>
-          )}
+          <Suspense>
+            <PropertyFilters listingType={listingType} />
+          </Suspense>
+          <Suspense fallback={<ZoneGrid zones={zones} total={properties.length} verb={verb} />}>
+            <IslandResults
+              properties={stripToCardFields(properties)}
+              zones={zones}
+              listingType={listingType}
+            />
+          </Suspense>
         </Container>
       </section>
     </>

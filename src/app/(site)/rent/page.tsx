@@ -13,17 +13,11 @@ export const metadata: Metadata = {
   alternates: { canonical: "/rent" },
 };
 
-export default async function RentPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}) {
-  const params = await searchParams;
+export default function RentPage() {
   return (
     <Suspense>
       <PropertyListing
         listingType="rent"
-        searchParams={params}
         title="Properties for Rent in Phuket"
         subtitle="Settle into island life — handpicked long-term rentals, from beachside apartments to private-pool family villas."
       />

@@ -23,7 +23,7 @@ export function PropertyCard({ property }: { property: Property }) {
   const badgeLabel = isRent ? "For Rent" : isBoth ? "Sale / Rent" : "For Sale";
   const cover = property.cover_image ?? "/properties/villa-1.png";
   // "New" drops off by itself once the listing is a week old — nothing to
-  // clear by hand. Pages revalidate every 5 min, so it can linger that long.
+  // clear by hand. Pages revalidate hourly (or on POST /api/revalidate), so it can linger that long.
   const isNew =
     !!property.created_at &&
     Date.now() - new Date(property.created_at).getTime() < NEW_LISTING_MS;
