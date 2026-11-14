@@ -11,11 +11,8 @@
   "services": [
     { "binding": "WORKER_SELF_REFERENCE", "service": "islanderhomephuket" }
   ],
-  "r2_buckets": [
-    { "binding": "NEXT_INC_CACHE_R2_BUCKET", "bucket_name": "islanderhomephuket-opennext-cache" }
-  ],
-  "kv_namespaces": [
-    { "binding": "NEXT_TAG_CACHE_KV", "id": "TO_BE_CREATED" }
+    "kv_namespaces": [
+    { "binding": "NEXT_TAG_CACHE_KV", "id": "2e6bfacf374a42c6b22cd7d5fdb101c2" }
   ],
   "durable_objects": {
     "bindings": [
