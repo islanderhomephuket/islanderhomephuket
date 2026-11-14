@@ -14,17 +14,11 @@ export const metadata: Metadata = {
   alternates: { canonical: "/buy" },
 };
 
-export default async function BuyPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}) {
-  const params = await searchParams;
+export default function BuyPage() {
   return (
     <Suspense>
       <PropertyListing
         listingType="sale"
-        searchParams={params}
         title="Properties for Sale in Phuket"
         subtitle="Own a piece of the island — from turn-key condominiums to landmark sea-view villas across Phuket's most desirable areas."
       />

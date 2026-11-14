@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import {
   AreaIntentPage,
   areaIntentProperties,
-  parseAreaFilters,
 } from "@/components/property/area-intent-page";
 import {
   TypeIntentPage,
@@ -131,10 +130,8 @@ export async function generateMetadata({
 
 export default async function BuySegmentPage({
   params,
-  searchParams,
 }: {
   params: Promise<{ area: string }>;
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const { area: slug } = await params;
 
@@ -158,14 +155,12 @@ export default async function BuySegmentPage({
 
   if (target.kind === "area") {
     const properties = await areaIntentProperties(target.area, "buy");
-    const filters = parseAreaFilters(await searchParams);
     return (
       <>
         <AreaIntentPage
           area={target.area}
           intent="buy"
           properties={properties}
-          filters={filters}
         />
         {/* Answers travel with the buyer; the structured data stays on /buy. */}
         <FaqSection faqs={BUY_FAQS.slice(0, 4)} structuredData={false} />
