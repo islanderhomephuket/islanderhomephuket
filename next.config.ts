@@ -58,11 +58,21 @@ const DUPLICATE_LISTINGS: [string, string][] = [
 
 const nextConfig: NextConfig = {
   async redirects() {
-    return DUPLICATE_LISTINGS.map(([from, to]) => ({
-      source: `/properties/${from}`,
-      destination: `/properties/${to}`,
-      permanent: true,
-    }));
+    return [
+      // www is canonical. Vercel did this at the domain level; on Cloudflare Workers both
+      // hostnames reach the worker, so the bare domain is redirected here.
+      {
+        source: "/:path*",
+        has: [{ type: "host" as const, value: "islanderhomephuket.com" }],
+        destination: "https://www.islanderhomephuket.com/:path*",
+        permanent: true,
+      },
+      ...DUPLICATE_LISTINGS.map(([from, to]) => ({
+        source: `/properties/${from}`,
+        destination: `/properties/${to}`,
+        permanent: true,
+      })),
+    ];
   },
   images: {
     // Vercel's image optimizer hit its account quota and started returning 402
