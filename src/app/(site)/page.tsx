@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Hero, type HeroSlide } from "@/components/home/hero";
 import { WhyChooseUs } from "@/components/home/why-choose-us";
@@ -21,6 +22,18 @@ import {
   stripToCardFields,
   NEWEST_DAYS,
 } from "@/lib/data";
+
+/**
+ * The home page carries the brand query ("islander home phuket") on its own, so
+ * its title spends the space on what searchers type — rentals were half the
+ * business and were missing from it entirely ("Luxury Real Estate in Phuket").
+ */
+export const metadata: Metadata = {
+  title: { absolute: "Phuket Villas, Houses & Condos for Rent and Sale | Islander Home" },
+  description:
+    "Long-term rentals and property for sale across Phuket: pool villas, family houses and condos in Bang Tao, Rawai, Chalong, Kathu and more. Ask us on WhatsApp.",
+  alternates: { canonical: "/" },
+};
 
 /** Featured listings become the hero's rotating photography + thumbnail rail. */
 function toSlides(properties: Property[]): HeroSlide[] {

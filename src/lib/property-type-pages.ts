@@ -58,8 +58,8 @@ export const PROPERTY_TYPE_PAGES: PropertyTypePage[] = [
   },
   {
     slug: "condos",
-    singular: "condominium",
-    plural: "Condominiums",
+    singular: "condo",
+    plural: "Condos",
     match: ["Condominium", "Apartment"],
     blurb:
       "Apartments in managed buildings — the lowest entry price on the island, and the only type foreigners can own freehold in their own name.",

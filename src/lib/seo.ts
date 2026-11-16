@@ -24,6 +24,10 @@ const lower = (s: string) => s.toLowerCase();
 /** How a listing's type reads in a search phrase. */
 export function typeLabel(property: Pick<Property, "property_type">): string {
   const t = (property.property_type || "Property").trim();
+  // Searchers type "condo for rent phuket" far more than "condominium" (Search
+  // Console, Aug–Nov 2026), and the long word pushed listing titles past what
+  // Google displays.
+  if (/^condominium$/i.test(t)) return "Condo";
   return t.charAt(0).toUpperCase() + t.slice(1);
 }
 

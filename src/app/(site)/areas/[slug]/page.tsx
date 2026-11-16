@@ -8,7 +8,10 @@ import { PropertyGrid } from "@/components/property/property-grid";
 import { ButtonLink } from "@/components/ui/button";
 import { MapEmbed } from "@/components/property/map-embed";
 import { AREAS, getArea } from "@/lib/constants";
-import { getPropertiesByArea } from "@/lib/data";
+import Link from "next/link";
+import { getProperties, getPropertiesByArea } from "@/lib/data";
+import { allCombos, comboPath, comboProperties } from "@/lib/area-type-pages";
+import { INDEXABLE_MIN_LISTINGS, type Intent } from "@/lib/seo";
 
 /** How many listings the guide shows before handing off to the intent hub. */
 const TEASER = 6;
@@ -26,7 +29,11 @@ export async function generateMetadata({
   const area = getArea(slug);
   if (!area) return { title: "Area not found" };
   return {
-    title: `${area.name} Property — ${area.tagline}`,
+    // Google shows these guides for "villa for sale bang tao"-type searches, so
+    // the title says what the page links into rather than only the tagline.
+    title: {
+      absolute: `${area.name} Property for Rent & Sale — Phuket Area Guide | Islander Home`,
+    },
     description: area.blurb,
     alternates: { canonical: `/areas/${area.slug}` },
   };
@@ -47,6 +54,25 @@ export default async function AreaPage({
     (p) => p.listing_type === "sale" || p.listing_type === "both",
   );
   const forRent = properties.filter((p) => p.listing_type === "rent");
+
+  // The guide is the most-linked page for each area (every footer points here),
+  // so hand that weight to the specific rent/buy × type pages — only the ones
+  // stocked enough to be indexed, the same rule the sitemap uses.
+  const all = await getProperties();
+  const typeLinks = (["rent", "buy"] as Intent[]).map((intent) => ({
+    intent,
+    links: allCombos()
+      .filter((c) => c.area.slug === area.slug)
+      .filter(
+        (c) =>
+          comboProperties(all, c, intent).length >=
+          (c.type.minToIndex ?? INDEXABLE_MIN_LISTINGS),
+      )
+      .map((c) => ({
+        href: comboPath(intent, c),
+        label: `${c.type.plural} for ${intent === "rent" ? "rent" : "sale"}`,
+      })),
+  }));
 
   return (
     <>
@@ -93,6 +119,34 @@ export default async function AreaPage({
               <MapEmbed query={area.mapQuery} title={`${area.name} map`} />
             </div>
           </div>
+          {typeLinks.some((g) => g.links.length > 0) && (
+            <nav
+              aria-label={`Browse ${area.name} by property type`}
+              className="mt-14 grid gap-8 border-t border-sand pt-10 sm:grid-cols-2"
+            >
+              {typeLinks
+                .filter((g) => g.links.length > 0)
+                .map((g) => (
+                  <div key={g.intent}>
+                    <h2 className="kicker text-paper/80">
+                      {g.intent === "rent" ? `Rent in ${area.name}` : `Buy in ${area.name}`}
+                    </h2>
+                    <ul className="mt-4 flex flex-wrap gap-2">
+                      {g.links.map((l) => (
+                        <li key={l.href}>
+                          <Link
+                            href={l.href}
+                            className="inline-block border border-sand px-4 py-2 text-sm text-paper/80 transition-colors hover:border-gold hover:text-gold"
+                          >
+                            {l.label} in {area.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+            </nav>
+          )}
         </Container>
       </section>
 
