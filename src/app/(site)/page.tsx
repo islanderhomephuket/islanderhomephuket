@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { isAvailable } from "@/lib/seo";
 import Link from "next/link";
 import { Hero, type HeroSlide } from "@/components/home/hero";
 import { WhyChooseUs } from "@/components/home/why-choose-us";
@@ -74,7 +75,7 @@ export default async function HomePage() {
 
   const areaCounts = AREAS.map((a) => ({
     area: a,
-    count: all.filter((p) => p.area_slug === a.slug).length,
+    count: all.filter((p) => p.area_slug === a.slug && isAvailable(p)).length,
   }));
 
   return (

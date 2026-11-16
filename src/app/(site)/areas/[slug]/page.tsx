@@ -11,7 +11,7 @@ import { AREAS, getArea } from "@/lib/constants";
 import Link from "next/link";
 import { getProperties, getPropertiesByArea } from "@/lib/data";
 import { allCombos, comboPath, comboProperties } from "@/lib/area-type-pages";
-import { INDEXABLE_MIN_LISTINGS, type Intent } from "@/lib/seo";
+import { INDEXABLE_MIN_LISTINGS, isAvailable, type Intent } from "@/lib/seo";
 
 /** How many listings the guide shows before handing off to the intent hub. */
 const TEASER = 6;
@@ -48,7 +48,8 @@ export default async function AreaPage({
   const area = getArea(slug);
   if (!area) notFound();
 
-  const properties = await getPropertiesByArea(slug);
+  // The guide's teasers and counts are what is on the market today.
+  const properties = (await getPropertiesByArea(slug)).filter(isAvailable);
   // "both" listings appear under the For Sale section to avoid duplication.
   const forSale = properties.filter(
     (p) => p.listing_type === "sale" || p.listing_type === "both",

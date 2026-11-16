@@ -17,11 +17,13 @@ import {
   bandsFor,
   bandHeading,
   bandType,
+  isInPriceBand,
   type PriceBandPage,
 } from "@/lib/price-band-pages";
 import { comboPath } from "@/lib/area-type-pages";
 import { breadcrumbJsonLd, listingItemListJsonLd, priceRange } from "@/lib/seo";
 import type { Property } from "@/lib/types";
+import { RecentlyUnavailable } from "@/components/property/recently-unavailable";
 
 export function BandIntentPage({
   band,
@@ -180,6 +182,12 @@ export function BandIntentPage({
           </ul>
         </Container>
       </section>
+
+      <RecentlyUnavailable
+        intent={intent}
+        what={`${type.plural.toLowerCase()} under ${band.cap}`}
+        match={(p) => isInPriceBand(p, band)}
+      />
     </>
   );
 }

@@ -31,6 +31,7 @@ import {
   type Intent,
 } from "@/lib/seo";
 import type { Property } from "@/lib/types";
+import { RecentlyUnavailable } from "@/components/property/recently-unavailable";
 
 /** Listings for one area and one intent, newest first. */
 export async function areaIntentProperties(
@@ -236,6 +237,12 @@ export async function AreaIntentPage({
           </ul>
         </Container>
       </section>
+
+      <RecentlyUnavailable
+        intent={intent}
+        what={`homes in ${area.name}`}
+        match={(p) => p.area_slug === area.slug}
+      />
     </>
   );
 }

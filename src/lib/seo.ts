@@ -322,11 +322,25 @@ export function propertyBreadcrumb(property: Property) {
 
 export type Intent = "rent" | "buy";
 
-/** Listings that belong on an intent page — "both" counts as for sale. */
-export function matchesIntent(property: Property, intent: Intent): boolean {
+/** Still on the market — not let, not sold. */
+export const isAvailable = (p: Pick<Property, "status">) =>
+  p.status !== "sold" && p.status !== "rented";
+
+/** Rent or sale side of the book, whatever the status — "both" counts as for sale. */
+export function matchesListingIntent(property: Property, intent: Intent): boolean {
   return intent === "rent"
     ? property.listing_type === "rent"
     : property.listing_type === "sale" || property.listing_type === "both";
+}
+
+/**
+ * Listings that belong on an intent page: the right side of the book AND still
+ * available. Every count, price range, index threshold and sitemap entry is
+ * built on this, so "17 for rent in Bang Tao" means 17 a visitor can rent.
+ * Let/sold ones are shown separately by `RecentlyUnavailable`.
+ */
+export function matchesIntent(property: Property, intent: Intent): boolean {
+  return matchesListingIntent(property, intent) && isAvailable(property);
 }
 
 /** "Villas & Houses for Rent in Bang Tao, Phuket" — built from real inventory. */

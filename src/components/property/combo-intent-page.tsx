@@ -27,6 +27,8 @@ import {
   type Intent,
 } from "@/lib/seo";
 import type { Property } from "@/lib/types";
+import { RecentlyUnavailable } from "@/components/property/recently-unavailable";
+import { isPropertyTypeMatch } from "@/lib/property-type-pages";
 
 export function ComboIntentPage({
   combo,
@@ -190,6 +192,12 @@ export function ComboIntentPage({
           </div>
         </Container>
       </section>
+
+      <RecentlyUnavailable
+        intent={intent}
+        what={`${type.plural.toLowerCase()} in ${area.name}`}
+        match={(p) => p.area_slug === area.slug && isPropertyTypeMatch(p, type)}
+      />
     </>
   );
 }

@@ -28,6 +28,7 @@ import {
   type Intent,
 } from "@/lib/seo";
 import type { Property } from "@/lib/types";
+import { RecentlyUnavailable } from "@/components/property/recently-unavailable";
 
 /** Cards shown per area before the reader is handed to that area's own page. */
 const PER_AREA = 3;
@@ -265,6 +266,12 @@ export async function TypeIntentPage({
           </ul>
         </Container>
       </section>
+
+      <RecentlyUnavailable
+        intent={intent}
+        what={`${type.plural.toLowerCase()} in Phuket`}
+        match={(p) => isPropertyTypeMatch(p, type)}
+      />
     </>
   );
 }

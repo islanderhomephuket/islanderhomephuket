@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { isAvailable } from "@/lib/seo";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { ZoneCard } from "@/components/property/zone-card";
@@ -40,7 +41,7 @@ export default async function AreasPage() {
               <ZoneCard
                 key={area.slug}
                 area={area}
-                count={all.filter((p) => p.area_slug === area.slug).length}
+                count={all.filter((p) => p.area_slug === area.slug && isAvailable(p)).length}
                 href={`/areas/${area.slug}`}
               />
             ))}

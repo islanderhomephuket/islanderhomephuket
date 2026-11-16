@@ -5,6 +5,7 @@ import { IslandResults, ZoneGrid, type ZoneSummary } from "./listing-results";
 import { getProperties, stripToCardFields } from "@/lib/data";
 import { AREAS } from "@/lib/constants";
 import type { Property } from "@/lib/types";
+import { isAvailable } from "@/lib/seo";
 
 /**
  * The island-wide /rent and /buy pages.
@@ -26,7 +27,9 @@ export async function PropertyListing({
   title: string;
   subtitle: string;
 }) {
-  const properties = await getProperties({ listingType, sort: "newest" });
+  // Available only: the island-wide counts and the filter results are what a
+  // visitor can actually take; let/sold homes live under each area's grid.
+  const properties = (await getProperties({ listingType, sort: "newest" })).filter(isAvailable);
 
   const intent = listingType === "rent" ? "rent" : "buy";
   const verb = listingType === "rent" ? "for rent" : "for sale";
