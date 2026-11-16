@@ -145,6 +145,12 @@ export default async function PropertyDetailPage({
 
   return (
     <article>
+      {/* Read by ContactClickTracker to label enquiries RENT/BUY and by listing. */}
+      <span
+        hidden
+        data-listing-intent={property.listing_type === "rent" ? "rent" : "buy"}
+        data-listing-ref={property.reference ?? property.slug}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -357,7 +363,7 @@ export default async function PropertyDetailPage({
                   convenience.
                 </p>
 
-                <div className="mt-5 grid grid-cols-2 gap-3">
+                <div data-cta="listing" className="mt-5 grid grid-cols-2 gap-3">
                   <a
                     href={whatsappLink(enquiryMessage)}
                     target="_blank"

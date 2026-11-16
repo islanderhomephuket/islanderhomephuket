@@ -30,7 +30,7 @@ export function FloatingContact() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-6 right-5 z-40 flex flex-col items-end gap-3 sm:bottom-8 sm:right-8">
+    <div data-cta="floating" className="fixed bottom-6 right-5 z-40 flex flex-col items-end gap-3 sm:bottom-8 sm:right-8">
       {channels.map((c, i) => {
         const Icon = c.icon;
         return (

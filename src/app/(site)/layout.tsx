@@ -1,6 +1,7 @@
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { FloatingContact } from "@/components/layout/floating-contact";
+import { ContactClickTracker } from "@/components/analytics/contact-click-tracker";
 
 /**
  * Cache public pages for an hour instead of rendering every request.
@@ -28,6 +29,7 @@ export default function SiteLayout({
       <main className="flex-1">{children}</main>
       <Footer />
       <FloatingContact />
+      <ContactClickTracker />
     </div>
   );
 }
