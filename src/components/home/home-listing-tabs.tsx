@@ -8,7 +8,7 @@ import { ButtonLink } from "@/components/ui/button";
 import type { Property } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
-type TabId = "signature" | "newest-rent";
+type TabId = "signature" | "newest-rent" | "newest-buy";
 
 interface Tab {
   id: TabId;
@@ -37,7 +37,7 @@ const TABS: Tab[] = [
   },
   {
     id: "newest-rent",
-    label: "New to Rent",
+    label: "To Rent",
     kicker: "This Week",
     title: "New rentals this week",
     description:
@@ -46,6 +46,18 @@ const TABS: Tab[] = [
     viewAll: "See all new rentals",
     empty:
       "No new rentals in the last seven days. Browse everything for rent instead.",
+  },
+  {
+    id: "newest-buy",
+    label: "To Buy",
+    kicker: "This Week",
+    title: "New for sale this week",
+    description:
+      "Villas, condos and houses listed for sale in the last seven days, newest first — before they have been around long enough for everyone to have seen them.",
+    href: "/newest?for=sale",
+    viewAll: "See all new sales",
+    empty:
+      "Nothing new for sale in the last seven days. Browse everything for sale instead.",
   },
 ];
 
@@ -62,16 +74,24 @@ const TABS: Tab[] = [
 export function HomeListingTabs({
   signature,
   newestRent,
+  newestBuy,
 }: {
   signature: Property[];
   newestRent: Property[];
+  newestBuy: Property[];
 }) {
   const [active, setActive] = useState<TabId>("signature");
   const tab = TABS.find((t) => t.id === active) ?? TABS[0];
-  const properties = active === "signature" ? signature : newestRent;
+  const sets: Record<TabId, Property[]> = {
+    signature,
+    "newest-rent": newestRent,
+    "newest-buy": newestBuy,
+  };
+  const properties = sets[active];
   const counts: Record<TabId, number> = {
     signature: signature.length,
     "newest-rent": newestRent.length,
+    "newest-buy": newestBuy.length,
   };
 
   return (
@@ -101,7 +121,9 @@ export function HomeListingTabs({
               onClick={() => setActive(t.id)}
               aria-pressed={isActive}
               className={cn(
-                "whitespace-nowrap rounded-full px-4 py-2.5 text-[0.65rem] font-semibold uppercase tracking-[0.12em] transition-colors sm:px-5 sm:text-xs sm:tracking-[0.16em]",
+                // Three pills have to sit on one line at 375px, so the mobile
+                // padding and tracking are tighter than the two-tab version was.
+                "whitespace-nowrap rounded-full px-3 py-2.5 text-[0.65rem] font-semibold uppercase tracking-[0.08em] transition-colors sm:px-5 sm:text-xs sm:tracking-[0.16em]",
                 isActive ? "bg-paper text-ink" : "text-paper/55 hover:text-paper",
               )}
             >

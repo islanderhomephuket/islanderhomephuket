@@ -12,7 +12,7 @@ import { AREAS, HERO_SLIDES } from "@/lib/constants";
 import { formatRent, formatTHB } from "@/lib/utils";
 import type { Property } from "@/lib/types";
 import { HomeListingTabs } from "@/components/home/home-listing-tabs";
-import { isForRent } from "@/lib/newest-filters";
+import { isForRent, isForSale } from "@/lib/newest-filters";
 import {
   getFeaturedProperties,
   getBlogPosts,
@@ -50,12 +50,14 @@ export default async function HomePage() {
     getNewestProperties(Number.MAX_SAFE_INTEGER, NEWEST_DAYS),
   ]);
 
-  // The second tab answers "what can I rent that is new", so a unit already let
-  // has no business in it — unlike the hubs, which keep a rented listing visible
-  // with its stamp. Six fills the same two rows as the signature set.
-  const newestRent = newestWeek
-    .filter((p) => isForRent(p) && p.status === "available")
-    .slice(0, 6);
+  // The two "this week" tabs answer "what is new that I can actually take", so a
+  // unit already let or sold has no business in them — unlike the hubs, which
+  // keep it visible under its stamp. Six fills the same two rows as the
+  // signature set. A "both" listing is new on each side, which is correct: it
+  // genuinely is new to a buyer and to a renter.
+  const availableThisWeek = newestWeek.filter((p) => p.status === "available");
+  const newestRent = availableThisWeek.filter(isForRent).slice(0, 6);
+  const newestBuy = availableThisWeek.filter(isForSale).slice(0, 6);
 
   const areaCounts = AREAS.map((a) => ({
     area: a,
@@ -75,6 +77,7 @@ export default async function HomePage() {
             <HomeListingTabs
               signature={stripToCardFields(featured)}
               newestRent={stripToCardFields(newestRent)}
+              newestBuy={stripToCardFields(newestBuy)}
             />
           </Container>
         </section>
