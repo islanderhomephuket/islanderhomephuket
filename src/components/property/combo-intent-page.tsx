@@ -28,6 +28,7 @@ import {
 } from "@/lib/seo";
 import type { Property } from "@/lib/types";
 import { RecentlyUnavailable } from "@/components/property/recently-unavailable";
+import { MoneyPageGuide } from "@/components/property/money-page-guide";
 import { isPropertyTypeMatch } from "@/lib/property-type-pages";
 
 export function ComboIntentPage({
@@ -141,6 +142,8 @@ export function ComboIntentPage({
           </div>
         </Container>
       </section>
+
+      <MoneyPageGuide path={path} properties={properties} rent={intent === "rent"} />
 
       <section className="bg-ink py-16">
         <Container>

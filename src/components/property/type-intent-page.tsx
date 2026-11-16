@@ -29,6 +29,7 @@ import {
 } from "@/lib/seo";
 import type { Property } from "@/lib/types";
 import { RecentlyUnavailable } from "@/components/property/recently-unavailable";
+import { MoneyPageGuide } from "@/components/property/money-page-guide";
 
 /** Cards shown per area before the reader is handed to that area's own page. */
 const PER_AREA = 3;
@@ -237,6 +238,12 @@ export async function TypeIntentPage({
           </div>
         </Container>
       </section>
+
+      <MoneyPageGuide
+        path={`/${intent}/${type.slug}`}
+        properties={properties}
+        rent={intent === "rent"}
+      />
 
       {/* Other types */}
       <section className="bg-ink py-16">

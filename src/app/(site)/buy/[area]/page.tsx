@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { moneyPageMeta } from "@/components/property/money-page-guide";
 import { notFound } from "next/navigation";
 import {
   AreaIntentPage,
@@ -121,6 +122,7 @@ export async function generateMetadata({
     title: typeIntentHeading(type, "buy"),
     description: description.slice(0, 158),
     alternates: { canonical: `/buy/${type.slug}` },
+    ...moneyPageMeta(`/buy/${type.slug}`, properties),
     robots:
       properties.length >= typeMin
         ? { index: true, follow: true }

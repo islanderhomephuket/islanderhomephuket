@@ -13,6 +13,7 @@ import {
   resolveAreaTypeCombo,
 } from "@/lib/area-type-pages";
 import { INDEXABLE_MIN_LISTINGS } from "@/lib/seo";
+import { moneyPageMeta } from "@/components/property/money-page-guide";
 
 /** Every area × type pair. Thin ones render but are kept out of the index. */
 export function generateStaticParams() {
@@ -32,6 +33,7 @@ export async function generateMetadata({
   return {
     title: comboHeading(combo, "buy"),
     description: comboDescription(combo, "buy", properties),
+    ...moneyPageMeta(comboPath("buy", combo), properties),
     alternates: { canonical: comboPath("buy", combo) },
     robots:
       properties.length >= (combo.type.minToIndex ?? INDEXABLE_MIN_LISTINGS)

@@ -18,6 +18,29 @@ import { blogPostJsonLd } from "@/lib/seo";
 const isThai = (text: string) => /[฀-๿]/.test(text);
 
 /**
+ * Listing pages a post should hand its readers (and its link weight) to.
+ * The 28 posts linked individual listings and area hubs, but none linked the
+ * pages that carry the big searches — "bang tao villas for sale", "condo for
+ * rent phuket". Chosen from what the post is about, so no article text changes.
+ */
+function listingLinks(title: string, html: string): { href: string; label: string }[] {
+  const t = `${title} ${html.replace(/<[^>]+>/g, " ")}`.toLowerCase();
+  const sale = /for sale|buy|buyer|invest|yield|freehold|leasehold/.test(t);
+  const rent = /for rent|rent|rental|lease|tenant/.test(t);
+  const bangTao = /bang ?tao|laguna|cherng ?talay|choeng thale/.test(t);
+  const villa = /villa/.test(t);
+  const condo = /condo/.test(t);
+  const out: { href: string; label: string }[] = [];
+  if (bangTao && sale) out.push({ href: "/buy/bang-tao/villas", label: "Bang Tao villas for sale" });
+  if (bangTao && rent) out.push({ href: "/rent/bang-tao/villas", label: "Bang Tao villas for rent" });
+  if (villa && sale) out.push({ href: "/buy/villas", label: "Villas for sale in Phuket" });
+  if (condo && rent) out.push({ href: "/rent/condos", label: "Condos for rent in Phuket" });
+  if (villa && rent) out.push({ href: "/rent/villas", label: "Villas for rent in Phuket" });
+  if (condo && sale) out.push({ href: "/buy/condos", label: "Condos for sale in Phuket" });
+  return out.slice(0, 4);
+}
+
+/**
  * Posts link to each other, and some of those targets are scheduled for later.
  * A link to a post that is not live yet renders as plain text, and turns into a
  * link on its own once that post publishes and this page revalidates.
@@ -127,6 +150,23 @@ export default async function BlogPostPage({
             lang={isThai(post.content) ? "th" : undefined}
             dangerouslySetInnerHTML={{ __html: content }}
           />
+          {listingLinks(post.title, post.content).length > 0 && (
+            <nav aria-label="Browse the listings" className="mt-12 border-t border-sand pt-8">
+              <p className="kicker text-gold-dark">Browse the listings</p>
+              <ul className="mt-4 flex flex-wrap gap-2">
+                {listingLinks(post.title, post.content).map((l) => (
+                  <li key={l.href}>
+                    <Link
+                      href={l.href}
+                      className="inline-block border border-sand px-4 py-2 text-sm transition-colors hover:border-gold hover:text-gold"
+                    >
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
         </Container>
       </section>
 

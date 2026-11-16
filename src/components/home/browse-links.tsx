@@ -83,6 +83,22 @@ export async function BrowseLinks() {
           <Column title="Rent by type" links={typeLinks("rent")} />
           <Column title="Rent by area" links={areaLinks("rent")} />
         </div>
+        <p className="mt-10 text-sm text-paper/60">
+          Most searched:{" "}
+          {[
+            ["/buy/bang-tao/villas", "Bang Tao villas for sale"],
+            ["/buy/villas", "pool villas for sale in Phuket"],
+            ["/rent/bang-tao/villas", "Bang Tao villas for rent"],
+            ["/rent/condos", "condos for rent in Phuket"],
+          ].map(([href, label], i, arr) => (
+            <span key={href}>
+              <Link href={href} className="text-paper/80 underline-offset-4 hover:text-gold hover:underline">
+                {label}
+              </Link>
+              {i < arr.length - 1 ? " · " : ""}
+            </span>
+          ))}
+        </p>
       </Container>
     </section>
   );
