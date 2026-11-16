@@ -8,7 +8,11 @@
     { "pattern": "islanderhomephuket.com", "custom_domain": true }
   ],
   "compatibility_date": "2026-11-01",
-  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  // no_handle_cross_request_promise_resolution: OpenNext's cache/revalidate code settles
+  // promises from a later request; with the 2026 default flag those requests 500
+  // ("This promise was created by a request that has since ended") - about half of all
+  // page views failed on 2026-11-16.
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public", "no_handle_cross_request_promise_resolution"],
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
