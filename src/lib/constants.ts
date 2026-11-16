@@ -103,9 +103,9 @@ export const HERO_SLIDES: {
 export const FEATURED_PINNED: string[] = [
   "kathu-dcondo-reef-short-term-condo-20k",
   "annara-luxury-pool-villa-cherng-talay-bt08",
-  // Takes the slot the Koh Sirey hotel used to hold: its photography is
-  // AI advertising artwork, which does not belong in the signature set.
-  "sierra-vista-pool-villa-199m",
+  // The user wants the Phuket Town hotel lease carried on the front page,
+  // so it is pinned rather than left to fall off as newer listings arrive.
+  "phuket-town-hotel-lease-700k",
 ];
 
 export interface AreaInfo {
