@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { Hero, type HeroSlide } from "@/components/home/hero";
 import { WhyChooseUs } from "@/components/home/why-choose-us";
 import { BrowseLinks } from "@/components/home/browse-links";
@@ -7,17 +6,20 @@ import { PhuketGuide } from "@/components/home/phuket-guide";
 import { CtaBand } from "@/components/home/cta-band";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { PropertyGrid } from "@/components/property/property-grid";
 import { ZoneCard } from "@/components/property/zone-card";
 import { BlogCard } from "@/components/blog/blog-card";
-import { ButtonLink } from "@/components/ui/button";
 import { AREAS, HERO_SLIDES } from "@/lib/constants";
 import { formatRent, formatTHB } from "@/lib/utils";
 import type { Property } from "@/lib/types";
+import { HomeListingTabs } from "@/components/home/home-listing-tabs";
+import { isForRent } from "@/lib/newest-filters";
 import {
   getFeaturedProperties,
   getBlogPosts,
   getProperties,
+  getNewestProperties,
+  stripToCardFields,
+  NEWEST_DAYS,
 } from "@/lib/data";
 
 /** Featured listings become the hero's rotating photography + thumbnail rail. */
@@ -41,11 +43,19 @@ function toSlides(properties: Property[]): HeroSlide[] {
 }
 
 export default async function HomePage() {
-  const [featured, posts, all] = await Promise.all([
+  const [featured, posts, all, newestWeek] = await Promise.all([
     getFeaturedProperties(6),
     getBlogPosts(),
     getProperties(),
+    getNewestProperties(Number.MAX_SAFE_INTEGER, NEWEST_DAYS),
   ]);
+
+  // The second tab answers "what can I rent that is new", so a unit already let
+  // has no business in it — unlike the hubs, which keep a rented listing visible
+  // with its stamp. Six fills the same two rows as the signature set.
+  const newestRent = newestWeek
+    .filter((p) => isForRent(p) && p.status === "available")
+    .slice(0, 6);
 
   const areaCounts = AREAS.map((a) => ({
     area: a,
@@ -58,23 +68,14 @@ export default async function HomePage() {
         slides={HERO_SLIDES.length > 0 ? HERO_SLIDES : toSlides(featured)}
       />
 
-      {/* Featured properties */}
+      {/* Featured properties, and what came in to rent this week */}
       {featured.length > 0 && (
         <section className="bg-ink py-24 sm:py-32">
           <Container>
-            <div className="flex flex-wrap items-end justify-between gap-6">
-              <SectionHeading
-                kicker="Featured Listings"
-                title="Signature properties"
-                description="A handpicked selection of our finest villas, residences and homes across the island."
-              />
-              <ButtonLink href="/buy" variant="outline" className="shrink-0">
-                View all <ArrowRight className="h-4 w-4" />
-              </ButtonLink>
-            </div>
-            <div className="mt-14">
-              <PropertyGrid properties={featured} />
-            </div>
+            <HomeListingTabs
+              signature={stripToCardFields(featured)}
+              newestRent={stripToCardFields(newestRent)}
+            />
           </Container>
         </section>
       )}
