@@ -9,8 +9,8 @@ import {
 import { allCombos, comboPath, comboProperties } from "@/lib/area-type-pages";
 import { PRICE_BAND_PAGES, isInPriceBand } from "@/lib/price-band-pages";
 
-/** Rebuilt hourly so newly published listings enter the sitemap on their own. */
-export const revalidate = 3600;
+/** Built at deploy time — see the note in (site)/layout.tsx on why there is no ISR. */
+export const revalidate = false;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = SITE.url.replace(/\/$/, "");

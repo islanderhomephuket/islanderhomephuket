@@ -16,6 +16,11 @@ import { INDEXABLE_MIN_LISTINGS } from "@/lib/seo";
 import { moneyPageMeta } from "@/components/property/money-page-guide";
 
 /** Every area × type pair. Thin ones render but are kept out of the index. */
+// Every slug comes from generateStaticParams, so an unknown one must 404
+// rather than render on demand: an on-demand render exceeds the 10 ms of CPU
+// Workers Free allows and the request is killed. See (site)/layout.tsx.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return allCombos().map(({ area, type }) => ({ area: area.slug, type: type.slug }));
 }

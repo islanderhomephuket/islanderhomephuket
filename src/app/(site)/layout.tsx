@@ -4,18 +4,24 @@ import { FloatingContact } from "@/components/layout/floating-contact";
 import { ContactClickTracker } from "@/components/analytics/contact-click-tracker";
 
 /**
- * Cache public pages for an hour instead of rendering every request.
+ * Public pages are served only as copies prerendered at build time. There is no
+ * hourly ISR any more.
  *
- * Listings are published straight into Supabase by script, so the site cannot go
- * fully static — but re-rendering on every hit was costing ~3s TTFB per listing
- * page. It was 5 minutes until 14/11/2026, when Vercel paused the site for
- * exceeding the Hobby plan's fair-use CPU: ~900 listing and hub pages, each
- * re-rendered every 5 minutes as crawlers walked them, was the bulk of it.
- * Publishing scripts call POST /api/revalidate after a batch, so new listings
- * still show immediately; edits made without that call show within the hour.
- * The admin dashboard still revalidates explicitly on write.
+ * Workers Free allows 10 ms of CPU per request, and a Next.js page render costs
+ * far more. With an hourly window, the first visitor after a page went stale
+ * triggered an on-demand render inside the Worker and it was killed mid-flight:
+ * on 17/11/2026 roughly half of all requests returned 503 or hung for 25 s+
+ * ("Error: Worker exceeded CPU time limit" in `wrangler tail`). The incremental
+ * cache is the read-only static-asset store, so a re-render cannot even be
+ * saved — every later visitor paid the same failing render.
+ *
+ * With `revalidate = false` every page is a static asset and costs no render
+ * CPU. The trade is that a data change only appears after `npm run deploy`, and
+ * POST /api/revalidate must NOT be called: marking a page stale is precisely
+ * what brings the CPU limit back. Workers Paid (5 min of CPU, R2 incremental
+ * cache) would restore instant publishing.
  */
-export const revalidate = 3600;
+export const revalidate = false;
 
 
 export default function SiteLayout({

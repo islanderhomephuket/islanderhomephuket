@@ -41,6 +41,11 @@ import {
  * This segment is an area slug, a property-type slug, or a monthly budget band
  * ("villas-under-100k"). Areas win any collision.
  */
+// Every slug comes from generateStaticParams, so an unknown one must 404
+// rather than render on demand: an on-demand render exceeds the 10 ms of CPU
+// Workers Free allows and the request is killed. See (site)/layout.tsx.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   assertNoSlugCollision();
   assertNoBandCollision();

@@ -129,9 +129,11 @@ export async function savePropertyAction(
     );
   }
 
+  // Only the admin pages, which are force-dynamic. Revalidating a PUBLIC page
+  // marks it stale, and a stale page has to be re-rendered inside the Worker —
+  // which exceeds the 10 ms of CPU Workers Free allows and kills the request.
+  // Public pages are published by `npm run deploy`. See (site)/layout.tsx.
   revalidatePath("/admin/properties");
-  revalidatePath("/buy");
-  revalidatePath("/rent");
   redirect("/admin/properties");
 }
 
@@ -183,8 +185,8 @@ export async function savePostAction(
     if (error) return { error: error.message };
   }
 
+  // Admin pages only — see the note in savePropertyAction.
   revalidatePath("/admin/blog");
-  revalidatePath("/blog");
   redirect("/admin/blog");
 }
 

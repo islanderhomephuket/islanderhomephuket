@@ -16,6 +16,11 @@ import { INDEXABLE_MIN_LISTINGS, isAvailable, type Intent } from "@/lib/seo";
 /** How many listings the guide shows before handing off to the intent hub. */
 const TEASER = 6;
 
+// Every slug comes from generateStaticParams, so an unknown one must 404
+// rather than render on demand: an on-demand render exceeds the 10 ms of CPU
+// Workers Free allows and the request is killed. See (site)/layout.tsx.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return AREAS.map((a) => ({ slug: a.slug }));
 }

@@ -52,6 +52,11 @@ function unlinkUnpublishedPosts(html: string, liveSlugs: Set<string>): string {
   );
 }
 
+// Every slug comes from generateStaticParams, so an unknown one must 404
+// rather than render on demand: an on-demand render exceeds the 10 ms of CPU
+// Workers Free allows and the request is killed. See (site)/layout.tsx.
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const slugs = await getAllBlogSlugs();
   return slugs.map((slug) => ({ slug }));

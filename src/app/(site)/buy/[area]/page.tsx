@@ -42,6 +42,11 @@ import {
  * ("villas-under-15m"). Areas win any collision; bands are sale-only, because a
  * renter's budget is a monthly figure and belongs on its own set of pages.
  */
+// Every slug comes from generateStaticParams, so an unknown one must 404
+// rather than render on demand: an on-demand render exceeds the 10 ms of CPU
+// Workers Free allows and the request is killed. See (site)/layout.tsx.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   assertNoSlugCollision();
   assertNoBandCollision();
