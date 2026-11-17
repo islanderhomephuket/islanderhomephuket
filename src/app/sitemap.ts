@@ -8,6 +8,7 @@ import {
 } from "@/lib/property-type-pages";
 import { allCombos, comboPath, comboProperties } from "@/lib/area-type-pages";
 import { PRICE_BAND_PAGES, isInPriceBand } from "@/lib/price-band-pages";
+import { AMENITY_PAGES, isOnAmenityPage } from "@/lib/amenity-pages";
 
 /** Built at deploy time — see the note in (site)/layout.tsx on why there is no ISR. */
 export const revalidate = false;
@@ -109,6 +110,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     }));
 
+  // Amenity pages — /buy/pool-villas, /rent/pet-friendly — on the same stock
+  // threshold the pages themselves index on.
+  const amenityRoutes = AMENITY_PAGES.map((page) => ({
+    page,
+    count: properties.filter(
+      (p) => matchesIntent(p, page.intent) && isOnAmenityPage(p, page),
+    ).length,
+  }))
+    .filter((a) => a.count >= INDEXABLE_MIN_LISTINGS)
+    .map((a) => ({
+      url: `${base}/${a.page.intent}/${a.page.slug}`,
+      lastModified: now,
+      changeFrequency: "daily" as const,
+      priority: 0.7,
+    }));
+
   const propertyRoutes = properties
     .filter((p) => p.status !== "sold" && p.status !== "rented")
     .map((p) => ({
@@ -131,6 +148,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...typeRoutes,
     ...comboRoutes,
     ...bandRoutes,
+    ...amenityRoutes,
     ...areaRoutes,
     ...propertyRoutes,
     ...blogRoutes,

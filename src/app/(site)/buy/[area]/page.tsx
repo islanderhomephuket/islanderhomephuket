@@ -29,6 +29,13 @@ import {
   getPriceBandPage,
   isInPriceBand,
 } from "@/lib/price-band-pages";
+import { AmenityIntentPage } from "@/components/property/amenity-intent-page";
+import {
+  amenityPagesFor,
+  assertNoAmenityCollision,
+  getAmenityPage,
+  isOnAmenityPage,
+} from "@/lib/amenity-pages";
 import {
   areaIntentDescription,
   areaIntentHeading,
@@ -50,10 +57,12 @@ export const dynamicParams = false;
 export function generateStaticParams() {
   assertNoSlugCollision();
   assertNoBandCollision();
+  assertNoAmenityCollision();
   return [
     ...AREAS.map((a) => ({ area: a.slug })),
     ...PROPERTY_TYPE_PAGES.map((t) => ({ area: t.slug })),
     ...bandsFor("buy").map((b) => ({ area: b.slug })),
+    ...amenityPagesFor("buy").map((a) => ({ area: a.slug })),
   ];
 }
 
@@ -66,6 +75,17 @@ async function bandProperties(slug: string) {
     .filter((p) => matchesIntent(p, "buy") && isInPriceBand(p, band))
     .sort((a, b) => (a.price ?? 0) - (b.price ?? 0));
   return { band, properties };
+}
+
+/** Listings behind an amenity page — /buy/pool-villas and friends. */
+async function amenityProperties(slug: string) {
+  const page = getAmenityPage(slug, "buy");
+  if (!page) return null;
+  const all = await getProperties();
+  const properties = all
+    .filter((p) => matchesIntent(p, "buy") && isOnAmenityPage(p, page))
+    .sort((a, b) => (a.price ?? 0) - (b.price ?? 0));
+  return { page, properties };
 }
 
 export async function generateMetadata({
@@ -95,6 +115,22 @@ export async function generateMetadata({
       title: bandHeading(band),
       description: description.slice(0, 158),
       alternates: { canonical: `/buy/${band.slug}` },
+      robots: indexable(properties.length),
+    };
+  }
+
+  const amenity = await amenityProperties(slug);
+  if (amenity) {
+    const { page, properties } = amenity;
+    const range = priceRange(properties, "buy");
+    const description =
+      properties.length > 0
+        ? `${properties.length} ${page.noun} for sale in Phuket${range ? ` — ${range}` : ""}. ${page.blurb}`
+        : `${page.noun} for sale in Phuket. ${page.blurb}`;
+    return {
+      title: page.heading,
+      description: description.slice(0, 158),
+      alternates: { canonical: `/buy/${page.slug}` },
       robots: indexable(properties.length),
     };
   }
@@ -153,6 +189,16 @@ export default async function BuySegmentPage({
           title={`Buying under ${budget.band.cap} in Phuket`}
           structuredData={false}
         />
+      </>
+    );
+  }
+
+  const amenity = await amenityProperties(slug);
+  if (amenity) {
+    return (
+      <>
+        <AmenityIntentPage page={amenity.page} properties={amenity.properties} />
+        <FaqSection faqs={BUY_FAQS.slice(0, 4)} structuredData={false} />
       </>
     );
   }

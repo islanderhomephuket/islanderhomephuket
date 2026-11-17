@@ -29,6 +29,13 @@ import {
   getPriceBandPage,
   isInPriceBand,
 } from "@/lib/price-band-pages";
+import { AmenityIntentPage } from "@/components/property/amenity-intent-page";
+import {
+  amenityPagesFor,
+  assertNoAmenityCollision,
+  getAmenityPage,
+  isOnAmenityPage,
+} from "@/lib/amenity-pages";
 import {
   areaIntentDescription,
   areaIntentHeading,
@@ -49,10 +56,12 @@ export const dynamicParams = false;
 export function generateStaticParams() {
   assertNoSlugCollision();
   assertNoBandCollision();
+  assertNoAmenityCollision();
   return [
     ...AREAS.map((a) => ({ area: a.slug })),
     ...PROPERTY_TYPE_PAGES.map((t) => ({ area: t.slug })),
     ...bandsFor("rent").map((b) => ({ area: b.slug })),
+    ...amenityPagesFor("rent").map((a) => ({ area: a.slug })),
   ];
 }
 
@@ -65,6 +74,17 @@ async function bandProperties(slug: string) {
     .filter((p) => matchesIntent(p, "rent") && isInPriceBand(p, band))
     .sort((a, b) => (a.price ?? 0) - (b.price ?? 0));
   return { band, properties };
+}
+
+/** Listings behind an amenity page — /rent/pool-villas and friends. */
+async function amenityProperties(slug: string) {
+  const page = getAmenityPage(slug, "rent");
+  if (!page) return null;
+  const all = await getProperties();
+  const properties = all
+    .filter((p) => matchesIntent(p, "rent") && isOnAmenityPage(p, page))
+    .sort((a, b) => (a.price ?? 0) - (b.price ?? 0));
+  return { page, properties };
 }
 
 export async function generateMetadata({
@@ -94,6 +114,22 @@ export async function generateMetadata({
       title: bandHeading(band),
       description: description.slice(0, 158),
       alternates: { canonical: `/rent/${band.slug}` },
+      robots: indexable(properties.length),
+    };
+  }
+
+  const amenity = await amenityProperties(slug);
+  if (amenity) {
+    const { page, properties } = amenity;
+    const range = priceRange(properties, "rent");
+    const description =
+      properties.length > 0
+        ? `${properties.length} ${page.noun} for rent in Phuket${range ? ` — ${range}` : ""}. ${page.blurb}`
+        : `${page.noun} for rent in Phuket. ${page.blurb}`;
+    return {
+      title: page.heading,
+      description: description.slice(0, 158),
+      alternates: { canonical: `/rent/${page.slug}` },
       robots: indexable(properties.length),
     };
   }
@@ -152,6 +188,16 @@ export default async function RentSegmentPage({
           title={`Renting under ${budget.band.cap} a month`}
           structuredData={false}
         />
+      </>
+    );
+  }
+
+  const amenity = await amenityProperties(slug);
+  if (amenity) {
+    return (
+      <>
+        <AmenityIntentPage page={amenity.page} properties={amenity.properties} />
+        <FaqSection faqs={RENT_FAQS.slice(0, 4)} structuredData={false} />
       </>
     );
   }
