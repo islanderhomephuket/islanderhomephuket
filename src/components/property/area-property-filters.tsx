@@ -4,6 +4,7 @@ import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { useCallback, useState, useTransition } from "react";
 import { SlidersHorizontal, X } from "lucide-react";
 import { PROPERTY_TYPES } from "@/lib/constants";
+import { FILTERABLE_AMENITIES } from "@/lib/amenities";
 import { cn } from "@/lib/utils";
 import { PriceRangeFields, Select } from "./property-filters";
 
@@ -37,9 +38,22 @@ export function AreaPropertyFilters({
     [params, pathname, router],
   );
 
-  const hasFilters = ["propertyType", "bedrooms", "minPrice", "maxPrice"].some((k) =>
-    params.get(k),
-  );
+  const hasFilters = [
+    "propertyType",
+    "bedrooms",
+    "bathrooms",
+    "minPrice",
+    "maxPrice",
+    "has",
+  ].some((k) => params.get(k));
+
+  const active = new Set((params.get("has") ?? "").split(",").filter(Boolean));
+  const toggleAmenity = (flag: string) => {
+    const next = new Set(active);
+    if (next.has(flag)) next.delete(flag);
+    else next.add(flag);
+    setParam({ has: [...next].join(",") });
+  };
 
   const fields = (
     <>
@@ -69,12 +83,42 @@ export function AreaPropertyFilters({
         ))}
       </Select>
 
+      <Select
+        value={params.get("bathrooms") ?? ""}
+        onChange={(v) => setParam({ bathrooms: v })}
+        ariaLabel="Bathrooms"
+      >
+        <option value="">Baths</option>
+        {[1, 2, 3, 4, 5].map((n) => (
+          <option key={n} value={String(n)}>
+            {n}+ Baths
+          </option>
+        ))}
+      </Select>
+
       <PriceRangeFields
         listingType={listingType}
         minPrice={params.get("minPrice") ?? ""}
         maxPrice={params.get("maxPrice") ?? ""}
         onChange={setParam}
       />
+
+      {FILTERABLE_AMENITIES.map(({ flag, label }) => (
+        <button
+          key={flag}
+          type="button"
+          onClick={() => toggleAmenity(flag)}
+          aria-pressed={active.has(flag)}
+          className={cn(
+            "h-12 whitespace-nowrap border px-4 text-xs font-semibold uppercase tracking-[0.14em] transition-colors",
+            active.has(flag)
+              ? "border-paper bg-paper text-ink"
+              : "border-sand bg-ink text-paper/60 hover:text-paper",
+          )}
+        >
+          {label}
+        </button>
+      ))}
 
       <Select
         value={params.get("sort") ?? "newest"}

@@ -4,6 +4,7 @@ import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { useCallback, useState, useTransition } from "react";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import { AREAS, PROPERTY_TYPES } from "@/lib/constants";
+import { FILTERABLE_AMENITIES } from "@/lib/amenities";
 import { cn } from "@/lib/utils";
 
 export function PropertyFilters({
@@ -31,9 +32,26 @@ export function PropertyFilters({
     [params, pathname, router],
   );
 
-  const hasFilters = ["area", "propertyType", "bedrooms", "minPrice", "maxPrice", "q"].some(
-    (k) => params.get(k),
-  );
+  const hasFilters = [
+    "area",
+    "propertyType",
+    "bedrooms",
+    "bathrooms",
+    "minPrice",
+    "maxPrice",
+    "q",
+    "has",
+  ].some((k) => params.get(k));
+
+  // `?has=pool,furnished` — one parameter for every amenity toggle, so a
+  // filtered URL stays short enough to paste into a WhatsApp message.
+  const active = new Set((params.get("has") ?? "").split(",").filter(Boolean));
+  const toggleAmenity = (flag: string) => {
+    const next = new Set(active);
+    if (next.has(flag)) next.delete(flag);
+    else next.add(flag);
+    setParam({ has: [...next].join(",") });
+  };
 
   const fields = (
     <>
@@ -91,6 +109,20 @@ export function PropertyFilters({
         ))}
       </Select>
 
+      {/* Bathrooms */}
+      <Select
+        value={params.get("bathrooms") ?? ""}
+        onChange={(v) => setParam({ bathrooms: v })}
+        ariaLabel="Bathrooms"
+      >
+        <option value="">Baths</option>
+        {[1, 2, 3, 4, 5].map((n) => (
+          <option key={n} value={String(n)}>
+            {n}+ Baths
+          </option>
+        ))}
+      </Select>
+
       {/* Price */}
       <PriceRangeFields
         listingType={listingType}
@@ -98,6 +130,24 @@ export function PropertyFilters({
         maxPrice={params.get("maxPrice") ?? ""}
         onChange={setParam}
       />
+
+      {/* Amenities */}
+      {FILTERABLE_AMENITIES.map(({ flag, label }) => (
+        <button
+          key={flag}
+          type="button"
+          onClick={() => toggleAmenity(flag)}
+          aria-pressed={active.has(flag)}
+          className={cn(
+            "h-12 whitespace-nowrap border px-4 text-xs font-semibold uppercase tracking-[0.14em] transition-colors",
+            active.has(flag)
+              ? "border-paper bg-paper text-ink"
+              : "border-sand bg-ink text-paper/60 hover:text-paper",
+          )}
+        >
+          {label}
+        </button>
+      ))}
 
       {/* Sort */}
       <Select

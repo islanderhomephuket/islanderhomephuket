@@ -45,6 +45,13 @@ export interface Property {
   // Joined / computed
   images?: PropertyImage[];
   cover_image?: string;
+  /**
+   * Amenity slugs read out of the title, description and features on the
+   * server — "pool", "furnished", "pets" and the rest. See `lib/amenities.ts`.
+   * Short enough to survive `stripToCardFields`, so the filter bar keeps
+   * working on pages that ship no descriptions.
+   */
+  amenities?: import("./amenities").AmenityFlag[];
 }
 
 export interface Lead {

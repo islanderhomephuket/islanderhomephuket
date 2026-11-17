@@ -10,6 +10,7 @@ import { FEATURED_PINNED } from "./constants";
 import { NOTION_PROPERTIES } from "./notion-data";
 import { MANUAL_LISTINGS } from "./manual-listings";
 import { normalizePropertyType } from "./property-type-pages";
+import { deriveAmenities } from "./amenities";
 import type { BlogPost, Lead, Property, PropertyFilters } from "./types";
 
 /**
@@ -38,7 +39,9 @@ function withCover(p: Property): Property {
     images?.find((i) => i.is_cover)?.url ??
     images?.[0]?.url ??
     "/properties/villa-1.webp";
-  return { ...p, images, cover_image: cover };
+  // Derived once here, where every query path passes, so the filter bar can
+  // work on a payload that carries no descriptions.
+  return { ...p, images, cover_image: cover, amenities: deriveAmenities(p) };
 }
 
 /**
@@ -57,6 +60,8 @@ export function stripToCardFields(list: Property[]): Property[] {
     description: "",
     features: [],
     images: undefined,
+    // `amenities` is deliberately kept: it is a handful of slugs, and the
+    // filter bar reads it instead of the description that is dropped here.
   }));
 }
 

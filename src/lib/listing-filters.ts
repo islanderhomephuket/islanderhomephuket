@@ -13,6 +13,7 @@
  * Old links with ?area=… keep working — the query is simply read in the browser.
  */
 import { normalizePropertyType } from "./property-type-pages";
+import { FILTERABLE_AMENITIES, hasAmenity, type AmenityFlag } from "./amenities";
 import type { Property } from "./types";
 
 type Sort = "newest" | "price-asc" | "price-desc";
@@ -21,11 +22,27 @@ export type ListingFilters = {
   area?: string;
   propertyType?: string;
   bedrooms?: number;
+  bathrooms?: number;
   minPrice?: number;
   maxPrice?: number;
   query?: string;
   sort?: Sort;
+  /** Amenity slugs that must ALL be present — "pool", "furnished", "pets". */
+  amenities?: AmenityFlag[];
 };
+
+/** `?has=pool,furnished` — one parameter, so the URL stays short. */
+const AMENITY_PARAM = "has";
+const KNOWN_AMENITIES = new Set(FILTERABLE_AMENITIES.map((a) => a.flag));
+
+function amenityList(v: string | null): AmenityFlag[] | undefined {
+  if (!v) return undefined;
+  const out = v
+    .split(",")
+    .map((s) => s.trim())
+    .filter((s): s is AmenityFlag => KNOWN_AMENITIES.has(s as AmenityFlag));
+  return out.length ? out : undefined;
+}
 
 function num(v: string | null): number | undefined {
   if (!v) return undefined;
@@ -38,10 +55,12 @@ export function parseListingFilters(params: URLSearchParams): ListingFilters {
     area: params.get("area") || undefined,
     propertyType: params.get("propertyType") || undefined,
     bedrooms: num(params.get("bedrooms")),
+    bathrooms: num(params.get("bathrooms")),
     minPrice: num(params.get("minPrice")),
     maxPrice: num(params.get("maxPrice")),
     query: params.get("q") || undefined,
     sort: (params.get("sort") as Sort) || "newest",
+    amenities: amenityList(params.get(AMENITY_PARAM)),
   };
 }
 
@@ -50,9 +69,11 @@ export function isFiltering(f: ListingFilters): boolean {
     f.area ||
       f.propertyType ||
       f.bedrooms ||
+      f.bathrooms ||
       f.minPrice != null ||
       f.maxPrice != null ||
       f.query ||
+      f.amenities?.length ||
       (f.sort && f.sort !== "newest"),
   );
 }
@@ -75,6 +96,9 @@ export function applyListingFilters(
     out = out.filter((p) => normalizePropertyType(p.property_type) === want);
   }
   if (f.bedrooms != null) out = out.filter((p) => p.bedrooms >= f.bedrooms!);
+  if (f.bathrooms != null) out = out.filter((p) => p.bathrooms >= f.bathrooms!);
+  if (f.amenities?.length)
+    out = out.filter((p) => f.amenities!.every((a) => hasAmenity(p, a)));
   if (f.minPrice != null)
     out = out.filter((p) => effectivePrice(p, listingType) >= f.minPrice!);
   if (f.maxPrice != null)
