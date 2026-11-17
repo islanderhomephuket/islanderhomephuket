@@ -20,10 +20,13 @@ export function Logo({
   return (
     <span className={cn("inline-flex items-center gap-3", className)}>
       <Image
-        src="/logo.png"
+        // 256 px WebP for a mark that renders at 48 px. The 512 px PNG this
+        // replaced weighed 207 KB and was preloaded on every page; logo.png
+        // stays at its own URL for the schema.org and metadata logo.
+        src="/logo.webp"
         alt="Islander Home Phuket"
-        width={512}
-        height={512}
+        width={256}
+        height={256}
         priority
         className={cn("h-12 w-12 object-contain", markClassName)}
       />

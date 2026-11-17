@@ -41,7 +41,7 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="relative flex min-h-[55vh] items-end overflow-hidden pb-12 pt-32">
         <Image
-          src="/properties/villa-5.png"
+          src="/properties/villa-5.webp"
           alt="Phuket luxury villa"
           fill
           priority
@@ -91,7 +91,7 @@ export default function AboutPage() {
             </div>
             <div className="relative aspect-[3/4] overflow-hidden">
               <Image
-                src="/properties/villa-7.png"
+                src="/properties/villa-7.webp"
                 alt="Islander Home Phuket"
                 fill
                 sizes="(max-width: 1024px) 100vw, 33vw"

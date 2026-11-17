@@ -9,7 +9,7 @@ export function CtaBand({ image }: { image?: string } = {}) {
     <section className="bg-ink px-2 py-6 sm:px-3">
       <div className="relative overflow-hidden rounded-[var(--radius-frame)] py-24 sm:py-32">
       <Image
-        src={image ?? "/properties/villa-3.png"}
+        src={image ?? "/properties/villa-3.webp"}
         alt=""
         fill
         sizes="100vw"

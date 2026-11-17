@@ -11,7 +11,7 @@ export function BlogCard({ post }: { post: BlogPost }) {
     >
       <div className="relative aspect-[1200/630] overflow-hidden">
         <Image
-          src={post.cover_image ?? "/properties/villa-1.png"}
+          src={post.cover_image ?? "/properties/villa-1.webp"}
           alt={post.title}
           fill
           sizes="(max-width: 768px) 100vw, 33vw"

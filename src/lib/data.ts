@@ -37,7 +37,7 @@ function withCover(p: Property): Property {
     p.cover_image ??
     images?.find((i) => i.is_cover)?.url ??
     images?.[0]?.url ??
-    "/properties/villa-1.png";
+    "/properties/villa-1.webp";
   return { ...p, images, cover_image: cover };
 }
 

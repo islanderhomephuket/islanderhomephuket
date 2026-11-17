@@ -35,7 +35,7 @@ export default async function AdminBlogPage() {
           >
             <div className="relative h-20 w-28 shrink-0 overflow-hidden bg-sand">
               <Image
-                src={post.cover_image ?? "/properties/villa-1.png"}
+                src={post.cover_image ?? "/properties/villa-1.webp"}
                 alt={post.title}
                 fill
                 sizes="112px"

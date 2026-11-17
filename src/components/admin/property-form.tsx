@@ -72,7 +72,7 @@ export function PropertyForm({ property }: { property?: Property }) {
             label="Image URLs (one per line — first is the cover)"
             defaultValue={p?.images?.map((i) => i.url).join("\n") ?? ""}
             rows={5}
-            placeholder={"/properties/villa-1.png\nhttps://…/photo.jpg"}
+            placeholder={"/properties/villa-1.webp\nhttps://…/photo.jpg"}
           />
         </Card>
 

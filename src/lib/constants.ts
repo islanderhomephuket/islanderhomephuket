@@ -154,7 +154,7 @@ export const AREAS: AreaInfo[] = [
     ],
     mapQuery: "Bang Tao Beach, Phuket, Thailand",
     coords: { lat: 7.9989, lng: 98.2945 },
-    image: "/properties/villa-1.png",
+    image: "/properties/villa-1.webp",
     poster: "/areas/bang-tao.jpg",
   },
   {
@@ -171,7 +171,7 @@ export const AREAS: AreaInfo[] = [
     ],
     mapQuery: "Phuket Town, Thailand",
     coords: { lat: 7.8804, lng: 98.3923 },
-    image: "/properties/villa-3.png",
+    image: "/properties/villa-3.webp",
     poster: "/areas/phuket-town.jpg",
   },
   {
@@ -205,7 +205,7 @@ export const AREAS: AreaInfo[] = [
     ],
     mapQuery: "Rawai Beach, Phuket, Thailand",
     coords: { lat: 7.7741, lng: 98.3245 },
-    image: "/properties/villa-7.png",
+    image: "/properties/villa-7.webp",
     poster: "/areas/rawai.jpg",
   },
   {
@@ -222,7 +222,7 @@ export const AREAS: AreaInfo[] = [
     ],
     mapQuery: "Thalang District, Phuket, Thailand",
     coords: { lat: 8.0353, lng: 98.339 },
-    image: "/properties/villa-8.png",
+    image: "/properties/villa-8.webp",
     poster: "/areas/thalang.jpg",
   },
   {
@@ -239,7 +239,7 @@ export const AREAS: AreaInfo[] = [
     ],
     mapQuery: "Kathu, Phuket, Thailand",
     coords: { lat: 7.911, lng: 98.332 },
-    image: "/properties/villa-2.png",
+    image: "/properties/villa-2.webp",
   },
   {
     slug: "patong",
@@ -255,7 +255,7 @@ export const AREAS: AreaInfo[] = [
     ],
     mapQuery: "Patong Beach, Phuket, Thailand",
     coords: { lat: 7.8965, lng: 98.296 },
-    image: "/properties/villa-4.png",
+    image: "/properties/villa-4.webp",
   },
   {
     slug: "kata",
@@ -271,7 +271,7 @@ export const AREAS: AreaInfo[] = [
     ],
     mapQuery: "Kata Beach, Phuket, Thailand",
     coords: { lat: 7.818, lng: 98.298 },
-    image: "/properties/villa-5.png",
+    image: "/properties/villa-5.webp",
   },
   {
     slug: "karon",
@@ -287,7 +287,7 @@ export const AREAS: AreaInfo[] = [
     ],
     mapQuery: "Karon Beach, Phuket, Thailand",
     coords: { lat: 7.846, lng: 98.294 },
-    image: "/properties/villa-6.png",
+    image: "/properties/villa-6.webp",
   },
   {
     slug: "kamala",
@@ -303,7 +303,7 @@ export const AREAS: AreaInfo[] = [
     ],
     mapQuery: "Kamala Beach, Phuket, Thailand",
     coords: { lat: 7.954, lng: 98.283 },
-    image: "/properties/villa-1.png",
+    image: "/properties/villa-1.webp",
   },
 ];
 

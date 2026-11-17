@@ -53,7 +53,7 @@ export const MOCK_PROPERTIES: Property[] = [
     reference: "IHP-V001",
     created_at: now,
     updated_at: now,
-    images: imgs("p-001", ["villa-1.png", "villa-3.png", "interior-1.jpg", "interior-2.jpg", "interior-5.jpg"]),
+    images: imgs("p-001", ["villa-1.webp", "villa-3.webp", "interior-1.jpg", "interior-2.jpg", "interior-5.jpg"]),
   },
   {
     id: "p-002",
@@ -86,7 +86,7 @@ export const MOCK_PROPERTIES: Property[] = [
     reference: "IHP-V002",
     created_at: now,
     updated_at: now,
-    images: imgs("p-002", ["villa-6.png", "villa-7.png", "interior-6.jpg", "interior-8.jpg"]),
+    images: imgs("p-002", ["villa-6.webp", "villa-7.webp", "interior-6.jpg", "interior-8.jpg"]),
   },
   {
     id: "p-003",
@@ -120,7 +120,7 @@ export const MOCK_PROPERTIES: Property[] = [
     reference: "IHP-V003",
     created_at: now,
     updated_at: now,
-    images: imgs("p-003", ["villa-2.png", "villa-5.png", "interior-9.jpg", "interior-10.jpg", "interior-12.jpg"]),
+    images: imgs("p-003", ["villa-2.webp", "villa-5.webp", "interior-9.jpg", "interior-10.jpg", "interior-12.jpg"]),
   },
   {
     id: "p-004",
@@ -153,7 +153,7 @@ export const MOCK_PROPERTIES: Property[] = [
     reference: "IHP-V004",
     created_at: now,
     updated_at: now,
-    images: imgs("p-004", ["villa-4.png", "villa-8.png", "interior-14.jpg", "interior-16.jpg"]),
+    images: imgs("p-004", ["villa-4.webp", "villa-8.webp", "interior-14.jpg", "interior-16.jpg"]),
   },
   {
     id: "p-005",
@@ -251,7 +251,7 @@ export const MOCK_PROPERTIES: Property[] = [
     reference: "IHP-R007",
     created_at: now,
     updated_at: now,
-    images: imgs("p-007", ["villa-3.png", "interior-2.jpg", "interior-5.jpg", "interior-8.jpg"]),
+    images: imgs("p-007", ["villa-3.webp", "interior-2.jpg", "interior-5.jpg", "interior-8.jpg"]),
   },
   {
     id: "p-008",
@@ -349,7 +349,7 @@ export const MOCK_PROPERTIES: Property[] = [
     reference: "IHP-C013",
     created_at: now,
     updated_at: now,
-    images: imgs("p-013", ["interior-3.jpg", "interior-5.jpg", "villa-6.png"]),
+    images: imgs("p-013", ["interior-3.jpg", "interior-5.jpg", "villa-6.webp"]),
   },
   {
     id: "p-014",
@@ -382,7 +382,7 @@ export const MOCK_PROPERTIES: Property[] = [
     reference: "IHP-T014",
     created_at: now,
     updated_at: now,
-    images: imgs("p-014", ["interior-11.jpg", "interior-13.jpg", "villa-4.png"]),
+    images: imgs("p-014", ["interior-11.jpg", "interior-13.jpg", "villa-4.webp"]),
   },
   {
     id: "p-015",
@@ -417,7 +417,7 @@ export const MOCK_PROPERTIES: Property[] = [
     reference: "IHP-V015",
     created_at: now,
     updated_at: now,
-    images: imgs("p-015", ["villa-2.png", "villa-5.png", "interior-9.jpg", "interior-10.jpg"]),
+    images: imgs("p-015", ["villa-2.webp", "villa-5.webp", "interior-9.jpg", "interior-10.jpg"]),
   },
   {
     id: "p-016",
@@ -483,7 +483,7 @@ export const MOCK_PROPERTIES: Property[] = [
     reference: "IHP-L017",
     created_at: now,
     updated_at: now,
-    images: imgs("p-017", ["villa-7.png", "villa-8.png"]),
+    images: imgs("p-017", ["villa-7.webp", "villa-8.webp"]),
   },
   {
     id: "p-018",
@@ -516,7 +516,7 @@ export const MOCK_PROPERTIES: Property[] = [
     reference: "IHP-T018",
     created_at: now,
     updated_at: now,
-    images: imgs("p-018", ["interior-15.jpg", "interior-16.jpg", "villa-4.png"]),
+    images: imgs("p-018", ["interior-15.jpg", "interior-16.jpg", "villa-4.webp"]),
   },
   {
     id: "p-010",
@@ -548,7 +548,7 @@ export const MOCK_PROPERTIES: Property[] = [
     reference: "IHP-L010",
     created_at: now,
     updated_at: now,
-    images: imgs("p-010", ["villa-7.png", "villa-8.png"]),
+    images: imgs("p-010", ["villa-7.webp", "villa-8.webp"]),
   },
   {
     id: "p-011",
@@ -613,7 +613,7 @@ export const MOCK_PROPERTIES: Property[] = [
     reference: "IHP-R012",
     created_at: now,
     updated_at: now,
-    images: imgs("p-012", ["villa-5.png", "villa-1.png", "interior-4.jpg", "interior-18.jpg"]),
+    images: imgs("p-012", ["villa-5.webp", "villa-1.webp", "interior-4.jpg", "interior-18.jpg"]),
   },
 ];
 
@@ -739,7 +739,7 @@ export const MOCK_BLOG_POSTS: BlogPost[] = [
 <p>Before any purchase, we ensure a clean Chanote title, verified access, building permits and no encumbrances. Islander Home works only with vetted developments and trusted local lawyers.</p>
 <blockquote>Our advice: never transfer funds before independent legal due diligence is complete.</blockquote>
 <p>Speak to our team for a no-obligation consultation tailored to your goals.</p>`,
-    cover_image: "/properties/villa-1.png",
+    cover_image: "/properties/villa-1.webp",
     author: "Islander Home Team",
     tags: ["Buying Guide", "Legal", "Investment"],
     published: true,
@@ -763,7 +763,7 @@ export const MOCK_BLOG_POSTS: BlogPost[] = [
 <h2>Rawai & Chalong</h2>
 <p>Lifestyle-led demand from expats and remote workers keeps occupancy high and supports resilient villa values.</p>
 <p>Talk to Islander Home for an area-by-area investment briefing.</p>`,
-    cover_image: "/properties/villa-3.png",
+    cover_image: "/properties/villa-3.webp",
     author: "Islander Home Team",
     tags: ["Investment", "Areas", "Market"],
     published: true,
@@ -789,7 +789,7 @@ export const MOCK_BLOG_POSTS: BlogPost[] = [
 <li>Quality furnishing and reliable maintenance</li>
 </ul>
 <p>Islander Home offers full rental management for owners — ask us how we can put your villa to work.</p>`,
-    cover_image: "/properties/villa-6.png",
+    cover_image: "/properties/villa-6.webp",
     author: "Islander Home Team",
     tags: ["Rental", "Investment"],
     published: true,

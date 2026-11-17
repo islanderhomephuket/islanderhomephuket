@@ -55,7 +55,7 @@ export default async function AdminPropertiesPage() {
                     <div className="flex items-center gap-3">
                       <div className="relative h-12 w-16 shrink-0 overflow-hidden bg-sand">
                         <Image
-                          src={p.cover_image ?? "/properties/villa-1.png"}
+                          src={p.cover_image ?? "/properties/villa-1.webp"}
                           alt={p.title}
                           fill
                           sizes="64px"

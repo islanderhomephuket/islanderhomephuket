@@ -65,7 +65,7 @@ export function PostForm({ post }: { post?: BlogPost }) {
             label="Cover image URL"
             name="cover_image"
             defaultValue={post?.cover_image ?? ""}
-            placeholder="/properties/villa-1.png"
+            placeholder="/properties/villa-1.webp"
           />
           <label className="flex items-center gap-3 pt-1 text-sm text-ink/75">
             <input

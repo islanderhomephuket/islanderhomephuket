@@ -22,7 +22,7 @@ export function Gallery({
         {
           id: "placeholder",
           property_id: "",
-          url: "/properties/villa-1.png",
+          url: "/properties/villa-1.webp",
           alt: title,
           sort_order: 0,
           is_cover: true,
