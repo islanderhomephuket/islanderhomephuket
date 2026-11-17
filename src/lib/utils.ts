@@ -43,6 +43,23 @@ export function formatDate(date: string | Date | null | undefined): string {
   });
 }
 
+/**
+ * Compact date for a card: "14 Nov 2026".
+ *
+ * Short on purpose — this sits under the specs on every card in a grid, where
+ * "November 14, 2026" would be the longest line on the card.
+ */
+export function formatDateShort(date: string | Date | null | undefined): string {
+  if (!date) return "";
+  const d = typeof date === "string" ? new Date(date) : date;
+  if (Number.isNaN(d.getTime())) return "";
+  return d.toLocaleDateString("en-GB", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+}
+
 /** Slugify a string for URLs. */
 export function slugify(input: string): string {
   return input

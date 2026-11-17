@@ -27,7 +27,13 @@ import {
   getRelatedProperties,
   getAllPropertySlugs,
 } from "@/lib/data";
-import { formatArea, formatRent, formatTHB, oneYearLeaseOnly } from "@/lib/utils";
+import {
+  formatArea,
+  formatDateShort,
+  formatRent,
+  formatTHB,
+  oneYearLeaseOnly,
+} from "@/lib/utils";
 import {
   propertyTitle,
   propertyPhrase,
@@ -109,6 +115,7 @@ export default async function PropertyDetailPage({
   const price = isRent ? rentStr : saleStr;
 
   const enquiryMessage = `Hi Islander Home, I'm interested in "${property.title}" (Ref: ${property.reference ?? property.slug}). Please send more details.`;
+  const updatedLabel = formatDateShort(property.updated_at || property.created_at);
 
   const specs = [
     property.bedrooms > 0 && {
@@ -359,6 +366,14 @@ export default async function PropertyDetailPage({
                     {property.property_type}
                   </div>
                 </div>
+
+                {/* The enquiry panel is where someone decides whether this is
+                    still live, so the date belongs here and not buried below. */}
+                {updatedLabel && (
+                  <p className="mt-3 text-xs uppercase tracking-[0.16em] text-paper/40">
+                    Updated {updatedLabel}
+                  </p>
+                )}
 
                 <h3 className="mt-5 font-display text-2xl font-semibold text-paper">
                   Enquire about this property

@@ -4,7 +4,7 @@ import { BedDouble, Bath, Maximize, ArrowUpRight } from "lucide-react";
 import { isHotel, propertyPhrase } from "@/lib/seo";
 import type { Property } from "@/lib/types";
 import { AREAS } from "@/lib/constants";
-import { formatRent, formatTHB } from "@/lib/utils";
+import { formatDateShort, formatRent, formatTHB } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 
 const NEW_LISTING_MS = 7 * 24 * 60 * 60 * 1000;
@@ -27,6 +27,9 @@ export function PropertyCard({ property }: { property: Property }) {
   const isNew =
     !!property.created_at &&
     Date.now() - new Date(property.created_at).getTime() < NEW_LISTING_MS;
+  // `updated_at` moves whenever the listing itself changes — price, copy,
+  // photos, availability. Falls back to the day it was first published.
+  const updatedLabel = formatDateShort(property.updated_at || property.created_at);
   const statusLabel =
     property.status === "reserved"
       ? "Reserved"
@@ -110,6 +113,15 @@ export function PropertyCard({ property }: { property: Property }) {
             </span>
           )}
         </div>
+
+        {/* When this listing was last touched. A buyer scanning a grid wants to
+            know the stock is current, and an undated listing reads as stale
+            whether it is or not. */}
+        {updatedLabel && (
+          <p className="mt-3 text-[0.62rem] uppercase tracking-[0.18em] text-paper/35">
+            Updated {updatedLabel}
+          </p>
+        )}
 
         <div className="mt-auto flex items-end justify-between gap-3 border-t border-paper/10 pt-5 mt-6">
           <div>

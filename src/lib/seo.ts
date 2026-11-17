@@ -251,6 +251,8 @@ export function propertyJsonLd(property: Property) {
     headline: property.title,
     description: property.description,
     datePosted: property.created_at,
+    // Freshness is a ranking signal on listings; the page states the same date.
+    ...(property.updated_at ? { dateModified: property.updated_at } : {}),
     ...(images.length ? { image: images } : {}),
     about: residence,
     ...(offer ? { offers: offer } : {}),
