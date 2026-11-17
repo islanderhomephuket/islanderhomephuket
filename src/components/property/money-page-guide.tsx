@@ -107,7 +107,156 @@ const bedsLine = (s: Stats, rent: boolean) =>
     .map((b) => `${b.count} with ${b.beds} bedroom${b.beds === 1 ? "" : "s"} (from ${baht(b.from, rent)})`)
     .join(", ");
 
+/**
+ * Villas-for-sale guide for an area: the live numbers, the area in a few true
+ * sentences, the ownership rule, and FAQs built from the stock on the page.
+ */
+function villaSaleGuide(o: {
+  area: string;
+  /** Rewrites of what the area's searchers also type: "Nai Harn", "Pa Khlok". */
+  alsoCalled: string;
+  intro: React.ReactNode;
+  ask: string;
+}): Guide {
+  return {
+    title: (s) =>
+      `${o.area} Villas for Sale, Phuket: ${s.n} Pool Villas${o.alsoCalled ? ` (${o.alsoCalled})` : ""}`,
+    description: (s) =>
+      `${s.n} villas for sale in ${o.area}, Phuket — ${baht(s.min, false)} to ${baht(s.max, false)}, median ${baht(s.median, false)}. ${s.byBeds
+        .filter((b) => b.count >= 2)
+        .map((b) => `${b.beds}-bed`)
+        .join(", ")} pool villas.`,
+    kicker: "Buyer's guide",
+    heading: `Buying a villa in ${o.area}`,
+    body: (s) => (
+      <>
+        {o.intro}
+        <p>
+          We have <strong>{s.n} villas for sale in {o.area}</strong> right now, from{" "}
+          {baht(s.min, false)} to {baht(s.max, false)}; the middle of the list is about{" "}
+          {baht(s.median, false)}. {s.pools} of them have a private pool. By size:{" "}
+          {bedsLine(s, false)}.
+        </p>
+        <p>
+          Foreigners cannot hold land in their own name in Thailand, so a villa is
+          normally bought on a registered lease — the law caps each term at 30 years.
+          Listings here are a mix of leasehold and freehold; when one says
+          &ldquo;freehold&rdquo;, ask whose name the land title will be in. The{" "}
+          <A href="/blog/buying-property-in-phuket-guide-for-foreigners">
+            foreign buyer&apos;s guide
+          </A>{" "}
+          covers taxes and due diligence, and{" "}
+          <A href="/blog/best-areas-to-buy-property-in-phuket">
+            the best areas to buy in Phuket
+          </A>{" "}
+          compares {o.area} with the rest of the island.
+        </p>
+      </>
+    ),
+    faqs: (s, _r, ps) => {
+      const four = s.byBeds.find((b) => b.beds === 4);
+      return [
+        {
+          q: `How much does a villa in ${o.area} cost?`,
+          a: `On our current list, ${baht(s.min, false)} to ${baht(s.max, false)}, median ${baht(s.median, false)}. ${s.byBeds
+            .map((b) => `${b.beds}-bedroom from ${baht(b.from, false)} (${b.count})`)
+            .join("; ")}.`,
+        },
+        ...(four
+          ? [
+              {
+                q: `Do you have 4-bedroom villas for sale in ${o.area}?`,
+                a: (
+                  <>
+                    Yes — {four.count} right now, {baht(four.from, false)} to{" "}
+                    {baht(four.to, false)}:{" "}
+                    {ps
+                      .filter((p) => Number(p.bedrooms) === 4)
+                      .slice(0, 12)
+                      .map((p, i, arr) => (
+                        <span key={p.slug}>
+                          <A href={`/properties/${p.slug}`}>
+                            {p.reference ?? p.title} ({baht(Number(p.price), false)})
+                          </A>
+                          {i < arr.length - 1 ? ", " : "."}
+                        </span>
+                      ))}
+                  </>
+                ),
+              },
+            ]
+          : []),
+        {
+          q: `Can a foreigner buy a villa in ${o.area}?`,
+          a: (
+            <>
+              Not the land in their own name. Villas are bought on a registered lease (up
+              to 30 years per term); Thai-company structures with nominee shareholders are
+              being actively investigated. See the{" "}
+              <A href="/blog/buying-property-in-phuket-guide-for-foreigners">
+                foreign buyer&apos;s guide
+              </A>
+              ; we introduce an independent Thai lawyer before you commit.
+            </>
+          ),
+        },
+      ];
+    },
+    ask: o.ask,
+  };
+}
+
 const GUIDES: Record<string, Guide> = {
+  "/buy/rawai/villas": villaSaleGuide({
+    area: "Rawai",
+    alsoCalled: "Nai Harn & Saiyuan",
+    intro: (
+      <p>
+        Rawai is the southern tip of Phuket — Rawai and Nai Harn beaches, the Nai Harn
+        lake, and a large year-round expat community with its own cafés, gyms, seafood
+        market and international services. Most villas for sale sit inland in the
+        Saiyuan and Nai Harn estates, a few minutes from the beaches. If you are
+        comparing it with the west coast, read{" "}
+        <A href="/blog/bang-tao-vs-rawai-where-to-live-phuket">Bang Tao vs Rawai</A>.
+      </p>
+    ),
+    ask: "Hi Islander Home, I'm looking for a villa to buy in Rawai / Nai Harn.",
+  }),
+
+  "/buy/chalong/villas": villaSaleGuide({
+    area: "Chalong",
+    alsoCalled: "Chalong Bay",
+    intro: (
+      <p>
+        Chalong sits in the middle of the south, around Chalong Bay and the pier for the
+        southern islands, below the Big Buddha hill. It is a practical base — Rawai, Nai
+        Harn and Kata on one side, Phuket Town on the other. Families looking at
+        schools should also read{" "}
+        <A href="/blog/renting-near-international-schools-in-phuket">
+          living near international schools
+        </A>{" "}
+        and the <A href="/blog/chalong-phuket-area-guide-rent-and-buy">Chalong area guide</A>.
+      </p>
+    ),
+    ask: "Hi Islander Home, I'm looking for a villa to buy in Chalong.",
+  }),
+
+  "/buy/thalang/villas": villaSaleGuide({
+    area: "Thalang",
+    alsoCalled: "Pa Khlok & Mai Khao",
+    intro: (
+      <p>
+        Thalang is the north of the island — from Pa Khlok and Ao Po on the quiet east
+        coast to Mai Khao by the airport — with bigger plots and more green space
+        than the busier south. Buyers come here for space and value, and for the short
+        drive to the airport, Laguna and the west-coast beaches. More in the{" "}
+        <A href="/blog/thalang-phuket-area-guide-rent-and-buy">Thalang area guide</A>.
+      </p>
+    ),
+    ask: "Hi Islander Home, I'm looking for a villa to buy in Thalang / north Phuket.",
+  }),
+
+
   "/buy/bang-tao/villas": {
     title: () => "Bang Tao Villas for Sale: Luxury Pool Villas near Laguna & Cherngtalay",
     description: (s) =>
