@@ -124,7 +124,7 @@ export default async function HomePage() {
 
       <WhyChooseUs />
 
-      <CtaBand image={featured[0]?.cover_image} />
+      <CtaBand image={featured[0]?.cover_image} signature />
 
       {/* Journal */}
       {posts.length > 0 && (

@@ -30,6 +30,19 @@ const orgJsonLd = {
   areaServed: { "@type": "Place", name: "Phuket, Thailand" },
   openingHours: "Mo-Sa 09:00-18:00",
   sameAs: [CONTACT.facebook, CONTACT.instagram],
+  // Ties the business to the person behind it. The portrait, the name and this
+  // job title all appear on the homepage, so the markup says only what a
+  // visitor can see — "founder" is not used anywhere on the site, so it is not
+  // claimed here either.
+  employee: {
+    "@type": "Person",
+    "@id": `${SITE.url}/#thanya-wigg`,
+    name: "Thanawadee Wigg",
+    alternateName: "Thanya Wigg",
+    jobTitle: "Phuket Property Consultant",
+    image: `${SITE.url}/team/thanya-wigg.webp`,
+    worksFor: { "@type": "RealEstateAgent", name: SITE.name, url: SITE.url },
+  },
 };
 
 const display = Archivo({
