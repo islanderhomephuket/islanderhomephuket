@@ -2,6 +2,8 @@ import Image from "next/image";
 import { CONTACT } from "@/lib/constants";
 import { WhatsAppIcon, LineIcon } from "@/components/brand/contact-icons";
 import { ButtonLink } from "@/components/ui/button";
+import { SITE_WIDTH } from "@/components/ui/container";
+import { cn } from "@/lib/utils";
 
 /**
  * A signature rather than a profile card: the person the WhatsApp button
@@ -66,7 +68,7 @@ export function CtaBand({
       {founder && (
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent" />
       )}
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+      <div className={cn(SITE_WIDTH, "relative mx-auto px-5 sm:px-8 lg:px-12")}>
         <div className="max-w-2xl">
           <p className="kicker text-paper/70">Let&apos;s talk</p>
           <h2 className="display-caps mt-5 text-[2rem] text-paper sm:text-[3.2rem]">

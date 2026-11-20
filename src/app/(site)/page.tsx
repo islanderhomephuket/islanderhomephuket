@@ -10,7 +10,7 @@ import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { ZoneCard } from "@/components/property/zone-card";
 import { BlogCard } from "@/components/blog/blog-card";
-import { AREAS, HERO_SLIDES } from "@/lib/constants";
+import { AREAS, HERO_SLIDES, HOME_TAB_COUNT } from "@/lib/constants";
 import { formatRent, formatTHB } from "@/lib/utils";
 import type { Property } from "@/lib/types";
 import { HomeListingTabs } from "@/components/home/home-listing-tabs";
@@ -58,7 +58,7 @@ function toSlides(properties: Property[]): HeroSlide[] {
 
 export default async function HomePage() {
   const [featured, posts, all, newestWeek] = await Promise.all([
-    getFeaturedProperties(6),
+    getFeaturedProperties(HOME_TAB_COUNT),
     getBlogPosts(),
     getProperties(),
     getNewestProperties(Number.MAX_SAFE_INTEGER, NEWEST_DAYS),
@@ -70,8 +70,8 @@ export default async function HomePage() {
   // signature set. A "both" listing is new on each side, which is correct: it
   // genuinely is new to a buyer and to a renter.
   const availableThisWeek = newestWeek.filter((p) => p.status === "available");
-  const newestRent = availableThisWeek.filter(isForRent).slice(0, 6);
-  const newestBuy = availableThisWeek.filter(isForSale).slice(0, 6);
+  const newestRent = availableThisWeek.filter(isForRent).slice(0, HOME_TAB_COUNT);
+  const newestBuy = availableThisWeek.filter(isForSale).slice(0, HOME_TAB_COUNT);
 
   const areaCounts = AREAS.map((a) => ({
     area: a,
@@ -106,7 +106,7 @@ export default async function HomePage() {
             title="Phuket's finest addresses"
             description="From beachfront Bang Tao to the heritage streets of Old Town, discover the neighbourhood that suits your life."
           />
-          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4">
             {areaCounts.map(({ area, count }) => (
               <ZoneCard
                 key={area.slug}

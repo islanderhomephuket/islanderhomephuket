@@ -100,6 +100,21 @@ export const HERO_SLIDES: {
  * everything added since. Pin its slug here instead. A slug that is not
  * featured, or no longer exists, is ignored.
  */
+/**
+ * Cards handed to each tab in the homepage's listings block.
+ *
+ * Eight, not six: the grid runs four across past 1920 px, and PropertyGrid's
+ * `sixUpBelowWide` hides the last two below that — so a laptop gets a full
+ * 3 + 3 and a wide monitor a full 4 + 4, with no half-empty row either way.
+ *
+ * It lives here, and not beside the component that uses it, because
+ * `home-listing-tabs.tsx` is a client module: a plain constant exported from
+ * one reaches a server component as a client reference, not as 8, and
+ * `slice(0, thatReference)` silently returns an empty array — which took the
+ * whole Signature section off the homepage when it was defined there.
+ */
+export const HOME_TAB_COUNT = 8;
+
 export const FEATURED_PINNED: string[] = [
   "kathu-dcondo-reef-short-term-condo-20k",
   "annara-luxury-pool-villa-cherng-talay-bt08",

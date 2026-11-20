@@ -11,6 +11,16 @@
  */
 
 @theme {
+  /*
+   * One breakpoint above Tailwind's own, for the large desktop monitors this
+   * site is often read on. A registered breakpoint rather than an arbitrary
+   * `min-[1920px]:` variant, because Tailwind emits arbitrary min-width
+   * variants before the named ones: at 1920 px both matched and `2xl` won,
+   * so the wider container never applied. See `SITE_WIDTH` in ui/container.
+   */
+  --breakpoint-3xl: 120rem; /* 1920px */
+  --breakpoint-4xl: 160rem; /* 2560px — a full-width 1440p or 4K window */
+
   /* Dark surfaces (page → raised) */
   --color-ink: #08090a;           /* deepest page background */
   --color-ink-soft: #0c0d0f;

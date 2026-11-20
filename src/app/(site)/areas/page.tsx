@@ -36,7 +36,7 @@ export default async function AreasPage() {
             kicker="Eleven destinations"
             title="Find your neighbourhood"
           />
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4">
             {AREAS.map((area) => (
               <ZoneCard
                 key={area.slug}

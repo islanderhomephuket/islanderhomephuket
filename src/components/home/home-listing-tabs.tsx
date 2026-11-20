@@ -142,7 +142,11 @@ export function HomeListingTabs({
                   isActive ? "text-ink/55" : "text-paper/35",
                 )}
               >
-                {counts[t.id]}
+                {/* Six of the eight are hidden below 1920 px, so the pill has
+                    to say six there — a count that does not match the cards
+                    under it is worse than no count. */}
+                <span className="3xl:hidden">{Math.min(counts[t.id], 6)}</span>
+                <span className="hidden 3xl:inline">{counts[t.id]}</span>
               </span>
             </button>
           );
@@ -150,7 +154,11 @@ export function HomeListingTabs({
       </div>
 
       <div className="mt-10">
-        <PropertyGrid properties={properties} emptyMessage={tab.empty} />
+        <PropertyGrid
+          properties={properties}
+          emptyMessage={tab.empty}
+          sixUpBelowWide
+        />
       </div>
 
       {/* The top "View all" scrolls out of sight behind six cards; whoever read

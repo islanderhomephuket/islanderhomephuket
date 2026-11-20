@@ -8,11 +8,13 @@ import {
   LineIcon,
   WhatsAppIcon,
 } from "@/components/brand/contact-icons";
+import { SITE_WIDTH } from "@/components/ui/container";
+import { cn } from "@/lib/utils";
 
 export function Footer() {
   return (
     <footer className="bg-ink text-paper">
-      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-12">
+      <div className={cn(SITE_WIDTH, "mx-auto px-5 py-16 sm:px-8 lg:px-12")}>
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="lg:col-span-1">

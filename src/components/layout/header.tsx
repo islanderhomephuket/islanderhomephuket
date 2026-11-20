@@ -8,6 +8,7 @@ import { Logo } from "@/components/brand/logo";
 import { NAV_LINKS, CONTACT } from "@/lib/constants";
 import { WhatsAppIcon } from "@/components/brand/contact-icons";
 import { cn } from "@/lib/utils";
+import { SITE_WIDTH } from "@/components/ui/container";
 
 export function Header() {
   const pathname = usePathname();
@@ -42,7 +43,7 @@ export function Header() {
           : "bg-gradient-to-b from-black/45 to-transparent",
       )}
     >
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-12">
+      <div className={cn(SITE_WIDTH, "mx-auto flex h-20 items-center justify-between px-5 sm:px-8 lg:px-12")}>
         <Link href="/" aria-label="Islander Home Phuket — home">
           <Logo markClassName="h-14 w-14" />
         </Link>
