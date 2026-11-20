@@ -30,17 +30,6 @@ const orgJsonLd = {
   areaServed: { "@type": "Place", name: "Phuket, Thailand" },
   openingHours: "Mo-Sa 09:00-18:00",
   sameAs: [CONTACT.facebook, CONTACT.instagram],
-  // Ties the business to the person behind it. The portrait and the same name
-  // appear on the homepage, so the markup describes what a visitor can see.
-  founder: {
-    "@type": "Person",
-    "@id": `${SITE.url}/#thanya-wigg`,
-    name: "Thanawadee Wigg",
-    alternateName: "Thanya Wigg",
-    jobTitle: "Founder & Phuket Property Consultant",
-    image: `${SITE.url}/team/thanya-wigg.webp`,
-    worksFor: { "@type": "RealEstateAgent", name: SITE.name, url: SITE.url },
-  },
 };
 
 const display = Archivo({
