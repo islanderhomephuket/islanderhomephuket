@@ -5,7 +5,6 @@ import { Hero, type HeroSlide } from "@/components/home/hero";
 import { BrowseLinks } from "@/components/home/browse-links";
 import { PhuketGuide } from "@/components/home/phuket-guide";
 import { CtaBand } from "@/components/home/cta-band";
-import { PeopleBehind } from "@/components/home/people-behind";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { ZoneCard } from "@/components/property/zone-card";
@@ -122,9 +121,7 @@ export default async function HomePage() {
 
       <PhuketGuide />
 
-      <PeopleBehind />
-
-      <CtaBand image={featured[0]?.cover_image} />
+      <CtaBand image={featured[0]?.cover_image} signature />
 
       {/* Journal */}
       {posts.length > 0 && (
