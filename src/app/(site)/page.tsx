@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { isAvailable } from "@/lib/seo";
 import Link from "next/link";
 import { Hero, type HeroSlide } from "@/components/home/hero";
-import { WhyChooseUs } from "@/components/home/why-choose-us";
 import { BrowseLinks } from "@/components/home/browse-links";
 import { PhuketGuide } from "@/components/home/phuket-guide";
 import { CtaBand } from "@/components/home/cta-band";
@@ -122,9 +121,7 @@ export default async function HomePage() {
 
       <PhuketGuide />
 
-      <WhyChooseUs />
-
-      <CtaBand image={featured[0]?.cover_image} signature />
+      <CtaBand image={featured[0]?.cover_image} />
 
       {/* Journal */}
       {posts.length > 0 && (

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/container";
+import { ConsultantSignature } from "@/components/home/consultant-signature";
 
 /**
  * Editorial "things to know before you buy here" section.
@@ -58,6 +59,7 @@ export function PhuketGuide() {
               change how a purchase here actually works — the ones we end up
               explaining in almost every first conversation.
             </p>
+            <ConsultantSignature />
             <Link
               href="/contact"
               className="mt-8 inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-paper transition-opacity hover:opacity-70"
