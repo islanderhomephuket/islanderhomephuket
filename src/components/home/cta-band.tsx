@@ -6,34 +6,40 @@ import { SITE_WIDTH } from "@/components/ui/container";
 import { cn } from "@/lib/utils";
 
 /**
- * A signature rather than a profile card: the person the WhatsApp button
- * actually reaches, set directly under it.
+ * The person the WhatsApp button actually reaches, beside it rather than
+ * squeezed underneath.
  *
- * Deliberately small and unboxed. A bordered card with a large portrait reads
- * as an agency template, which is the one thing this is not meant to look
- * like; a name under a signing line reads as a person. The portrait is a
- * 224 px circular cut of the studio shot from the business card, shown at 72
- * to 80 px, so it is sharp on a retina screen and costs 5.6 KB.
+ * Third attempt. At 72 px under the buttons it was too small to register; as
+ * its own full-width section with a rectangular card it was, in the user's
+ * words, not pretty. This keeps it inside the enquiry band — the one place on
+ * the page where someone is deciding whether to message a stranger — but moves
+ * it into the band's right half, which until now held nothing but photograph,
+ * and takes the portrait to 128 px.
+ *
+ * Still no box and no border: a hairline above on mobile, a vertical rule
+ * beside it on desktop, and three lines of text. The portrait is a 224 px
+ * circular cut of the studio shot from the business card, so 128 px is still
+ * inside its real resolution.
  */
 function ConsultantSignature() {
   return (
-    <figure className="mt-11 flex items-center gap-5 border-t border-paper/15 pt-8">
+    <figure className="mt-12 flex max-w-sm items-center gap-6 border-t border-paper/15 pt-9 lg:mt-0 lg:max-w-none lg:flex-col lg:items-start lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
       <Image
         src="/team/thanya-wigg.webp"
         alt="Thanawadee (Thanya) Wigg, Phuket property consultant at Islander Home Phuket"
         width={224}
         height={224}
-        sizes="80px"
-        className="h-18 w-18 shrink-0 rounded-full object-cover sm:h-20 sm:w-20"
+        sizes="128px"
+        className="h-24 w-24 shrink-0 rounded-full object-cover sm:h-28 sm:w-28 lg:h-32 lg:w-32"
       />
-      <figcaption>
-        <p className="font-display text-base font-semibold tracking-[0.02em] text-paper">
+      <figcaption className="lg:mt-6">
+        <p className="font-display text-lg font-semibold leading-snug tracking-[0.01em] text-paper">
           Thanawadee (Thanya) Wigg
         </p>
-        <p className="kicker mt-1.5 text-[0.58rem] text-paper/55">
+        <p className="mt-2 text-[0.64rem] font-medium uppercase tracking-[0.15em] text-paper/55">
           Phuket Property Consultant
         </p>
-        <p className="mt-2.5 max-w-sm text-sm leading-relaxed text-paper/70">
+        <p className="mt-4 max-w-xs text-[0.95rem] leading-relaxed text-paper/70">
           Local insight, personal service, and a better way to find property in
           Phuket.
         </p>
@@ -44,7 +50,7 @@ function ConsultantSignature() {
 
 /**
  * `image` lets a page hand in a real listing photo instead of the stock plate.
- * `signature` adds the consultant's name below the buttons — homepage only,
+ * `signature` puts the consultant beside the enquiry copy — homepage only,
  * so the same band on /about and on every blog post stays as it was.
  */
 export function CtaBand({
@@ -62,13 +68,20 @@ export function CtaBand({
         className="object-cover opacity-70"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-black/88 via-black/60 to-black/20" />
-      {/* The signature sits low in the band, where a bright interior shot can
-          surface behind it. Only added with the signature, so /about and the
-          blog keep the band exactly as it was. */}
+      {/* The band's right half carries the portrait now, and a bright
+          interior shot behind it kills the contrast. Only added with the
+          signature, so /about and the blog keep the band as it was. */}
       {signature && (
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent" />
+        <div className="absolute inset-0 bg-black/45" />
       )}
       <div className={cn(SITE_WIDTH, "relative mx-auto px-5 sm:px-8 lg:px-12")}>
+        <div
+          className={cn(
+            signature
+              ? "grid gap-0 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] lg:items-center lg:gap-16"
+              : "",
+          )}
+        >
         <div className="max-w-2xl">
           <p className="kicker text-paper/70">Let&apos;s talk</p>
           <h2 className="display-caps mt-5 text-[2rem] text-paper sm:text-[3.2rem]">
@@ -99,7 +112,8 @@ export function CtaBand({
               <LineIcon className="h-5 w-5" /> LINE
             </a>
           </div>
-          {signature && <ConsultantSignature />}
+        </div>
+        {signature && <ConsultantSignature />}
         </div>
       </div>
       </div>

@@ -3,7 +3,7 @@ import { isAvailable } from "@/lib/seo";
 import Link from "next/link";
 import { Hero, type HeroSlide } from "@/components/home/hero";
 import { BrowseLinks } from "@/components/home/browse-links";
-import { PhuketGuide } from "@/components/home/phuket-guide";
+import { PhuketGuidePreview } from "@/components/home/phuket-guide-preview";
 import { CtaBand } from "@/components/home/cta-band";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -63,14 +63,21 @@ export default async function HomePage() {
     getNewestProperties(Number.MAX_SAFE_INTEGER, NEWEST_DAYS),
   ]);
 
-  // The two "this week" tabs answer "what is new that I can actually take", so a
-  // unit already let or sold has no business in them — unlike the hubs, which
-  // keep it visible under its stamp. Six fills the same two rows as the
-  // signature set. A "both" listing is new on each side, which is correct: it
-  // genuinely is new to a buyer and to a renter.
-  const availableThisWeek = newestWeek.filter((p) => p.status === "available");
-  const newestRent = availableThisWeek.filter(isForRent).slice(0, HOME_TAB_COUNT);
-  const newestBuy = availableThisWeek.filter(isForSale).slice(0, HOME_TAB_COUNT);
+  // These tabs answer "what can I actually take", so a unit already let or sold
+  // has no business in them — unlike the hubs, which keep it visible under its
+  // stamp. A "both" listing belongs on each side, which is correct: it genuinely
+  // is available to a buyer and to a renter.
+  //
+  // For Sale and For Rent run over the WHOLE book, newest first, not the
+  // seven-day window the old tabs used: in a quiet week the homepage could
+  // otherwise show nothing for sale at all. Newest keeps that window and now
+  // covers both intents.
+  const availableNow = all.filter(isAvailable);
+  const byNewest = (a: Property, b: Property) =>
+    new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+  const forSale = availableNow.filter(isForSale).sort(byNewest).slice(0, HOME_TAB_COUNT);
+  const forRent = availableNow.filter(isForRent).sort(byNewest).slice(0, HOME_TAB_COUNT);
+  const newest = newestWeek.filter(isAvailable).slice(0, HOME_TAB_COUNT);
 
   const areaCounts = AREAS.map((a) => ({
     area: a,
@@ -83,14 +90,15 @@ export default async function HomePage() {
         slides={HERO_SLIDES.length > 0 ? HERO_SLIDES : toSlides(featured)}
       />
 
-      {/* Featured properties, and what came in to rent this week */}
+      {/* Featured, and the two questions everyone arrives with */}
       {featured.length > 0 && (
         <section className="bg-ink py-24 sm:py-32">
           <Container>
             <HomeListingTabs
-              signature={stripToCardFields(featured)}
-              newestRent={stripToCardFields(newestRent)}
-              newestBuy={stripToCardFields(newestBuy)}
+              featured={stripToCardFields(featured)}
+              forSale={stripToCardFields(forSale)}
+              forRent={stripToCardFields(forRent)}
+              newest={stripToCardFields(newest)}
             />
           </Container>
         </section>
@@ -119,7 +127,7 @@ export default async function HomePage() {
       </section>
       <BrowseLinks />
 
-      <PhuketGuide />
+      <PhuketGuidePreview />
 
       <CtaBand image={featured[0]?.cover_image} signature />
 

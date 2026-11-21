@@ -73,19 +73,19 @@ export function Hero({ slides }: { slides: HeroSlide[] }) {
               island begins
             </h1>
 
+            {/* Says both halves of the business in the first line: the old copy
+                described the stock but never the word "rent", and half the
+                book is long-term rentals. */}
             <p className="mt-6 max-w-xl text-base leading-relaxed text-paper/75 sm:text-lg">
-              Curated villas, condominiums and land across Phuket&apos;s most
-              sought-after addresses — with trusted local expertise from first
-              viewing to keys in hand.
+              Villas, houses and condominiums to buy and to rent across
+              Phuket&apos;s most sought-after addresses — with local expertise
+              from the first viewing to the keys.
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Link
-                href="/buy"
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-paper px-7 text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-ink transition-transform duration-300 hover:-translate-y-0.5"
-              >
-                Browse properties
-              </Link>
+            {/* One button, not two. "Browse properties" sat directly above a
+                search card that does the same job better, and the hero is the
+                one place on the page that must not look crowded. */}
+            <div className="mt-8">
               <Link
                 href="/contact"
                 className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-paper/35 px-7 text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-paper transition-colors duration-300 hover:border-paper hover:bg-paper/10"

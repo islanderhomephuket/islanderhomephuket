@@ -4,6 +4,7 @@ import { Check } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { CtaBand } from "@/components/home/cta-band";
+import { PhuketGuide } from "@/components/home/phuket-guide";
 import { SITE } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -143,6 +144,10 @@ export default function AboutPage() {
           </div>
         </Container>
       </section>
+
+      {/* The full six notes. They were on the homepage; the homepage now
+          shows three of them in a sentence each and links here. */}
+      <PhuketGuide />
 
       <CtaBand />
     </>
