@@ -40,7 +40,7 @@ const orgJsonLd = {
     name: "Thanawadee Wigg",
     alternateName: "Thanya Wigg",
     jobTitle: "Phuket Property Consultant",
-    image: `${SITE.url}/team/thanya-wigg.webp`,
+    image: `${SITE.url}/team/thanya-wigg-portrait.webp`,
     worksFor: { "@type": "RealEstateAgent", name: SITE.name, url: SITE.url },
   },
 };
